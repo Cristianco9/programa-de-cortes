@@ -1,14 +1,3 @@
-<<<<<<< HEAD
-<h3 align="center">INSTALANDO CALL<h3> 
-
-<h6 align="center">version: 1.0.0</h6>
-
-proyecto OpenSource
-
-**DOCUMENTACIÒN**
-
-> En este documento se encuentra toda la documentaciòn del desarrollo de este proyecto institucional.
-=======
 <h1 align="center">INSTALANDO CALL<h1> 
 
 <p aling="center">version: 1.0.0<p>
