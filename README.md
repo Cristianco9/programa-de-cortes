@@ -52,7 +52,7 @@ Durante la primera reunion con el cliente (07/09/2023) nos expresa que cada lami
 > 1 etapa
 > construcción del equipo e involucrados en el proyecto.
 >
-> fehca de entrega:
+> fecha de entrega:
 
 > 2 etapa
 
