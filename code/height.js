@@ -1,12 +1,12 @@
-// let inputEight = document.getElementById('').value;
-let inputEight = 60;
-// const eightDsc = eightDscMeasure;
-const eightDsc = 4;
+// let inputheight = document.getElementById('').value;
+let inputHeight = 120;
+// const heightDsc = heightDscMeasure;
+const heightDsc = 6;
 
-function calculateEight(inputEight){
-    let outputEight = inputEight - eightDsc - eightDsc;
-    return outputEight;
+export function calculateHeight(inputHeight){
+    let outputHeight = inputHeight - heightDsc;
+    return outputHeight;
 };
 
-// calculateEight();
-console.log("the Eight is", calculateEight());
+// calculateHeight();
+console.log("the height is", calculateHeight(inputHeight));

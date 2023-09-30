@@ -1,12 +1,12 @@
 // let inputWidth = document.getElementById('').value;
-let inputWidth = 120;
+let inputWidth = 60;
 // const widthDsc = widthDscMeasure;
-const widthDsc = 6;
+const widthDsc = 4;
 
-function calculateWidth(inputWidth){
-    let outputWidth = inputWidth - widthDsc - widthDsc;
+export function calculateWidth(inputWidth){
+    let outputWidth = inputWidth - widthDsc;
     return outputWidth;
 };
 
 //calculateWidth();
-console.log("the width is", calculateWidth());
+console.log("the width is", calculateWidth(inputWidth));
