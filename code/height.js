@@ -1,12 +1,13 @@
-// let inputheight = document.getElementById('').value;
+// let inputHeight = document.getElementById('').value;
 let inputHeight = 120;
-// const heightDsc = heightDscMeasure;
-const heightDsc = 6;
+const { heightDscMeasure } = require('./const.js');
 
-export function calculateHeight(inputHeight){
-    let outputHeight = inputHeight - heightDsc;
+function calculateHeight(inputHeight){
+    let outputHeight = inputHeight - heightDscMeasure;
     return outputHeight;
 };
 
-// calculateHeight();
+module.exports = calculateHeight;
+
+// calculateHeight(inputHeight);
 console.log("the height is", calculateHeight(inputHeight));
