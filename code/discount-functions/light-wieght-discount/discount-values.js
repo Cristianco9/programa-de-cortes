@@ -3,5 +3,5 @@ const heightDscMeasure = 6;
 
 module.exports = {
     widthDscMeasure,
-    heightDscMeasure
+    heightDscMeasure,
 };
