@@ -1,6 +1,6 @@
 const userInputs = require('./user-inputs.js');
 
-const lightweight = {
+const lightWeight = {
     ticketId : userInputs.ticketIdInput,
     color : ['Analog', 'Blanco', 'Champaña', 'Natural', 'Negro'],
     profileType : ['Doble', 'Sencillo'],
@@ -27,3 +27,5 @@ console.log("El tipo de instlación del anjeo liviano es:",lightweight.instalati
 console.log("La altura del divisor es:",lightweight.divisorHigh);
 console.log("El ángulo es:",lightweight.angle);
 console.log("Los comentarios del clientes son los siguientes:",lightweight.note);
+
+module.exports = lightWeight;
