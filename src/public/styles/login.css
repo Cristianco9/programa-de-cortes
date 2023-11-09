@@ -27,7 +27,7 @@ html {
     background: linear-gradient(to bottom, var(--orange-color), var(--red-color));
 }
 
-.loginBox {
+.appBox {
     width: 80vw;
     height: 90vh;
     padding: 0 0 0 0;
@@ -101,7 +101,7 @@ html {
 }
 
 @media (min-width: 375px) {
-    .loginBox {
+    .appBox {
         width: 70vw;
         max-height: 90vh;
 ;
@@ -109,7 +109,7 @@ html {
 }
 
 @media (min-width: 600px) {
-    .loginBox {
+    .appBox {
         width: 50rem;
         max-height: 95vh;
         display: flex;
@@ -162,14 +162,14 @@ html {
 }
 
 @media (min-width: 900px) {
-    .loginBox {
+    .appBox {
         width: 50rem;
         max-height: 90vh;
     }
 }
 
 @media (min-width: 1024px) {
-    .loginBox {
+    .appBox {
         width: 40rem;
         max-height: 80vh;
     }
