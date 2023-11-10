@@ -111,28 +111,18 @@ html {
 @media (min-width: 600px) {
     .appBox {
         width: 50rem;
-        max-height: 70rem;
+        max-height: 95vh;
         display: flex;
         flex-direction: column;
         align-items: center;
-    }
-
-    .elementsBox {
-        height: 100vh;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: space-between;
-        gap: 2rem;
     }
 
     .tittle {
         font-size: 3.5rem;
+        margin: auto;
+        position: relative;
+        top: -15rem;
     }
-
-    .form {
-        font-size: 4rem;
-    }   
 
     .input {
         width: 30rem;
@@ -147,9 +137,20 @@ html {
         width: 18rem;
         height: 5rem;
         font-size: 2.2rem;
+        top: 6rem;
+
     }
 
+    .form {
+        position: relative;
+        top: -3rem;
+        font-size: 4rem;
+        margin-left: auto;
+        margin-right: auto;
+    }   
+
     .linksBox {
+        top: 13rem;
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -163,66 +164,22 @@ html {
 @media (min-width: 900px) {
     .appBox {
         width: 50rem;
-        max-height: 85rem;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: space-between;
-    }
-
-    .tittle {
-        font-size: 3.5rem;
-    }
-
-    .form {
-        font-size: 4rem;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }   
-
-    .input {
-        width: 30rem;
-        height: 6rem;
-        font-size: 2.2rem;
-    }
-
-    .loginBotton {
-        width: 18rem;
-        height: 5rem;
-        font-size: 2.2rem;
-    }
-
-    .linksBox {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .link {
-        font-size: 2rem;
+        max-height: 90vh;
     }
 }
 
 @media (min-width: 1024px) {
     .appBox {
         width: 40rem;
-        max-height: 70rem;
+        max-height: 80vh;
     }
 
-    .elementsBox {
-
-    }
-
-    .tittle {
+     .tittle {
         font-size: 2.3rem;
-        text-align: center;
+        margin: auto;
+        position: relative;
+        top: -8rem;
     }
-
-
-    .form {
-        font-size: 4rem;
-    }   
 
     .input {
         width: 22rem;
@@ -237,10 +194,20 @@ html {
         width: 16rem;
         height: 4rem;
         font-size: 1.8rem;
+        top: 4rem;
+
     }
 
+    .form {
+        position: relative;
+        top: 1rem;
+        font-size: 4rem;
+        margin-left: auto;
+        margin-right: auto;
+    }   
 
     .linksBox {
+        top: 13rem;
         display: flex;
         flex-direction: column;
         align-items: center;
