@@ -30,9 +30,10 @@ html {
 .appBox {
     width: 80vw;
     height: 90vh;
-    padding: 0 0 0 0;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 3rem;
     background-color: white;
     border-radius: 2.5rem;
     border: 0.7rem solid var(--button-color);
@@ -41,14 +42,15 @@ html {
 .elementsBox {
     display: flex;;
     flex-direction: column;
+    justify-content: space-between;
+    gap: 4rem;
+    align-items: center;
 }
 
 .tittle {
     font-family: 'Readex Pro', sans-serif;
     font-size: 2rem;
-    margin: 7rem auto 0 auto;
     text-align: center;
-    justify-content: center;
 }
 
 .form {
@@ -56,197 +58,251 @@ html {
     flex-direction: column;
     align-items: center;
     gap: 3rem;
-    margin: auto auto auto auto;
-}
-
-.input {
-    font-family: 'Readex Pro', sans-serif;
-    width: 16rem;
-    height: 4rem;
-    background-color: var(--grey-color);
-    border-radius: 1rem;
-    box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.6);
-    text-align: center;
-}
-
-.loginBotton {
-    width: 13rem;
-    height: 4rem;
-    font-family: 'Readex Pro', sans-serif;
-    font-size: 1.5rem;
-    color: white;
-    background-color: var(--button-color);
-    border-radius: 1rem;
-    box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.6);
-    margin: auto auto auto auto;
-    position: relative;
-    top: 2rem;
-}
-
-.linksBox {
-    display: flex;
-    flex-direction: column;
-    gap: 2.2rem;
-    margin: auto auto auto auto;
-    position: relative;
-    top: -1rem;
-}
-
-.link {
-    font-family: 'Readex Pro', sans-serif;
-    font-size: 1.3rem;
-    color: var(--grey-dark-color);
-    text-align: center;
-    text-decoration: underline;
 }
 
 @media (min-width: 375px) {
     .appBox {
-        width: 70vw;
-        max-height: 90vh;
-;
+        width: 36rem;
+        height: 55rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .tittle {
+        margin: 4rem 2rem auto 2rem;
+    }
+
+    .form {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    .orderNumber {
+        font-family: 'Readex Pro', sans-serif;
+        width: 16rem;
+        height: 3.6rem;
+        background-color: var(--grey-color);
+        border-radius: 1rem;
+        box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.6);
+        text-align: center;
+    }
+
+    .wrongID {
+        font-family: 'Readex Pro', sans-serif;
+        text-align: center;
+        margin: auto 8rem auto 8rem;
+        color: var(--button-color);
+    }
+
+    .botton {
+        width: 13rem;
+        height: 4rem;
+        font-family: 'Readex Pro', sans-serif;
+        font-size: 1.5rem;
+        color: white;
+        background-color: var(--button-color);
+        border-radius: 1rem;
+        box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.6);
+    }
+
+    .exitBotton {
+        width: 13rem;
+        height: 4rem;
+        font-family: 'Readex Pro', sans-serif;
+        font-size: 1.5rem;
+        color: white;
+        background-color: var(--button-color);
+        border-radius: 1rem;
+        box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.6);
+        margin: 3rem auto auto auto;
     }
 }
 
 @media (min-width: 600px) {
     .appBox {
-        width: 50rem;
-        max-height: 70rem;
+        width: 36rem;
+        height: 55rem;
         display: flex;
         flex-direction: column;
-        align-items: center;
-    }
-
-    .elementsBox {
-        height: 100vh;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
         justify-content: space-between;
-        gap: 2rem;
+        align-items: center;
+        gap: 5rem;
     }
 
     .tittle {
-        font-size: 3.5rem;
+        margin: 6rem 2rem auto 2rem;
     }
 
     .form {
-        font-size: 4rem;
-    }   
-
-    .input {
-        width: 30rem;
-        height: 6rem;
         display: flex;
         flex-direction: column;
-        align-items: center;
-        font-size: 2.2rem;
+        justify-content: space-between;
     }
 
-    .loginBotton {
-        width: 18rem;
-        height: 5rem;
-        font-size: 2.2rem;
+    .orderNumber {
+        font-family: 'Readex Pro', sans-serif;
+        width: 16rem;
+        height: 3.6rem;
+        background-color: var(--grey-color);
+        border-radius: 1rem;
+        box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.6);
+        text-align: center;
     }
 
-    .linksBox {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
+    .wrongID {
+        font-family: 'Readex Pro', sans-serif;
+        text-align: center;
+        margin: auto 8rem auto 8rem;
+        color: var(--button-color);
     }
 
-    .link {
-        font-size: 2rem;
+    .botton {
+        width: 13rem;
+        height: 4rem;
+        font-family: 'Readex Pro', sans-serif;
+        font-size: 1.5rem;
+        color: white;
+        background-color: var(--button-color);
+        border-radius: 1rem;
+        box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.6);
+    }
+
+    .exitBotton {
+        width: 13rem;
+        height: 4rem;
+        font-family: 'Readex Pro', sans-serif;
+        font-size: 1.5rem;
+        color: white;
+        background-color: var(--button-color);
+        border-radius: 1rem;
+        box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.6);
+        margin: 3rem auto auto auto;
     }
 }
 
 @media (min-width: 900px) {
     .appBox {
-        width: 50rem;
-        max-height: 85rem;
+        width: 36rem;
+        height: 55rem;
         display: flex;
         flex-direction: column;
-        align-items: center;
         justify-content: space-between;
+        align-items: center;
+        gap: 5rem;
     }
 
     .tittle {
-        font-size: 3.5rem;
+        margin: 6rem 2rem auto 2rem;
     }
 
     .form {
-        font-size: 4rem;
         display: flex;
         flex-direction: column;
-        align-items: center;
-    }   
-
-    .input {
-        width: 30rem;
-        height: 6rem;
-        font-size: 2.2rem;
+        justify-content: space-between;
     }
 
-    .loginBotton {
-        width: 18rem;
-        height: 5rem;
-        font-size: 2.2rem;
+    .orderNumber {
+        font-family: 'Readex Pro', sans-serif;
+        width: 16rem;
+        height: 3.6rem;
+        background-color: var(--grey-color);
+        border-radius: 1rem;
+        box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.6);
+        text-align: center;
     }
 
-    .linksBox {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
+    .wrongID {
+        font-family: 'Readex Pro', sans-serif;
+        text-align: center;
+        margin: auto 8rem auto 8rem;
+        color: var(--button-color);
     }
 
-    .link {
-        font-size: 2rem;
+    .botton {
+        width: 13rem;
+        height: 4rem;
+        font-family: 'Readex Pro', sans-serif;
+        font-size: 1.5rem;
+        color: white;
+        background-color: var(--button-color);
+        border-radius: 1rem;
+        box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.6);
+    }
+
+    .exitBotton {
+        width: 13rem;
+        height: 4rem;
+        font-family: 'Readex Pro', sans-serif;
+        font-size: 1.5rem;
+        color: white;
+        background-color: var(--button-color);
+        border-radius: 1rem;
+        box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.6);
+        margin: 3rem auto auto auto;
     }
 }
 
 @media (min-width: 1024px) {
     .appBox {
-        width: 40rem;
-        max-height: 70rem;
-    }
-
-    .elementsBox {
-
+        width: 36rem;
+        height: 55rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        gap: 5rem;
     }
 
     .tittle {
-        font-size: 2.3rem;
+        margin: 6rem 2rem auto 2rem;
+    }
+
+    .form {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    .orderNumber {
+        font-family: 'Readex Pro', sans-serif;
+        width: 16rem;
+        height: 3.6rem;
+        background-color: var(--grey-color);
+        border-radius: 1rem;
+        box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.6);
         text-align: center;
     }
 
+    .wrongID {
+        font-family: 'Readex Pro', sans-serif;
+        text-align: center;
+        margin: auto 8rem auto 8rem;
+        color: var(--button-color);
+    }
 
-    .form {
-        font-size: 4rem;
-    }   
-
-    .input {
-        width: 22rem;
+    .botton {
+        width: 13rem;
         height: 4rem;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        font-size: 1.8rem;
+        font-family: 'Readex Pro', sans-serif;
+        font-size: 1.5rem;
+        color: white;
+        background-color: var(--button-color);
+        border-radius: 1rem;
+        box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.6);
     }
 
-    .loginBotton {
-        width: 16rem;
+    .exitBotton {
+        width: 13rem;
         height: 4rem;
-        font-size: 1.8rem;
-    }
-
-
-    .linksBox {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .link {
-        font-size: 1.6rem;
+        font-family: 'Readex Pro', sans-serif;
+        font-size: 1.5rem;
+        color: white;
+        background-color: var(--button-color);
+        border-radius: 1rem;
+        box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.6);
+        margin: 3rem auto auto auto;
     }
 }
