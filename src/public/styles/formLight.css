@@ -105,64 +105,74 @@ html {
     .appBox {
         width: 70vw;
         height: 100%;
-        margin: 2rem auto 2rem auto;
+        margin: 4rem auto 4rem auto;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
         align-items: center;
-        gap: 3rem;
+        gap: 5rem;
     }
     
-    .tittle {
+    .header {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+        margin: 2rem 0 0 2rem;
+        gap: 2.4rem;
+    }
+
+    .orderInfo {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    .orderTitle {
         font-family: 'Readex Pro', sans-serif;
-        font-size: 2rem;
-        margin: 4rem 0 0 0rem;
-        width: 18rem;
+        font-size: 1.8rem;
         text-align: center;
-    } 
-    
-    .elementsBox {
-        width: 90%;
-        display: flex;
-        flex-direction: column;
-        gap: 2rem;
-        align-items: center;
     }
 
-    .tool {
-        /* background-color: var(--grey-dark-color); */
-        width: 20rem;
-        height: 20rem;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: space-around;
-    }
-
-    .toolContent {
+    .orderID {
         background-color: var(--grey-color);
         width: 14rem;
-        height: 14rem;
-        border-radius: 1rem;
+        height: 3.5rem;
+        border-radius: 0.8rem;
         box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.6);
         display: flex;
         justify-content: center;
         align-items: center;
     }
 
-    .toolContent:hover {
-        border: 0.5rem solid var(--button-color);
-    }
-    
-    .icono {
-        width: 60%;
-        height: 60%;
+    .anjeoType {
+        font-family: 'Readex Pro', sans-serif;
+        font-size: 1.6rem;
+        text-align: center;
+        color: var(--orange-color);
     }
 
-    .toolName {
-        font-family: 'Readex Pro', sans-serif;
-        font-size: 2rem; 
+    .form {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        gap: 3rem;
     }
+
+    .fieldContainer {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+    }
+
+    .fieldName {
+        font-family: 'Readex Pro', sans-serif;
+        font-size: 1.5rem;
+    }
+
 
     .bottonContainer {
         display: flex;
@@ -179,7 +189,6 @@ html {
         background-color: var(--button-color);
         border-radius: 1rem;
         box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.6);
-        margin: auto auto 2rem auto;
     }    
 }
 
