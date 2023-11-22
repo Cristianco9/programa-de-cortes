@@ -1,7 +1,7 @@
 // const inputWidth = document.getElementById('').value;
 const ticketIdInput = 15631;
 const placeInput = "Cocina";
-const widthInput = 60;
+const widthInput = 120;
 const heightInput = 120;
 const headInput = 1;
 const guidesInput = 1;
