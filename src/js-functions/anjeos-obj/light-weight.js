@@ -9,7 +9,7 @@ const lightWeight = {
     width : userInputs.widthInput,
     height : userInputs.heightInput,
     guides : userInputs.guidesInput,
-    instalation : ['Externa', 'Interna'],
+    installation : ['Externa', 'Interna'],
     divisorHigh : userInputs.divisorInput,
     angle : ['Inferior','Lateral', 'Sin angulo'],
     note : userInputs.noteInput,

@@ -10,7 +10,7 @@ const heavyWeight = {
     height : userInputs.heightInput,
     head : userInputs.headInput,
     adaptador : userInputs.adaptadorInput,
-    topPrifile : userInputs.topProfileInput,
+    topProfile : userInputs.topProfileInput,
     instalation : ['Externa', 'Interna'],
     divisorHigh : userInputs.divisorInput,
     typeHandle : ['Cubeta anjeo','Manija ducha'],
