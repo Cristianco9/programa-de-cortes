@@ -20,7 +20,7 @@ html {
 
 .mainContainer {
     width: 100vw;
-    height: 100vh;
+    height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -78,9 +78,19 @@ html {
 }
 
 @media (min-width: 375px) {
+
+    .mainContainer {
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: linear-gradient(to bottom, var(--orange-color), var(--red-color));
+    }
+
     .appBox {
         width: 80vw;
-        height: 90vh;
+        height: 60rem;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
@@ -149,6 +159,16 @@ html {
 }
 
 @media (min-width: 600px) {
+
+    .mainContainer {
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: linear-gradient(to bottom, var(--orange-color), var(--red-color));
+    }
+
     .appBox {
         width: 45rem;
         height: 65rem;

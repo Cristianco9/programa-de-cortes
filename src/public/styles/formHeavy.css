@@ -20,7 +20,7 @@ html {
 
 .mainContainer {
     width: 100vw;
-    height: 100vh;
+    height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -276,7 +276,7 @@ html {
 @media (min-width: 900px) {
     .mainContainer {
         width: 100vw;
-        height: 100vh;
+        height: 100%;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -372,7 +372,7 @@ html {
 @media (min-width: 1024px) {
     .mainContainer {
         width: 100vw;
-        height: 100vh;
+        height: 100%;
         display: flex;
         justify-content: center;
         align-items: center;
