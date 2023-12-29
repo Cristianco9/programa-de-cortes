@@ -19,7 +19,7 @@ app.use(morgan("dev"));
 app.use(express.urlencoded({ extended: false }));
 
 // select routes
-app.use(customerRoutes);
+app.use(userRoutes);
 
 // static files path
 app.use(express.static(path.join(__dirname, "public")));
