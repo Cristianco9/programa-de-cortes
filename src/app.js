@@ -1,8 +1,8 @@
-import express from "express";
+import express from 'express';
 import path from "path";
 import morgan from "morgan";
 
-import userRoutes from "./routes/user.routes.js";
+import userRoutes from "./routes/userRoutes.js";
 import { fileURLToPath } from "url";
 
 // create the app with express
@@ -24,5 +24,5 @@ app.use(userRoutes);
 // static files path
 app.use(express.static(path.join(__dirname, "public")));
 
-// starting the server
+// starting the app
 export default app;

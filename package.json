@@ -3,8 +3,16 @@
   "version": "1.1.0",
   "description": "the application",
   "main": "app.js",
+  "type": "module",
+  "dependencies": {
+    "ejs": "^3.1.8",
+    "express": "^4.18.2",
+    "morgan": "^1.10.0",
+    "mysql2": "^2.3.3"
+  },
   "scripts": {
-    "start": "node src/app.js"
+    "start": "node src/app.js",
+    "dev": "node --watch src/index.js"
   },
   "author": "Cristian Camilo",
   "license": "ISC"
