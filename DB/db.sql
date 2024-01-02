@@ -87,6 +87,9 @@ ALTER TABLE anjeos_heavy
     REFERENCES orders (order_id)
     ON DELETE CASCADE;
 
+INSERT INTO `instalandoCaliMainDB`.`users` (`user_name`, `user_password`) VALUES ('admin', 'pass1234');
+
+
 SELECT *
 FROM instalandoCaliMainDB.anjeos_heavy;
 
