@@ -3,8 +3,9 @@ CREATE DATABASE instalandoCaliMainDB;
 USE instalandoCaliMainDB;
 
 CREATE TABLE users (
-    user_name VARCHAR(10) NOT NULL PRIMARY KEY,
-    user_password VARCHAR(10) NOT NULL,
+    user_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    user_name VARCHAR(10) NOT NULL,
+    user_password VARCHAR(70) NOT NULL,
     orders_id INT(10)
 );
 
@@ -72,7 +73,7 @@ ALTER TABLE orders
 ALTER TABLE orders
     ADD CONSTRAINT fk_user_owner_id
     FOREIGN KEY (user_owner_id)
-    REFERENCES users (user_name)
+    REFERENCES users (user_id)
     ON DELETE CASCADE;
 
 ALTER TABLE anjeos_light
