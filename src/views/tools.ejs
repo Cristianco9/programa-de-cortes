@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>selecciona una herramienta</title>
     <meta name="description" content="Inicio de sección"> 
-    <link rel="stylesheet" href="../public/styles/tools.css">
+    <link rel="stylesheet" href="/styles/tools.css">
     <meta name="robots" content="index,follow">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -17,27 +17,27 @@
         <section class="appBox">
             <h2 class="tittle">Selecciona una herramienta</h2>
             <section class="elementsBox">
-                <dic class="tool" id="tool">
+                <dic class="tool" id="tool" data-path="./order" onclick="redirect(this)">
                     <div class="toolContent">
-                        <img class="icono" src="../public/icons/scissors-solid.svg" alt="icono de unas tijeras">
+                        <img class="icono" src="/icons/scissors-solid.svg" alt="icono de unas tijeras">
                     </div>
                     <h3 class="toolName">Cortes de anjeo</h3>
                 </dic>
-                <dic class="tool" id="tool">
+                <dic class="tool" id="tool" data-path="./order" onclick="redirect(this)">
                     <div class="toolContent">
-                        <img class="icono" src="../public/icons/boxes-stacked-solid.svg" alt="icono de unas tijeras">
+                        <img class="icono" src="/icons/boxes-stacked-solid.svg" alt="icono de unas tijeras">
                     </div>
                     <h3 class="toolName">Control de pedidos</h3>
                 </dic>
-                <dic class="tool" id="tool">
+                <dic class="tool" id="tool" data-path="./order" onclick="redirect(this)">
                     <div class="toolContent">
-                        <img class="icono" src="../public/icons/warehouse-solid.svg" alt="icono de unas tijeras">
+                        <img class="icono" src="/icons/warehouse-solid.svg" alt="icono de unas tijeras">
                     </div>
                     <h3 class="toolName">inventario</h3>
                 </dic>
-                <dic class="tool" id="tool">
+                <dic class="tool" id="tool" data-path="./order" onclick="redirect(this)">
                     <div class="toolContent">
-                        <img class="icono" src="../public/icons/gear-solid.svg" alt="icono de unas tijeras">
+                        <img class="icono" src="/icons/gear-solid.svg" alt="icono de unas tijeras">
                     </div>
                     <h3 class="toolName">Configuración</h3>
                 </dic>
@@ -45,5 +45,11 @@
             <button type="submit" class="botton">Salir</button>
         </section>
     </div>
+    <script>
+        function redirect(container) {
+            const path = container.getAttribute('data-path');
+            window.location.href = path;
+        }
+    </script>
 </body>
 </html>
