@@ -14,10 +14,3 @@ export const hashPassword = async (userPassword) => {
         }
     });
 };
-
-export const verifyPassword = async () => {
-    const password = req.body.password;
-    console.log("the password is: ", password);
-
-    const passwordMatch = await bcrypt.compare(password, passwordHashed);
-}
