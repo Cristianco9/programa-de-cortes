@@ -2,11 +2,11 @@
 import mysql from 'mysql2/promise';
 
 export const connection = {
-  host: "127.0.0.1",
-  user: "root",
-  password: "1234567890",
-  database: "instalandoCaliMainDB",
-  port: "3306"
+  host: '127.0.0.1',
+  user: 'root',
+  password: '1234567890',
+  database: 'instalandoCaliMainDB',
+  port: '3306'
 };
 
 export const pool = mysql.createPool(connection);
