@@ -4,7 +4,8 @@ USE instalandoCaliMainDB;
 
 CREATE TABLE users (
     --user_id INT NOT NULL AUTO_INCREMENT,
-    user_email VARCHAR(30) NOT NULL PRIMARY KEY, 
+    user_email VARCHAR(30) NOT NULL PRIMARY KEY,
+    user_rol VARCHAR(10) NOT NULL,
     user_name VARCHAR(10) NOT NULL,
     user_password VARCHAR(70) NOT NULL,
     orders_id INT(10)

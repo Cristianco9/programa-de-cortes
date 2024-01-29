@@ -21,7 +21,7 @@ export const login = async (req, res) => {
         const [rows] = await pool.query("SELECT * FROM users WHERE user_name = ?", [userName]);
 
         if (rows.length === 0) {
-            return res.status(401).json({ message: 'usuario incorrecto o inexistente' });
+            return res.render('loginWrongUser');
         }
 
         const userExist = rows[0];
@@ -32,7 +32,7 @@ export const login = async (req, res) => {
         if (validPassword) {
             return res.render('tools');
         } else {
-            return res.status(401).json({ message: 'Contraseña incorrecta' });
+            return res.render('loginWrongPass');
         }
     } catch (err) {
         return res.status(500).json({ message: 'Error interno del servidor' });
@@ -73,12 +73,11 @@ export const orderIDValidation = async (req, res) => {
                     break;
                 }
             }
-            console.log(orderExist);
+
             if (orderExist) {
                 return res.redirect('tools');
             } else {
                 const createOrder = await pool.query("INSERT INTO `orders` (`user_owner_email`, `order_id`) VALUES (?, ?)", [currentUser.user_email, orderNumber]);
-                console.log("orden guardada en la base datos");
                 return res.render('type');
             };
         } catch (err) {
@@ -93,4 +92,12 @@ export const orderIDValidation = async (req, res) => {
 
 export const type = async (req, res) => {
         res.render('type');
+};
+
+export const formLight = async (req, res) => {
+    res.render('formLight');
+};
+
+export const formHeavy = async (req, res) => {
+        res.render('formHeavy');
 };

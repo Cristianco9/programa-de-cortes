@@ -17,13 +17,13 @@
         <section class="appBox">
             <h2 class="tittle">Selecciona un tipo de anjeo</h2>
             <section class="elementsBox">
-                <dic class="tool" id="tool">
+                <dic class="tool" id="tool" data-path="./formlight" onclick="redirect(this)">
                     <div class="toolContent">
                         <img class="icono" src="/icons/weight-hanging-solid.svg" alt="icono de unas tijeras">
                     </div>
                     <h3 class="toolName">Liviano</h3>
                 </dic>
-                <dic class="tool" id="tool">
+                <dic class="tool" id="tool" data-path="./formHeavy" onclick="redirect(this)">
                     <div class="toolContent">
                         <img class="icono" src="/icons/weight-hanging-solid.svg" alt="icono de unas tijeras">
                     </div>
@@ -31,11 +31,11 @@
                 </dic>
             </section>
             <section class="bottonContainer">
-                <button type="submit" class="botton">Siguiente</button>
                 <button type="submit" class="botton">Regresar</button>
                 <button type="submit" class="botton">Salir</button>
             </section>
         </section>
     </div>
+    <script src="./js/redirectView.js"></script>
 </body>
 </html>
