@@ -17,8 +17,9 @@
         <section class="appBox">
             <section class="elementsBox">
                 <h2 class="tittle">Ingresa el número de pedido</h2>
-                <form class="form" action="/orderID" method="POST">
+                <form class="form" action="/orderID" method="POST" onsubmit="return validateForm()">
                     <input class="orderNumber" name="orderNumber" id="orderNumber" type="number" placeholder="Número">
+                    <div class="error-message" id="errorMessage">Datos incorrectos, por favor verifiquelos e intentelo de nuevos</div>
                     <button type="submit" class="botton">Siguiente</button>
                     <button type="" class="botton">Regresar</button>
                 </form>
@@ -26,5 +27,6 @@
             </section>
         </section>
     </div>
+    <script src="/js/validateOrderNumber.js"></script>
 </body>
 </html>

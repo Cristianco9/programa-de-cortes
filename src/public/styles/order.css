@@ -60,6 +60,15 @@ html {
     gap: 3rem;
 }
 
+.error-message {
+    display: none;
+    width: 18rem;
+    font-family: 'Readex Pro', sans-serif;
+    font-size: 1rem;
+    text-align: center;
+    color: var(--red-color);
+}
+
 @media (min-width: 375px) {
     .appBox {
         width: 36rem;
