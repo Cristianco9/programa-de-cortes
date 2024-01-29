@@ -17,14 +17,12 @@
         <section class="appBox">
             <section class="elementsBox">
                 <h2 class="tittle">Ingresa el número de pedido</h2>
-                <!-- <form action="/submit" method="post" class="form"> -->
-                <form class="form" onsubmit="return validateData()">
-                    <input class="orderNumber" id="orderNumber" type="number" placeholder="Número">
-                    <!-- <p class="wrongID">Datos incorrectos, por favor verifiquelos e intentelo de nuevo</p> -->
+                <form class="form" action="/orderID" method="POST">
+                    <input class="orderNumber" name="orderNumber" id="orderNumber" type="number" placeholder="Número">
                     <button type="submit" class="botton">Siguiente</button>
-                    <button type="submit" class="botton">Regresar</button>
+                    <button type="" class="botton">Regresar</button>
                 </form>
-                    <button type="submit" class="exitBotton">Salir</button>
+                    <button type="" class="exitBotton">Salir</button>
             </section>
         </section>
     </div>

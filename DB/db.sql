@@ -3,8 +3,8 @@ CREATE DATABASE instalandoCaliMainDB;
 USE instalandoCaliMainDB;
 
 CREATE TABLE users (
-    user_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    user_mail VARCHAR(30) NOT NULL, 
+    --user_id INT NOT NULL AUTO_INCREMENT,
+    user_email VARCHAR(30) NOT NULL PRIMARY KEY, 
     user_name VARCHAR(10) NOT NULL,
     user_password VARCHAR(70) NOT NULL,
     orders_id INT(10)
@@ -46,7 +46,7 @@ CREATE TABLE anjeos_heavy (
 );
 
 CREATE TABLE orders (
-    user_owner_id INT(10),
+    user_owner_email VARCHAR(30),
     order_id INT(10) NOT NULL PRIMARY KEY,
     order_date DATE,
     anjeos_light_id INT(10),
@@ -72,9 +72,9 @@ ALTER TABLE orders
     ON DELETE CASCADE;
 
 ALTER TABLE orders
-    ADD CONSTRAINT fk_user_owner_id
-    FOREIGN KEY (user_owner_id)
-    REFERENCES users (user_id)
+    ADD CONSTRAINT fk_user_owner_email
+    FOREIGN KEY (user_owner_email)
+    REFERENCES users (user_email)
     ON DELETE CASCADE;
 
 ALTER TABLE anjeos_light
@@ -89,7 +89,7 @@ ALTER TABLE anjeos_heavy
     REFERENCES orders (order_id)
     ON DELETE CASCADE;
 
-INSERT INTO `instalandoCaliMainDB`.`users` (`user_name`, `user_password`) VALUES ('admin', '$2a$11$8I0CpxzUm9IZmyBD9Q.tt.HtPtxE56lx2pPxZrhv6.J.7ZuxBhs..');
+INSERT INTO `instalandoCaliMainDB`.`users` (`user_name`, `user_password`, `user_email`) VALUES ('admin', '$2a$11$8I0CpxzUm9IZmyBD9Q.tt.HtPtxE56lx2pPxZrhv6.J.7ZuxBhs..', 'admin@gmail.com');
 
 
 SELECT *
