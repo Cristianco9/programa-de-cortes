@@ -24,56 +24,58 @@
                 </div>
                 <h2 class="anjeoType">Anjeo liviano</h2>
             </section>
-            <form class="form">
+            <form class="form" action="/CreateFormLight" method="POST">
                 <div class="fieldContainer">
                     <h3 class="fieldName">Seleccionar color</h3>
-                    <input class="input" id="color" type="text">
+                    <input class="input" name="color" id="color" type="text" required>
                 </div>
                 <div class="fieldContainer">
                     <h3 class="fieldName">Seleccionar perfil</h3>
-                    <input class="input" id="perfil" type="text">
+                    <input class="input" name="perfil" id="perfil" type="text" required>
                 </div>
                 <div class="fieldContainer">
                     <h3 class="fieldName">Seleccionar tipo de apertura</h3>
-                    <input class="input" id="apertura" type="text">
+                    <input class="input" name="apertura" id="apertura" type="text" required>
                 </div>
                 <div class="fieldContainer">
                     <h3 class="fieldName">Lugar</h3>
-                    <input class="input" id="lugar" type="text">
+                    <input class="input" name="lugar" id="lugar" type="text" required>
                 </div>
                 <div class="fieldContainer">
                     <h3 class="fieldName">Ancho</h3>
-                    <input class="input" id="ancho" type="number">
+                    <input class="input" name="ancho" id="ancho" type="number" required>
                 </div>
                 <div class="fieldContainer">
                     <h3 class="fieldName">Altura</h3>
-                    <input class="input" id="altura" type="number">
+                    <input class="input" name="altura" id="altura" type="number" required>
                 </div>
                 <div class="fieldContainer">
                     <h3 class="fieldName">Guias</h3>
-                    <input class="input" id="guias" type="number">
+                    <input class="input" name="guias" id="guias" type="number" required>
                 </div>
                 <div class="fieldContainer">
                     <h3 class="fieldName">Instalación</h3>
-                    <input class="input" id="instalacion" type="text">
+                    <input class="input" name="instalacion" id="instalacion" type="text" required>
                 </div>
                 <div class="fieldContainer">
                     <h3 class="fieldName">Altura divisor</h3>
-                    <input class="input" id="altura" type="number">
+                    <input class="input" name="alturaDivisor" id="alturaDivisor" type="number" required>
                 </div>
                 <div class="fieldContainer">
                     <h3 class="fieldName">Ángulo</h3>
-                    <input class="input" id="angulo" type="number">
+                    <input class="input" name="angulo" id="angulo" type="number" required>
                 </div>
                 <div class="fieldContainer">
                     <h3 class="fieldName">Notas</h3>
-                    <input class="input" id="notas" type="text">
+                    <input class="input" name="notas" id="notas" type="text">
                 </div>
-            </form>
-            <section class="bottonContainer">
-                <button type="submit" class="botton">Regresar</button>
-                <button type="submit" class="botton">Siguiente</button>
-            </section>
+                <div class="fieldContainerHidden">
+                </div>
+                <section class="bottonContainer">
+                    <button type="submit" class="botton">Regresar</button>
+                    <button type="submit" class="botton">Siguiente</button>
+                </section>
+            </form> 
         </section>
     </div>
 </body>

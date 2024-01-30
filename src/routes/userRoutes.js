@@ -7,7 +7,9 @@ import {
     type,
     orderIDValidation,
     formLight,
-    formHeavy
+    formHeavy,
+    createFormHeavy,
+    createFormLight
 } from "../controllers/userController.js";
 
 const router = Router();
@@ -20,5 +22,7 @@ router.post('/orderID', orderIDValidation);
 router.get('/type', type);
 router.get('/formLight', formLight);
 router.get('/formHeavy', formHeavy);
+router.post('/createFormHeavy', createFormHeavy);
+router.post('/createFormLight', createFormLight);
 
 export default router;

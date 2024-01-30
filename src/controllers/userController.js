@@ -101,3 +101,60 @@ export const formLight = async (req, res) => {
 export const formHeavy = async (req, res) => {
         res.render('formHeavy');
 };
+
+export const createFormHeavy = async (req, res) => {
+
+    // temporal
+    const user_owner_email = "admin@gmail.com";
+    const order_owner_id = 369;
+    const anjeoHeavy = {
+        color: req.body.color,
+        perfil: req.body.perfil,
+        apertura: req.body.apertura,
+        lugar: req.body.lugar,
+        ancho: req.body.ancho,
+        altura: req.body.altura,
+        cabezal: req.body.cabezal,
+        adaptador: req.body.adaptador,
+        perfilSuperior: req.body.perfilSuperior,
+        instalacion: req.body.instalacion,
+        alturaDivisor: req.body.alturaDivisor,
+        manija: req.body.manija,
+        lado: req.body.lado,
+        notas: req.body.notas
+    };
+
+    try {
+        const insertAnjeoHeavy = await pool.query("INSERT INTO `anjeos_heavy` (`order_owner_id`, `anjeo_color`, `profile_type`, `opening`, `place`, `width`, `height`, `head`, `adaptador`, `top_profile`, `installation`, `divisorHigh`, `type_handle`, `open_direction`, `notes`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", [order_owner_id, anjeoHeavy.color, anjeoHeavy.perfil, anjeoHeavy.apertura, anjeoHeavy.lugar, anjeoHeavy.ancho, anjeoHeavy.altura, anjeoHeavy.cabezal, anjeoHeavy.adaptador, anjeoHeavy.perfilSuperior, anjeoHeavy.instalacion, anjeoHeavy.alturaDivisor, anjeoHeavy.manija, anjeoHeavy.lado,anjeoHeavy.notas]);
+    } catch (err) {
+        console.log("error al guardar el anjeo pesado en la base de datos", err);
+        return res.status(500).json({ error: 'Hubo un error interno en el servidor' });
+    }
+};
+
+export const createFormLight = async (req, res) => {
+
+    // temporal
+    const user_owner_email = "admin@gmail.com";
+    const order_owner_id = 369;
+    const anjeoLight = {
+        color: req.body.color,
+        perfil: req.body.perfil,
+        apertura: req.body.apertura,
+        lugar: req.body.lugar,
+        ancho: req.body.ancho,
+        altura: req.body.altura,
+        guias: req.body.guias,
+        instalacion: req.body.instalacion,
+        alturaDivisor: req.body.alturaDivisor,
+        angulo: req.body.angulo,
+        notas: req.body.notas
+    };
+
+    try {
+        const insertAnjeoLight = await pool.query("INSERT INTO `anjeos_light` (`order_owner_id`, `anjeo_color`, `profile_type`, `opening`, `place`, `width`, `height`, `guide`, `installation`, `divisorHigh`, `angle`, `notes`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", [order_owner_id, anjeoLight.color, anjeoLight.perfil, anjeoLight.apertura, anjeoLight.lugar, anjeoLight.ancho, anjeoLight.altura, anjeoLight.guias, anjeoLight.instalacion, anjeoLight.alturaDivisor, anjeoLight.angulo, anjeoLight.notas]);
+    } catch (err) {
+        console.log("error al guardar el anjeo liviano en la base de datos", err)
+        return res.status(500).json({ error: 'Hubo un error interno en el servidor' });
+    }
+};

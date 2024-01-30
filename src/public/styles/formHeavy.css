@@ -104,7 +104,7 @@ html {
         flex-direction: column;
         align-items: center;
         justify-content: space-between;
-        margin: 2rem 0 0 2rem;
+        margin: 2rem 0 0 0;
         gap: 2.4rem;
     }
 
@@ -164,6 +164,7 @@ html {
         display: flex;
         flex-direction: column;
         justify-content: space-between;
+        margin-top: 3rem;
     }
 
     .botton {
@@ -194,9 +195,8 @@ html {
         margin: 4rem auto 4rem auto;
         display: flex;
         flex-direction: column;
-        justify-content: space-between;
+        justify-content: space-around;
         align-items: center;
-        gap: 5rem;
     }
     
     .header {
@@ -237,6 +237,7 @@ html {
         display: flex;
         flex-direction: column;
         gap: 1rem;
+        margin-top: -5rem;
     }
 
     .fieldContainer {
@@ -259,6 +260,7 @@ html {
         flex-direction: row;
         justify-content: space-between;
         gap: 13rem;
+        margin-top: 3rem;
     }
 
     .botton {
@@ -289,7 +291,7 @@ html {
         margin: 4rem auto 4rem auto;
         display: flex;
         flex-direction: column;
-        justify-content: space-between;
+        justify-content: space-around;
         align-items: center;
     }
     
@@ -298,7 +300,7 @@ html {
         flex-direction: row;
         flex-wrap: wrap;
         justify-content: space-between;
-        margin: 2rem 0  0 0;
+        margin: 2rem 0 0 0;
         gap: 20rem;
     }
 
@@ -334,6 +336,7 @@ html {
         flex-wrap: wrap;
         justify-content: space-around;
         align-items: center;
+        margin-top: -5rem;
     }
 
     .fieldContainer {
@@ -355,6 +358,7 @@ html {
         flex-direction: row;
         justify-content: space-between;
         gap: 13rem;
+        margin-top: 3rem;
     }
 
     .botton {
@@ -385,7 +389,7 @@ html {
         margin: 2rem 0 2rem 0;
         display: flex;
         flex-direction: column;
-        justify-content: space-between;
+        justify-content: space-around;
         align-items: center;
     }
     
@@ -450,6 +454,7 @@ html {
         flex-direction: row;
         justify-content: space-between;
         gap: 13rem;
+        margin-top: 3rem;
     }
 
     .botton {

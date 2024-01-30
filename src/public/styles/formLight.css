@@ -104,7 +104,7 @@ html {
         flex-direction: column;
         align-items: center;
         justify-content: space-between;
-        margin: 2rem 0 0 2rem;
+        margin: 2rem 0 0 0;
         gap: 2.4rem;
     }
 
@@ -154,6 +154,10 @@ html {
         gap: 1rem;
     }
 
+    .fieldContainerHidden {
+        display: none;
+    }
+
     .fieldName {
         font-family: 'Readex Pro', sans-serif;
         font-size: 1.5rem;
@@ -164,6 +168,7 @@ html {
         display: flex;
         flex-direction: column;
         justify-content: space-between;
+        margin-top: 3rem;
     }
 
     .botton {
@@ -194,7 +199,7 @@ html {
         margin: 4rem auto 4rem auto;
         display: flex;
         flex-direction: column;
-        justify-content: space-between;
+        justify-content: space-around;
         align-items: center;
         gap: 5rem;
     }
@@ -237,6 +242,7 @@ html {
         display: flex;
         flex-direction: column;
         gap: 1rem;
+        margin-top: -5rem;
     }
 
     .fieldContainer {
@@ -247,6 +253,11 @@ html {
         justify-content: space-between;
         gap: 1rem;
     }
+
+    .fieldContainerHidden {
+        display: none;
+    }
+    
 
     .fieldName {
         font-family: 'Readex Pro', sans-serif;
@@ -259,6 +270,7 @@ html {
         flex-direction: row;
         justify-content: space-between;
         gap: 13rem;
+        margin-top: 3rem;
     }
 
     .botton {
@@ -289,7 +301,7 @@ html {
         margin: 4rem auto 4rem auto;
         display: flex;
         flex-direction: column;
-        justify-content: space-between;
+        justify-content: space-around;
         align-items: center;
     }
     
@@ -344,17 +356,23 @@ html {
         justify-content: space-between;
     }
 
+    .fieldContainerHidden {
+        width: 30rem;
+        height: 7rem;
+        display: flex;
+    }
+
     .fieldName {
         font-family: 'Readex Pro', sans-serif;
         font-size: 1.5rem;
     }
-
 
     .bottonContainer {
         display: flex;
         flex-direction: row;
         justify-content: space-between;
         gap: 13rem;
+        margin-top: 3rem;
     }
 
     .botton {
@@ -385,7 +403,7 @@ html {
         margin: 2rem 0 2rem 0;
         display: flex;
         flex-direction: column;
-        justify-content: space-between;
+        justify-content: space-around;
         align-items: center;
     }
     
@@ -440,6 +458,12 @@ html {
         justify-content: space-between;
     }
 
+    .fieldContainerHidden {
+        width: 30rem;
+        height: 7rem;
+        display: flex;
+    }
+
     .fieldName {
         font-family: 'Readex Pro', sans-serif;
         font-size: 1.5rem;
@@ -450,6 +474,7 @@ html {
         flex-direction: row;
         justify-content: space-between;
         gap: 13rem;
+        margin-top: rem;
     }
 
     .botton {
