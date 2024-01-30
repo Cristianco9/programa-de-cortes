@@ -75,7 +75,7 @@ export const orderIDValidation = async (req, res) => {
             }
 
             if (orderExist) {
-                return res.redirect('tools');
+                return res.render('orderActions');
             } else {
                 const createOrder = await pool.query("INSERT INTO `orders` (`user_owner_email`, `order_id`) VALUES (?, ?)", [currentUser.user_email, orderNumber]);
                 return res.render('type');
@@ -126,6 +126,7 @@ export const createFormHeavy = async (req, res) => {
 
     try {
         const insertAnjeoHeavy = await pool.query("INSERT INTO `anjeos_heavy` (`order_owner_id`, `anjeo_color`, `profile_type`, `opening`, `place`, `width`, `height`, `head`, `adaptador`, `top_profile`, `installation`, `divisorHigh`, `type_handle`, `open_direction`, `notes`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", [order_owner_id, anjeoHeavy.color, anjeoHeavy.perfil, anjeoHeavy.apertura, anjeoHeavy.lugar, anjeoHeavy.ancho, anjeoHeavy.altura, anjeoHeavy.cabezal, anjeoHeavy.adaptador, anjeoHeavy.perfilSuperior, anjeoHeavy.instalacion, anjeoHeavy.alturaDivisor, anjeoHeavy.manija, anjeoHeavy.lado,anjeoHeavy.notas]);
+        return res.render('orderActions');
     } catch (err) {
         console.log("error al guardar el anjeo pesado en la base de datos", err);
         return res.status(500).json({ error: 'Hubo un error interno en el servidor' });
@@ -153,8 +154,13 @@ export const createFormLight = async (req, res) => {
 
     try {
         const insertAnjeoLight = await pool.query("INSERT INTO `anjeos_light` (`order_owner_id`, `anjeo_color`, `profile_type`, `opening`, `place`, `width`, `height`, `guide`, `installation`, `divisorHigh`, `angle`, `notes`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", [order_owner_id, anjeoLight.color, anjeoLight.perfil, anjeoLight.apertura, anjeoLight.lugar, anjeoLight.ancho, anjeoLight.altura, anjeoLight.guias, anjeoLight.instalacion, anjeoLight.alturaDivisor, anjeoLight.angulo, anjeoLight.notas]);
+        return res.render('orderActions');
     } catch (err) {
         console.log("error al guardar el anjeo liviano en la base de datos", err)
         return res.status(500).json({ error: 'Hubo un error interno en el servidor' });
     }
+};
+
+export const orderActions = async (req, res) => {
+    res.render('orderActions');
 };

@@ -1,0 +1,310 @@
+/* universal properties*/
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* setting rem measuare */
+html {
+    font-size: 62.5%;
+}
+
+:root{
+    --red-color: #DB2801;
+    --orange-color: #FF6902;
+    --button-color: #C21212;
+    --grey-color: #c9c9c9;
+    --grey-dark-color: #898989;
+}
+
+.mainContainer {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(to bottom, var(--orange-color), var(--red-color));
+}
+
+.appBox {
+    width: 80vw;
+    height: 90vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 3rem;
+    background-color: white;
+    border-radius: 2.5rem;
+    border: 0.7rem solid var(--button-color);
+}
+
+.elementsBox {
+    display: flex;;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 4rem;
+    align-items: center;
+}
+
+.tittle {
+    font-family: 'Readex Pro', sans-serif;
+    font-size: 2rem;
+    text-align: center;
+}
+
+@media (min-width: 375px) {
+    .appBox {
+        width: 36rem;
+        height: 55rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .elementsBox {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        gap: 6rem;
+    }
+
+    .orderInfo {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        align-content: center;
+        margin-top: 6rem;
+    }
+
+    .orderTitle {
+        font-family: 'Readex Pro', sans-serif;
+        font-size: 2rem;
+        text-align: center;
+    }
+
+    .orderID {
+        font-family: 'Readex Pro', sans-serif;
+        width: 16rem;
+        height: 3.6rem;
+        background-color: var(--grey-color);
+        border-radius: 1rem;
+        box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.6);
+        text-align: center;
+    }
+
+    .orderActionsButtons {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        gap: 2rem;
+    }
+
+
+    .botton {
+        width: 13rem;
+        height: 4rem;
+        font-family: 'Readex Pro', sans-serif;
+        font-size: 1.5rem;
+        color: white;
+        background-color: var(--button-color);
+        border-radius: 1rem;
+        box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.6);
+    }
+}
+
+@media (min-width: 600px) {
+    .appBox {
+        width: 36rem;
+        height: 55rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .elementsBox {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        gap: 6rem;
+    }
+
+    .orderInfo {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        align-content: center;
+        margin-top: 6rem;
+    }
+
+    .orderTitle {
+        font-family: 'Readex Pro', sans-serif;
+        font-size: 2rem;
+        text-align: center;
+    }
+
+    .orderID {
+        font-family: 'Readex Pro', sans-serif;
+        width: 16rem;
+        height: 3.6rem;
+        background-color: var(--grey-color);
+        border-radius: 1rem;
+        box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.6);
+        text-align: center;
+    }
+
+    .orderActionsButtons {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        gap: 2rem;
+    }
+
+
+    .botton {
+        width: 13rem;
+        height: 4rem;
+        font-family: 'Readex Pro', sans-serif;
+        font-size: 1.5rem;
+        color: white;
+        background-color: var(--button-color);
+        border-radius: 1rem;
+        box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.6);
+    }
+}
+
+@media (min-width: 900px) {
+    .appBox {
+        width: 36rem;
+        height: 55rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .elementsBox {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        gap: 6rem;
+    }
+
+    .orderInfo {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        align-content: center;
+        margin-top: 6rem;
+    }
+
+    .orderTitle {
+        font-family: 'Readex Pro', sans-serif;
+        font-size: 2rem;
+        text-align: center;
+    }
+
+    .orderID {
+        font-family: 'Readex Pro', sans-serif;
+        width: 16rem;
+        height: 3.6rem;
+        background-color: var(--grey-color);
+        border-radius: 1rem;
+        box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.6);
+        text-align: center;
+    }
+
+    .orderActionsButtons {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        gap: 2rem;
+    }
+
+
+    .botton {
+        width: 13rem;
+        height: 4rem;
+        font-family: 'Readex Pro', sans-serif;
+        font-size: 1.5rem;
+        color: white;
+        background-color: var(--button-color);
+        border-radius: 1rem;
+        box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.6);
+    }
+}
+
+@media (min-width: 1024px) {
+    .appBox {
+        width: 36rem;
+        height: 55rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .elementsBox {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        gap: 6rem;
+    }
+
+    .orderInfo {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        align-content: center;
+        margin-top: 6rem;
+    }
+
+    .orderTitle {
+        font-family: 'Readex Pro', sans-serif;
+        font-size: 2rem;
+        text-align: center;
+    }
+
+    .orderID {
+        font-family: 'Readex Pro', sans-serif;
+        width: 16rem;
+        height: 3.6rem;
+        background-color: var(--grey-color);
+        border-radius: 1rem;
+        box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.6);
+        text-align: center;
+    }
+
+    .orderActionsButtons {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        gap: 2rem;
+    }
+
+
+    .botton {
+        width: 13rem;
+        height: 4rem;
+        font-family: 'Readex Pro', sans-serif;
+        font-size: 1.5rem;
+        color: white;
+        background-color: var(--button-color);
+        border-radius: 1rem;
+        box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.6);
+    }
+}
