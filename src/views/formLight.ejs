@@ -17,9 +17,19 @@
         <section class="appBox">
             <section class="header">
                 <div class="orderInfo">
-                    <h2 class="orderTitle">Pedido</h2>
-                    <table>
-                        <td class="orderID"></td>
+                    <table class="orderTable">
+                        <thead>
+                            <tr>
+                                <th class="orderTitle">Pedido</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% orderID.forEach(function(orderItem) { %>
+                                <tr>
+                                    <td class="orderID"><%= orderItem.order_id %></td>
+                                </tr>
+                            <% }); %>
+                        </tbody>
                     </table>
                 </div>
                 <h2 class="anjeoType">Anjeo liviano</h2>

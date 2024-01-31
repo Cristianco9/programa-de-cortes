@@ -1,4 +1,4 @@
-export const  = async (userPassword) => {
+export const passwordHashing = async (userPassword) => {
 
     return new Promise((resolve, reject) => {
         try {

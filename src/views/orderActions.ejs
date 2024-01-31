@@ -17,9 +17,17 @@
         <section class="appBox">
             <section class="elementsBox">
                 <header class="orderInfo">
-                    <h2 class="orderTitle">Pedido</h2>
-                    <table>
-                        <td class="orderID"></td>
+                    <table class="orderTable">
+                        <thead>
+                            <tr>
+                                <th class="orderTitle">Pedido</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                                <tr>
+                                    <td class="orderID"><%= orderNumber %></td>
+                                </tr>
+                        </tbody>
                     </table>
                 </header>
                 <div class="orderActionsButtons">

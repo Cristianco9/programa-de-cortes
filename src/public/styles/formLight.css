@@ -130,6 +130,8 @@ html {
         display: flex;
         justify-content: center;
         align-items: center;
+        font-family: 'Readex Pro', sans-serif;
+        font-size: 1.5rem;
     }
 
     .anjeoType {
@@ -213,10 +215,11 @@ html {
         margin: 2rem 0  0 0;
     }
 
-    .orderInfo {
+    .orderTable {
         display: flex;
         flex-direction: row;
         gap: 2rem;
+        align-items: center;
     }
 
     .orderTitle {
@@ -230,6 +233,8 @@ html {
         height: 3.5rem;
         border-radius: 0.8rem;
         box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.6);
+        font-family: 'Readex Pro', sans-serif;
+        font-size: 1.5rem;
     }
 
     .anjeoType {
@@ -314,10 +319,11 @@ html {
         gap: 20rem;
     }
 
-    .orderInfo {
+    .orderTable{
         display: flex;
         flex-direction: row;
         gap: 2rem;
+        align-items: center;
     }
 
     .orderTitle {
@@ -331,6 +337,8 @@ html {
         height: 3.5rem;
         border-radius: 0.8rem;
         box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.6);
+        font-family: 'Readex Pro', sans-serif;
+        font-size: 1.5rem;
     }
 
     .anjeoType {
@@ -416,10 +424,11 @@ html {
         gap: 20rem;
     }
 
-    .orderInfo {
+    .orderTable {
         display: flex;
         flex-direction: row;
         gap: 2rem;
+        align-items: center;
     }
 
     .orderTitle {
@@ -433,6 +442,8 @@ html {
         height: 3.5rem;
         border-radius: 0.8rem;
         box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.6);
+        font-family: 'Readex Pro', sans-serif;
+        font-size: 1.5rem;
     }
 
     .anjeoType {

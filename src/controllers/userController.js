@@ -64,8 +64,8 @@ export const orderIDValidation = async (req, res) => {
         const currentUser = rows[0];
 
         try {
-            const [orders] = await pool.query("SELECT * FROM `orders` WHERE user_owner_email = ?", [currentUser.user_email]);
-
+            const [orders] = await pool.query("SELECT `order_id` FROM `orders` WHERE user_owner_email = ?", [currentUser.user_email]);
+            
             let orderExist = false;
             for (const order of orders) {
                 if (order.order_id === orderNumber) {
@@ -75,9 +75,9 @@ export const orderIDValidation = async (req, res) => {
             }
 
             if (orderExist) {
-                return res.render('orderActions');
+                return res.render('orderActions', {orderNumber: orderNumber} );
             } else {
-                const createOrder = await pool.query("INSERT INTO `orders` (`user_owner_email`, `order_id`) VALUES (?, ?)", [currentUser.user_email, orderNumber]);
+                const createOrder = await pool.query("INSERT INTO `orders` (`user_owner_email`, `order_id`, `date_creation`) VALUES (?, ?, NOW())", [currentUser.user_email, orderNumber]);
                 return res.render('type');
             };
         } catch (err) {
@@ -95,11 +95,31 @@ export const type = async (req, res) => {
 };
 
 export const formLight = async (req, res) => {
-    res.render('formLight');
+    
+        // temporal
+    const user_owner_email = "admin@gmail.com";
+    
+    try {
+        const [currentOrder] = await pool.query("SELECT `order_id` FROM `orders` WHERE `user_owner_email` = ? ORDER BY date_creation DESC LIMIT 1", [user_owner_email]);
+        res.render('formLight', { orderID: currentOrder });
+    } catch (err) {
+        console.log("error al traer la ultima ordern de la base de datos", err)
+        return res.status(500).json({ error: 'Hubo un error interno en el servidor' });
+    }
 };
 
 export const formHeavy = async (req, res) => {
-        res.render('formHeavy');
+
+        // temporal
+        const user_owner_email = "admin@gmail.com";
+    
+        try {
+            const [currentOrder] = await pool.query("SELECT `order_id` FROM `orders` WHERE `user_owner_email` = ? ORDER BY date_creation DESC LIMIT 1", [user_owner_email]);
+            res.render('formHeavy', { orderID: currentOrder });
+        } catch (err) {
+            console.log("error al traer la ultima ordern de la base de datos", err)
+            return res.status(500).json({ error: 'Hubo un error interno en el servidor' });
+        } 
 };
 
 export const createFormHeavy = async (req, res) => {
@@ -125,7 +145,7 @@ export const createFormHeavy = async (req, res) => {
     };
 
     try {
-        const insertAnjeoHeavy = await pool.query("INSERT INTO `anjeos_heavy` (`order_owner_id`, `anjeo_color`, `profile_type`, `opening`, `place`, `width`, `height`, `head`, `adaptador`, `top_profile`, `installation`, `divisorHigh`, `type_handle`, `open_direction`, `notes`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", [order_owner_id, anjeoHeavy.color, anjeoHeavy.perfil, anjeoHeavy.apertura, anjeoHeavy.lugar, anjeoHeavy.ancho, anjeoHeavy.altura, anjeoHeavy.cabezal, anjeoHeavy.adaptador, anjeoHeavy.perfilSuperior, anjeoHeavy.instalacion, anjeoHeavy.alturaDivisor, anjeoHeavy.manija, anjeoHeavy.lado,anjeoHeavy.notas]);
+        const insertAnjeoHeavy = await pool.query("INSERT INTO `anjeos_heavy` (`order_owner_id`, `date_creation` `anjeo_color`, `profile_type`, `opening`, `place`, `width`, `height`, `head`, `adaptador`, `top_profile`, `installation`, `divisorHigh`, `type_handle`, `open_direction`, `notes`) VALUES (?, NOW(), ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", [order_owner_id, anjeoHeavy.color, anjeoHeavy.perfil, anjeoHeavy.apertura, anjeoHeavy.lugar, anjeoHeavy.ancho, anjeoHeavy.altura, anjeoHeavy.cabezal, anjeoHeavy.adaptador, anjeoHeavy.perfilSuperior, anjeoHeavy.instalacion, anjeoHeavy.alturaDivisor, anjeoHeavy.manija, anjeoHeavy.lado,anjeoHeavy.notas]);
         return res.render('orderActions');
     } catch (err) {
         console.log("error al guardar el anjeo pesado en la base de datos", err);
@@ -153,7 +173,7 @@ export const createFormLight = async (req, res) => {
     };
 
     try {
-        const insertAnjeoLight = await pool.query("INSERT INTO `anjeos_light` (`order_owner_id`, `anjeo_color`, `profile_type`, `opening`, `place`, `width`, `height`, `guide`, `installation`, `divisorHigh`, `angle`, `notes`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", [order_owner_id, anjeoLight.color, anjeoLight.perfil, anjeoLight.apertura, anjeoLight.lugar, anjeoLight.ancho, anjeoLight.altura, anjeoLight.guias, anjeoLight.instalacion, anjeoLight.alturaDivisor, anjeoLight.angulo, anjeoLight.notas]);
+        const insertAnjeoLight = await pool.query("INSERT INTO `anjeos_light` (`order_owner_id`, `date_creation`, `anjeo_color`, `profile_type`, `opening`, `place`, `width`, `height`, `guide`, `installation`, `divisorHigh`, `angle`, `notes`) VALUES (?, NOW(), ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", [order_owner_id, anjeoLight.color, anjeoLight.perfil, anjeoLight.apertura, anjeoLight.lugar, anjeoLight.ancho, anjeoLight.altura, anjeoLight.guias, anjeoLight.instalacion, anjeoLight.alturaDivisor, anjeoLight.angulo, anjeoLight.notas]);
         return res.render('orderActions');
     } catch (err) {
         console.log("error al guardar el anjeo liviano en la base de datos", err)
@@ -162,5 +182,16 @@ export const createFormLight = async (req, res) => {
 };
 
 export const orderActions = async (req, res) => {
-    res.render('orderActions');
+
+        // temporal
+        const user_owner_email = "admin@gmail.com";
+
+        try {
+            const [currentOrder] = await pool.query("SELECT `order_id` FROM `orders` WHERE `user_owner_email` = ? ORDER BY date_creation DESC LIMIT 1", [user_owner_email]);
+            console.log(`the current order is: ${currentOrder}`);
+            res.render('orderActions', { orderID: currentOrder });
+        } catch (err) {
+            console.log("error al traer la ultima ordern de la base de datos", err)
+            return res.status(500).json({ error: 'Hubo un error interno en el servidor' });
+        } 
 };

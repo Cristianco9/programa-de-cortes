@@ -4,6 +4,7 @@ USE instalandoCaliMainDB;
 
 CREATE TABLE users (
     --user_id INT NOT NULL AUTO_INCREMENT,
+    date_creation DATETIME NOT NULL,
     user_email VARCHAR(30) NOT NULL PRIMARY KEY,
     user_rol VARCHAR(20) NOT NULL,
     user_name VARCHAR(10) NOT NULL,
@@ -14,6 +15,7 @@ CREATE TABLE users (
 CREATE TABLE anjeos_light (
     order_owner_id INT(10),
     anjeo_light_id INT(10) NOT NULL  AUTO_INCREMENT PRIMARY KEY,
+    date_creation DATETIME NOT NULL,
     anjeo_color TEXT(10) NOT NULL,
     profile_type TEXT(10) NOT NULL,
     opening VARCHAR(15) NOT NULL,
@@ -30,6 +32,7 @@ CREATE TABLE anjeos_light (
 CREATE TABLE anjeos_heavy (
     order_owner_id INT(10),
     anjeo_heavy_id INT(10) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    date_creation DATETIME NOT NULL,
     anjeo_color TEXT(10) NOT NULL,
     profile_type TEXT(10) NOT NULL,
     opening VARCHAR(15) NOT NULL,
@@ -49,7 +52,7 @@ CREATE TABLE anjeos_heavy (
 CREATE TABLE orders (
     user_owner_email VARCHAR(30),
     order_id INT(10) NOT NULL PRIMARY KEY,
-    order_date DATE,
+    date_creation DATETIME NOT NULL,
     anjeos_light_id INT(10),
     anjeos_heavy_id INT(10)
 );
@@ -90,7 +93,7 @@ ALTER TABLE anjeos_heavy
     REFERENCES orders (order_id)
     ON DELETE CASCADE;
 
-INSERT INTO `instalandoCaliMainDB`.`users` (`user_name`, `user_rol`, `user_password`, `user_email`) VALUES ('admin', 'administrador', '$2a$11$8I0CpxzUm9IZmyBD9Q.tt.HtPtxE56lx2pPxZrhv6.J.7ZuxBhs..', 'admin@gmail.com');
+INSERT INTO `instalandoCaliMainDB`.`users` (`user_name`, `date_creation`, `user_rol`, `user_password`, `user_email`) VALUES ('admin', NOW(), 'administrador', '$2a$11$8I0CpxzUm9IZmyBD9Q.tt.HtPtxE56lx2pPxZrhv6.J.7ZuxBhs..', 'admin@gmail.com');
 
 
 SELECT *
