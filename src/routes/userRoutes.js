@@ -10,7 +10,13 @@ import {
     formHeavy,
     createFormHeavy,
     createFormLight,
-    orderActions
+    orderActions,
+    typeCreated,
+    listLight,
+    listHeavy,
+    editAnjeo,
+    deleteAnjeo
+    //updateAnjeo
 } from "../controllers/userController.js";
 
 const router = Router();
@@ -26,5 +32,11 @@ router.get('/formHeavy', formHeavy);
 router.post('/createFormHeavy', createFormHeavy);
 router.post('/createFormLight', createFormLight);
 router.get('/orderActions', orderActions);
+router.get('/typeCreated', typeCreated);
+router.get('/listLight', listLight);
+router.get('/listHeavy', listHeavy);
+router.get('/editAnjeo/:id', editAnjeo);
+router.get('/deleteAnjeo/:id', deleteAnjeo);
+//router.get('/updateAnjeo/:id', updateAnjeo);
 
 export default router;

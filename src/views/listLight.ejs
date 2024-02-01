@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anjeos creados</title>
+    <meta name="description" content="Anjeos creados"> 
+    <link rel="stylesheet" href="/styles/listLight.css">
+    <meta name="robots" content="index,follow">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="mainContainer">
+        <section class="appBox">
+            <header class="header">
+                <section class="tablesContainer">
+                    <table class="orderTable">
+                        <thead>
+                            <tr>
+                                <th class="order">Pedido</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                                <tr>
+                                    <td class="orderID"> <%= orderNumber %></td>
+                                </tr>
+                        </tbody>
+                    </table>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th class="orderTitle">Total de anjeos</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="total"> <%= anjeosLightQuantity %> </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </section>
+                <h2 class="anjeosType">Anjeos livianos creados</h2>
+            </header>
+            <main class="anjeosContainer">
+                    <table class="anejosTable">
+                        <thead>
+                            <tr class="columnDataContainer">
+                                <th class="columnData">n°</th>
+                                <th class="columnData">Lugar</th>
+                                <th class="columnActions">Opciones</th>
+                            </tr>
+                        </thead>
+                        <tbody class="anjeosTableBody">
+                            <% for (let i = 0; i < anjeosCreated.length; i++) { %>
+                                <tr class="rowsContainer">
+                                    <td class="rowData"><%= anjeosCreated[i].anjeo_light_id %></td>
+                                    <td class="rowData"><%= anjeosCreated[i].place %></td>
+                                </tr>
+                                <tr class="actionButtonsContainer">
+                                    <td class="actionButtons">
+                                        <a href="/editAnjeo/<%= anjeosCreated[i].anjeo_light_id %>" class="buttonEdit">Editar</a>
+                                        <a href="/DeleteAnjeo/<%= anjeosCreated[i].anjeo_light_id %>" class="buttonDelete">Eliminar</a>
+                                    </td>
+                                </tr>
+                            <% } %>
+                        </tbody>
+                    </table>
+            </main>
+            <footer class="footer">
+                <button type="submit" class="button" data-path="./typeCreated" onclick="redirect(this)">Regresar</button>
+
+            </footer>
+    </div>
+    <script src="./js/redirectView.js"></script>
+</body>
+</html>
