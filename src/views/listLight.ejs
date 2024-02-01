@@ -56,15 +56,19 @@
                         <tbody class="anjeosTableBody">
                             <% for (let i = 0; i < anjeosCreated.length; i++) { %>
                                 <tr class="rowsContainer">
-                                    <td class="rowData"><%= anjeosCreated[i].anjeo_light_id %></td>
+                                    <td id="anjeoLightID" class="rowData"><%= anjeosCreated[i].anjeo_light_id %></td>
                                     <td class="rowData"><%= anjeosCreated[i].place %></td>
                                 </tr>
                                 <tr class="actionButtonsContainer">
                                     <td class="actionButtons">
-                                        <a href="/editAnjeo/<%= anjeosCreated[i].anjeo_light_id %>" class="buttonEdit">Editar</a>
-                                        <a href="/DeleteAnjeo/<%= anjeosCreated[i].anjeo_light_id %>" class="buttonDelete">Eliminar</a>
+                                        <form class="formActions" action="/DeleteAnjeoLight" method="POST">
+                                            <input type="hidden" name="thisAnjeoLightID" value="<%= anjeosCreated[i].anjeo_light_id %>">
+                                            <button type="submit" class="buttonEdit">Editar</button>
+                                            <button type="submit" class="buttonDelete">Eliminar</button>
+                                        </form>
                                     </td>
                                 </tr>
+
                             <% } %>
                         </tbody>
                     </table>

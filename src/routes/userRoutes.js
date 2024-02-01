@@ -14,8 +14,9 @@ import {
     typeCreated,
     listLight,
     listHeavy,
-    editAnjeo,
-    deleteAnjeo
+    editAnjeoLight,
+    deleteAnjeoLight,
+    deleteAnjeoHeavy
     //updateAnjeo
 } from "../controllers/userController.js";
 
@@ -35,8 +36,9 @@ router.get('/orderActions', orderActions);
 router.get('/typeCreated', typeCreated);
 router.get('/listLight', listLight);
 router.get('/listHeavy', listHeavy);
-router.get('/editAnjeo/:id', editAnjeo);
-router.get('/deleteAnjeo/:id', deleteAnjeo);
+router.get('/editAnjeoLight/:id', editAnjeoLight);
+router.post('/deleteAnjeoLight', deleteAnjeoLight);
+router.post('/deleteAnjeoHeavy', deleteAnjeoHeavy);
 //router.get('/updateAnjeo/:id', updateAnjeo);
 
 export default router;

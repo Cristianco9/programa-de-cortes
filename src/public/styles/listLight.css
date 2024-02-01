@@ -195,10 +195,15 @@ html {
     .actionButtons {
         display: flex;
         flex-direction: row;
-        font-family: 'Readex Pro', sans-serif;
         font-size: 1.5rem;
         text-align: center;
         margin: 6rem 1rem 0rem 1rem;
+        gap: 2rem;
+    }
+
+    .formActions {
+        display: flex;
+        flex-direction: row;
         gap: 2rem;
     }
 
@@ -207,6 +212,7 @@ html {
         justify-content: center;
         align-items: center;
         text-decoration: none;
+        font-family: 'Readex Pro', sans-serif;
         width: 9rem;
         height: 2.6rem;
         color: white;
@@ -220,6 +226,7 @@ html {
         justify-content: center;
         align-items: center;
         text-decoration: none;
+        font-family: 'Readex Pro', sans-serif;
         width: 9rem;
         height: 2.6rem;
         color: white;
@@ -420,10 +427,15 @@ html {
     .actionButtons {
         display: flex;
         flex-direction: row;
-        font-family: 'Readex Pro', sans-serif;
         font-size: 1.5rem;
         text-align: center;
         margin: 2rem 1rem 0rem 1rem;
+        gap: 2rem;
+    }
+
+    .formActions {
+        display: flex;
+        flex-direction: row;
         gap: 2rem;
     }
 
@@ -432,6 +444,7 @@ html {
         justify-content: center;
         align-items: center;
         text-decoration: none;
+        font-family: 'Readex Pro', sans-serif;
         width: 9rem;
         height: 2.6rem;
         color: white;
@@ -445,6 +458,7 @@ html {
         justify-content: center;
         align-items: center;
         text-decoration: none;
+        font-family: 'Readex Pro', sans-serif;
         width: 9rem;
         height: 2.6rem;
         color: white;
@@ -645,10 +659,15 @@ html {
     .actionButtons {
         display: flex;
         flex-direction: row;
-        font-family: 'Readex Pro', sans-serif;
         font-size: 1.5rem;
         text-align: center;
         margin: 2rem 1rem 0rem 1rem;
+        gap: 2rem;
+    }
+
+    .formActions {
+        display: flex;
+        flex-direction: row;
         gap: 2rem;
     }
 
@@ -657,6 +676,7 @@ html {
         justify-content: center;
         align-items: center;
         text-decoration: none;
+        font-family: 'Readex Pro', sans-serif;
         width: 9rem;
         height: 2.6rem;
         color: white;
@@ -670,6 +690,7 @@ html {
         justify-content: center;
         align-items: center;
         text-decoration: none;
+        font-family: 'Readex Pro', sans-serif;
         width: 9rem;
         height: 2.6rem;
         color: white;
@@ -870,10 +891,15 @@ html {
     .actionButtons {
         display: flex;
         flex-direction: row;
-        font-family: 'Readex Pro', sans-serif;
         font-size: 1.5rem;
         text-align: center;
         margin: 2rem 1rem 0rem 1rem;
+        gap: 2rem;
+    }
+
+    .formActions {
+        display: flex;
+        flex-direction: row;
         gap: 2rem;
     }
 
@@ -882,6 +908,7 @@ html {
         justify-content: center;
         align-items: center;
         text-decoration: none;
+        font-family: 'Readex Pro', sans-serif;
         width: 9rem;
         height: 2.6rem;
         color: white;
@@ -895,6 +922,7 @@ html {
         justify-content: center;
         align-items: center;
         text-decoration: none;
+        font-family: 'Readex Pro', sans-serif;
         width: 9rem;
         height: 2.6rem;
         color: white;

@@ -56,22 +56,26 @@
                         <tbody class="anjeosTableBody">
                             <% for (let i = 0; i < anjeosCreated.length; i++) { %>
                                 <tr class="rowsContainer">
-                                    <td class="rowData"><%= anjeosCreated[i].anjeo_heavy_id %></td>
+                                    <td id="anjeoHeavyID" class="rowData"><%= anjeosCreated[i].anjeo_heavy_id %></td>
                                     <td class="rowData"><%= anjeosCreated[i].place %></td>
                                 </tr>
                                 <tr class="actionButtonsContainer">
                                     <td class="actionButtons">
-                                        <a href="/editAnjeoHeavy/<%= anjeosCreated[i].anjeo_heavy_id %>" class="buttonEdit">Editar</a>
-                                        <a href="/DeleteAnjeoHeavy/<%= anjeosCreated[i].anjeo_heavy_id %>" class="buttonDelete">Eliminar</a>
+                                        <form class="formActions" action="/DeleteAnjeoHeavy" method="POST">
+                                            <input type="hidden" name="thisAnjeoHeavyID" value="<%= anjeosCreated[i].anjeo_Heavy_id %>">
+                                            <button type="submit" class="buttonEdit">Editar</button>
+                                            <button type="submit" class="buttonDelete">Eliminar</button>
+                                        </form>
                                     </td>
                                 </tr>
+
                             <% } %>
                         </tbody>
                     </table>
             </main>
             <footer class="footer">
                 <button type="submit" class="button" data-path="./typeCreated" onclick="redirect(this)">Regresar</button>
-                <div class="BlankSpace"></div>
+
             </footer>
     </div>
     <script src="./js/redirectView.js"></script>

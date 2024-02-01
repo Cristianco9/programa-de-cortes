@@ -160,8 +160,8 @@ export const createFormHeavy = async (req, res) => {
     const orderNumber = rows[0].order_id;
 
     try {
-        const insertAnjeoHeavy = await pool.query("INSERT INTO `anjeos_heavy` (`order_owner_id`, `date_creation` `anjeo_color`, `profile_type`, `opening`, `place`, `width`, `height`, `head`, `adaptador`, `top_profile`, `installation`, `divisorHigh`, `type_handle`, `open_direction`, `notes`) VALUES (?, NOW(), ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", [orderNumber, anjeoHeavy.color, anjeoHeavy.perfil, anjeoHeavy.apertura, anjeoHeavy.lugar, anjeoHeavy.ancho, anjeoHeavy.altura, anjeoHeavy.cabezal, anjeoHeavy.adaptador, anjeoHeavy.perfilSuperior, anjeoHeavy.instalacion, anjeoHeavy.alturaDivisor, anjeoHeavy.manija, anjeoHeavy.lado,anjeoHeavy.notas]);
-        return res.render('orderActions');
+        const insertAnjeoHeavy = await pool.query("INSERT INTO `anjeos_heavy` (`order_owner_id`, `date_creation`, `anjeo_color`, `profile_type`, `opening`, `place`, `width`, `height`, `head`, `adaptador`, `top_profile`, `installation`, `divisorHigh`, `type_handle`, `open_direction`, `notes`) VALUES (?, NOW(), ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", [orderNumber, anjeoHeavy.color, anjeoHeavy.perfil, anjeoHeavy.apertura, anjeoHeavy.lugar, anjeoHeavy.ancho, anjeoHeavy.altura, anjeoHeavy.cabezal, anjeoHeavy.adaptador, anjeoHeavy.perfilSuperior, anjeoHeavy.instalacion, anjeoHeavy.alturaDivisor, anjeoHeavy.manija, anjeoHeavy.lado, anjeoHeavy.notas]);
+        return res.render('orderActions', { orderNumber: orderNumber });
     } catch (err) {
         console.log("error al guardar el anjeo pesado en la base de datos", err);
         return res.status(500).json({ error: 'Hubo un error interno en el servidor' });
@@ -252,7 +252,7 @@ try {
 }
 };
 
-export const editAnjeo = async (req, res) => {
+export const editAnjeoLight = async (req, res) => {
     // temporal
     const user_owner_email = "admin@gmail.com";
 
@@ -264,14 +264,38 @@ try {
 }
 };
 
-export const deleteAnjeo = async (req, res) => {
+export const deleteAnjeoLight = async (req, res) => {
     // temporal
     const user_owner_email = "admin@gmail.com";
+    const [rows] = await pool.query("SELECT `order_id` FROM `orders` WHERE `user_owner_email` = ? ORDER BY date_creation DESC LIMIT 1", [user_owner_email]);
+    const orderNumber = rows[0].order_id;
+    const anjeo_light_to_delete = req.body.thisAnjeoLightID; 
 
-try {
-    const [orders] = await pool.query("SELECT `anjeo_light_id`")
-    res.render('listLight');
-} catch (err) {
-    res.status(500).render('</ error del servidor, al renderizar la vista de anjeos livianos creados >');
-}
+    try {
+        const result = await pool.query("DELETE FROM `anjeos_light` WHERE `anjeo_light_id` = ?", [anjeo_light_to_delete]);
+        const [anjeosCreated] = await pool.query("SELECT `anjeo_light_id`, `place` FROM  `anjeos_light` WHERE order_owner_id = ?;", [orderNumber]);
+        const anjeosLightQuantity = anjeosCreated.length;
+        res.render('listLight',  { anjeosCreated: anjeosCreated, orderNumber: orderNumber, anjeosLightQuantity: anjeosLightQuantity });
+    } catch (err) {
+        console.log(`Este es el error ${err}`);
+        res.status(500).render('</ error del servidor, al intentar eliminar el anjeo liviano >');
+    }
+};
+
+export const deleteAnjeoHeavy = async (req, res) => {
+    // temporal
+    const user_owner_email = "admin@gmail.com";
+    const [rows] = await pool.query("SELECT `order_id` FROM `orders` WHERE `user_owner_email` = ? ORDER BY date_creation DESC LIMIT 1", [user_owner_email]);
+    const orderNumber = rows[0].order_id;
+    const anjeo_heavy_to_delete = req.body.thisAnjeoHeavyID; 
+
+    try {
+        const result = await pool.query("DELETE FROM `anjeos_heavy` WHERE `anjeo_heavy_id` = ?", [anjeo_heavy_to_delete]);
+            const [anjeosCreated] = await pool.query("SELECT `anjeo_heavy_id`, `place` FROM  `anjeos_heavy` WHERE order_owner_id = ?;", [orderNumber]);
+            const anjeosHeavyQuantity = anjeosCreated.length;
+            res.render('listHeavy',  { anjeosCreated: anjeosCreated, orderNumber: orderNumber, anjeosHeavyQuantity: anjeosHeavyQuantity });
+    } catch (err) {
+        console.log(`Este es el error ${err}`);
+        res.status(500).render('</ error del servidor, al intentar eliminar el anjeo liviano >');
+    }
 };
