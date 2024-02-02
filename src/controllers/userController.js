@@ -287,7 +287,8 @@ export const deleteAnjeoHeavy = async (req, res) => {
     const user_owner_email = "admin@gmail.com";
     const [rows] = await pool.query("SELECT `order_id` FROM `orders` WHERE `user_owner_email` = ? ORDER BY date_creation DESC LIMIT 1", [user_owner_email]);
     const orderNumber = rows[0].order_id;
-    const anjeo_heavy_to_delete = req.body.thisAnjeoHeavyID; 
+    const anjeo_heavy_to_delete = req.body.thisAnjeoHeavyID;
+    console.log(`Este es el anjeo que se deberia eliminar: ${anjeo_heavy_to_delete}`);
 
     try {
         const result = await pool.query("DELETE FROM `anjeos_heavy` WHERE `anjeo_heavy_id` = ?", [anjeo_heavy_to_delete]);
