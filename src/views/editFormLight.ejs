@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Crear anjeo liviano</title>
-    <meta name="description" content="Crear anjeo liviano"> 
-    <link rel="stylesheet" href="/styles/formLight.css">
+    <title>Editar anjeo liviano</title>
+    <meta name="description" content="editar anjeo liviano"> 
+    <link rel="stylesheet" href="/styles/editFormLight.css">
     <meta name="robots" content="index,follow">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -24,69 +24,68 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <% orderID.forEach(function(orderItem) { %>
                                 <tr>
-                                    <td class="orderID"><%= orderItem.order_id %></td>
+                                    <td class="orderID"><%= orderNumber %></td>
                                 </tr>
-                            <% }); %>
                         </tbody>
                     </table>
                 </div>
-                <h2 class="anjeoType">Anjeo liviano</h2>
+                <h2 class="anjeoType">Editar anjeo liviano</h2>
             </section>
-            <form class="form" action="/CreateFormLight" method="POST">
+            <form class="form" action="/updateFormLight/<%= anjeoToEdit.anjeo_light_id %>" method="POST">
                 <div class="fieldContainer">
                     <h3 class="fieldName">Seleccionar color</h3>
-                    <input class="input" name="color" id="color" type="text" required>
+                    <input class="input" name="color" id="color" type="text" value="<%= anjeoToEdit.anjeo_color %>">
                 </div>
                 <div class="fieldContainer">
                     <h3 class="fieldName">Seleccionar perfil</h3>
-                    <input class="input" name="perfil" id="perfil" type="text" required>
+                    <input class="input" name="perfil" id="perfil" type="text" value="<%= anjeoToEdit.profile_type %>">
                 </div>
                 <div class="fieldContainer">
                     <h3 class="fieldName">Seleccionar tipo de apertura</h3>
-                    <input class="input" name="apertura" id="apertura" type="text" required>
+                    <input class="input" name="apertura" id="apertura" type="text" value="<%= anjeoToEdit.opening %>">
                 </div>
                 <div class="fieldContainer">
                     <h3 class="fieldName">Lugar</h3>
-                    <input class="input" name="lugar" id="lugar" type="text" required>
+                    <input class="input" name="lugar" id="lugar" type="text" value="<%= anjeoToEdit.place %>">
                 </div>
                 <div class="fieldContainer">
                     <h3 class="fieldName">Ancho</h3>
-                    <input class="input" name="ancho" id="ancho" type="number" required>
+                    <input class="input" name="ancho" id="ancho" type="number" value="<%= anjeoToEdit.width %>">
                 </div>
                 <div class="fieldContainer">
                     <h3 class="fieldName">Altura</h3>
-                    <input class="input" name="altura" id="altura" type="number" required>
+                    <input class="input" name="altura" id="altura" type="number" value="<%= anjeoToEdit.height %>">
                 </div>
                 <div class="fieldContainer">
                     <h3 class="fieldName">Guias</h3>
-                    <input class="input" name="guias" id="guias" type="number" required>
+                    <input class="input" name="guias" id="guias" type="number" value="<%= anjeoToEdit.guide %>">
                 </div>
                 <div class="fieldContainer">
                     <h3 class="fieldName">Instalación</h3>
-                    <input class="input" name="instalacion" id="instalacion" type="text" required>
+                    <input class="input" name="instalacion" id="instalacion" type="text" value="<%= anjeoToEdit.installation %>">
                 </div>
                 <div class="fieldContainer">
                     <h3 class="fieldName">Altura divisor</h3>
-                    <input class="input" name="alturaDivisor" id="alturaDivisor" type="number" required>
+                    <input class="input" name="alturaDivisor" id="alturaDivisor" type="number" value="<%= anjeoToEdit.divisorHigh %>">
                 </div>
                 <div class="fieldContainer">
                     <h3 class="fieldName">Ángulo</h3>
-                    <input class="input" name="angulo" id="angulo" type="number" required>
+                    <input class="input" name="angulo" id="angulo" type="number" value="<%= anjeoToEdit.angle %>">
                 </div>
                 <div class="fieldContainer">
                     <h3 class="fieldName">Notas</h3>
-                    <input class="input" name="notas" id="notas" type="text">
+                    <input class="input" name="notas" id="notas" type="text" value="<%= anjeoToEdit.notes %>">
                 </div>
                 <div class="fieldContainerHidden">
                 </div>
                 <section class="bottonContainer">
-                    <button type="submit" class="botton">Regresar</button>
-                    <button type="submit" class="botton">Siguiente</button>
+                    <button data-path="./listLight" ondblclick="redirect(this)" class="botton">Regresar</button>
+                    <button type="submit" class="botton">Guardar</button>
                 </section>
             </form> 
         </section>
     </div>
+    <script src="/js/redirectView.js"></script>
 </body>
 </html>

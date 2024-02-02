@@ -255,12 +255,30 @@ try {
 export const editAnjeoLight = async (req, res) => {
     // temporal
     const user_owner_email = "admin@gmail.com";
+    const [rows] = await pool.query("SELECT `order_id` FROM `orders` WHERE `user_owner_email` = ? ORDER BY date_creation DESC LIMIT 1", [user_owner_email]);
+    const orderNumber = rows[0].order_id;
+    const { id } = req.params;
 
 try {
-    const [orders] = await pool.query("SELECT `anjeo_light_id`")
-    res.render('listLight');
+    const [result] = await pool.query("SELECT * FROM `anjeos_light` WHERE `anjeo_light_id` = ?", [id]);
+    res.render('editFormLight', { anjeoToEdit: result[0], orderNumber: orderNumber });
 } catch (err) {
-    res.status(500).render('</ error del servidor, al renderizar la vista de anjeos livianos creados >');
+    res.status(500).render('</ error del servidor, al renderizar la vista de edición anjeo liviano creado >');
+}
+};
+
+export const editAnjeoHeavy = async (req, res) => {
+    // temporal
+    const user_owner_email = "admin@gmail.com";
+    const [rows] = await pool.query("SELECT `order_id` FROM `orders` WHERE `user_owner_email` = ? ORDER BY date_creation DESC LIMIT 1", [user_owner_email]);
+    const orderNumber = rows[0].order_id;
+    const { id } = req.params;
+
+try {
+    const [result] = await pool.query("SELECT * FROM `anjeos_heavy` WHERE `anjeo_heavy_id` = ?", [id]);
+    res.render('editFormHeavy', { anjeoToEdit: result[0], orderNumber: orderNumber });
+} catch (err) {
+    res.status(500).render('</ error del servidor, al renderizar la vista de edición anjeo liviano creado >');
 }
 };
 
@@ -269,11 +287,11 @@ export const deleteAnjeoLight = async (req, res) => {
     const user_owner_email = "admin@gmail.com";
     const [rows] = await pool.query("SELECT `order_id` FROM `orders` WHERE `user_owner_email` = ? ORDER BY date_creation DESC LIMIT 1", [user_owner_email]);
     const orderNumber = rows[0].order_id;
-    const anjeo_light_to_delete = req.body.thisAnjeoLightID; 
+    const { id } = req.params;
 
     try {
-        const result = await pool.query("DELETE FROM `anjeos_light` WHERE `anjeo_light_id` = ?", [anjeo_light_to_delete]);
-        const [anjeosCreated] = await pool.query("SELECT `anjeo_light_id`, `place` FROM  `anjeos_light` WHERE order_owner_id = ?;", [orderNumber]);
+        const result = await pool.query("DELETE FROM `anjeos_light` WHERE `anjeo_light_id` = ?", [id]);
+        const [ anjeosCreated ] = await pool.query("SELECT `anjeo_light_id`, `place` FROM  `anjeos_light` WHERE order_owner_id = ?;", [orderNumber]);
         const anjeosLightQuantity = anjeosCreated.length;
         res.render('listLight',  { anjeosCreated: anjeosCreated, orderNumber: orderNumber, anjeosLightQuantity: anjeosLightQuantity });
     } catch (err) {
@@ -287,16 +305,73 @@ export const deleteAnjeoHeavy = async (req, res) => {
     const user_owner_email = "admin@gmail.com";
     const [rows] = await pool.query("SELECT `order_id` FROM `orders` WHERE `user_owner_email` = ? ORDER BY date_creation DESC LIMIT 1", [user_owner_email]);
     const orderNumber = rows[0].order_id;
-    const anjeo_heavy_to_delete = req.body.thisAnjeoHeavyID;
-    console.log(`Este es el anjeo que se deberia eliminar: ${anjeo_heavy_to_delete}`);
+    const { id } = req.params;
 
     try {
-        const result = await pool.query("DELETE FROM `anjeos_heavy` WHERE `anjeo_heavy_id` = ?", [anjeo_heavy_to_delete]);
-            const [anjeosCreated] = await pool.query("SELECT `anjeo_heavy_id`, `place` FROM  `anjeos_heavy` WHERE order_owner_id = ?;", [orderNumber]);
+        const result = await pool.query("DELETE FROM `anjeos_heavy` WHERE `anjeo_heavy_id` = ?", [id]);
+            const [ anjeosCreated ] = await pool.query("SELECT `anjeo_heavy_id`, `place` FROM  `anjeos_heavy` WHERE order_owner_id = ?;", [orderNumber]);
             const anjeosHeavyQuantity = anjeosCreated.length;
             res.render('listHeavy',  { anjeosCreated: anjeosCreated, orderNumber: orderNumber, anjeosHeavyQuantity: anjeosHeavyQuantity });
     } catch (err) {
         console.log(`Este es el error ${err}`);
         res.status(500).render('</ error del servidor, al intentar eliminar el anjeo liviano >');
+    }
+};
+
+export const updateAnjeoLight = async (req, res) => {
+
+    const anjeoLightIdToUpdate = req.params.id;
+
+    const newAnjeoLight = {
+        color: req.body.color,
+        perfil: req.body.perfil,
+        apertura: req.body.apertura,
+        lugar: req.body.lugar,
+        ancho: req.body.ancho,
+        altura: req.body.altura,
+        guias: req.body.guias,
+        instalacion: req.body.instalacion,
+        alturaDivisor: req.body.alturaDivisor,
+        angulo: req.body.angulo,
+        notas: req.body.notas
+    };
+
+    try {
+        const updateAnjeoLight = await pool.query("UPDATE `anjeos_light` SET `date_creation` = NOW(), `anjeo_color` = ?, `profile_type` = ?, `opening` = ?, `place` = ?, `width` = ?, `height` = ?, `guide` = ?, `installation` = ?, `divisorHigh` = ?, `angle` = ?, `notes` = ? WHERE `anjeo_light_id` = ?", [newAnjeoLight.color, newAnjeoLight.perfil, newAnjeoLight.apertura, newAnjeoLight.lugar, newAnjeoLight.ancho, newAnjeoLight.altura, newAnjeoLight.guias, newAnjeoLight.instalacion, newAnjeoLight.alturaDivisor, newAnjeoLight.angulo, newAnjeoLight.notas, anjeoLightIdToUpdate]);
+        return res.render('anjeoLightUpdatedSucessfully');
+    
+    } catch (err) {
+        console.log("Error al actualizar el anjeo liviano en la base de datos", err);
+        return res.status(500).json({ message: '</ error del servidor, al intentar actualizar el anjeo liviano' });
+    }
+};
+
+export const updateAnjeoHeavy = async (req, res) => {
+
+    const anjeoHeavydToUpdate = req.params.id;
+    const newAnjeoHeavy = {
+        color: req.body.color,
+        perfil: req.body.perfil,
+        apertura: req.body.apertura,
+        lugar: req.body.lugar,
+        ancho: req.body.ancho,
+        altura: req.body.altura,
+        cabezal: req.body.cabezal,
+        adaptador: req.body.adaptador,
+        perfilSuperior: req.body.perfilSuperior,
+        instalacion: req.body.instalacion,
+        alturaDivisor: req.body.alturaDivisor,
+        manija: req.body.manija,
+        lado: req.body.lado,
+        notas: req.body.notas
+    };
+
+    try {
+        const updateAnjeoHeavy = await pool.query("UPDATE `anjeos_heavy` SET `date_creation` = NOW(), `anjeo_color` = ?, `profile_type` = ?, `opening` = ?, `place` = ?, `width` = ?, `height` = ?, `head` = ?, `adaptador` = ?, `top_profile` = ?, `installation` = ?, `divisorHigh` = ?, `type_handle` = ?, `open_direction` = ?, `notes` = ? WHERE `anjeo_heavy_id` = ?", [newAnjeoHeavy.color, newAnjeoHeavy.perfil, newAnjeoHeavy.apertura, newAnjeoHeavy.lugar, newAnjeoHeavy.ancho, newAnjeoHeavy.altura, newAnjeoHeavy.cabezal, newAnjeoHeavy.adaptador, newAnjeoHeavy.perfilSuperior, newAnjeoHeavy.instalacion,  newAnjeoHeavy.alturaDivisor, newAnjeoHeavy.manija, newAnjeoHeavy.lado, newAnjeoHeavy.notas, anjeoHeavydToUpdate]);
+        return res.render('anjeoHeavyUpdatedSucessfully');
+    
+    } catch (err) {
+        console.log("Error al actualizar el anjeo liviano en la base de datos", err);
+        return res.status(500).json({ message: '</ error del servidor, al intentar actualizar el anjeo pesado' });
     }
 };

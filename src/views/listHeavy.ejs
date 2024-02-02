@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Anjeos creados</title>
-    <meta name="description" content="Anjeos creados"> 
+    <title>Anjeos pesados creados</title>
+    <meta name="description" content="Anjeos pesados creados"> 
     <link rel="stylesheet" href="/styles/listHeavy.css">
     <meta name="robots" content="index,follow">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -61,23 +61,22 @@
                                 </tr>
                                 <tr class="actionButtonsContainer">
                                     <td class="actionButtons">
-                                        <form class="formActions" action="/DeleteAnjeoHeavy" method="POST">
+                                        <form class="formActions" action="/deleteAnjeoHeavy" method="POST">
                                             <input type="hidden" name="thisAnjeoHeavyID" value="<%= anjeosCreated[i].anjeo_heavy_id %>">
-                                            <button type="submit" class="buttonEdit">Editar</button>
-                                            <button type="submit" class="buttonDelete">Eliminar</button>
+                                            <a href="/editAnjeoHeavy/<%= anjeosCreated[i].anjeo_heavy_id %>" class="buttonEdit">Editar</a>
+                                            <a href="/deleteAnjeoHeavy/<%= anjeosCreated[i].anjeo_heavy_id %>" class="buttonDelete">Eliminar</a>
                                         </form>
                                     </td>
                                 </tr>
-
                             <% } %>
                         </tbody>
                     </table>
             </main>
             <footer class="footer">
-                <button type="submit" class="button" data-path="./typeCreated" onclick="redirect(this)">Regresar</button>
+                <button type="submit" class="button" data-path="/typeCreated" onclick="redirect(this)">Regresar</button>
 
             </footer>
     </div>
-    <script src="./js/redirectView.js"></script>
+    <script src="/js/redirectView.js"></script>
 </body>
 </html>

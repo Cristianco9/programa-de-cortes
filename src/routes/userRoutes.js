@@ -15,9 +15,11 @@ import {
     listLight,
     listHeavy,
     editAnjeoLight,
+    editAnjeoHeavy,
     deleteAnjeoLight,
-    deleteAnjeoHeavy
-    //updateAnjeo
+    deleteAnjeoHeavy,
+    updateAnjeoLight,
+    updateAnjeoHeavy
 } from "../controllers/userController.js";
 
 const router = Router();
@@ -37,8 +39,14 @@ router.get('/typeCreated', typeCreated);
 router.get('/listLight', listLight);
 router.get('/listHeavy', listHeavy);
 router.get('/editAnjeoLight/:id', editAnjeoLight);
-router.post('/deleteAnjeoLight', deleteAnjeoLight);
-router.post('/deleteAnjeoHeavy', deleteAnjeoHeavy);
-//router.get('/updateAnjeo/:id', updateAnjeo);
+router.get('/editAnjeoHeavy/:id', editAnjeoHeavy);
+router.get('/deleteAnjeoLight/:id', deleteAnjeoLight);
+router.get('/deleteAnjeoHeavy/:id', deleteAnjeoHeavy);
+router.post('/updateFormLight/:id', updateAnjeoLight);
+router.post('/updateFormHeavy/:id', updateAnjeoHeavy);
+router.get('/updateFormLight/listLight', listLight);
+router.get('/updateFormHeavy/listHeavy', listHeavy);
+router.get('/updateFormLight/typeCreated', typeCreated);
+router.get('/updateFormHeavy/typeCreated', typeCreated);
 
 export default router;

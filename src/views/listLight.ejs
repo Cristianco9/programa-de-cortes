@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Anjeos creados</title>
-    <meta name="description" content="Anjeos creados"> 
+    <title>Anjeos livianos creados</title>
+    <meta name="description" content="Anjeos livianos creados"> 
     <link rel="stylesheet" href="/styles/listLight.css">
     <meta name="robots" content="index,follow">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -61,10 +61,10 @@
                                 </tr>
                                 <tr class="actionButtonsContainer">
                                     <td class="actionButtons">
-                                        <form class="formActions" action="/DeleteAnjeoLight" method="POST">
+                                        <form class="formActions">
                                             <input type="hidden" name="thisAnjeoLightID" value="<%= anjeosCreated[i].anjeo_light_id %>">
-                                            <button type="submit" class="buttonEdit">Editar</button>
-                                            <button type="submit" class="buttonDelete">Eliminar</button>
+                                            <a href="/editAnjeoLight/<%= anjeosCreated[i].anjeo_light_id %>" class="buttonEdit">Editar</a>
+                                            <a href="/deleteAnjeoLight/<%= anjeosCreated[i].anjeo_light_id %>" class="buttonDelete">Eliminar</a>
                                         </form>
                                     </td>
                                 </tr>
@@ -74,10 +74,10 @@
                     </table>
             </main>
             <footer class="footer">
-                <button type="submit" class="button" data-path="./typeCreated" onclick="redirect(this)">Regresar</button>
+                <button class="button" data-path="/typeCreated" onclick="redirect(this)">Regresar</button>
             </footer>
         </section>
     </div>
-    <script src="./js/redirectView.js"></script>
+    <script src="/js/redirectView.js"></script>
 </body>
 </html>
