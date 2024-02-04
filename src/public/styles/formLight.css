@@ -170,7 +170,7 @@ html {
         display: flex;
         flex-direction: column;
         justify-content: space-between;
-        margin-top: 3rem;
+        margin: 3rem 0 2rem 0;
     }
 
     .botton {
@@ -295,7 +295,6 @@ html {
     .mainContainer {
         width: 100vw;
         height: 100vh;
-        height: 100%;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -401,7 +400,6 @@ html {
     .mainContainer {
         width: 100vw;
         height: 100vh;
-        height: 100%;
         display: flex;
         justify-content: center;
         align-items: center;

@@ -1,0 +1,552 @@
+/* universal properties*/
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* setting rem measuare */
+html {
+    font-size: 62.5%;
+}
+
+:root{
+    --red-color: #DB2801;
+    --orange-color: #FF6902;
+    --button-color: #C21212;
+    --grey-color: #c9c9c9;
+    --grey-dark-color: #898989;
+}
+
+.mainContainer {
+    width: 100vw;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(to bottom, var(--orange-color), var(--red-color));
+}
+
+.appBox {
+    width: 80vw;
+    height: 90vh;
+    display: flex;
+    justify-content: center;
+    background-color: white;
+    border-radius: 2.5rem;
+    border: 0.7rem solid var(--button-color);
+}
+
+.elementsBox {
+    display: flex;;
+    flex-direction: column;
+}
+
+.tittle {
+    font-family: 'Readex Pro', sans-serif;
+    font-size: 2rem;
+    margin: 2rem auto 0 auto;
+    text-align: center;
+}
+
+.input {
+    font-family: 'Readex Pro', sans-serif;
+    width: 16rem;
+    height: 4rem;
+    background-color: var(--grey-color);
+    border-radius: 1rem;
+    box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.6);
+    text-align: center;
+}
+
+.toolContent:hover {
+    border: 0.5rem solid var(--button-color);
+}
+
+.icono {
+    width: 60%;
+    height: 60%;
+}
+
+.toolName {
+    font-family: 'Readex Pro', sans-serif;
+    font-size: 2rem; 
+}
+
+.bottonContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.botton {
+    width: 13rem;
+    height: 4rem;
+    font-family: 'Readex Pro', sans-serif;
+    font-size: 1.5rem;
+    color: white;
+    background-color: var(--button-color);
+    border-radius: 1rem;
+    box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.6);
+    margin: auto auto 2rem auto;
+}    
+
+@media (min-width: 375px) {
+
+    .mainContainer {
+        width: 100%;
+        height: 100vh;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: linear-gradient(to bottom, var(--orange-color), var(--red-color));
+    }
+
+    .appBox {
+        width: 70vw;
+        height: 80rem;
+        margin: 2rem auto 2rem auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        gap: 3rem;
+    }
+    
+    .tittle {
+        font-family: 'Readex Pro', sans-serif;
+        font-size: 2rem;
+        margin: 4rem 0 0 0rem;
+        width: 18rem;
+        text-align: center;
+    } 
+    
+    .elementsBox {
+        width: 90%;
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+        align-items: center;
+    }
+
+    .tool {
+        /* background-color: var(--grey-dark-color); */
+        width: 20rem;
+        height: 20rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-around;
+    }
+
+    .toolContent {
+        background-color: var(--grey-color);
+        width: 14rem;
+        height: 14rem;
+        border-radius: 1rem;
+        box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.6);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .toolContent:hover {
+        border: 0.5rem solid var(--button-color);
+    }
+    
+    .icono {
+        width: 60%;
+        height: 60%;
+    }
+
+    .toolName {
+        font-family: 'Readex Pro', sans-serif;
+        font-size: 2rem; 
+    }
+
+    .bottonContainer {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        margin-bottom: 2rem;
+    }
+
+    .botton {
+        width: 13rem;
+        height: 4rem;
+        font-family: 'Readex Pro', sans-serif;
+        font-size: 1.5rem;
+        color: white;
+        background-color: var(--button-color);
+        border-radius: 1rem;
+        box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.6);
+        margin: auto auto 2rem auto;
+    }    
+}
+
+@media (min-height: 800px) {
+
+    .mainContainer {
+        width: 100%;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: linear-gradient(to bottom, var(--orange-color), var(--red-color));
+    }
+
+    .appBox {
+        width: 70vw;
+        height: 80rem;
+        margin: 2rem auto 2rem auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        gap: 3rem;
+    }
+    
+    .tittle {
+        font-family: 'Readex Pro', sans-serif;
+        font-size: 2rem;
+        margin: 4rem 0 0 0rem;
+        width: 18rem;
+        text-align: center;
+    } 
+    
+    .elementsBox {
+        width: 90%;
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+        align-items: center;
+    }
+
+    .tool {
+        /* background-color: var(--grey-dark-color); */
+        width: 20rem;
+        height: 20rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-around;
+    }
+
+    .toolContent {
+        background-color: var(--grey-color);
+        width: 14rem;
+        height: 14rem;
+        border-radius: 1rem;
+        box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.6);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .toolContent:hover {
+        border: 0.5rem solid var(--button-color);
+    }
+    
+    .icono {
+        width: 60%;
+        height: 60%;
+    }
+
+    .toolName {
+        font-family: 'Readex Pro', sans-serif;
+        font-size: 2rem; 
+    }
+
+    .bottonContainer {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        margin-bottom: 2rem;
+    }
+
+    .botton {
+        width: 13rem;
+        height: 4rem;
+        font-family: 'Readex Pro', sans-serif;
+        font-size: 1.5rem;
+        color: white;
+        background-color: var(--button-color);
+        border-radius: 1rem;
+        box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.6);
+        margin: auto auto 2rem auto;
+    }    
+}
+
+@media (min-width: 600px) {
+    .mainContainer {
+        width: 100%;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: linear-gradient(to bottom, var(--orange-color), var(--red-color));
+    }
+
+    .appBox {
+        width: 60rem;
+        height: 60rem;
+        margin: 2rem 4rem 2rem 4rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+
+    }
+    
+    .tittle {
+        font-family: 'Readex Pro', sans-serif;
+        font-size: 2.6rem;
+        margin: 4rem auto 0 auto;
+        width: 100%;
+        text-align: center;
+    } 
+    
+    .elementsBox {
+        width: auto;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        flex-wrap: wrap;
+        align-items: center;
+    }
+
+    .tool {
+        /* background-color: var(--grey-dark-color); */
+        width: 20rem;
+        height: 20rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-around;
+    }
+
+    .toolContent {
+        background-color: var(--grey-color);
+        width: 14rem;
+        height: 14rem;
+        border-radius: 1rem;
+        box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.6);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .toolContent:hover {
+        border: 0.5rem solid var(--button-color);
+    }    
+    
+    .icono {
+        width: 60%;
+        height: 60%;
+    }
+
+    .toolName {
+        font-family: 'Readex Pro', sans-serif;
+        font-size: 2rem; 
+    }
+
+    .bottonContainer {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    .botton {
+        width: 13rem;
+        height: 4rem;
+        font-family: 'Readex Pro', sans-serif;
+        font-size: 1.5rem;
+        color: white;
+        background-color: var(--button-color);
+        border-radius: 1rem;
+        box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.6);
+    }
+}
+
+@media (min-width: 900px) {
+    .mainContainer {
+        width: 100%;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: linear-gradient(to bottom, var(--orange-color), var(--red-color));
+    }
+
+    .appBox {
+        width: 60rem;
+        height: 60rem;
+        margin: 2rem 4rem 2rem 4rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+
+    }
+    
+    .tittle {
+        font-family: 'Readex Pro', sans-serif;
+        font-size: 2.6rem;
+        margin: 4rem auto 0 auto;
+        width: 100%;
+        text-align: center;
+    } 
+    
+    .elementsBox {
+        width: auto;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        flex-wrap: wrap;
+        align-items: center;
+    }
+
+    .tool {
+        /* background-color: var(--grey-dark-color); */
+        width: 20rem;
+        height: 20rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-around;
+    }
+
+    .toolContent {
+        background-color: var(--grey-color);
+        width: 14rem;
+        height: 14rem;
+        border-radius: 1rem;
+        box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.6);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .toolContent:hover {
+        border: 0.5rem solid var(--button-color);
+    }
+        
+    .icono {
+        width: 60%;
+        height: 60%;
+    }
+
+    .toolName {
+        font-family: 'Readex Pro', sans-serif;
+        font-size: 2rem; 
+    }
+
+    .bottonContainer {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    .botton {
+        width: 13rem;
+        height: 4rem;
+        font-family: 'Readex Pro', sans-serif;
+        font-size: 1.5rem;
+        color: white;
+        background-color: var(--button-color);
+        border-radius: 1rem;
+        box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.6);
+    }
+}
+
+@media (min-width: 1024px) {
+    .mainContainer {
+        width: 100%;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: linear-gradient(to bottom, var(--orange-color), var(--red-color));
+    }
+
+    .appBox {
+        width: 60rem;
+        height: 60rem;
+        margin: 2rem 4rem 2rem 4rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+
+    }
+    
+    .tittle {
+        font-family: 'Readex Pro', sans-serif;
+        font-size: 2.6rem;
+        margin: 4rem auto 0 auto;
+        text-align: center;
+        width: 100%;
+    } 
+    
+    .elementsBox {
+        width: auto;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        flex-wrap: wrap;
+        align-items: center;
+    }
+
+    .tool {
+        /* background-color: var(--grey-dark-color); */
+        width: 20rem;
+        height: 20rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-around;
+    }
+
+    .toolContent {
+        background-color: var(--grey-color);
+        width: 14rem;
+        height: 14rem;
+        border-radius: 1rem;
+        box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.6);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .toolContent:hover {
+        border: 0.5rem solid var(--button-color);
+    }    
+    
+    .icono {
+        width: 60%;
+        height: 60%;
+    }
+
+    .toolName {
+        font-family: 'Readex Pro', sans-serif;
+        font-size: 2rem; 
+    }
+
+    .bottonContainer {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    .botton {
+        width: 13rem;
+        height: 4rem;
+        font-family: 'Readex Pro', sans-serif;
+        font-size: 1.5rem;
+        color: white;
+        background-color: var(--button-color);
+        border-radius: 1rem;
+        box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.6);
+    }
+}
