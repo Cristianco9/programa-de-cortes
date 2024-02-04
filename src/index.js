@@ -1,6 +1,6 @@
 import app from './app.js';
-import { port } from './config.js';
+import { theIPAddress, port } from './config.js';
 
-app.listen(port, (req, res) => {
-    console.log(`server on port ${port}`);
+app.listen(port, theIPAddress, (req, res) => {
+    console.log(`server on port https://${theIPAddress}:${port}`);
 });
