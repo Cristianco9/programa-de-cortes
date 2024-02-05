@@ -1,26 +1,14 @@
 import { Router } from "express";
-import {
-    userLogin,
-    login,
-    tools,
-    order,
-    type,
-    orderIDValidation,
-    formLight,
-    formHeavy,
-    createFormHeavy,
-    createFormLight,
-    orderActions,
-    typeCreated,
-    listLight,
-    listHeavy,
-    editAnjeoLight,
-    editAnjeoHeavy,
-    deleteAnjeoLight,
-    deleteAnjeoHeavy,
-    updateAnjeoLight,
-    updateAnjeoHeavy
-} from "../controllers/userController.js";
+import { userLogin, login } from "../controllers/usersController.js";
+import { tools } from "../controllers/toolsController.js";
+import { order, orderIDValidation, orderActions } from "../controllers/ordersController.js";
+import { type, typeCreated } from "../controllers/typesController.js";
+import { formLight, formHeavy } from "../controllers/formsController.js";
+import { createAnejoLight, createAnjeoHeavy } from "../controllers/createAnjeosController.js";
+import { listAnjeosLight, listAnjeosHeavy } from "../controllers/listAnjeosController.js";
+import { editAnjeoLight, editAnjeoHeavy } from "../controllers/editAnjeosController.js";
+import { deleteAnjeoLight, deleteAnjeoHeavy } from "../controllers/deleteAnjeosController.js";
+import { updateAnjeoLight, updateAnjeoHeavy } from "../controllers/updateAnjeosController.js";
 
 const router = Router();
 
@@ -32,20 +20,20 @@ router.post('/orderID', orderIDValidation);
 router.get('/type', type);
 router.get('/formLight', formLight);
 router.get('/formHeavy', formHeavy);
-router.post('/createFormHeavy', createFormHeavy);
-router.post('/createFormLight', createFormLight);
+router.post('/createFormLight', createAnejoLight);
+router.post('/createFormHeavy', createAnjeoHeavy);
 router.get('/orderActions', orderActions);
 router.get('/typeCreated', typeCreated);
-router.get('/listLight', listLight);
-router.get('/listHeavy', listHeavy);
+router.get('/listLight', listAnjeosLight);
+router.get('/listHeavy', listAnjeosHeavy);
 router.get('/editAnjeoLight/:id', editAnjeoLight);
 router.get('/editAnjeoHeavy/:id', editAnjeoHeavy);
 router.get('/deleteAnjeoLight/:id', deleteAnjeoLight);
 router.get('/deleteAnjeoHeavy/:id', deleteAnjeoHeavy);
 router.post('/updateFormLight/:id', updateAnjeoLight);
 router.post('/updateFormHeavy/:id', updateAnjeoHeavy);
-router.get('/updateFormLight/listLight', listLight);
-router.get('/updateFormHeavy/listHeavy', listHeavy);
+router.get('/updateFormLight/listLight', listAnjeosLight);
+router.get('/updateFormHeavy/listHeavy', listAnjeosHeavy);
 router.get('/updateFormLight/typeCreated', typeCreated);
 router.get('/updateFormHeavy/typeCreated', typeCreated);
 
