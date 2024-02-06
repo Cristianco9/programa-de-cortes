@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Editar anjeo liviano</title>
-    <meta name="description" content="editar anjeo liviano"> 
+    <meta name="description" content="editar anjeo liviano">
     <link rel="stylesheet" href="/styles/editFormLight.css">
     <meta name="robots" content="index,follow">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -32,7 +32,7 @@
                 </div>
                 <h2 class="anjeoType">Editar anjeo liviano</h2>
             </section>
-            <form class="form" action="/updateFormLight/<%= anjeoToEdit.anjeo_light_id %>" method="POST">
+            <form class="form" action="/api/v1/updateFormLight/<%= anjeoToEdit.anjeo_light_id %>" method="POST">
                 <div class="fieldContainer">
                     <h3 class="fieldName">Seleccionar color</h3>
                     <input class="input" name="color" id="color" type="text" value="<%= anjeoToEdit.anjeo_color %>">
@@ -83,7 +83,7 @@
                     <button data-path="./listLight" ondblclick="redirect(this)" class="botton">Regresar</button>
                     <button type="submit" class="botton">Guardar</button>
                 </section>
-            </form> 
+            </form>
         </section>
     </div>
     <script src="/js/redirectView.js"></script>

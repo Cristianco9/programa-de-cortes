@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>selecciona una herramienta</title>
-    <meta name="description" content="Selecciona una herramienta"> 
+    <meta name="description" content="Selecciona una herramienta">
     <link rel="stylesheet" href="/styles/tools.css">
     <meta name="robots" content="index,follow">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -17,7 +17,7 @@
         <section class="appBox">
             <h2 class="tittle">Selecciona una herramienta</h2>
             <section class="elementsBox">
-                <div class="tool" id="tool" data-path="./order" onclick="redirect(this)">
+                <div class="tool" id="tool" data-path="/api/v1/order" onclick="redirect(this)">
                     <div class="toolContent">
                         <img class="icono" src="/icons/scissors-solid.svg" alt="icono de unas tijeras">
                     </div>
@@ -45,6 +45,6 @@
             <button type="submit" class="botton" data-path="./" onclick="redirect(this)">Salir</button>
         </section>
     </div>
-    <script src="./js/redirectView.js"></script>
+    <script type="application/javascript" src="/js/redirectView.js"></script>
 </body>
 </html>

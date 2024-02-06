@@ -19,26 +19,32 @@ import deleteAnjeoHeavyRouter from "./deleteAnjeoHeavyRouter.js";
 import updateFormLightRouter from "./updateFormLightRouter.js";
 import updateFormHeavyRouter from "./updateFormHeavyRouter.js";
 
-const router = Router();
+const routerApi = (app) => {
 
-router.use('/', loginRouter);
-router.use('/tools', toolsRouter);
-router.use('/order', ordersRouter);
-router.use('/orderID', ordersIDRouter);
-router.use('/orderActions', ordersActionsRouter);
-router.use('/type', typeRouter);
-router.use('/typeCreated', typeCreatedRouter);
-router.use('/formLight', formLightRouter);
-router.use('/formHeavy', formHeavyRouter);
-router.use('/createFormLight', createAnjeoLightRouter);
-router.use('/createFormHeavy', createAnjeoHeavyRouter);
-router.use('/listLight', listAnjeoslightRouter);
-router.use('/listHeavy', listAnjeosHeavyRouter);
-router.use('/editAnjeoLight', editAnjeoLightRouter);
-router.use('/editAnjeoHeavy', editAnjeoHeavyRouter);
-router.use('/deleteAnjeoLight', deleteAnjeoLightRouter);
-router.use('/deleteAnjeoHeavy', deleteAnjeoHeavyRouter);
-router.use('/updateFormLight', updateFormLightRouter);
-router.use('/updateFormHeavy', updateFormHeavyRouter);
+  const router = Router();
 
-export default router;
+  app.use('/api/v1', router);
+
+  router.use('/', loginRouter);
+  router.use('/tools', toolsRouter);
+  router.use('/order', ordersRouter);
+  router.use('/orderID', ordersIDRouter);
+  router.use('/orderActions', ordersActionsRouter);
+  router.use('/type', typeRouter);
+  router.use('/typeCreated', typeCreatedRouter);
+  router.use('/formLight', formLightRouter);
+  router.use('/formHeavy', formHeavyRouter);
+  router.use('/createFormLight', createAnjeoLightRouter);
+  router.use('/createFormHeavy', createAnjeoHeavyRouter);
+  router.use('/listLight', listAnjeoslightRouter);
+  router.use('/listHeavy', listAnjeosHeavyRouter);
+  router.use('/editAnjeoLight', editAnjeoLightRouter);
+  router.use('/editAnjeoHeavy', editAnjeoHeavyRouter);
+  router.use('/deleteAnjeoLight', deleteAnjeoLightRouter);
+  router.use('/deleteAnjeoHeavy', deleteAnjeoHeavyRouter);
+  router.use('/updateFormLight', updateFormLightRouter);
+  router.use('/updateFormHeavy', updateFormHeavyRouter);
+
+}
+
+export default routerApi;

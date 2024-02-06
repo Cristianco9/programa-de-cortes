@@ -1,5 +1,3 @@
-import { pool } from '../DBConnection.js';
-
 export const order = async (req, res) => {
   try {
       res.render('order');

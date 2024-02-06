@@ -2,7 +2,7 @@ import express from 'express';
 import path from 'path';
 import morgan from 'morgan';
 import { testConnection } from './DBConnection.js';
-import indexRouter from './routes/indexRouter.js';
+import routerApi from './routes/indexRouter.js';
 import { fileURLToPath } from 'url';
 // import { Session } from 'inspector';
 
@@ -27,7 +27,7 @@ app.set('view engine', 'ejs');
 testConnection();
 
 // select routes
-app.use(indexRouter);
+routerApi(app);
 
 // starting the app
 export default app;

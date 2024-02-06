@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Número de pedido</title>
-    <meta name="description" content="Número de pedido"> 
+    <meta name="description" content="Número de pedido">
     <link rel="stylesheet" type="text/css" href="/styles/order.css">
     <meta name="robots" content="index,follow">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -17,7 +17,7 @@
         <section class="appBox">
             <section class="elementsBox">
                 <h2 class="tittle">Ingresa el número de pedido</h2>
-                <form class="form" action="/orderID" method="POST" onsubmit="return validateForm()">
+                <form class="form" action="/api/v1/orderID" method="POST" onsubmit="return validateForm()">
                     <input class="orderNumber" name="orderNumber" id="orderNumber" type="number" placeholder="Número">
                     <div class="error-message" id="errorMessage">Datos incorrectos, por favor verifiquelos e intentelo de nuevos</div>
                     <button type="submit" class="botton">Siguiente</button>
@@ -27,6 +27,6 @@
             </section>
         </section>
     </div>
-    <script src="/js/validateOrderNumber.js"></script>
+    <script type="application/javascript" src="/js/validateOrderNumber.js"></script>
 </body>
 </html>

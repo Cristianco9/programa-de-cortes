@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inicio de sección</title>
-    <meta name="description" content="Inicio de sección"> 
+    <meta name="description" content="Inicio de sección">
     <link rel="stylesheet" href="/styles/login.css" type="text/css">
     <meta name="robots" content="index,follow">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -17,7 +17,7 @@
         <section class="appBox">
             <section class="elementsBox">
                 <h2 class="tittle">Inicio de sección</h2>
-                <form action="/login" method="POST" class="form" onsubmit="return validateForm()">
+                <form action="/api/v1/login" method="POST" class="form" onsubmit="return validateForm()">
                     <input class="input" name="userName"  id="userName" type="text" placeholder="Usuario" required>
                     <input class="input" name="password" id="password" type="password" placeholder="Contraseña" required>
                     <div class="error-message" id="errorMessage">Datos incorrectos, por favor verifiquelos e intentelo de nuevos</div>
@@ -30,6 +30,6 @@
             </section>
         </section>
     </div>
-    <script src="/js/validateLoginForm.js"></script>
+    <script type="application/javascript" src="/js/validateLoginForm.js"></script>
 </body>
 </html>
