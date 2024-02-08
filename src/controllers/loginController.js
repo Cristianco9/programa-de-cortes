@@ -1,16 +1,17 @@
 import { pool } from '../DBConnection.js';
 import bcrypt from 'bcryptjs';
-// import { hashPassword, verifyPassword } from '../passHash.js';
+import { Boom } from '@hapi/boom';
 
-export const userLogin = async (req, res) => {
-    try {
-        res.render('login');
-    } catch (err) {
-        res.status(500).render('</ error del servidor >');
-    }
+export const userLogin = async (req, res, next) => {
+  try {
+    res.render('login');
+  } catch (err) {
+    const boomError = Boom.notImplemented('No es posible renderizar la vista principal de inicio de sección', err);
+    next(boomError);
+  }
 };
 
-export const login = async (req, res) => {
+export const login = async (req, res, next) => {
 
     const userName = req.body.userName;
     const password = req.body.password;
@@ -25,7 +26,6 @@ export const login = async (req, res) => {
         }
 
         const userExist = rows[0];
-        console.log(userExist);
 
         const validPassword = await bcrypt.compare(password, userExist.user_password);
 
@@ -34,7 +34,9 @@ export const login = async (req, res) => {
         } else {
             return res.render('loginWrongPass');
         }
+
     } catch (err) {
-        return res.status(500).json({ message: 'Error interno del servidor' });
+      const boomError = Boom.serverUnavailable('No es posible verificar las credenciales del usuario en la base de daatos', err);
+      next(boomError);
     }
 };

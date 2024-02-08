@@ -1,7 +1,10 @@
-export const order = async (req, res) => {
+import { Boom } from '@hapi/boom';
+
+export const order = async (req, res, next) => {
   try {
-      res.render('order');
+    res.render('order');
   } catch {
-      res.status(500).render('</ error del servidor >');
+    const boomError = Boom.notImplemented('No es posible renderizar la vista de creaación de un nuevo pedido de anjeos', err);
+    next(boomError);
   }
 };

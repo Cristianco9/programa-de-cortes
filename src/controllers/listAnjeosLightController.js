@@ -1,6 +1,7 @@
 import { pool } from '../DBConnection.js';
+import { Boom } from '@hapi/boom';
 
-export const listAnjeosLight = async (req, res) => {
+export const listAnjeosLight = async (req, res, next) => {
   // temporal
   const user_owner_email = "admin@gmail.com";
   const [rows] = await pool.query("SELECT `order_id` FROM `orders` WHERE `user_owner_email` = ? ORDER BY date_creation DESC LIMIT 1", [user_owner_email]);
@@ -11,6 +12,7 @@ try {
   const anjeosLightQuantity = anjeosCreated.length;
   res.render('listLight', { anjeosCreated: anjeosCreated, orderNumber: orderNumber, anjeosLightQuantity: anjeosLightQuantity });
 } catch (err) {
-  res.status(500).render('</ error del servidor, al renderizar la vista de anjeos livianos creados >');
+  const boomError = Boom.notImplemented('No es posible renderizar la vista de anjeos livianos creados', err);
+  next(boomError);
 }
 };

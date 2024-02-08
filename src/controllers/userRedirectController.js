@@ -1,9 +1,18 @@
-export const userRedirect = async (req, res) => {
+import { Boom } from '@hapi/boom';
+
+export const userRedirect = async (req, res, next) => {
   const path = req.query.path;
-  console.log(`esta es la ruta a la cual se debe redirigir al usuario ${path}`);
   try {
+
+    if (!path) {
+      const boomError = Boom.badRequest('La ruta no está especificada');
+      next(boomError);
+    } else {
       res.render(path);
+    }
+
   } catch (err) {
-      res.status(500).json( { message: "error al intentar redireccionar la ruta del cliente"} );
+    const boomError = Boom.notImplemented('No es posible renderizar la vista ingresada por el cliente', err);
+    next(boomError);
   }
 };

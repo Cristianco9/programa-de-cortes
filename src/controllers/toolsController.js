@@ -1,7 +1,10 @@
-export const tools = async (req, res) => {
+import { Boom } from '@hapi/boom';
+
+export const tools = async (req, res, next) => {
   try {
       res.render('tools');
-  } catch {
-      res.status(500).render('</ error del servidor >');
+  } catch (err) {
+    const boomError = Boom.notImplemented('No es posible renderizar la vista de seleccionar el tipo de herramienta', err);
+    next(boomError);
   }
 };
