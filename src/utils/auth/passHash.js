@@ -8,9 +8,9 @@ export const hashPassword = async (userPassword) => {
         bcrypt.genSalt(saltRounds)
             .then((salt) => bcrypt.hash(userPassword, salt))
             .then((hashedPass) => resolve(hashedPass))
-            .catch((error) => reject(`Error en la encriptación: ${error.message}`));
-        } catch (error) {
-            reject(`Error al generar el salt: ${error.message}`);
+            .catch((err) => reject(`Error en la encriptación: ${err.message}`));
+        } catch (err) {
+            reject(`Error al generar el salt: ${err.message}`);
         }
     });
 };
