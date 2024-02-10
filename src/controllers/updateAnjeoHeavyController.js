@@ -1,5 +1,5 @@
 import { pool } from '../DBConnection.js';
-import { Boom } from '@hapi/boom';
+import Boom from '@hapi/boom';
 
 export const updateAnjeoHeavy = async (req, res, next) => {
 
@@ -23,7 +23,7 @@ export const updateAnjeoHeavy = async (req, res, next) => {
   };
 
   try {
-    const updateAnjeoHeavy = await pool.query("UPDATE `anjeos_heavy` SET `date_creation` = NOW(), `anjeo_color` = ?, `profile_type` = ?, `opening` = ?, `place` = ?, `width` = ?, `height` = ?, `head` = ?, `adaptador` = ?, `top_profile` = ?, `installation` = ?, `divisorHigh` = ?, `type_handle` = ?, `open_direction` = ?, `notes` = ? WHERE `anjeo_heavy_id` = ?", [newAnjeoHeavy.color, newAnjeoHeavy.perfil, newAnjeoHeavy.apertura, newAnjeoHeavy.lugar, newAnjeoHeavy.ancho, newAnjeoHeavy.altura, newAnjeoHeavy.cabezal, newAnjeoHeavy.adaptador, newAnjeoHeavy.perfilSuperior, newAnjeoHeavy.instalacion,  newAnjeoHeavy.alturaDivisor, newAnjeoHeavy.manija, newAnjeoHeavy.lado, newAnjeoHeavy.notas, anjeoHeavydToUpdate]);
+    const updateAnjeoHeavy = await pool.query("UPDATE `anjeos_heavy` SET `date_creation` = NOW(), `color` = ?, `profile_type` = ?, `opening` = ?, `place` = ?, `width` = ?, `height` = ?, `head` = ?, `adaptador` = ?, `top_profile` = ?, `installation` = ?, `divisorHigh` = ?, `type_handle` = ?, `open_direction` = ?, `notes` = ? WHERE `anjeo_heavy_id` = ?", [newAnjeoHeavy.color, newAnjeoHeavy.perfil, newAnjeoHeavy.apertura, newAnjeoHeavy.lugar, newAnjeoHeavy.ancho, newAnjeoHeavy.altura, newAnjeoHeavy.cabezal, newAnjeoHeavy.adaptador, newAnjeoHeavy.perfilSuperior, newAnjeoHeavy.instalacion,  newAnjeoHeavy.alturaDivisor, newAnjeoHeavy.manija, newAnjeoHeavy.lado, newAnjeoHeavy.notas, anjeoHeavydToUpdate]);
     return res.render('anjeoHeavyUpdatedSucessfully');
   } catch (err) {
     const boomError = Boom.serverUnavailable('No es posible actualizar el anjeo pesado', err);

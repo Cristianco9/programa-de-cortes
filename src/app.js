@@ -5,7 +5,6 @@ import { testConnection } from './DBConnection.js';
 import routerApi from './routes/indexRouter.js';
 import { fileURLToPath } from 'url';
 import {logError, errorHandler, boomErrorHandler } from "./middlewares/errorHandler.js"
-// import { Session } from 'inspector';
 
 // Create the app with express
 const app = express();

@@ -1,3 +1,5 @@
+import Boom from '@hapi/boom';
+
 export const logError = (err, req, res, next) => {
   next(err);
 }

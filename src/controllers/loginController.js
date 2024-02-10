@@ -1,6 +1,6 @@
 import { pool } from '../DBConnection.js';
 import bcrypt from 'bcryptjs';
-import { Boom } from '@hapi/boom';
+import Boom from '@hapi/boom';
 
 export const userLogin = async (req, res, next) => {
   try {
@@ -19,7 +19,7 @@ export const login = async (req, res, next) => {
     try {
         // const hashedPassword = await hashPassword(password);
 
-        const [rows] = await pool.query("SELECT * FROM users WHERE user_name = ?", [userName]);
+        const [rows] = await pool.query("SELECT * FROM users WHERE name = ?", [userName]);
 
         if (rows.length === 0) {
             return res.render('loginWrongUser');
@@ -27,7 +27,7 @@ export const login = async (req, res, next) => {
 
         const userExist = rows[0];
 
-        const validPassword = await bcrypt.compare(password, userExist.user_password);
+        const validPassword = await bcrypt.compare(password, userExist.password);
 
         if (validPassword) {
             return res.render('tools');
@@ -36,7 +36,7 @@ export const login = async (req, res, next) => {
         }
 
     } catch (err) {
-      const boomError = Boom.serverUnavailable('No es posible verificar las credenciales del usuario en la base de daatos', err);
+      const boomError = Boom.serverUnavailable('No es posible verificar las credenciales del usuario en la base de datos', err);
       next(boomError);
     }
 };

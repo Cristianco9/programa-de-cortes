@@ -1,4 +1,4 @@
-import { Boom } from '@hapi/boom';
+import Boom from '@hapi/boom';
 
 export const userRedirect = async (req, res, next) => {
   const path = req.query.path;

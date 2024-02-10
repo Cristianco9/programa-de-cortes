@@ -1,5 +1,5 @@
 import { pool } from '../DBConnection.js';
-import { Boom } from '@hapi/boom';
+import Boom from '@hapi/boom';
 
 export const orderIDValidation = async (req, res, next) => {
 
@@ -10,10 +10,10 @@ export const orderIDValidation = async (req, res, next) => {
 
   try {
 
-    const [rows] = await pool.query("SELECT * FROM users WHERE user_name = ?", [userName]);
+    const [rows] = await pool.query("SELECT * FROM users WHERE name = ?", [userName]);
 
     if (rows.length === 0) {
-      const boomError = Boom.notFound('Usuario incorrecto o inexistente, por favor verifiquelo e intentelo de nuevo', err);
+      const boomError = Boom.notFound('Usuario incorrecto o inexistente, por favor verifiquelo e intentelo de nuevo');
       next(boomError);
     }
 
@@ -21,7 +21,7 @@ export const orderIDValidation = async (req, res, next) => {
 
     try {
 
-      const [orders] = await pool.query("SELECT `order_id` FROM `orders` WHERE user_owner_email = ?", [currentUser.user_email]);
+      const [orders] = await pool.query("SELECT `order_id` FROM `orders` WHERE user_owner_email = ?", [currentUser.email]);
 
       let orderExist = false;
       for (const order of orders) {
@@ -34,7 +34,7 @@ export const orderIDValidation = async (req, res, next) => {
       if (orderExist) {
         return res.render('orderActions', {orderNumber: orderNumber} );
       } else {
-        const createOrder = await pool.query("INSERT INTO `orders` (`user_owner_email`, `order_id`, `date_creation`) VALUES (?, ?, NOW())", [currentUser.user_email, orderNumber]);
+        const createOrder = await pool.query("INSERT INTO `orders` (`user_owner_email`, `order_id`, `date_creation`, `status`) VALUES (?, ?, NOW(), 'creado')", [currentUser.email, orderNumber]);
         return res.render('type');
       };
       } catch (err) {

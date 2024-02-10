@@ -1,5 +1,5 @@
 import { pool } from '../DBConnection.js';
-import { Boom } from '@hapi/boom';
+import Boom from '@hapi/boom';
 
 export const formLight = async (req, res, next) => {
 

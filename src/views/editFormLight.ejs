@@ -35,7 +35,7 @@
             <form class="form" action="/api/v1/updateFormLight/<%= anjeoToEdit.anjeo_light_id %>" method="POST">
                 <div class="fieldContainer">
                     <h3 class="fieldName">Seleccionar color</h3>
-                    <input class="input" name="color" id="color" type="text" value="<%= anjeoToEdit.anjeo_color %>">
+                    <input class="input" name="color" id="color" type="text" value="<%= anjeoToEdit.color %>">
                 </div>
                 <div class="fieldContainer">
                     <h3 class="fieldName">Seleccionar perfil</h3>
@@ -71,7 +71,7 @@
                 </div>
                 <div class="fieldContainer">
                     <h3 class="fieldName">Ángulo</h3>
-                    <input class="input" name="angulo" id="angulo" type="number" value="<%= anjeoToEdit.angle %>">
+                    <input class="input" name="angulo" id="angulo" type="text" value="<%= anjeoToEdit.angle %>">
                 </div>
                 <div class="fieldContainer">
                     <h3 class="fieldName">Notas</h3>

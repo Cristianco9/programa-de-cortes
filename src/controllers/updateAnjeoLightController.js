@@ -1,5 +1,5 @@
 import { pool } from '../DBConnection.js';
-import { Boom } from '@hapi/boom';
+import Boom from '@hapi/boom';
 
 export const updateAnjeoLight = async (req, res, next) => {
 
@@ -20,7 +20,7 @@ export const updateAnjeoLight = async (req, res, next) => {
   };
 
   try {
-    const updateAnjeoLight = await pool.query("UPDATE `anjeos_light` SET `date_creation` = NOW(), `anjeo_color` = ?, `profile_type` = ?, `opening` = ?, `place` = ?, `width` = ?, `height` = ?, `guide` = ?, `installation` = ?, `divisorHigh` = ?, `angle` = ?, `notes` = ? WHERE `anjeo_light_id` = ?", [newAnjeoLight.color, newAnjeoLight.perfil, newAnjeoLight.apertura, newAnjeoLight.lugar, newAnjeoLight.ancho, newAnjeoLight.altura, newAnjeoLight.guias, newAnjeoLight.instalacion, newAnjeoLight.alturaDivisor, newAnjeoLight.angulo, newAnjeoLight.notas, anjeoLightIdToUpdate]);
+    const updateAnjeoLight = await pool.query("UPDATE `anjeos_light` SET `date_creation` = NOW(), `color` = ?, `profile_type` = ?, `opening` = ?, `place` = ?, `width` = ?, `height` = ?, `guide` = ?, `installation` = ?, `divisorHigh` = ?, `angle` = ?, `notes` = ? WHERE `anjeo_light_id` = ?", [newAnjeoLight.color, newAnjeoLight.perfil, newAnjeoLight.apertura, newAnjeoLight.lugar, newAnjeoLight.ancho, newAnjeoLight.altura, newAnjeoLight.guias, newAnjeoLight.instalacion, newAnjeoLight.alturaDivisor, newAnjeoLight.angulo, newAnjeoLight.notas, anjeoLightIdToUpdate]);
     return res.render('anjeoLightUpdatedSucessfully');
 
   } catch (err) {

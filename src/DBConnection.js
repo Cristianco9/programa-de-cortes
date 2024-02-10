@@ -1,4 +1,3 @@
-// import { createPool } from "mysql2/promise";
 import mysql from 'mysql2/promise';
 
 export const connection = {
@@ -17,8 +16,8 @@ export const testConnection = async () => {
   try {
     connection = await pool.getConnection();
     console.log('Database connected!');
-  } catch (error) {
-    console.error('Error connecting to the database:', error);
+  } catch (err) {
+    console.error('Error connecting to the database:', err);
   } finally {
     // Release the connection
     if (connection) {
