@@ -2,6 +2,7 @@ import express from 'express';
 import path from 'path';
 import morgan from 'morgan';
 import { testConnection } from './DBConnection.js';
+import cors from 'cors';
 import routerApi from './routes/indexRouter.js';
 import { fileURLToPath } from 'url';
 import {logError, errorHandler, boomErrorHandler } from "./middlewares/errorHandler.js"
@@ -28,6 +29,19 @@ testConnection();
 
 // Select routes
 routerApi(app);
+
+// CORS
+const whiteList = ['http://127.0.0.1:3000'];
+const options = {
+  origin: (origin, callback) => {
+    if (whiteList.includes(origin) || !origin) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed'));
+    }
+  }
+}
+app.use(cors());
 
 // Error middlewares
 app.use(logError);
