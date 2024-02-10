@@ -3,10 +3,11 @@ import Boom from '@hapi/boom';
 export const validatorHandler = (schema, property) => {
 
   return (req, res, next) => {
+
     const data = req[property];
-    const { error } = schema.validate(data);
+    const { error } = schema.validate(data, { abortEarly: false });
     if (error) {
-      const boomError = Boom.badRequest('No es posible crear el pedido en la base de datos', error);
+      const boomError = Boom.badRequest(error);
       next(boomError);
     }
     next();
