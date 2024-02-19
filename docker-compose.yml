@@ -4,9 +4,8 @@ services:
   postgres:
     image: postgres:latest
     restart: always
-    container_name: data_base_container
+    container_name: postgres
     environment:
-      - DATABASE_HOST=127.0.0.1
       - POSTGRES_DB=instalando_cali_db
       - POSTGRES_USER=developer
       - POSTGRES_PASSWORD=1234567890
@@ -17,9 +16,11 @@ services:
 
   pgadmin:
     image: dpage/pgadmin4
-    container_name: pgadmin_container
+    container_name: pgadmin4
     environment:
       - PGADMIN_DEFAULT_EMAIL=developer@mail.com
       - PGADMIN_DEFAULT_PASSWORD=root
     ports:
       - "5050:80"
+    depends_on:
+      - postgres
