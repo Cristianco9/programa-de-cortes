@@ -1,7 +1,7 @@
 import express from 'express';
 import path from 'path';
 import morgan from 'morgan';
-import { testConnection } from './DBConnection.js';
+import { testConnection } from './libraries/DBConnection.js';
 import cors from 'cors';
 import routerApi from './routes/indexRouter.js';
 import { fileURLToPath } from 'url';

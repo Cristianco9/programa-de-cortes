@@ -1,5 +1,7 @@
-import { pool } from '../DBConnection.js';
+import { getConnection } from '../libraries/DBConnection.js';
 import Boom from '@hapi/boom';
+
+const client = await getConnection();
 
 export const orderIDValidation = async (req, res, next) => {
 
@@ -10,7 +12,8 @@ export const orderIDValidation = async (req, res, next) => {
 
   try {
 
-    const [rows] = await pool.query("SELECT * FROM users WHERE name = ?", [userName]);
+    const result = await client.query("SELECT * FROM users WHERE name = $1", [userName]);
+    const rows = result.rows;
 
     if (rows.length === 0) {
       const boomError = Boom.notFound('Usuario incorrecto o inexistente, por favor verifiquelo e intentelo de nuevo');
@@ -21,7 +24,8 @@ export const orderIDValidation = async (req, res, next) => {
 
     try {
 
-      const [orders] = await pool.query("SELECT `order_id` FROM `orders` WHERE user_owner_email = ?", [currentUser.email]);
+      const ordersSearch = await client.query("SELECT order_id FROM orders WHERE user_owner_email = $1", [currentUser.email]);
+      const orders = ordersSearch.rows;
 
       let orderExist = false;
       for (const order of orders) {
@@ -34,11 +38,11 @@ export const orderIDValidation = async (req, res, next) => {
       if (orderExist) {
         return res.render('orderActions', {orderNumber: orderNumber} );
       } else {
-        const createOrder = await pool.query("INSERT INTO `orders` (`user_owner_email`, `order_id`, `date_creation`, `status`) VALUES (?, ?, NOW(), 'creado')", [currentUser.email, orderNumber]);
+        const createOrder = await client.query("INSERT INTO orders (user_owner_email, order_id, date_creation, status) VALUES ($1, $2, CURRENT_TIMESTAMP, 'creado')", [currentUser.email, orderNumber]);
         return res.render('type');
       };
-      } catch (err) {
-        const boomError = Boom.serverUnavailable('No es posible verificar el número de la orden en la base de daatos', err);
+      } catch (error) {
+        const boomError = Boom.serverUnavailable('No es posible verificar el número de la orden en la base de daatos', error);
         next(boomError);
       }
   } catch (err) {

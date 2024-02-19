@@ -19,7 +19,8 @@
     "mysql": "^2.18.1",
     "mysql2": "^2.3.3",
     "passport": "^0.7.0",
-    "passport-local": "^1.0.0"
+    "passport-local": "^1.0.0",
+    "pg": "^8.11.3"
   },
   "scripts": {
     "start": "node src/index.js",
