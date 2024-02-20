@@ -13,8 +13,9 @@ export const deleteAnjeoLight = async (req, res, next) => {
   const { id } = req.params;
 
   try {
-    const result = await client.query("DELETE FROM anjeos_light WHERE anjeo_light_id = $1", [id]);
-    const [ anjeosCreated ] = await client.query("SELECT anjeo_light_id, place FROM  anjeos_light WHERE order_owner_id = $1;", [orderNumber]);
+    const deleteRecord = await client.query("DELETE FROM anjeos_light WHERE anjeo_light_id = $1", [id]);
+    const result = await client.query("SELECT anjeo_light_id, place FROM  anjeos_light WHERE order_owner_id = $1 ORDER BY anjeo_light_id ASC;", [orderNumber]);
+    const anjeosCreated = result.rows;
     const anjeosLightQuantity = anjeosCreated.length;
     res.render('listLight',  { anjeosCreated: anjeosCreated, orderNumber: orderNumber, anjeosLightQuantity: anjeosLightQuantity });
   } catch (err) {

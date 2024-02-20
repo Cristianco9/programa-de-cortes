@@ -12,8 +12,9 @@ export const editAnjeoHeavy = async (req, res, next) => {
   const { id } = req.params;
 
   try {
-    const [result] = await client.query("SELECT * FROM anjeos_heavy WHERE anjeo_heavy_id = $1", [id]);
-    res.render('editFormHeavy', { anjeoToEdit: result[0], orderNumber: orderNumber });
+    const result = await client.query("SELECT * FROM anjeos_heavy WHERE anjeo_heavy_id = $1", [id]);
+    const anjeoToEdit = result.rows;
+    res.render('editFormHeavy', { anjeoToEdit: anjeoToEdit[0], orderNumber: orderNumber });
   } catch (err) {
     const boomError = Boom.notImplemented('No es posible renderizar el formulario de edición de un anjeo liviano', err);
     next(boomError);

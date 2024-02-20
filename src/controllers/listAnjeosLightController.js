@@ -11,7 +11,7 @@ export const listAnjeosLight = async (req, res, next) => {
   const orderNumber = rows[0].order_id;
 
   try {
-    const result = await client.query("SELECT anjeo_light_id, place FROM anjeos_light WHERE order_owner_id = $1;", [orderNumber]);
+    const result = await client.query("SELECT anjeo_light_id, place FROM anjeos_light WHERE order_owner_id = $1 ORDER BY anjeo_light_id ASC;", [orderNumber]);
     const anjeosCreated = result.rows;
     const anjeosLightQuantity = anjeosCreated.length;
     res.render('listLight', { anjeosCreated: anjeosCreated, orderNumber: orderNumber, anjeosLightQuantity: anjeosLightQuantity });
