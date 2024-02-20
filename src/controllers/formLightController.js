@@ -11,7 +11,7 @@ export const formLight = async (req, res, next) => {
   try {
     const result = await client.query("SELECT order_id FROM orders WHERE user_owner_email = $1 ORDER BY date_creation DESC LIMIT 1", [user_owner_email]);
     const currentOrder = result.rows[0]?.order_id;
-    res.render('formLight', { orderID: currentOrder });
+    res.render('formLight', { currentOrder: currentOrder });
   } catch (err) {
     const boomError = Boom.serverUnavailable('No es posible verificar el número de la orden en la base de datos', err);
     next(boomError);

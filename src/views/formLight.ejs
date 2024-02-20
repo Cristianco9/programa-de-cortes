@@ -24,11 +24,9 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <% orderID.forEach(function(orderItem) { %>
                                 <tr>
-                                    <td class="orderID"><%= orderItem.order_id %></td>
+                                    <td class="orderID"><%= currentOrder %></td>
                                 </tr>
-                            <% }); %>
                         </tbody>
                     </table>
                 </div>
