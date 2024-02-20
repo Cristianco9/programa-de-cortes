@@ -1,7 +1,7 @@
 import { getConnection } from '../libraries/DBConnection.js';
 import Boom from '@hapi/boom';
 
-const client = await getConnection();
+const pool = await getConnection();
 
 export const updateAnjeoHeavy = async (req, res, next) => {
 
@@ -25,7 +25,7 @@ export const updateAnjeoHeavy = async (req, res, next) => {
   };
 
   try {
-    const updateAnjeoHeavy = await client.query("UPDATE anjeos_heavy SET date_creation = NOW(), color = $1, profile_type = $2, opening = $3, place = $4, width = $5, height = $6, head = $7, adaptador = $8, top_profile = $9, installation = $10, divisorHigh = $11, type_handle = $12, open_direction = $13, notes = $14 WHERE anjeo_heavy_id = $15", [newAnjeoHeavy.color, newAnjeoHeavy.perfil, newAnjeoHeavy.apertura, newAnjeoHeavy.lugar, newAnjeoHeavy.ancho, newAnjeoHeavy.altura, newAnjeoHeavy.cabezal, newAnjeoHeavy.adaptador, newAnjeoHeavy.perfilSuperior, newAnjeoHeavy.instalacion,  newAnjeoHeavy.alturaDivisor, newAnjeoHeavy.manija, newAnjeoHeavy.lado, newAnjeoHeavy.notas, anjeoHeavydToUpdate]);
+    const updateAnjeoHeavy = await pool.query("UPDATE anjeos_heavy SET date_creation = NOW(), color = $1, profile_type = $2, opening = $3, place = $4, width = $5, height = $6, head = $7, adaptador = $8, top_profile = $9, installation = $10, divisorHigh = $11, type_handle = $12, open_direction = $13, notes = $14 WHERE anjeo_heavy_id = $15", [newAnjeoHeavy.color, newAnjeoHeavy.perfil, newAnjeoHeavy.apertura, newAnjeoHeavy.lugar, newAnjeoHeavy.ancho, newAnjeoHeavy.altura, newAnjeoHeavy.cabezal, newAnjeoHeavy.adaptador, newAnjeoHeavy.perfilSuperior, newAnjeoHeavy.instalacion,  newAnjeoHeavy.alturaDivisor, newAnjeoHeavy.manija, newAnjeoHeavy.lado, newAnjeoHeavy.notas, anjeoHeavydToUpdate]);
     return res.render('anjeoHeavyUpdatedSucessfully');
   } catch (err) {
     const boomError = Boom.serverUnavailable('No es posible actualizar el anjeo pesado', err);

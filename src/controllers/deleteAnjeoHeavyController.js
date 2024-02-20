@@ -1,20 +1,20 @@
 import { getConnection } from '../libraries/DBConnection.js';
 import Boom from '@hapi/boom';
 
-const client = await getConnection();
+const pool = await getConnection();
 
 export const deleteAnjeoHeavy = async (req, res, next) => {
 
   // temporal
   const user_owner_email = "admin@gmail.com";
-  const result = await client.query("SELECT order_id FROM orders WHERE user_owner_email = $1 ORDER BY date_creation DESC LIMIT 1", [user_owner_email]);
+  const result = await pool.query("SELECT order_id FROM orders WHERE user_owner_email = $1 ORDER BY date_creation DESC LIMIT 1", [user_owner_email]);
   const rows = result.rows;
   const orderNumber = rows[0].order_id;
   const { id } = req.params;
 
   try {
-    const deleteRecord = await client.query("DELETE FROM anjeos_heavy WHERE anjeo_heavy_id = $1", [id]);
-    const result = await client.query("SELECT anjeo_heavy_id, place FROM  anjeos_heavy WHERE order_owner_id = $1 ORDER BY anjeo_heavy_id ASC;", [orderNumber]);
+    const deleteRecord = await pool.query("DELETE FROM anjeos_heavy WHERE anjeo_heavy_id = $1", [id]);
+    const result = await pool.query("SELECT anjeo_heavy_id, place FROM  anjeos_heavy WHERE order_owner_id = $1 ORDER BY anjeo_heavy_id ASC;", [orderNumber]);
     const anjeosCreated = result.rows;
     const anjeosHeavyQuantity = anjeosCreated.length;
     res.render('listHeavy',  { anjeosCreated: anjeosCreated, orderNumber: orderNumber, anjeosHeavyQuantity: anjeosHeavyQuantity });

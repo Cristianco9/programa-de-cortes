@@ -1,7 +1,7 @@
 import { getConnection } from '../libraries/DBConnection.js';
 import Boom from '@hapi/boom';
 
-const client = await getConnection();
+const pool = await getConnection();
 
 export const orderIDValidation = async (req, res, next) => {
 
@@ -12,7 +12,7 @@ export const orderIDValidation = async (req, res, next) => {
 
   try {
 
-    const result = await client.query("SELECT * FROM users WHERE name = $1", [userName]);
+    const result = await pool.query("SELECT * FROM users WHERE name = $1", [userName]);
     const rows = result.rows;
 
     if (rows.length === 0) {
@@ -24,7 +24,7 @@ export const orderIDValidation = async (req, res, next) => {
 
     try {
 
-      const ordersSearch = await client.query("SELECT order_id FROM orders WHERE user_owner_email = $1", [currentUser.email]);
+      const ordersSearch = await pool.query("SELECT order_id FROM orders WHERE user_owner_email = $1", [currentUser.email]);
       const orders = ordersSearch.rows;
 
       let orderExist = false;
@@ -38,7 +38,7 @@ export const orderIDValidation = async (req, res, next) => {
       if (orderExist) {
         return res.render('orderActions', {orderNumber: orderNumber} );
       } else {
-        const createOrder = await client.query("INSERT INTO orders (user_owner_email, order_id, date_creation, status) VALUES ($1, $2, CURRENT_TIMESTAMP, 'creado')", [currentUser.email, orderNumber]);
+        const createOrder = await pool.query("INSERT INTO orders (user_owner_email, order_id, date_creation, status) VALUES ($1, $2, CURRENT_TIMESTAMP, 'creado')", [currentUser.email, orderNumber]);
         return res.render('type');
       };
       } catch (error) {

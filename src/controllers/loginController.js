@@ -2,7 +2,7 @@ import { getConnection } from '../libraries/DBConnection.js';
 import bcrypt from 'bcryptjs';
 import Boom from '@hapi/boom';
 
-const client = await getConnection();
+const pool = await getConnection();
 
 export const userLogin = async (req, res, next) => {
   try {
@@ -21,7 +21,7 @@ export const login = async (req, res, next) => {
     try {
         // const hashedPassword = await hashPassword(password);
 
-        const result = await client.query("SELECT * FROM users WHERE name = $1", [userName]);
+        const result = await pool.query("SELECT * FROM users WHERE name = $1", [userName]);
         const rows = result.rows;
 
         if (rows.length === 0) {
