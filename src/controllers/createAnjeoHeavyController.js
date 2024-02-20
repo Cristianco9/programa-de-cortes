@@ -7,7 +7,6 @@ export const createAnjeoHeavy = async (req, res, next) => {
 
   // temporal
   const user_owner_email = "admin@gmail.com";
-  const order_owner_id = 369;
   const anjeoHeavy = {
     color: req.body.color,
     perfil: req.body.perfil,
@@ -30,7 +29,7 @@ export const createAnjeoHeavy = async (req, res, next) => {
   const orderNumber = rows[0].order_id;
 
   try {
-    const insertAnjeoHeavy = await client.query("INSERT INTO anjeos_heavy (order_owner_id, date_creation, color, profile_type, opening, place, width, height, head, adaptador, top_profile, installation, divisorHigh, type_handle, open_direction, notes) VALUES ($1, NOW(), $2, $3, $4, $5, $6, $7, $8, %9, $10, $11, $12, $13, $14, $15)", [orderNumber, anjeoHeavy.color, anjeoHeavy.perfil, anjeoHeavy.apertura, anjeoHeavy.lugar, anjeoHeavy.ancho, anjeoHeavy.altura, anjeoHeavy.cabezal, anjeoHeavy.adaptador, anjeoHeavy.perfilSuperior, anjeoHeavy.instalacion, anjeoHeavy.alturaDivisor, anjeoHeavy.manija, anjeoHeavy.lado, anjeoHeavy.notas]);
+    const insertAnjeoHeavy = await client.query("INSERT INTO anjeos_heavy (order_owner_id, date_creation, color, profile_type, opening, place, width, height, head, adaptador, top_profile, installation, divisorHigh, type_handle, open_direction, notes) VALUES ($1, NOW(), $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15)", [orderNumber, anjeoHeavy.color, anjeoHeavy.perfil, anjeoHeavy.apertura, anjeoHeavy.lugar, anjeoHeavy.ancho, anjeoHeavy.altura, anjeoHeavy.cabezal, anjeoHeavy.adaptador, anjeoHeavy.perfilSuperior, anjeoHeavy.instalacion, anjeoHeavy.alturaDivisor, anjeoHeavy.manija, anjeoHeavy.lado, anjeoHeavy.notas]);
     return res.render('orderActions', { orderNumber: orderNumber });
   } catch (err) {
     const boomError = Boom.serverUnavailable(`No es posible crear el anjeo pesado en la base de datos ${err.message}`);

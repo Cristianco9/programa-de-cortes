@@ -11,7 +11,8 @@ const rows = result.rows;
 const orderNumber = rows[0].order_id;
 
   try {
-    const [ anjeosCreated ] = await client.query("SELECT anjeo_heavy_id, place FROM anjeos_heavy WHERE order_owner_id = $1;", [orderNumber]);
+    const result = await client.query("SELECT anjeo_heavy_id, place FROM anjeos_heavy WHERE order_owner_id = $1;", [orderNumber]);
+    const anjeosCreated = result.rows;
     const anjeosheavyQuantity = anjeosCreated.length;
     res.render('listHeavy', { anjeosCreated: anjeosCreated, orderNumber: orderNumber, anjeosHeavyQuantity: anjeosheavyQuantity });
   } catch (err) {
