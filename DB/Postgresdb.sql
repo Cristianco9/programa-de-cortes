@@ -1,10 +1,11 @@
-CREATE DATABASE instalandoCaliMainDB;
+CREATE DATABASE instalando_cali_db;
 
-\c instalandoCaliMainDB;
+\c instalando_cali_db
 
 CREATE TABLE users (
     date_creation TIMESTAMP NOT NULL,
-    email VARCHAR(30) NOT NULL PRIMARY KEY,
+    id SERIAL PRIMARY KEY,
+    email VARCHAR(30) NOT NULL,
     rol VARCHAR(15) NOT NULL,
     name VARCHAR(15) NOT NULL,
     password VARCHAR(70) NOT NULL,
@@ -49,8 +50,8 @@ CREATE TABLE anjeos_heavy (
 );
 
 CREATE TABLE orders (
-    user_owner_email VARCHAR(30) NOT NULL,
-    order_id SERIAL PRIMARY KEY,
+    user_owner_id INT(10) NOT NULL,
+    id SERIAL PRIMARY KEY,
     date_creation TIMESTAMP NOT NULL,
     status VARCHAR(10) NOT NULL,
     anjeos_light_id INT,
@@ -76,9 +77,9 @@ ALTER TABLE orders
     ON DELETE CASCADE;
 
 ALTER TABLE orders
-    ADD CONSTRAINT fk_user_owner_email
-    FOREIGN KEY (user_owner_email)
-    REFERENCES users (email)
+    ADD CONSTRAINT fk_user_owner_id
+    FOREIGN KEY (user_owner_id)
+    REFERENCES users (id)
     ON DELETE CASCADE;
 
 ALTER TABLE anjeos_light
