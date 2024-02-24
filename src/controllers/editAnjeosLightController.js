@@ -1,22 +1,53 @@
-import { getConnection } from '../libraries/DBConnection.js';
+import AnjeoLight from '../db/models/anjeoLightModel.js';
+import Order from '../db/models/orderModel.js';
 import Boom from '@hapi/boom';
-
-const pool = await getConnection();
 
 export const editAnjeoLight = async (req, res, next) => {
   // temporal
-  const user_owner_email = "admin@gmail.com";
-  const result = await pool.query("SELECT order_id FROM orders WHERE user_owner_email = $1 ORDER BY date_creation DESC LIMIT 1", [user_owner_email]);
-  const rows = result.rows;
-  const orderNumber = rows[0].order_id;
+  const userOwnerEmail = "admin@gmail.com";
+
+  try {
+    const currentOrder = await Order.findOne({
+      attributes: ['id'],
+      where: {
+        user_owner_email: userOwnerEmail
+      },
+      order: [['dateCreation', 'DESC']],
+      limit: 1
+    });
+
+    const orderNumber = currentOrder.id ? currentOrder.id : null;
+  } catch (err) {
+      const boomError = Boom.serverUnavailable(
+        'No es posible verificar el número de la orden en la base de datos',
+        err.message);
+      next(boomError);
+  }
+
   const { id } = req.params;
 
   try {
-    const result = await pool.query("SELECT * FROM anjeos_light WHERE anjeo_light_id = $1", [id]);
-    const anjeoToEdit = result.rows[0];
-    res.render('editFormLight', { anjeoToEdit: anjeoToEdit, orderNumber: orderNumber });
+    const anjeoToEdit = await AnjeoLight.findOne({
+      where: {
+        anjeo_light_id: id
+      }
+    });
+
+    if (!anjeoToEdit) {
+      const boomError = Boom.notFound(
+        'No es posible encontrar el anjeo liviano en la base de datos');
+      next(boomError);
+    }
+
+    res.render('editFormLight',
+      {
+        anjeoToEdit: anjeoToEdit,
+        orderNumber: orderNumber
+      });
   } catch (err) {
-    const boomError = Boom.notImplemented('No es posible renderizar el formulario de edición de un anjeo liviano', err);
+    const boomError = Boom.notImplemented(
+      'No es posible renderizar el formulario de edición de un anjeo liviano',
+      err.message);
     next(boomError);
   }
 };

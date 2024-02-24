@@ -1,7 +1,5 @@
-import { getConnection } from '../libraries/DBConnection.js';
+import AnjeoLight from '../db/models/anjeoLightModel.js';
 import Boom from '@hapi/boom';
-
-const pool = await getConnection();
 
 export const updateAnjeoLight = async (req, res, next) => {
 
@@ -22,11 +20,31 @@ export const updateAnjeoLight = async (req, res, next) => {
   };
 
   try {
-    const updateAnjeoLight = await pool.query("UPDATE anjeos_light SET date_creation = NOW(), color = $1, profile_type = $2, opening = $3, place = $4, width = $5, height = $6, guide = $7, installation = $8, divisorHigh = $9, angle = $10, notes = $11 WHERE anjeo_light_id = $12", [newAnjeoLight.color, newAnjeoLight.perfil, newAnjeoLight.apertura, newAnjeoLight.lugar, newAnjeoLight.ancho, newAnjeoLight.altura, newAnjeoLight.guias, newAnjeoLight.instalacion, newAnjeoLight.alturaDivisor, newAnjeoLight.angulo, newAnjeoLight.notas, anjeoLightIdToUpdate]);
+
+    const updateAnjeoLight = await AnjeoLight.update({
+      date_creation: new Date(),
+      color: newAnjeoLight.color,
+      profile_type: newAnjeoLight.perfil,
+      opening: newAnjeoLight.apertura,
+      place: newAnjeoLight.lugar,
+      width: newAnjeoLight.ancho,
+      height: newAnjeoLight.altura,
+      guide: newAnjeoLight.guias,
+      installation: newAnjeoLight.instalacion,
+      divisorHigh: newAnjeoLight.alturaDivisor,
+      angle: newAnjeoLight.angulo,
+      notes: newAnjeoLight.notas
+    }, {
+      where: {
+        anjeo_light_id: anjeoLightIdToUpdate
+      }
+    });
+
     return res.render('anjeoLightUpdatedSucessfully');
 
   } catch (err) {
-    const boomError = Boom.serverUnavailable('No es posible actualizar el anjeo liviano', err);
+    const boomError = Boom.serverUnavailable(
+      'No es posible actualizar el anjeo liviano', err.message);
     next(boomError);
   }
 };

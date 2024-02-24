@@ -3,8 +3,10 @@ import Boom from '@hapi/boom';
 export const order = async (req, res, next) => {
   try {
     res.render('order');
-  } catch {
-    const boomError = Boom.notImplemented('No es posible renderizar la vista de creaación de un nuevo pedido de anjeos', err);
+  } catch (err) {
+    const boomError = Boom.notImplemented(
+      'No es posible renderizar la vista de creaación de un nuevo pedido de anjeos',
+      err.message);
     next(boomError);
   }
 };

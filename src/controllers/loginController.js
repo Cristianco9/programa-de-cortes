@@ -1,14 +1,14 @@
-import { getConnection } from '../libraries/DBConnection.js';
+import User from '../db/models/userModel.js';
 import bcrypt from 'bcryptjs';
 import Boom from '@hapi/boom';
-
-const pool = await getConnection();
 
 export const userLogin = async (req, res, next) => {
   try {
     res.render('login');
   } catch (err) {
-    const boomError = Boom.notImplemented('No es posible renderizar la vista principal de inicio de sección', err);
+    const boomError = Boom.notImplemented(
+      'No es posible renderizar la vista principal de inicio de sección',
+      err.message);
     next(boomError);
   }
 };
@@ -21,16 +21,17 @@ export const login = async (req, res, next) => {
     try {
         // const hashedPassword = await hashPassword(password);
 
-        const result = await pool.query("SELECT * FROM users WHERE name = $1", [userName]);
-        const rows = result.rows;
+        const userRecord = await User.findOne({
+          where: {
+            name: userName
+          }
+        })
 
-        if (rows.length === 0) {
-            return res.render('loginWrongUser');
+        if (!userRecord) {
+          return res.render('loginWrongUser');
         }
 
-        const userExist = rows[0];
-
-        const validPassword = await bcrypt.compare(password, userExist.password);
+        const validPassword = await bcrypt.compare(password, userRecord.password);
 
         if (validPassword) {
             return res.render('tools');
@@ -39,7 +40,9 @@ export const login = async (req, res, next) => {
         }
 
     } catch (error) {
-      const boomError = Boom.serverUnavailable('No es posible verificar las credenciales del usuario en la base de datos', error);
+      const boomError = Boom.serverUnavailable(
+        'No es posible verificar las credenciales del usuario en la base de datos',
+        error);
       next(boomError);
     }
 };

@@ -1,25 +1,23 @@
 import { Sequelize } from 'sequelize';
 import { config } from "../config/config.js";
-import { setupModels } from "../db/models/indexModels.js";
 
 const USER = encodeURIComponent(config.dbUser);
 const PASSWORD = encodeURIComponent(config.dbPassword);
 
 const URI = `postgres://${USER}:${PASSWORD}@${config.dbHost}:${config.dbPort}/${config.dbName}`;
 
-export const sequelize = new Sequelize(URI, {
-  dialect: 'postgres',
-  logging: true,
-});
+export const sequelize = new Sequelize(URI,
+  {
+    dialect: 'postgres',
+    logging: console.log,
+  });
 
-setupModels(sequelize);
-sequelize.sync();
-
-export const testConnection = async () => {
+export const testConnection = async (next) => {
   try {
+    //await sequelize.sync({ force: true })
     await sequelize.authenticate();
     console.log('Connection has been established successfully.');
-  } catch (error) {
-    console.error('Unable to connect to the database:', error);
+  } catch (err) {
+    console.log('Impossible to connect the data base:');
   }
 };

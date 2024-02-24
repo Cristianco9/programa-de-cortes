@@ -1,8 +1,9 @@
-import { Model, DataTypes, Sequelize } from 'sequelize';
+/*import { Model, DataTypes, Sequelize } from 'sequelize';
+import { sequelize } from '../../libraries/DBConnection.js';
 
 export const ORDER_TABLE = 'orders';
 
-export const OrderSchema = {
+export const Order = sequelize.define(ORDER_TABLE, {
 
   userOwnerID: {
     type: DataTypes.INTEGER(10),
@@ -27,7 +28,9 @@ export const OrderSchema = {
     allowNull: false
   }
 
-}
+})
+
+User.sync()
 
 export class Order extends Model {
   static associate() {
@@ -38,8 +41,45 @@ export class Order extends Model {
     return {
       sequelize,
       tableName: USER_TABLE,
-      modelname: 'Order',
+      modelName: 'Order',
       timestamps: false
     }
   }
-}
+} */
+
+import { Model, DataTypes } from 'sequelize';
+import { sequelize } from '../../libraries/DBConnection.js';
+
+const ORDER_TABLE = 'orders';
+
+const Order = sequelize.define(ORDER_TABLE,
+  {
+    id: {
+      type: DataTypes.INTEGER,
+      primaryKey: true,
+    },
+    userOwnerID: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      field: 'user_owner_id'
+    },
+    dateCreation: {
+      type: DataTypes.DATE,
+      allowNull: false,
+      field: 'date_creation',
+      defaultValue: DataTypes.NOW
+    },
+    status: {
+      type: DataTypes.STRING(10),
+      allowNull: false,
+      defaultValue: 'Creado'
+    }
+  },
+  {
+    tableName: ORDER_TABLE,
+    modelName: 'Order',
+    timestamps: false
+  }
+);
+
+export default Order;

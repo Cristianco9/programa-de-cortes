@@ -4,7 +4,9 @@ export const typeCreated = async (req, res, next) => {
   try {
     res.render('typeCreated');
   } catch (err) {
-    const boomError = Boom.notImplemented('No es posible renderizar la vista de seleccionar el tipo de anjeo creado', err);
+    const boomError = Boom.notImplemented(
+      'No es posible renderizar la vista de seleccionar el tipo de anjeo creado',
+      err.message);
     next(boomError);
   }
 }

@@ -12,7 +12,8 @@ export const userRedirect = async (req, res, next) => {
     }
 
   } catch (err) {
-    const boomError = Boom.notImplemented('No es posible renderizar la vista ingresada por el cliente', err);
+    const boomError = Boom.notImplemented(
+      'No es posible renderizar la vista ingresada por el cliente', err.message);
     next(boomError);
   }
 };

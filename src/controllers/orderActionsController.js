@@ -1,19 +1,30 @@
-import { getConnection } from '../libraries/DBConnection.js';
+import Order from '../db/models/orderModel.js';
 import  Boom from '@hapi/boom';
-
-const pool = await getConnection();
 
 export const orderActions = async (req, res, next) => {
 
   // temporal
-  const user_owner_email = "admin@gmail.com";
+  const userOwnerEmail = "admin@gmail.com";
 
   try {
-    const [ currentOrder ] = await pool.query("SELECT order_id FROM orders WHERE user_owner_email = $1 ORDER BY date_creation DESC LIMIT 1", [user_owner_email]);
-    const orderNumber = currentOrder[0].order_id;
-    res.render('orderActions', { orderNumber: orderNumber });
+    const currentOrder = await Order.findOne({
+      where: {
+        userOwnerEmail: userOwnerEmailOwnerEmail
+      },
+      order: [['dateCreation', 'DESC']],
+      limit: 1
+    });
+
+    if (currentOrder) {
+      const orderNumber = currentOrder.id;
+      res.render('orderActions', { orderNumber: orderNumber });
+    } else {
+      res.render('orderActions', { orderNumber: null });
+    }
   } catch (err) {
-    const boomError = Boom.serverUnavailable('No es posible verificar el número de la orden en la base de datos', err);
+    const boomError = Boom.serverUnavailable(
+      'No es posible verificar el número de la orden en la base de datos',
+      err.message);
     next(boomError);
   }
 };
