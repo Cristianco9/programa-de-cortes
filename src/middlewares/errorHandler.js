@@ -1,3 +1,4 @@
+import { ValidationError } from 'sequelize';
 import Boom from '@hapi/boom';
 
 export const logError = (err, req, res, next) => {
@@ -17,4 +18,16 @@ export const boomErrorHandler = (err, req, res, next) => {
   } else {
     next(err);
   }
+}
+
+export const ORMErrorHandler = (err, req, res, next) => {
+  if(err instanceof ValidationError) {
+    res.status(409).json(
+      {
+        statusCode: 409,
+        message: err.name,
+        errors:err.errors
+      });
+  }
+  next(err);
 }

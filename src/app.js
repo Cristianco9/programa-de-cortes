@@ -5,7 +5,12 @@ import { testConnection } from './libraries/DBConnection.js';
 import cors from 'cors';
 import routerApi from './routes/indexRouter.js';
 import { fileURLToPath } from 'url';
-import {logError, errorHandler, boomErrorHandler } from "./middlewares/errorHandler.js"
+import {
+  logError,
+  errorHandler,
+  boomErrorHandler,
+  ORMErrorHandler
+} from "./middlewares/errorHandler.js"
 
 // Create the app with express
 const app = express();
@@ -45,6 +50,7 @@ app.use(cors());
 
 // Error middlewares
 app.use(logError);
+app.use(ORMErrorHandler);
 app.use(boomErrorHandler);
 app.use(errorHandler);
 
