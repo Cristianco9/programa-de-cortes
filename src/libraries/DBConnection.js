@@ -18,6 +18,6 @@ export const testConnection = async (next) => {
     await sequelize.authenticate();
     console.log('Connection has been established successfully.');
   } catch (err) {
-    console.log('Impossible to connect the data base:');
+    console.log('Impossible to connect the data base:', err);
   }
 };

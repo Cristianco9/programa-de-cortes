@@ -1,1 +1,1 @@
-npm install && npm i nodemon eslint eslint-config-prettier eslint-plugin-prettier prettier -D && mkdir postgres_data && echo "postgres_data directory created" echo "Production and Development dependencies installed"
+npm install && npm i nodemon eslint eslint-config-prettier eslint-plugin-prettier prettier -D && mkdir postgres_data && echo "postgres_data directory created" && echo "Production and Development dependencies installed"
