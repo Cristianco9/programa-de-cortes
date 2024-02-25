@@ -5,7 +5,7 @@ import Boom from '@hapi/boom';
 export const createAnjeoHeavy = async (req, res, next) => {
 
   // temporal
-  const userOwnerEmail = "admin@gmail.com";
+  const userOwnerID = 1;
 
   const anjeoHeavy = {
     color: req.body.color,
@@ -28,44 +28,44 @@ export const createAnjeoHeavy = async (req, res, next) => {
     const currentOrder = await Order.findOne({
       attributes: ['id'],
       where: {
-        user_owner_email: userOwnerEmail
+        userOwnerID: userOwnerID
       },
       order: [['dateCreation', 'DESC']],
       limit: 1
     });
 
-    const orderNumber = currentOrder.id ? currentOrder.id : null;
+    const orderNumber = currentOrder ? currentOrder.id : null;
+
+    try {
+      const insertAnjeoHeavy = await AnjeoHeavy.create({
+        orderOwnerID: orderNumber,
+        dateCreation: new Date(),
+        color: anjeoHeavy.color,
+        profileType: anjeoHeavy.perfil,
+        opening: anjeoHeavy.apertura,
+        place: anjeoHeavy.lugar,
+        width: anjeoHeavy.ancho,
+        height: anjeoHeavy.altura,
+        head: anjeoHeavy.cabezal,
+        adaptador: anjeoHeavy.adaptador,
+        topProfile: anjeoHeavy.perfilSuperior,
+        installation: anjeoHeavy.instalacion,
+        divisorHigh: anjeoHeavy.alturaDivisor,
+        typeHandle: anjeoHeavy.manija,
+        openDirection: anjeoHeavy.lado,
+        notes: anjeoHeavy.notas
+      });
+
+      return res.render('orderActions', { orderNumber });
+    } catch (err) {
+      const boomError = Boom.serverUnavailable(
+        'No es posible crear el anjeo pesado en la base de datos' ,err);
+      next(boomError);
+    };
   } catch (err) {
       const boomError = Boom.serverUnavailable(
         'No es posible verificar el número de la orden en la base de datos',
-        err.message);
+        err);
       next(boomError);
-  }
-
-  try {
-    const insertAnjeoHeavy = await AnjeosHeavy.create({
-      order_owner_id: orderNumber,
-      date_creation: new Date(),
-      color: anjeoHeavy.color,
-      profile_type: anjeoHeavy.perfil,
-      opening: anjeoHeavy.apertura,
-      place: anjeoHeavy.lugar,
-      width: anjeoHeavy.ancho,
-      height: anjeoHeavy.altura,
-      head: anjeoHeavy.cabezal,
-      adaptador: anjeoHeavy.adaptador,
-      top_profile: anjeoHeavy.perfilSuperior,
-      installation: anjeoHeavy.instalacion,
-      divisorHigh: anjeoHeavy.alturaDivisor,
-      type_handle: anjeoHeavy.manija,
-      open_direction: anjeoHeavy.lado,
-      notes: anjeoHeavy.notas
-    });
-
-    return res.render('orderActions', { orderNumber });
-  } catch (err) {
-    const boomError = Boom.serverUnavailable(
-      'No es posible crear el anjeo pesado en la base de datos', err.message);
-    next(boomError);
   }
 };

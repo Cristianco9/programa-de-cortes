@@ -5,46 +5,46 @@ import Boom from '@hapi/boom';
 export const listAnjeosHeavy = async (req, res, next) => {
 
   // temporal
-  const userOwnerEmail = "admin@gmail.com";
+  const userOwnerID = 1;
 
   try {
     const currentOrder = await Order.findOne({
-      attributes: ['order_id'],
+      attributes: ['id'],
       where: {
-        user_owner_email: userOwnerEmail
+        userOwnerID: userOwnerID
       },
-      order: [['date_creation', 'DESC']],
+      order: [['dateCreation', 'DESC']],
       limit: 1
     });
 
     const orderNumber = currentOrder ? currentOrder.id : null;
 
+    try {
+      const anjeosHeavyCreated = await AnjeoHeavy.findAll({
+        attributes: ['anjeoHeavyID', 'place'],
+        where: {
+          orderOwnerID: orderNumber
+        },
+        order: [['anjeoHeavyID', 'ASC']]
+      });
+
+      const anjeosHeavyQuantity = anjeosHeavyCreated.length;
+      res.render('listHeavy',
+      {
+        anjeosHeavyCreated: anjeosHeavyCreated,
+        orderNumber: orderNumber,
+        anjeosHeavyQuantity: anjeosHeavyQuantity
+      });
+    } catch (err) {
+      const boomError = Boom.notImplemented(
+        'No es posible renderizar la vista de anjeos pesados creados', err);
+      next(boomError);
+    }
+
   } catch (err) {
     const boomError = Boom.serverUnavailable(
-      'No es posible verificar el número de la orden en la base de daatos',
-      error.message);
-    next(boomError);
-  }
-
-  try {
-    const anjeosCreated = await AnjeoHeavy.findAll({
-      attributes: ['anjeo_heavy_id', 'place'],
-      where: {
-        order_owner_id: orderNumber
-      },
-      order: [['anjeo_heavy_id', 'ASC']]
-    });
-
-    const anjeosHeavyQuantity = anjeosCreated.length;
-    res.render('listHeavy',
-    {
-      anjeosCreated: anjeosCreated,
-      orderNumber: orderNumber,
-      anjeosHeavyQuantity: anjeosHeavyQuantity
-    });
-  } catch (err) {
-    const boomError = Boom.notImplemented(
-      'No es posible renderizar la vista de anjeos pesados creados', err.message);
+      'No es posible verificar el número de la orden en la base de datos',
+      err);
     next(boomError);
   }
 };

@@ -4,13 +4,13 @@ import Boom from '@hapi/boom';
 export const formLight = async (req, res, next) => {
 
   // temporal
-  const userOwnerEmail = "admin@gmail.com";
+  const userOwnerID = 1;
 
   try {
     const ordersCreated = await Order.findOne({
       attributes: ['id'],
       where: {
-        user_owner_email: userOwnerEmail
+        userOwnerID: userOwnerID
       },
       order: [['date_creation', 'DESC']],
       limit: 1

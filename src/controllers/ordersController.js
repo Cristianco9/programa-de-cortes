@@ -6,7 +6,7 @@ export const order = async (req, res, next) => {
   } catch (err) {
     const boomError = Boom.notImplemented(
       'No es posible renderizar la vista de creaación de un nuevo pedido de anjeos',
-      err.message);
+      err);
     next(boomError);
   }
 };

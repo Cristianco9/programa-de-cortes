@@ -5,63 +5,66 @@ import Boom from '@hapi/boom';
 export const deleteAnjeoLight = async (req, res, next) => {
 
   // temporal
-  const userOwnerEmail = "admin@gmail.com";
+  const userOwnerID = 1;
 
   try {
     const currentOrder = await Order.findOne({
       attributes: ['id'],
       where: {
-        user_owner_email: userOwnerEmail
+        userOwnerID: userOwnerID
       },
       order: [['dateCreation', 'DESC']],
       limit: 1
     });
 
-    const orderNumber = currentOrder.id ? currentOrder.id : null;
+    const orderNumber = currentOrder ? currentOrder.id : null;
+
+    const { id } = req.params;
+
+    try {
+      const deleteRecord = await AnjeoLight.destroy({
+        where: {
+          anjeoLightID: id
+        }
+      });
+
+        try {
+          const result = await AnjeoLight.findAll({
+            attributes: ['anjeoLightID', 'place'],
+            where: {
+              orderOwnerID: orderNumber
+            },
+            order: [['anjeoLightID', 'ASC']]
+          });
+
+          const anjeosLightCreated = result;
+          const anjeosLightQuantity = anjeosLightCreated.length;
+
+          res.render('listLight',
+          {
+            anjeosLightCreated: anjeosLightCreated,
+            orderNumber: orderNumber,
+            anjeosLightQuantity: anjeosLightQuantity
+          });
+
+        } catch (err) {
+          const boomError = Boom.serverUnavailable(
+            'No es posible listar los anjeos livianos del pedido',
+            err);
+          next(boomError);
+        }
+
+    } catch (err) {
+      const boomError = Boom.serverUnavailable(
+        'No es posible eliminar el anjeo liviano de la base de datos',
+        err);
+      next(boomError);
+    }
+
   } catch (err) {
       const boomError = Boom.serverUnavailable(
         'No es posible verificar el número de la orden en la base de datos',
-        err.message);
+        err);
       next(boomError);
   }
-
-  const { id } = req.params;
-
-  try {
-    const deleteRecord = await AnjeoLight.destroy({
-      where: {
-        anjeo_light_id: orderNumber
-      }
-    });
-  } catch (err) {
-    const boomError = Boom.serverUnavailable(
-      'No es posible eliminar el anjeo liviano de la base de datos',
-      err.message);
-    next(boomError);
-  }
-
-  try {
-    const result = await AnjeosLight.findAll({
-      attributes: ['anjeo_light_id', 'place'],
-      where: {
-        order_owner_id: orderNumber
-      },
-      order: [['anjeo_light_id', 'ASC']]
-    });
-  } catch (err) {
-    const boomError = Boom.serverUnavailable(
-      'No es posible listar los anjeos livianos del pedido:', orderNumber,
-      err,message);
-    next(boomError);
-  }
-
-    const anjeosCreated = result.map(row => row.toJSON());
-    const anjeosLightQuantity = anjeosCreated.length;
-
-    res.render('listLight',
-    {
-      anjeosCreated: anjeosCreated,
-      orderNumber: orderNumber,
-      anjeosLightQuantity: anjeosLightQuantity
-    });
-};
+}

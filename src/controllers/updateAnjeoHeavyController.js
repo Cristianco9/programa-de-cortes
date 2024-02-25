@@ -25,31 +25,31 @@ export const updateAnjeoHeavy = async (req, res, next) => {
   try {
 
     const updateAnjeoHeavy = await AnjeoHeavy.update({
-      date_creation: new Date(),
+      dateCreation: new Date(),
       color: newAnjeoHeavy.color,
-      profile_type: newAnjeoHeavy.perfil,
+      profileType: newAnjeoHeavy.perfil,
       opening: newAnjeoHeavy.apertura,
       place: newAnjeoHeavy.lugar,
       width: newAnjeoHeavy.ancho,
       height: newAnjeoHeavy.altura,
       head: newAnjeoHeavy.cabezal,
       adaptador: newAnjeoHeavy.adaptador,
-      top_profile: newAnjeoHeavy.perfilSuperior,
+      topProfile: newAnjeoHeavy.perfilSuperior,
       installation: newAnjeoHeavy.instalacion,
       divisorHigh: newAnjeoHeavy.alturaDivisor,
-      type_handle: newAnjeoHeavy.manija,
-      open_direction: newAnjeoHeavy.lado,
+      typeHandle: newAnjeoHeavy.manija,
+      openDirection: newAnjeoHeavy.lado,
       notes: newAnjeoHeavy.notas
     }, {
       where: {
-        anjeo_heavy_id: anjeoHeavydToUpdate
+        anjeoHeavyID: anjeoHeavydToUpdate
       }
     });
     return res.render('anjeoHeavyUpdatedSucessfully');
 
   } catch (err) {
     const boomError = Boom.serverUnavailable(
-      'No es posible actualizar el anjeo pesado',err.message);
+      'No es posible actualizar el anjeo pesado',err);
     next(boomError);
   }
 };

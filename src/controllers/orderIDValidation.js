@@ -18,7 +18,6 @@ export const orderIDValidation = async (req, res, next) => {
     });
 
     const ordersID = recordSearch.map(record => record.id);
-    console.log("The orders IDs:", ordersID);
 
     let orderExist = false;
     for (const id of ordersID) {
@@ -36,7 +35,7 @@ export const orderIDValidation = async (req, res, next) => {
         const createOrder = await Order.create({
           userOwnerID: userOwnerID,
           id: orderNumber,
-          date_creation: new Date(),
+          dateCreation: new Date(),
         });
         return res.render('type');
       } catch (err) {

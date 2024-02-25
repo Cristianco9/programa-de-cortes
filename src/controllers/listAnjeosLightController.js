@@ -5,13 +5,13 @@ import Boom from '@hapi/boom';
 export const listAnjeosLight = async (req, res, next) => {
 
   // temporal
-  const userOwnerEmail = "admin@gmail.com";
+  const userOwnerID = 1;
 
   try {
     const currentOrder = await Order.findOne({
       attributes: ['id'],
       where: {
-        user_owner_email: userOwnerEmail
+        userOwnerID: userOwnerID
       },
       order: [['date_creation', 'DESC']],
       limit: 1
@@ -19,32 +19,32 @@ export const listAnjeosLight = async (req, res, next) => {
 
     const orderNumber = currentOrder ? currentOrder.id : null;
 
+    try {
+      const anjeosLightCreated = await AnjeoLight.findAll({
+        attributes: ['anjeoLightID', 'place'],
+        where: {
+          orderOwnerID: orderNumber
+        },
+        order: [['anjeoLightID', 'ASC']]
+      });
+
+      const anjeosLightQuantity = anjeosLightCreated.length;
+      res.render('listLight',
+      {
+        anjeosLightCreated: anjeosLightCreated,
+        orderNumber: orderNumber,
+        anjeosLightQuantity: anjeosLightQuantity
+      });
+    } catch (err) {
+      const boomError = Boom.notImplemented(
+        'No es posible renderizar la vista de anjeos livianos creados', err);
+      next(boomError);
+    }
+
   } catch (err) {
     const boomError = Boom.serverUnavailable(
       'No es posible verificar el número de la orden en la base de daatos',
-      error.message);
-    next(boomError);
-  }
-
-  try {
-    const anjeosLightCreated = await AnjeoLight.findAll({
-      attributes: ['anjeo_light_id', 'place'],
-      where: {
-        order_owner_id: orderNumber
-      },
-      order: [['anjeo_light_id', 'ASC']]
-    });
-
-    const anjeosLightQuantity = anjeosLightCreated.length;
-    res.render('listHeavy',
-    {
-      anjeosLightCreated: anjeosLightCreated,
-      orderNumber: orderNumber,
-      anjeosLightQuantity: anjeosLightQuantity
-    });
-  } catch (err) {
-    const boomError = Boom.notImplemented(
-      'No es posible renderizar la vista de anjeos livianos creados', err.message);
+      err);
     next(boomError);
   }
 };

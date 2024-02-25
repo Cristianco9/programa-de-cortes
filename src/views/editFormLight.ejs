@@ -32,14 +32,14 @@
                 </div>
                 <h2 class="anjeoType">Editar anjeo liviano</h2>
             </section>
-            <form class="form" action="/api/v1/updateFormLight/<%= anjeoToEdit.anjeo_light_id %>" method="POST">
+            <form class="form" action="/api/v1/updateFormLight/<%= anjeoToEdit.anjeoLightID %>" method="POST">
                 <div class="fieldContainer">
                     <h3 class="fieldName">Seleccionar color</h3>
                     <input class="input" name="color" id="color" type="text" value="<%= anjeoToEdit.color %>">
                 </div>
                 <div class="fieldContainer">
                     <h3 class="fieldName">Seleccionar perfil</h3>
-                    <input class="input" name="perfil" id="perfil" type="text" value="<%= anjeoToEdit.profile_type %>">
+                    <input class="input" name="perfil" id="perfil" type="text" value="<%= anjeoToEdit.profileType %>">
                 </div>
                 <div class="fieldContainer">
                     <h3 class="fieldName">Seleccionar tipo de apertura</h3>
@@ -67,7 +67,7 @@
                 </div>
                 <div class="fieldContainer">
                     <h3 class="fieldName">Altura divisor</h3>
-                    <input class="input" name="alturaDivisor" id="alturaDivisor" type="number" value="<%= anjeoToEdit.divisorhigh %>">
+                    <input class="input" name="alturaDivisor" id="alturaDivisor" type="number" value="<%= anjeoToEdit.divisorHigh %>">
                 </div>
                 <div class="fieldContainer">
                     <h3 class="fieldName">Ángulo</h3>

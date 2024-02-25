@@ -54,17 +54,17 @@
                             </tr>
                         </thead>
                         <tbody class="anjeosTableBody">
-                            <% for (let i = 0; i < anjeosCreated.length; i++) { %>
+                            <% for (let i = 0; i < anjeosHeavyCreated.length; i++) { %>
                                 <tr class="rowsContainer">
-                                    <td id="anjeoHeavyID" class="rowData"><%= anjeosCreated[i].anjeo_heavy_id %></td>
-                                    <td class="rowData"><%= anjeosCreated[i].place %></td>
+                                    <td id="anjeoHeavyID" class="rowData"><%= anjeosHeavyCreated[i].anjeoHeavyID %></td>
+                                    <td class="rowData"><%= anjeosHeavyCreated[i].place %></td>
                                 </tr>
                                 <tr class="actionButtonsContainer">
                                     <td class="actionButtons">
                                         <form class="formActions" action="/api/v1/deleteAnjeoHeavy" method="POST">
-                                            <input type="hidden" name="thisAnjeoHeavyID" value="<%= anjeosCreated[i].anjeo_heavy_id %>">
-                                            <a href="/api/v1/editAnjeoHeavy/<%= anjeosCreated[i].anjeo_heavy_id %>" class="buttonEdit">Editar</a>
-                                            <a href="/api/v1/deleteAnjeoHeavy/<%= anjeosCreated[i].anjeo_heavy_id %>" class="buttonDelete">Eliminar</a>
+                                            <input type="hidden" name="thisAnjeoHeavyID" value="<%= anjeosHeavyCreated[i].anjeoHeavyID %>">
+                                            <a href="/api/v1/editAnjeoHeavy/<%= anjeosHeavyCreated[i].anjeoHeavyID %>" class="buttonEdit">Editar</a>
+                                            <a href="/api/v1/deleteAnjeoHeavy/<%= anjeosHeavyCreated[i].anjeoHeavyID %>" class="buttonDelete">Eliminar</a>
                                         </form>
                                     </td>
                                 </tr>

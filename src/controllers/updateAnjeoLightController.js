@@ -22,9 +22,9 @@ export const updateAnjeoLight = async (req, res, next) => {
   try {
 
     const updateAnjeoLight = await AnjeoLight.update({
-      date_creation: new Date(),
+      dateCreation: new Date(),
       color: newAnjeoLight.color,
-      profile_type: newAnjeoLight.perfil,
+      profileType: newAnjeoLight.perfil,
       opening: newAnjeoLight.apertura,
       place: newAnjeoLight.lugar,
       width: newAnjeoLight.ancho,
@@ -36,7 +36,7 @@ export const updateAnjeoLight = async (req, res, next) => {
       notes: newAnjeoLight.notas
     }, {
       where: {
-        anjeo_light_id: anjeoLightIdToUpdate
+        anjeoLightID: anjeoLightIdToUpdate
       }
     });
 
@@ -44,7 +44,7 @@ export const updateAnjeoLight = async (req, res, next) => {
 
   } catch (err) {
     const boomError = Boom.serverUnavailable(
-      'No es posible actualizar el anjeo liviano', err.message);
+      'No es posible actualizar el anjeo liviano', err);
     next(boomError);
   }
 };

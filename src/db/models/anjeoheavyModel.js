@@ -1,116 +1,4 @@
-/*import { Model, DataTypes, Sequelize } from 'sequelize';
-import { sequelize } from '../../libraries/DBConnection.js';
-
-export const ANJEO_HEAVY_TABLE = 'anjeos_heavy';
-
-export const AnjeoHeavy = sequelize.define(ANJEO_HEAVY_TABLE, {
-
-  orderOwnerID: {
-    type: DataTypes.INTEGER,
-    allowNull: false
-  },
-
-  anjeoHeavyID: {
-    type: DataTypes.INTEGER,
-    allowNull: false,
-    autoIncrement:true,
-    primaryKey: true,
-  },
-
-  dateCreation: {
-    type: DataTypes.DATE,
-    allowNull: false,
-    field: 'date_creation',
-    defaultValue: Sequelize.NOW
-  },
-
-  color: {
-    type: DataTypes.STRING(8),
-    allowNull: false
-  },
-
-  profileType: {
-    type: DataTypes.STRING(8),
-    allowNull: false
-  },
-
-  opening: {
-    type: DataTypes.STRING(16),
-    allowNull: false
-  },
-
-  place: {
-    type: DataTypes.STRING(15),
-    allowNull: false
-  },
-
-  width: {
-    type: DataTypes.FLOAT,
-    allowNull: false
-  },
-
-  height: {
-    type: DataTypes.FLOAT,
-    allowNull: false
-  },
-
-  head: {
-    type: DataTypes.FLOAT,
-    allowNull: false
-  },
-
-  adaptador: {
-    type: DataTypes.FLOAT,
-    allowNull: false
-  },
-
-  topProfile: {
-    type: DataTypes.FLOAT,
-    allowNull: false
-  },
-
-  installation: {
-    type: DataTypes.STRING(7),
-    allowNull: false
-  },
-
-  divisorHigh: {
-    type: DataTypes.FLOAT,
-    allowNull: false
-  },
-
-  typeHandle: {
-    type: DataTypes.STRING(12),
-    allowNull: false
-  },
-
-  openDirection: {
-    type: DataTypes.STRING(9),
-    allowNull: false
-  },
-
-  notes: {
-    type: DataTypes.STRING(200)
-  }
-
-})
-
-export class anjeoHeavy extends Model {
-  static associate() {
-
-  }
-
-  static config(sequelize) {
-    return {
-      sequelize,
-      tableName: USER_TABLE,
-      modelName: 'Anjeo_heavy',
-      timestamps: false
-    }
-  }
-} */
-
-import { Model, DataTypes, Sequelize } from 'sequelize';
+import { DataTypes } from 'sequelize';
 import { sequelize } from '../../libraries/DBConnection.js';
 
 const ANJEO_HEAVY_TABLE = 'anjeos_heavy';
@@ -119,19 +7,21 @@ const AnjeoHeavy = sequelize.define(ANJEO_HEAVY_TABLE,
   {
     orderOwnerID: {
       type: DataTypes.INTEGER,
-      allowNull: false
+      allowNull: false,
+      field: 'order_owner_id'
     },
     anjeoHeavyID: {
       type: DataTypes.INTEGER,
       allowNull: false,
       autoIncrement: true,
-      primaryKey: true
+      primaryKey: true,
+      field: 'anjeo_heavy_id'
     },
     dateCreation: {
       type: DataTypes.DATE,
       allowNull: false,
       field: 'date_creation',
-      defaultValue: Sequelize.NOW
+      defaultValue: DataTypes.NOW
     },
     color: {
       type: DataTypes.STRING(8),
@@ -139,7 +29,8 @@ const AnjeoHeavy = sequelize.define(ANJEO_HEAVY_TABLE,
     },
     profileType: {
       type: DataTypes.STRING(8),
-      allowNull: false
+      allowNull: false,
+      field: 'profile_type',
     },
     opening: {
       type: DataTypes.STRING(16),
@@ -167,7 +58,8 @@ const AnjeoHeavy = sequelize.define(ANJEO_HEAVY_TABLE,
     },
     topProfile: {
       type: DataTypes.FLOAT,
-      allowNull: false
+      allowNull: false,
+      field: 'top_profile'
     },
     installation: {
       type: DataTypes.STRING(7),
@@ -175,20 +67,24 @@ const AnjeoHeavy = sequelize.define(ANJEO_HEAVY_TABLE,
     },
     divisorHigh: {
       type: DataTypes.FLOAT,
-      allowNull: false
+      allowNull: false,
+      field: 'divisor_high'
     },
     typeHandle: {
       type: DataTypes.STRING(12),
-      allowNull: false
+      allowNull: false,
+      field: 'type_handle'
     },
     openDirection: {
       type: DataTypes.STRING(9),
-      allowNull: false
+      allowNull: false,
+      field: 'open_direction'
     },
     notes: {
       type: DataTypes.STRING(200)
     }
-  }, {
+  },
+  {
     sequelize,
     tableName: ANJEO_HEAVY_TABLE,
     modelName: 'AnjeoHeavy',

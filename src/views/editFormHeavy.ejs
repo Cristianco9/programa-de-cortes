@@ -32,14 +32,14 @@
                 </div>
                 <h2 class="anjeoType">Editar anjeo pesado</h2>
             </section>
-            <form class="form" action="/api/v1/updateFormHeavy/<%= anjeoToEdit.anjeo_heavy_id %>" method="POST">
+            <form class="form" action="/api/v1/updateFormHeavy/<%= anjeoToEdit.anjeoHeavyID %>" method="POST">
                 <div class="fieldContainer">
                     <h3 class="fieldName">Seleccionar color</h3>
                     <input class="input" name="color" id="color" type="text"  value="<%= anjeoToEdit.color %>">
                 </div>
                 <div class="fieldContainer">
                     <h3 class="fieldName">Seleccionar perfil</h3>
-                    <input class="input" name="perfil" id="perfil" type="text" value="<%= anjeoToEdit.profile_type %>">
+                    <input class="input" name="perfil" id="perfil" type="text" value="<%= anjeoToEdit.profileType %>">
                 </div>
                 <div class="fieldContainer">
                     <h3 class="fieldName">Seleccionar tipo de apertura</h3>
@@ -67,7 +67,7 @@
                 </div>
                 <div class="fieldContainer">
                     <h3 class="fieldName">Perfil superior</h3>
-                    <input class="input" name="perfilSuperior" id="perfilSuperior" type="number" value="<%= anjeoToEdit.top_profile %>">
+                    <input class="input" name="perfilSuperior" id="perfilSuperior" type="number" value="<%= anjeoToEdit.topProfile %>">
                 </div>
                 <div class="fieldContainer">
                     <h3 class="fieldName">Instalación</h3>
@@ -75,15 +75,15 @@
                 </div>
                 <div class="fieldContainer">
                     <h3 class="fieldName">Altura divisor</h3>
-                    <input class="input" name="alturaDivisor" id="alturaDivisor" type="text" value="<%= anjeoToEdit.divisorhigh %>">
+                    <input class="input" name="alturaDivisor" id="alturaDivisor" type="text" value="<%= anjeoToEdit.divisorHigh %>">
                 </div>
                 <div class="fieldContainer">
                     <h3 class="fieldName">Tipo de manija</h3>
-                    <input class="input" name="manija" id="manija" type="text" value="<%= anjeoToEdit.type_handle %>">
+                    <input class="input" name="manija" id="manija" type="text" value="<%= anjeoToEdit.typeHandle %>">
                 </div>
                 <div class="fieldContainer">
                     <h3 class="fieldName">Lado de apertura</h3>
-                    <input class="input" name="lado" id="lado" type="text" value="<%= anjeoToEdit.open_direction %>">
+                    <input class="input" name="lado" id="lado" type="text" value="<%= anjeoToEdit.openDirection %>">
                 </div>
                 <div class="fieldContainer">
                     <h3 class="fieldName">Notas</h3>
