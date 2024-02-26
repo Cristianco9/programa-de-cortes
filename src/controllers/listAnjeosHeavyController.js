@@ -1,5 +1,5 @@
-import Order from '../db/models/orderModel.js';
-import AnjeoHeavy from '../db/models/anjeoHeavyModel.js';
+import { Order } from '../db/models/orderModel.js';
+import { AnjeoHeavy } from '../db/models/anjeoHeavyModel.js';
 import Boom from '@hapi/boom';
 
 export const listAnjeosHeavy = async (req, res, next) => {

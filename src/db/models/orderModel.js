@@ -1,9 +1,9 @@
 import { DataTypes } from 'sequelize';
 import { sequelize } from '../../libraries/DBConnection.js';
 
-const ORDER_TABLE = 'orders';
+export const ORDER_TABLE = 'orders';
 
-const Order = sequelize.define(ORDER_TABLE,
+export const Order = sequelize.define(ORDER_TABLE,
   {
     id: {
       type: DataTypes.INTEGER,
@@ -18,7 +18,7 @@ const Order = sequelize.define(ORDER_TABLE,
       type: DataTypes.DATE,
       allowNull: false,
       field: 'date_creation',
-      defaultValue: DataTypes.NOW
+      defaultValue: DataTypes.DATE
     },
     status: {
       type: DataTypes.STRING(10),
@@ -33,5 +33,3 @@ const Order = sequelize.define(ORDER_TABLE,
     timestamps: false
   }
 );
-
-export default Order;

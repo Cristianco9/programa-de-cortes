@@ -1,9 +1,9 @@
 import { DataTypes } from 'sequelize';
 import { sequelize } from '../../libraries/DBConnection.js';
 
-const ANJEO_LIGHT_TABLE = 'anjeos_light';
+export const ANJEO_LIGHT_TABLE = 'anjeos_light';
 
-const AnjeoLight = sequelize.define(ANJEO_LIGHT_TABLE,
+export const AnjeoLight = sequelize.define(ANJEO_LIGHT_TABLE,
   {
     orderOwnerID: {
       type: DataTypes.INTEGER,
@@ -21,7 +21,7 @@ const AnjeoLight = sequelize.define(ANJEO_LIGHT_TABLE,
       type: DataTypes.DATE,
       allowNull: false,
       field: 'date_creation',
-      defaultValue: DataTypes.NOW
+      defaultValue: DataTypes.DATE
     },
     color: {
       type: DataTypes.STRING(8),
@@ -76,5 +76,3 @@ const AnjeoLight = sequelize.define(ANJEO_LIGHT_TABLE,
     timestamps: false
   }
 );
-
-export default AnjeoLight;

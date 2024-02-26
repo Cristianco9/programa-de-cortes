@@ -14,7 +14,6 @@ export const sequelize = new Sequelize(URI,
 
 export const testConnection = async (next) => {
   try {
-    //await sequelize.sync({ force: true })
     await sequelize.authenticate();
     console.log('Connection has been established successfully.');
   } catch (err) {

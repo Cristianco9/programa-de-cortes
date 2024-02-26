@@ -1,4 +1,4 @@
-import Order from '../db/models/orderModel.js';
+import { Order } from '../db/models/orderModel.js';
 import Boom from '@hapi/boom';
 
 export const orderIDValidation = async (req, res, next) => {

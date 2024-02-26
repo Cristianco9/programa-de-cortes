@@ -1,0 +1,1 @@
+╰─ docker run -d --name pgadmin4 -p 5050:80 -e PGADMIN_DEFAULT_EMAIL=developer@gmail.com -e PGADMIN_DEFAULT_PASSWORD=root --restart always dpage/pgadmin4 && echo "pgadming4 running" && docker run -d --name data_base -p 5432:5432 -e POSTGREST_USER=developer -e POSTGRES_PASSWORD=1234567890 -e POSTGRES_DB=instalando_cali_db postgres:lastest && echo "postgres running"

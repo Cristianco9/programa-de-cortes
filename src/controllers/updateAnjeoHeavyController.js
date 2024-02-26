@@ -1,4 +1,4 @@
-import AnjeoHeavy from '../db/models/anjeoheavyModel.js';
+import { AnjeoHeavy } from '../db/models/anjeoHeavyModel.js';
 import Boom from '@hapi/boom';
 
 export const updateAnjeoHeavy = async (req, res, next) => {

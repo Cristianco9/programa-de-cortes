@@ -1,4 +1,4 @@
-import AnjeoLight from '../db/models/anjeoLightModel.js';
+import { AnjeoLight } from '../db/models/anjeoLightModel.js';
 import Boom from '@hapi/boom';
 
 export const updateAnjeoLight = async (req, res, next) => {

@@ -1,9 +1,9 @@
 import { DataTypes } from 'sequelize';
 import { sequelize } from '../../libraries/DBConnection.js';
 
-const ANJEO_HEAVY_TABLE = 'anjeos_heavy';
+export const ANJEO_HEAVY_TABLE = 'anjeos_heavy';
 
-const AnjeoHeavy = sequelize.define(ANJEO_HEAVY_TABLE,
+export const AnjeoHeavy = sequelize.define(ANJEO_HEAVY_TABLE,
   {
     orderOwnerID: {
       type: DataTypes.INTEGER,
@@ -21,7 +21,7 @@ const AnjeoHeavy = sequelize.define(ANJEO_HEAVY_TABLE,
       type: DataTypes.DATE,
       allowNull: false,
       field: 'date_creation',
-      defaultValue: DataTypes.NOW
+      defaultValue: DataTypes.DATE
     },
     color: {
       type: DataTypes.STRING(8),
@@ -91,5 +91,3 @@ const AnjeoHeavy = sequelize.define(ANJEO_HEAVY_TABLE,
     timestamps: false
   }
 );
-
-export default AnjeoHeavy;

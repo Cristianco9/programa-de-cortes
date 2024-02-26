@@ -1,9 +1,9 @@
 import { sequelize } from '../../libraries/DBConnection.js';
 import { DataTypes } from 'sequelize';
 
-const USER_TABLE = 'users';
+export const USER_TABLE = 'users';
 
-const User = sequelize.define(USER_TABLE,
+export const User = sequelize.define(USER_TABLE,
   {
     id: {
       type: DataTypes.INTEGER,
@@ -15,7 +15,7 @@ const User = sequelize.define(USER_TABLE,
       type: DataTypes.DATE,
       allowNull: false,
       field: 'date_creation',
-      defaultValue: DataTypes.NOW
+      defaultValue: DataTypes.DATE
     },
     email: {
       type: DataTypes.STRING(30),
@@ -43,5 +43,3 @@ const User = sequelize.define(USER_TABLE,
     timestamps: false
   }
 );
-
-export default User;
