@@ -7,7 +7,9 @@ export const Order = sequelize.define(ORDER_TABLE,
   {
     id: {
       type: DataTypes.INTEGER,
+      allowNull: false,
       primaryKey: true,
+      unique: true,
     },
     userOwnerID: {
       type: DataTypes.INTEGER,

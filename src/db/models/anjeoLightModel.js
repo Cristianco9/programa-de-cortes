@@ -15,6 +15,7 @@ export const AnjeoLight = sequelize.define(ANJEO_LIGHT_TABLE,
       allowNull: false,
       autoIncrement: true,
       primaryKey: true,
+      unique: true,
       field: 'anjeo_light_id'
     },
     dateCreation: {

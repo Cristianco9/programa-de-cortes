@@ -15,6 +15,7 @@ export const AnjeoHeavy = sequelize.define(ANJEO_HEAVY_TABLE,
       allowNull: false,
       autoIncrement: true,
       primaryKey: true,
+      unique: true,
       field: 'anjeo_heavy_id'
     },
     dateCreation: {

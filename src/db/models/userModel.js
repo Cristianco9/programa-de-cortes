@@ -9,7 +9,8 @@ export const User = sequelize.define(USER_TABLE,
       type: DataTypes.INTEGER,
       allowNull: false,
       autoIncrement: true,
-      primaryKey: true
+      primaryKey: true,
+      unique: true
     },
     dateCreation: {
       type: DataTypes.DATE,
