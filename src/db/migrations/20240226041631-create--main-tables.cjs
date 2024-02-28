@@ -11,7 +11,8 @@ module.exports = {
         type: Sequelize.INTEGER,
         allowNull: false,
         autoIncrement: true,
-        primaryKey: true
+        primaryKey: true,
+        unique: true
       },
       dateCreation: {
         type: Sequelize.DATE,
@@ -43,7 +44,8 @@ module.exports = {
       id: {
         type: Sequelize.INTEGER,
         primaryKey: true,
-        autoIncrement: true
+        autoIncrement: true,
+        unique: true
       },
       userOwnerID: {
         type: Sequelize.INTEGER,
@@ -74,6 +76,7 @@ module.exports = {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
+        unique: true,
         field: 'anjeo_light_id'
       },
       dateCreation: {
@@ -140,6 +143,7 @@ module.exports = {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
+        unique: true,
         field: 'anjeo_heavy_id'
       },
       dateCreation: {

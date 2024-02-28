@@ -1,4 +1,4 @@
-import { DataTypes } from 'sequelize';
+import { DataTypes, Sequelize } from 'sequelize';
 import { sequelize } from '../../libraries/DBConnection.js';
 
 export const ANJEO_HEAVY_TABLE = 'anjeos_heavy';
@@ -22,7 +22,7 @@ export const AnjeoHeavy = sequelize.define(ANJEO_HEAVY_TABLE,
       type: DataTypes.DATE,
       allowNull: false,
       field: 'date_creation',
-      defaultValue: DataTypes.DATE
+      defaultValue: Sequelize.NOW
     },
     color: {
       type: DataTypes.STRING(8),

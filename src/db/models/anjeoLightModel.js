@@ -1,4 +1,4 @@
-import { DataTypes } from 'sequelize';
+import { DataTypes, Sequelize} from 'sequelize';
 import { sequelize } from '../../libraries/DBConnection.js';
 
 export const ANJEO_LIGHT_TABLE = 'anjeos_light';
@@ -22,7 +22,7 @@ export const AnjeoLight = sequelize.define(ANJEO_LIGHT_TABLE,
       type: DataTypes.DATE,
       allowNull: false,
       field: 'date_creation',
-      defaultValue: DataTypes.DATE
+      defaultValue: Sequelize.NOW
     },
     color: {
       type: DataTypes.STRING(8),

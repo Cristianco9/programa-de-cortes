@@ -1,5 +1,5 @@
 import { sequelize } from '../../libraries/DBConnection.js';
-import { DataTypes } from 'sequelize';
+import { DataTypes, Sequelize } from 'sequelize';
 
 export const USER_TABLE = 'users';
 
@@ -16,7 +16,7 @@ export const User = sequelize.define(USER_TABLE,
       type: DataTypes.DATE,
       allowNull: false,
       field: 'date_creation',
-      defaultValue: DataTypes.DATE
+      defaultValue: Sequelize.NOW
     },
     email: {
       type: DataTypes.STRING(30),
