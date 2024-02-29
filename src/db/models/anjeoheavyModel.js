@@ -104,5 +104,5 @@ export const AnjeoHeavy = sequelize.define(ANJEO_HEAVY_TABLE,
 
 import('./orderModel.js').then((module) => {
   const Order = module.Order;
-  AnjeoHeavy.belongsTo(Order, { foreignKey: 'order_owner_id'});
+  AnjeoHeavy.belongsTo(Order, { foreignKey: 'order_owner_id', as: 'order'});
 });

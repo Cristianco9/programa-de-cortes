@@ -89,5 +89,5 @@ export const AnjeoLight = sequelize.define(ANJEO_LIGHT_TABLE,
 
 import('./orderModel.js').then((module) => {
   const Order = module.Order;
-  AnjeoLight.belongsTo(Order, { foreignKey: 'order_owner_id'});
+  AnjeoLight.belongsTo(Order, { foreignKey: 'order_owner_id', as: 'order'});
 });

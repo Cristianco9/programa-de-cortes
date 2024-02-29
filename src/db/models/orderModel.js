@@ -71,17 +71,17 @@ export const Order = sequelize.define(ORDER_TABLE,
 
 import('./userModel.js').then((module) => {
   const User = module.User;
-  Order.belongsTo(User, { foreignKey: 'id'});
+  Order.belongsTo(User, { foreignKey: 'id', as: 'user'});
 });
 
 import('./anjeoLightModel.js').then((module) => {
   const AnjeoLight = module.AnjeoLight;
-  Order.belongsTo(AnjeoLight, { foreignKey: 'anjeos_light_id'});
+  Order.hasMany(AnjeoLight, { foreignKey: 'order_owner_id', as: 'anjeosLight'});
 });
 
 import('./anjeoHeavyModel.js').then((module) => {
   const AnjeoHeavy = module.AnjeoHeavy;
-  Order.belongsTo(AnjeoHeavy, { foreignKey: 'anjeos_heavy_id'});
+  Order.hasMany(AnjeoHeavy, { foreignKey: 'order_owner_id', as: 'anjeosHeavy'});
 });
 
 //Order.belongsTo(User, { foreignKey: 'id'});

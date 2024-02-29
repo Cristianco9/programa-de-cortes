@@ -59,7 +59,7 @@ export const User = sequelize.define(USER_TABLE,
 
 import('./orderModel.js').then((module) => {
     const Order = module.Order;
-    Order.belongsTo(Order, { foreignKey: 'user_owner_id'});
+    User.hasMany(Order, { foreignKey: 'user_owner_id', as: 'order'});
   });
 
 //User.hasMany(Order, { foreignKey: 'userOwnerID'});
