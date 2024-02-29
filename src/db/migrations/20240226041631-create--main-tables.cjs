@@ -8,71 +8,88 @@ module.exports = {
 
     await queryInterface.createTable('users', {
       id: {
-        type: Sequelize.INTEGER,
+        type: DataTypes.INTEGER,
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         unique: true
       },
       dateCreation: {
-        type: Sequelize.DATE,
+        type: DataTypes.DATE,
         allowNull: false,
         field: 'date_creation',
         defaultValue: Sequelize.NOW
       },
       email: {
-        type: Sequelize.STRING(30),
+        type: DataTypes.STRING(30),
         allowNull: false,
         unique: true
       },
       rol: {
-        type: Sequelize.STRING(15),
+        type: DataTypes.STRING(15),
         allowNull: false
       },
       name: {
-        type: Sequelize.STRING(15),
+        type: DataTypes.STRING(15),
         allowNull: false,
         unique: true
       },
       password: {
-        type: Sequelize.STRING(70),
+        type: DataTypes.STRING(70),
         allowNull: false
       },
+      orders: {
+        type: DataTypes.INTEGER,
+        allowNull: true,
+        unique: true
+      }
     });
 
     await queryInterface.createTable('orders', {
       id: {
-        type: Sequelize.INTEGER,
+        type: DataTypes.INTEGER,
+        allowNull: false,
         primaryKey: true,
-        autoIncrement: true,
-        unique: true
+        unique: true,
       },
       userOwnerID: {
-        type: Sequelize.INTEGER,
+        type: DataTypes.INTEGER,
         allowNull: false,
         field: 'user_owner_id'
       },
       dateCreation: {
-        type: Sequelize.DATE,
+        type: DataTypes.DATE,
         allowNull: false,
         field: 'date_creation',
         defaultValue: Sequelize.NOW
       },
       status: {
-        type: Sequelize.STRING(10),
+        type: DataTypes.STRING(10),
         allowNull: false,
         defaultValue: 'Creado'
       },
+      anjeosLightID: {
+        type: DataTypes.INTEGER,
+        allowNull: true,
+        unique: true,
+        field: 'anjeos_light_id'
+      },
+      anjeosHeavyID: {
+        type: DataTypes.INTEGER,
+        allowNull: true,
+        unique: true,
+        field: 'anjeos_heavy_id'
+      }
     });
 
     await queryInterface.createTable('anjeos_light', {
       orderOwnerID: {
-        type: Sequelize.INTEGER,
-        allowNull: false,
-        field: 'order_owner_id'
+        type: DataTypes.INTEGER,
+        allowNull: true,
+        field: 'order_owner_id',
       },
       anjeoLightID: {
-        type: Sequelize.INTEGER,
+        type: DataTypes.INTEGER,
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
@@ -80,62 +97,62 @@ module.exports = {
         field: 'anjeo_light_id'
       },
       dateCreation: {
-        type: Sequelize.DATE,
+        type: DataTypes.DATE,
         allowNull: false,
         field: 'date_creation',
         defaultValue: Sequelize.NOW
       },
       color: {
-        type: Sequelize.STRING(8),
+        type: DataTypes.STRING(8),
         allowNull: false
       },
       profileType: {
-        type: Sequelize.STRING(8),
+        type: DataTypes.STRING(8),
         allowNull: false,
         field: 'profile_type'
       },
       opening: {
-        type: Sequelize.STRING(16),
+        type: DataTypes.STRING(16),
         allowNull: false
       },
       place: {
-        type: Sequelize.STRING(15),
+        type: DataTypes.STRING(15),
         allowNull: false
       },
       width: {
-        type: Sequelize.FLOAT,
+        type: DataTypes.FLOAT,
         allowNull: false
       },
       height: {
-        type: Sequelize.FLOAT,
+        type: DataTypes.FLOAT,
         allowNull: false
       },
       guide: {
-        type: Sequelize.FLOAT,
+        type: DataTypes.FLOAT,
         allowNull: false
       },
       installation: {
-        type: Sequelize.STRING(7),
+        type: DataTypes.STRING(7),
         allowNull: false
       },
       divisorHigh: {
-        type: Sequelize.FLOAT,
+        type: DataTypes.FLOAT,
         allowNull: false,
         field: 'divisor_high'
       },
       angle: {
-        type: Sequelize.STRING(10),
+        type: DataTypes.STRING(10),
         allowNull: false
       },
       notes: {
-        type: Sequelize.STRING(200)
-      },
+        type: DataTypes.STRING(200)
+      }
     });
 
     await queryInterface.createTable('anjeos_heavy', {
       orderOwnerID: {
         type: DataTypes.INTEGER,
-        allowNull: false,
+        allowNull: true,
         field: 'order_owner_id'
       },
       anjeoHeavyID: {
@@ -150,7 +167,7 @@ module.exports = {
         type: DataTypes.DATE,
         allowNull: false,
         field: 'date_creation',
-        defaultValue: DataTypes.DATE
+        defaultValue: Sequelize.NOW
       },
       color: {
         type: DataTypes.STRING(8),

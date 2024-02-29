@@ -1,5 +1,6 @@
 import { DataTypes, Sequelize} from 'sequelize';
 import { sequelize } from '../../libraries/DBConnection.js';
+//import { Order } from './orderModel.js';
 
 export const ANJEO_LIGHT_TABLE = 'anjeos_light';
 
@@ -7,8 +8,14 @@ export const AnjeoLight = sequelize.define(ANJEO_LIGHT_TABLE,
   {
     orderOwnerID: {
       type: DataTypes.INTEGER,
-      allowNull: false,
-      field: 'order_owner_id'
+      allowNull: true,
+      field: 'order_owner_id',
+      references: {
+        model: 'orders',
+        key: 'id'
+      },
+      onUpdate: 'CASCADE',
+      onDelete: 'SET NULL'
     },
     anjeoLightID: {
       type: DataTypes.INTEGER,
@@ -77,3 +84,10 @@ export const AnjeoLight = sequelize.define(ANJEO_LIGHT_TABLE,
     timestamps: false
   }
 );
+
+//AnjeoLight.belongsTo(Order, { foreignKey: 'orderOwnerID'});
+
+import('./orderModel.js').then((module) => {
+  const Order = module.Order;
+  AnjeoLight.belongsTo(Order, { foreignKey: 'order_owner_id'});
+});
