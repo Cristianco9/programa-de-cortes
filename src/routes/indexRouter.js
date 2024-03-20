@@ -18,6 +18,7 @@ import deleteAnjeoLightRouter from "./deleteAnjeoLightRouter.js";
 import deleteAnjeoHeavyRouter from "./deleteAnjeoHeavyRouter.js";
 import updateFormLightRouter from "./updateFormLightRouter.js";
 import updateFormHeavyRouter from "./updateFormHeavyRouter.js";
+import createUserRouter from './createUserRouter.js';
 
 const routerApi = (app) => {
 
@@ -44,6 +45,7 @@ const routerApi = (app) => {
   router.use('/deleteAnjeoHeavy', deleteAnjeoHeavyRouter);
   router.use('/updateFormLight', updateFormLightRouter);
   router.use('/updateFormHeavy', updateFormHeavyRouter);
+  router.use('/createUser', createUserRouter);
 
 }
 
