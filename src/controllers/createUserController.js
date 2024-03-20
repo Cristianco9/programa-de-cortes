@@ -13,7 +13,6 @@ export const createUser = async (req, res, next) => {
 
   try {
     const hash = await hashPassword(newUser.password);
-    console.log(`this is the password hash: ${hash}`);
 
     try {
       const insertUser = await User.create({

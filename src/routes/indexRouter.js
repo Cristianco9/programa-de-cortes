@@ -10,7 +10,7 @@ import formLightRouter from "./formLightRouter.js";
 import formHeavyRouter from "./formHeavyRouter.js";
 import createAnjeoLightRouter from "./createAnjeoLightRouter.js";
 import createAnjeoHeavyRouter from "./createAnjeoHeavyRouter.js";
-import listAnjeoslightRouter from "./listAnjeosLightRouter.js";
+import listAnjeosLightRouter from "./listAnjeosLightRouter.js";
 import listAnjeosHeavyRouter from "./listAnjeosHeavyRouter.js";
 import editAnjeoLightRouter from "./editAnjeoLightRouter.js";
 import editAnjeoHeavyRouter from "./editAnjeoHeavyRouter.js";
@@ -19,6 +19,8 @@ import deleteAnjeoHeavyRouter from "./deleteAnjeoHeavyRouter.js";
 import updateFormLightRouter from "./updateFormLightRouter.js";
 import updateFormHeavyRouter from "./updateFormHeavyRouter.js";
 import createUserRouter from './createUserRouter.js';
+import listUsersRouter from './listUsersRouter.js';
+import deleteUserRouter from './deleteUserRouter.js';
 
 const routerApi = (app) => {
 
@@ -37,7 +39,7 @@ const routerApi = (app) => {
   router.use('/formHeavy', formHeavyRouter);
   router.use('/createFormLight', createAnjeoLightRouter);
   router.use('/createFormHeavy', createAnjeoHeavyRouter);
-  router.use('/listLight', listAnjeoslightRouter);
+  router.use('/listLight', listAnjeosLightRouter);
   router.use('/listHeavy', listAnjeosHeavyRouter);
   router.use('/editAnjeoLight', editAnjeoLightRouter);
   router.use('/editAnjeoHeavy', editAnjeoHeavyRouter);
@@ -46,6 +48,8 @@ const routerApi = (app) => {
   router.use('/updateFormLight', updateFormLightRouter);
   router.use('/updateFormHeavy', updateFormHeavyRouter);
   router.use('/createUser', createUserRouter);
+  router.use('/listUsers', listUsersRouter);
+  router.use('/deleteUser', deleteUserRouter);
 
 }
 
