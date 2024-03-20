@@ -1,5 +1,5 @@
 import { User } from '../db/models/userModel.js';
-import { hashPassword } from '../utils/auth/passHash.js'
+import { hashPassword } from '../utils/auth/passHash.js';
 import Boom from '@hapi/boom';
 
 export const createUser = async (req, res, next) => {
@@ -32,8 +32,7 @@ export const createUser = async (req, res, next) => {
 
   } catch (err) {
     const boomError = Boom.serverUnavailable(
-      'No es posible encriptar la contraseña del usuario',
-      err);
+      'No es posible encriptar la contraseña del usuario',err);
     next(boomError);
   }
 };
