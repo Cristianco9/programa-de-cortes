@@ -1,5 +1,4 @@
-const passport = import('passport');
-
-const LocalStrategy = import('./strategies/local.strategy');
+import passport from 'passport';
+import { LocalStrategy } from './strategies/local.strategy.js'
 
 passport.use(LocalStrategy);
