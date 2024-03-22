@@ -1,10 +1,10 @@
+import { getUserIdFromCookie } from '../utils/auth/tokenData.js';
 import { Order } from '../db/models/orderModel.js';
 import Boom from '@hapi/boom';
 
 export const orderIDValidation = async (req, res, next) => {
 
-  //temporal
-  const userOwnerID = 1;
+  const userOwnerID = getUserIdFromCookie(req);
 
   const orderInput = req.body.orderNumber;
   const orderNumber = Math.floor(orderInput);

@@ -1,15 +1,15 @@
+import { getUserIdFromCookie } from '../utils/auth/tokenData.js';
 import { Order } from '../db/models/orderModel.js';
 import  Boom from '@hapi/boom';
 
 export const orderActions = async (req, res, next) => {
 
-  // temporal
-  const userOwnerEmail = "admin@gmail.com";
+  const userOwnerID = getUserIdFromCookie(req);
 
   try {
     const currentOrder = await Order.findOne({
       where: {
-        userOwnerEmail: userOwnerEmailOwnerEmail
+        userOwnerID: userOwnerID
       },
       order: [['dateCreation', 'DESC']],
       limit: 1

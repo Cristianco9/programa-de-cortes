@@ -1,7 +1,7 @@
 import { User } from '../db/models/userModel.js';
 import bcrypt from 'bcryptjs';
 import Boom from '@hapi/boom';
-import { signToken } from '../../tokenSign.js';
+import { signToken } from '../utils/auth/tokenSign.js';
 import { config } from '../config/config.js'
 
 export const login = async (req, res, next) => {

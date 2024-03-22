@@ -1,4 +1,4 @@
-import { verifyToken } from '../../tokenVerify.js';
+import { verifyToken } from '../utils/auth/tokenVerify.js';
 import { config } from '../config/config.js';
 
 export const checkRole = (roles) => {

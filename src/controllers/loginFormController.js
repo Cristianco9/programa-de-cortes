@@ -1,4 +1,3 @@
-
 import Boom from '@hapi/boom';
 
 export const userLogin = async (req, res, next) => {

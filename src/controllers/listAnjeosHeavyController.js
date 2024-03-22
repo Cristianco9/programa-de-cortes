@@ -1,11 +1,11 @@
+import { getUserIdFromCookie } from '../utils/auth/tokenData.js';
 import { Order } from '../db/models/orderModel.js';
 import { AnjeoHeavy } from '../db/models/anjeoHeavyModel.js';
 import Boom from '@hapi/boom';
 
 export const listAnjeosHeavy = async (req, res, next) => {
 
-  // temporal
-  const userOwnerID = 1;
+  const userOwnerID = getUserIdFromCookie(req);
 
   try {
     const currentOrder = await Order.findOne({

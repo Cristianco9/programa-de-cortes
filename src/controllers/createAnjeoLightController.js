@@ -1,11 +1,11 @@
+import { getUserIdFromCookie } from '../utils/auth/tokenData.js';
 import { AnjeoLight } from '../db/models/anjeoLightModel.js';
 import { Order } from '../db/models/orderModel.js';
 import Boom from '@hapi/boom';
 
 export const createAnejoLight = async (req, res, next) => {
 
-  // temporal
-  const userOwnerID = 1;
+  const userOwnerID = getUserIdFromCookie(req);
 
   const anjeoLight = {
     color: req.body.color,
