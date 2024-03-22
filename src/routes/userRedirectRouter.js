@@ -1,10 +1,10 @@
 import { Router } from "express";
 import { userRedirect } from "../controllers/userRedirectController.js";
-import { formLight} from "../controllers/formLightController.js"
+import { verifyToken } from '../middlewares/tokenHandler.js';
 
 const router = Router();
 
-router.get('/', userRedirect);
+router.get('/', verifyToken, userRedirect);
 
 
 export default router;

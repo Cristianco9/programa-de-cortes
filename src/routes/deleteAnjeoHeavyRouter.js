@@ -1,8 +1,9 @@
 import { Router } from "express";
+import { verifyToken } from '../middlewares/tokenHandler.js';
 import { deleteAnjeoHeavy } from "../controllers/deleteAnjeoHeavyController.js";
 
 const router = Router();
 
-router.get('/:id', deleteAnjeoHeavy);
+router.get('/:id', verifyToken, deleteAnjeoHeavy);
 
 export default router;

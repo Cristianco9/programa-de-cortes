@@ -1,10 +1,16 @@
 import { Router } from "express";
 import { validatorHandler } from '../middlewares/validatorHandler.js';
-import { anjeosLightSchema } from '../schemas/anjeoLightSchema.js'
+import { anjeosLightSchema } from '../schemas/anjeoLightSchema.js';
+import { verifyToken } from '../middlewares/tokenHandler.js';
 import { createAnejoLight } from "../controllers/createAnjeoLightController.js";
 
 const router = Router();
 
-router.post('/', validatorHandler(anjeosLightSchema, 'body'), createAnejoLight);
+router.post(
+  '/',
+  validatorHandler(anjeosLightSchema, 'body'),
+  verifyToken,
+  createAnejoLight
+  );
 
 export default router;

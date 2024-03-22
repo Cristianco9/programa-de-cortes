@@ -3,6 +3,7 @@ import path from 'path';
 import morgan from 'morgan';
 import { testConnection } from './libraries/DBConnection.js';
 import cors from 'cors';
+import cookieParser from 'cookie-parser';
 import routerApi from './routes/indexRouter.js';
 import { fileURLToPath } from 'url';
 import {
@@ -19,6 +20,7 @@ const app = express();
 app.use(morgan('dev'));
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
+app.use(cookieParser());
 
 // Static files path
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
