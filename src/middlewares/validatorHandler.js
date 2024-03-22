@@ -1,7 +1,6 @@
 import Boom from '@hapi/boom';
 
 export const validatorHandler = (schema, property) => {
-
   return (req, res, next) => {
 
     const data = req[property];

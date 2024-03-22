@@ -1,9 +1,5 @@
-import jwt from ' jsonwebtoken';
-
-const secret = 'Demian';
+import jwt from 'jsonwebtoken';
 
 export const verifyToken = (token, secret) => {
   return jwt.verify(token, secret);
 };
-
-const payload = verifyToken(token, secret);

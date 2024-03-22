@@ -4,6 +4,9 @@ import { tools } from "../controllers/toolsController.js";
 
 const router = Router();
 
-router.get('/', verifyToken, tools);
+router.get(
+  '/',
+  verifyToken,
+  tools);
 
 export default router;
