@@ -10,6 +10,6 @@ router.get(
   verifyToken,
   checkRole(['administrador']),
   editUser
-  );
+);
 
 export default router;

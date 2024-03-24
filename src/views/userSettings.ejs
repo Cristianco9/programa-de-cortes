@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Configuración de usuarios</title>
+    <meta name="description" content="Selecciona una herramienta">
+    <link rel="stylesheet" href="/styles/tools.css">
+    <meta name="robots" content="index,follow">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="mainContainer">
+        <section class="appBox">
+            <h2 class="tittle">Configuración de usuarios</h2>
+            <section class="elementsBox">
+                <div class="tool" id="tool" data-path="/api/v1/settings/users/createUser" onclick="redirect(this)">
+                    <div class="toolContent">
+                        <img class="icono" src="/icons/user-plus-solid.svg" alt="icono de usuario con un símbolo de mas">
+                    </div>
+                    <h3 class="toolName">Crear usuario</h3>
+                </div>
+                <div class="tool" id="tool" data-path="/api/v1/settings/users/listUsers" onclick="redirect(this)">
+                    <div class="toolContent">
+                        <img class="icono" src="/icons/users-solid.svg" alt="tres iconos de usuario">
+                    </div>
+                    <h3 class="toolName">Usuarios creados</h3>
+                </div>
+            </section>
+            <button type="submit" class="botton" data-path="/api/v1/settings" onclick="redirect(this)">Regresar</button>
+        </section>
+    </div>
+    <script type="application/javascript" src="/js/redirectView.js"></script>
+</body>
+</html>

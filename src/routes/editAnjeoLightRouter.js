@@ -10,6 +10,6 @@ router.get(
   verifyToken,
   checkRole(['administrador', 'asesor']),
   editAnjeoLight
-  );
+);
 
 export default router;

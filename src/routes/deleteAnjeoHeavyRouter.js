@@ -9,6 +9,7 @@ router.get(
   '/:id',
   verifyToken,
   checkRole(['administrador', 'asesor']),
-  deleteAnjeoHeavy);
+  deleteAnjeoHeavy
+);
 
 export default router;

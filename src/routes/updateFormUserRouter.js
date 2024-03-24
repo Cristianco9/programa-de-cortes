@@ -14,7 +14,8 @@ router.post(
   verifyToken,
   checkRole(['administrador']),
   updateUser
-  );
+);
+
 router.get('/listUsers', verifyToken, listUsers);
 
 export default router;

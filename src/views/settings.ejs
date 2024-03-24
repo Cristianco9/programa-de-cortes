@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Selecciona una herramienta</title>
+    <title>Menú de configuración</title>
     <meta name="description" content="Selecciona una herramienta">
     <link rel="stylesheet" href="/styles/tools.css">
     <meta name="robots" content="index,follow">
@@ -15,34 +15,34 @@
 <body>
     <div class="mainContainer">
         <section class="appBox">
-            <h2 class="tittle">Selecciona una herramienta</h2>
+            <h2 class="tittle">Menú de configuración</h2>
             <section class="elementsBox">
-                <div class="tool" id="tool" data-path="/api/v1/order" onclick="redirect(this)">
+                <div class="tool" id="tool" data-path="/api/v1/settings/users" onclick="redirect(this)">
                     <div class="toolContent">
-                        <img class="icono" src="/icons/scissors-solid.svg" alt="icono de unas tijeras">
+                        <img class="icono" src="/icons/users-gear-solid.svg" alt="icono de tres usuarios y un engranaje">
                     </div>
-                    <h3 class="toolName">Cortes de anjeo</h3>
+                    <h3 class="toolName">Usuarios</h3>
                 </div>
                 <div class="tool" id="tool" data-path="" onclick="redirect(this)">
                     <div class="toolContent">
-                        <img class="icono" src="/icons/boxes-stacked-solid.svg" alt="icono de unas tijeras">
+                        <img class="icono" src="/icons/ruler-combined-solid.svg" alt="icono de una regla en forma de L">
                     </div>
-                    <h3 class="toolName">Control de pedidos</h3>
+                    <h3 class="toolName">Descuentos</h3>
                 </div>
                 <div class="tool" id="tool" data-path="" onclick="redirect(this)">
                     <div class="toolContent">
-                        <img class="icono" src="/icons/warehouse-solid.svg" alt="icono de unas tijeras">
+                        <img class="icono" src="/icons/ruler-vertical-solid.svg" alt="icono de una regla">
                     </div>
-                    <h3 class="toolName">inventario</h3>
+                    <h3 class="toolName">Despiece</h3>
                 </div>
-                <div class="tool" id="tool" data-path="./settings" onclick="redirect(this)">
+                <div class="tool" id="tool" data-path="" onclick="redirect(this)">
                     <div class="toolContent">
-                        <img class="icono" src="/icons/gear-solid.svg" alt="icono de unas tijeras">
+                        <img class="icono" src="/icons/folder-solid.svg" alt="icono de una carpeta">
                     </div>
-                    <h3 class="toolName">Configuración</h3>
+                    <h3 class="toolName">Ordenes</h3>
                 </div>
             </section>
-            <button type="submit" class="botton" data-path="./" onclick="redirect(this)">Salir</button>
+            <button type="submit" class="botton" data-path="/api/v1/tools" onclick="redirect(this)">Regresar</button>
         </section>
     </div>
     <script type="application/javascript" src="/js/redirectView.js"></script>

@@ -15,7 +15,8 @@ router.post(
   verifyToken,
   checkRole(['administrador', 'asesor']),
   updateAnjeoLight
-  );
+);
+
 router.get('/listLight', verifyToken, listAnjeosLight);
 router.get('/typeCreated', verifyToken, typeCreated);
 

@@ -15,7 +15,8 @@ router.post(
   verifyToken,
   checkRole(['administrador', 'asesor']),
   updateAnjeoHeavy
-  );
+);
+
 router.get('/listHeavy', verifyToken, listAnjeosHeavy);
 router.get('/typeCreated', verifyToken, typeCreated);
 

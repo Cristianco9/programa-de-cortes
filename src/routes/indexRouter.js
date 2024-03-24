@@ -23,6 +23,7 @@ import listUsersRouter from './listUsersRouter.js';
 import editUserRouter from './editUserRouter.js';
 import deleteUserRouter from './deleteUserRouter.js';
 import updateUserRouter from './updateFormUserRouter.js';
+import settingsRouter from './settingsRouter.js';
 
 const routerApi = (app) => {
 
@@ -54,6 +55,7 @@ const routerApi = (app) => {
   router.use('/editUser', editUserRouter);
   router.use('/deleteUser', deleteUserRouter);
   router.use('/updateUser', updateUserRouter);
+  router.use('/settings', settingsRouter);
 
 }
 

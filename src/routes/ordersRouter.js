@@ -12,6 +12,6 @@ router.get(
   verifyToken,
   checkRole(['administrador', 'asesor']),
   order
-  );
+);
 
 export default router;

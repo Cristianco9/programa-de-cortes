@@ -10,6 +10,6 @@ router.get(
   verifyToken,
   checkRole(['administrador', 'asesor']),
   editAnjeoHeavy
-  );
+);
 
 export default router;

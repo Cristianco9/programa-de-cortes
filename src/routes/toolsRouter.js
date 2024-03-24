@@ -7,6 +7,7 @@ const router = Router();
 router.get(
   '/',
   verifyToken,
-  tools);
+  tools
+);
 
 export default router;

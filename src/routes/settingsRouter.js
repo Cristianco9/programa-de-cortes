@@ -1,18 +1,23 @@
 import { Router } from "express";
-import { validatorHandler } from '../middlewares/validatorHandler.js';
-import { usersSchema } from '../schemas/usersSchema.js';
 import { verifyToken } from '../middlewares/tokenHandler.js';
 import { checkRole } from '../middlewares/checkRoleHandler.js';
-import { createUser } from "../controllers/createUserController.js";
+import { settings } from "../controllers/settingsController.js";
+import { userSettings } from "../controllers/userSettingsController.js";
 
 const router = Router();
 
-router.post(
+router.get(
   '/',
-  validatorHandler(usersSchema, 'body'),
   verifyToken,
   checkRole(['administrador']),
-  createUser
+  settings
+);
+
+router.get(
+  '/users',
+  verifyToken,
+  checkRole(['administrador']),
+  userSettings
 );
 
 export default router;

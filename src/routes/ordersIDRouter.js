@@ -13,6 +13,6 @@ router.post(
   verifyToken,
   checkRole(['administrador', 'asesor']),
   orderIDValidation
-  );
+);
 
 export default router;

@@ -9,6 +9,6 @@ router.get(
   '/',verifyToken,
   checkRole(['administrador', 'asesor']),
   orderActions
-  );
+);
 
 export default router;
