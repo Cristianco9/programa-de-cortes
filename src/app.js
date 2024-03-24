@@ -49,6 +49,7 @@ const options = {
   }
 }
 app.use(cors());
+
 const passport = import('./utils/auth/indexAuth.js');
 
 // Error middlewares

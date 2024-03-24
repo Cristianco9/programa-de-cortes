@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inicio de sección</title>
     <meta name="description" content="Inicio de sección">
-    <link rel="stylesheet" href="/styles/loginWrongUser.css" type="text/css">
+    <link rel="stylesheet" href="/styles/unauthorized.css" type="text/css">
     <meta name="robots" content="index,follow">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -16,14 +16,14 @@
     <div class="mainContainer">
         <section class="appBox">
             <section class="elementsBox">
-                <h2 class="tittle">Inicio de sección</h2>
+                <h2 class="tittle">Acceso denegado</h2>
                 <div class="iconoBox">
-                  <img class="icono" src="/icons/user-slash-solid.svg" alt="icono de usuario con un slash">
+                  <img class="icono" src="/icons/user-shield-solid.svg" alt="icono de usuario con un escudo">
                 </div>
                 <div class="errorContainer">
-                  <p class="errorMessage">Usuario incorrecto o inexistente, por favor verifiquelo e intentelo de nuevo</p>
+                    <p class="errorMessage">No tiene permiso para acceder a este recurso, por favor comuníquese con el administrador </p>
                 </div>
-                <button type="submit" class="Botton" data-path="/api/v1/" onclick="redirect(this)">Aceptar</button>
+                <button type="" class="Botton" data-path="/api/v1/tools" onclick="redirect(this)">Aceptar</button>
             </section>
         </section>
     </div>

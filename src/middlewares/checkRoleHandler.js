@@ -6,20 +6,20 @@ export const checkRole = (roles) => {
     const token = req.cookies.token;
 
     if (!token) {
-      return res.status(403).send('Acceso denegado');
+      return res.render('accessDenied');
     }
 
     try {
       const user = verifyToken(token, config.jwtKey);
 
       if (!user || !user.rol || !roles.includes(user.rol)) {
-        return res.status(401).send('No autorizado');
+        return res.render('unauthorized');
       }
 
       req.user = user;
       next();
     } catch (error) {
-      return res.status(401).send('Token inválido');
+      return res.render('tokenInvalid');
     }
   };
 };
