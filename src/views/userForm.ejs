@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crear usuario</title>
+    <meta name="description" content="Crear un nuevo usuario">
+    <link rel="stylesheet" href="/styles/userForm.css" type="text/css">
+    <meta name="robots" content="index,follow">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="mainContainer">
+        <section class="appBox">
+            <section class="elementsBox">
+                <h2 class="tittle">Crear un nuevo usuario</h2>
+                <form action="/api/v1/settings/users/create" method="POST" class="form" onsubmit="return validateForm()">
+                    <input class="input" name="rol"  id="rol" type="text" placeholder="Rol" required>
+                    <input class="input" name="email"  id="email" type="text" placeholder="Correo electrónico" required>
+                    <input class="input" name="userName"  id="userName" type="text" placeholder="Nombre" required>
+                    <input class="input" name="password" id="password" type="password" placeholder="Contraseña" required>
+                    <input class="input" name="repeatPassword" id="repeatPassword" type="password" placeholder="Repita la contraseña" required>
+                    <div class="error-message" id="errorMessage">Datos incorrectos, por favor verifiquelos e inténtelo de nuevo</div>
+                    <div class="wrongPassword" id="wrongPassword">Las contraseñas no coinciden, por favor verifiquelas e inténtelo de nuevo</div>
+                    <button type="submit" class="loginBotton">Guardar</button>
+                    <button class="botton" data-path="/api/v1/settings/users" onclick="redirect(this)">Regresar</button>
+                </form>
+            </section>
+        </section>
+    </div>
+    <script type="application/javascript" src="/js/validateUserForm.js"></script>
+    <script type="application/javascript" src="/js/redirectView.js"></script>
+</body>
+</html>

@@ -7,9 +7,9 @@ export const createUser = async (req, res, next) => {
   const newUser = {
     rol: req.body.rol,
     email: req.body.email,
-    name: req.body.name,
+    name: req.body.userName,
     password: req.body.password
-  }
+  };
 
   try {
     const hash = await hashPassword(newUser.password);
