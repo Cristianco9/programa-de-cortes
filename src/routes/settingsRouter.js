@@ -8,6 +8,7 @@ import { userSettings } from "../controllers/userSettingsController.js";
 import { newUser } from "../controllers/userFormController.js";
 import { createUser } from "../controllers/createUserController.js";
 import { listUsers } from "../controllers/listUsersController.js";
+import { deleteUser } from "../controllers/deleteUserController.js";
 
 const router = Router();
 
@@ -45,6 +46,13 @@ router.get(
   verifyToken,
   checkRole(['administrador']),
   listUsers
+);
+
+router.get(
+  '/users/listUsers/deleteUser/:id',
+  verifyToken,
+  checkRole(['administrador']),
+  deleteUser
 );
 
 export default router;

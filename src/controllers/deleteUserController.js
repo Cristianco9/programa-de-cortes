@@ -18,12 +18,13 @@ export const deleteUser = async (req, res, next) => {
       });
 
       const usersCreated = result;
-      const usersCreatedQuantity = usersCreated.length;
+      const usersQuantity = usersCreated.length;
 
-      res.status(200).json({
-        usersCreatedQuantity: usersCreatedQuantity,
-        usersCreated: usersCreated
-      })
+      return res.render('listUsers',
+        {
+          usersQuantity: usersQuantity,
+          usersCreated: usersCreated
+        });
     } catch (err) {
         const boomError = Boom.serverUnavailable(
           'No es posible listar los usuarios creados',
