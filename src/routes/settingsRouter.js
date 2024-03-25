@@ -7,6 +7,7 @@ import { settings } from "../controllers/settingsController.js";
 import { userSettings } from "../controllers/userSettingsController.js";
 import { newUser } from "../controllers/userFormController.js";
 import { createUser } from "../controllers/createUserController.js";
+import { listUsers } from "../controllers/listUsersController.js";
 
 const router = Router();
 
@@ -37,6 +38,13 @@ router.post(
   checkRole(['administrador']),
   validatorHandler(usersSchema, 'body'),
   createUser
+);
+
+router.get(
+  '/users/listUsers',
+  verifyToken,
+  checkRole(['administrador']),
+  listUsers
 );
 
 export default router;

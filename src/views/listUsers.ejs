@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Usuarios creados</title>
+    <meta name="description" content="Usuarios creados">
+    <link rel="stylesheet" href="/styles/listUsers.css">
+    <meta name="robots" content="index,follow">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="mainContainer">
+        <section class="appBox">
+            <header class="header">
+                <section class="tablesContainer">
+                    <table class="dataTable">
+                        <thead>
+                            <tr>
+                                <th class="usersQuantity">Total de usuarios</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="total"> <%= usersQuantity %> </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </section>
+                <h2 class="usersTitle">Usuarios creados</h2>
+            </header>
+            <main class="usersContainer">
+                    <table class="usersTable">
+                        <thead>
+                            <tr class="columnDataContainer">
+                                <th class="columnData">Rol</th>
+                                <th class="columnData">Nombre</th>
+                                <th class="columnActions">Opciones</th>
+                            </tr>
+                        </thead>
+                        <tbody class="usersTableBody">
+                            <% for (let i = 0; i < usersCreated.length; i++) { %>
+                                <tr class="rowsContainer">
+                                    <td class="rowData"><%= usersCreated[i].rol %></td>
+                                    <td class="rowData"><%= usersCreated[i].name %></td>
+                                </tr>
+                                <tr class="actionButtonsContainer">
+                                    <td class="actionButtons">
+                                        <form class="formActions">
+                                            <input type="hidden" name="thisUserID" value="<%= usersCreated[i].id %>">
+                                            <a href="/api/v1/editAnjeoLight/<%= usersCreated[i].id %>" class="buttonEdit">Editar</a>
+                                            <a href="/api/v1/deleteAnjeoLight/<%= usersCreated[i].id %>" class="buttonDelete">Eliminar</a>
+                                        </form>
+                                    </td>
+                                </tr>
+
+                            <% } %>
+                        </tbody>
+                    </table>
+            </main>
+            <footer class="footer">
+                <button class="button" data-path="/api/v1/settings/users/" onclick="redirect(this)">Regresar</button>
+            </footer>
+        </section>
+    </div>
+    <script src="/js/redirectView.js"></script>
+</body>
+</html>
