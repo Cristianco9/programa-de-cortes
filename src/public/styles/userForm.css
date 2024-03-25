@@ -161,7 +161,27 @@ html {
       margin-top: 1rem;
     }
 
+    .wrongEmail {
+      display: none;
+      width: 18rem;
+      font-family: 'Readex Pro', sans-serif;
+      font-size: 1rem;
+      text-align: center;
+      color: var(--red-color);
+      margin-top: 1rem;
+    }
+
     .wrongPassword {
+      display: none;
+      width: 18rem;
+      font-family: 'Readex Pro', sans-serif;
+      font-size: 1rem;
+      text-align: center;
+      color: var(--red-color);
+      margin-top: 1rem;
+    }
+
+    .weakPassword {
       display: none;
       width: 18rem;
       font-family: 'Readex Pro', sans-serif;
@@ -254,7 +274,27 @@ html {
   margin-top: 1rem;
 }
 
+.wrongEmail {
+  display: none;
+  width: 18rem;
+  font-family: 'Readex Pro', sans-serif;
+  font-size: 1rem;
+  text-align: center;
+  color: var(--red-color);
+  margin-top: 1rem;
+}
+
 .wrongPassword {
+  display: none;
+  width: 18rem;
+  font-family: 'Readex Pro', sans-serif;
+  font-size: 1rem;
+  text-align: center;
+  color: var(--red-color);
+  margin-top: 1rem;
+}
+
+.weakPassword {
   display: none;
   width: 18rem;
   font-family: 'Readex Pro', sans-serif;
@@ -347,7 +387,27 @@ margin-top: 1rem;
   margin-top: 1rem;
 }
 
+.wrongEmail {
+  display: none;
+  width: 18rem;
+  font-family: 'Readex Pro', sans-serif;
+  font-size: 1rem;
+  text-align: center;
+  color: var(--red-color);
+  margin-top: 1rem;
+}
+
 .wrongPassword {
+  display: none;
+  width: 18rem;
+  font-family: 'Readex Pro', sans-serif;
+  font-size: 1rem;
+  text-align: center;
+  color: var(--red-color);
+  margin-top: 1rem;
+}
+
+.weakPassword {
   display: none;
   width: 18rem;
   font-family: 'Readex Pro', sans-serif;
@@ -440,7 +500,27 @@ margin-top: 1rem;
   margin-top: 1rem;
 }
 
+.wrongEmail {
+  display: none;
+  width: 18rem;
+  font-family: 'Readex Pro', sans-serif;
+  font-size: 1rem;
+  text-align: center;
+  color: var(--red-color);
+  margin-top: 1rem;
+}
+
 .wrongPassword {
+  display: none;
+  width: 18rem;
+  font-family: 'Readex Pro', sans-serif;
+  font-size: 1rem;
+  text-align: center;
+  color: var(--red-color);
+  margin-top: 1rem;
+}
+
+.weakPassword {
   display: none;
   width: 18rem;
   font-family: 'Readex Pro', sans-serif;

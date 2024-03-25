@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nombre de usuario Duplicado</title>
+    <meta name="description" content="Nombre de usuario Duplicado">
+    <link rel="stylesheet" href="/styles/fieldsDuplicated.css" type="text/css">
+    <meta name="robots" content="index,follow">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="mainContainer">
+        <section class="appBox">
+            <section class="elementsBox">
+                <h2 class="tittle">No se pudo crear el usuario</h2>
+                <div class="iconoBox">
+                  <img class="icono" src="/icons/circle-exclamation-solid.svg" alt="icono de un circulo y un signo de exclamación dentro">
+                </div>
+                <div class="errorContainer">
+                    <p class="errorMessage">El nombre de usuario ya existe en la base de datos, por favor verifiquelo e inténtelo de nuevo</p>
+                </div>
+                <button type="" class="Botton" data-path="/api/v1/settings/users/new" onclick="redirect(this)">Aceptar</button>
+            </section>
+        </section>
+    </div>
+    <script type="application/javascript" src="/js/redirectView.js"></script>
+</body>
+</html>

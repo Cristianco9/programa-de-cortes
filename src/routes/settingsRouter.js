@@ -1,6 +1,8 @@
 import { Router } from "express";
 import { verifyToken } from '../middlewares/tokenHandler.js';
 import { checkRole } from '../middlewares/checkRoleHandler.js';
+import { validatorHandler } from '../middlewares/validatorHandler.js';
+import { usersSchema } from '../schemas/usersSchema.js';
 import { settings } from "../controllers/settingsController.js";
 import { userSettings } from "../controllers/userSettingsController.js";
 import { newUser } from "../controllers/userFormController.js";
@@ -33,6 +35,7 @@ router.post(
   '/users/create',
   verifyToken,
   checkRole(['administrador']),
+  validatorHandler(usersSchema, 'body'),
   createUser
 );
 
