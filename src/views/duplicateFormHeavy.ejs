@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Editar anjeo pesado</title>
-    <meta name="description" content="Editar anjeo pesado">
+    <title>Duplicar anjeo pesado</title>
+    <meta name="description" content="Duplicar anjeo pesado">
     <link rel="stylesheet" href="/styles/editFormheavy.css">
     <meta name="robots" content="index,follow">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -30,67 +30,67 @@
                         </tbody>
                     </table>
                 </div>
-                <h2 class="anjeoType">Editar anjeo pesado</h2>
+                <h2 class="anjeoType">Duplicar anjeo pesado</h2>
             </section>
-            <form class="form" action="/api/v1/updateFormHeavy/<%= anjeoToEdit.anjeoHeavyID %>" method="POST">
+            <form class="form" action="/api/v1/orderActions/duplicate/heavy/insert/<%= anjeoToDuplicate.anjeoHeavyID %>" method="POST">
                 <div class="fieldContainer">
                     <h3 class="fieldName">Seleccionar color</h3>
-                    <input class="input" name="color" id="color" type="text"  value="<%= anjeoToEdit.color %>">
+                    <input class="input" name="color" id="color" type="text"  value="<%= anjeoToDuplicate.color %>">
                 </div>
                 <div class="fieldContainer">
                     <h3 class="fieldName">Seleccionar perfil</h3>
-                    <input class="input" name="perfil" id="perfil" type="text" value="<%= anjeoToEdit.profileType %>">
+                    <input class="input" name="perfil" id="perfil" type="text" value="<%= anjeoToDuplicate.profileType %>">
                 </div>
                 <div class="fieldContainer">
                     <h3 class="fieldName">Seleccionar tipo de apertura</h3>
-                    <input class="input" name="apertura" id="apertura" type="text" value="<%= anjeoToEdit.opening %>">
+                    <input class="input" name="apertura" id="apertura" type="text" value="<%= anjeoToDuplicate.opening %>">
                 </div>
                 <div class="fieldContainer">
                     <h3 class="fieldName">Lugar</h3>
-                    <input class="input" name="lugar" id="lugar" type="text" value="<%= anjeoToEdit.place %>">
+                    <input class="input" name="lugar" id="lugar" type="text" value="<%= anjeoToDuplicate.place %>">
                 </div>
                 <div class="fieldContainer">
                     <h3 class="fieldName">Ancho</h3>
-                    <input class="input" name="ancho" id="ancho" type="number" value="<%= anjeoToEdit.width %>">
+                    <input class="input" name="ancho" id="ancho" type="number" value="<%= anjeoToDuplicate.width %>">
                 </div>
                 <div class="fieldContainer">
                     <h3 class="fieldName">Altura</h3>
-                    <input class="input" name="altura" id="altura" type="number" value="<%= anjeoToEdit.height %>">
+                    <input class="input" name="altura" id="altura" type="number" value="<%= anjeoToDuplicate.height %>">
                 </div>
                 <div class="fieldContainer">
                     <h3 class="fieldName">Cabezal</h3>
-                    <input class="input" name="cabezal" id="cabezal" type="number" value="<%= anjeoToEdit.head %>">
+                    <input class="input" name="cabezal" id="cabezal" type="number" value="<%= anjeoToDuplicate.head %>">
                 </div>
                 <div class="fieldContainer">
                     <h3 class="fieldName">Adaptador</h3>
-                    <input class="input" name="adaptador" id="adaptador" type="number" value="<%= anjeoToEdit.adaptador %>">
+                    <input class="input" name="adaptador" id="adaptador" type="number" value="<%= anjeoToDuplicate.adaptador %>">
                 </div>
                 <div class="fieldContainer">
                     <h3 class="fieldName">Perfil superior</h3>
-                    <input class="input" name="perfilSuperior" id="perfilSuperior" type="number" value="<%= anjeoToEdit.topProfile %>">
+                    <input class="input" name="perfilSuperior" id="perfilSuperior" type="number" value="<%= anjeoToDuplicate.topProfile %>">
                 </div>
                 <div class="fieldContainer">
                     <h3 class="fieldName">Instalación</h3>
-                    <input class="input" name="instalacion" id="instalacion" type="text" value="<%= anjeoToEdit.installation %>">
+                    <input class="input" name="instalacion" id="instalacion" type="text" value="<%= anjeoToDuplicate.installation %>">
                 </div>
                 <div class="fieldContainer">
                     <h3 class="fieldName">Altura divisor</h3>
-                    <input class="input" name="alturaDivisor" id="alturaDivisor" type="text" value="<%= anjeoToEdit.divisorHigh %>">
+                    <input class="input" name="alturaDivisor" id="alturaDivisor" type="text" value="<%= anjeoToDuplicate.divisorHigh %>">
                 </div>
                 <div class="fieldContainer">
                     <h3 class="fieldName">Tipo de manija</h3>
-                    <input class="input" name="manija" id="manija" type="text" value="<%= anjeoToEdit.typeHandle %>">
+                    <input class="input" name="manija" id="manija" type="text" value="<%= anjeoToDuplicate.typeHandle %>">
                 </div>
                 <div class="fieldContainer">
                     <h3 class="fieldName">Lado de apertura</h3>
-                    <input class="input" name="lado" id="lado" type="text" value="<%= anjeoToEdit.openDirection %>">
+                    <input class="input" name="lado" id="lado" type="text" value="<%= anjeoToDuplicate.openDirection %>">
                 </div>
                 <div class="fieldContainer">
                     <h3 class="fieldName">Notas</h3>
-                    <input class="input" name="notas" id="notas" type="text" value="<%= anjeoToEdit.notes %>">
+                    <input class="input" name="notas" id="notas" type="text" value="<%= anjeoToDuplicate.notes %>">
                 </div>
                 <section class="bottonContainer">
-                    <button data-path="/listHeavy" ondblclick="redirect(this)" class="botton">Regresar</button>
+                    <button data-path="/api/v1/orderActions" ondblclick="redirect(this)" class="botton">Regresar</button>
                     <button type="submit" class="botton">Guardar</button>
                 </section>
             </form>

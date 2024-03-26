@@ -19,20 +19,20 @@
             <section class="elementsBox">
                 <div class="tool" id="tool" data-path="/api/v1/formLight" onclick="redirect(this)">
                     <div class="toolContent">
-                        <img class="icono" src="/icons/weight-hanging-solid.svg" alt="icono de unas tijeras">
+                        <img class="icono" src="/icons/weight-hanging-solid.svg" alt="icono de una pesa">
                     </div>
                     <h3 class="toolName">Liviano</h3>
                 </div>
                 <div class="tool" id="tool" data-path="/api/v1/formHeavy" onclick="redirect(this)">
                     <div class="toolContent">
-                        <img class="icono" src="/icons/weight-hanging-solid.svg" alt="icono de unas tijeras">
+                        <img class="icono" src="/icons/weight-hanging-solid.svg" alt="icono de una pesa">
                     </div>
                     <h3 class="toolName">Pesado</h3>
                 </div>
             </section>
             <section class="bottonContainer">
-                <button type="submit" class="botton">Regresar</button>
-                <button type="submit" class="botton">Salir</button>
+                    <button class="botton" data-path="/api/v1/orderActions" onclick="redirect(this)">Regresar</button>
+                    <button class="botton" data-path="/api/v1/" onclick="redirect(this)">Salir</button>
             </section>
         </section>
     </div>

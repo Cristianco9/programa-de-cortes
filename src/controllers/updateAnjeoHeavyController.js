@@ -45,7 +45,7 @@ export const updateAnjeoHeavy = async (req, res, next) => {
         anjeoHeavyID: anjeoHeavydToUpdate
       }
     });
-    return res.render('anjeoHeavyUpdatedSucessfully');
+    return res.render('anjeoHeavyUpdatedSuccessfully');
 
   } catch (err) {
     const boomError = Boom.serverUnavailable(

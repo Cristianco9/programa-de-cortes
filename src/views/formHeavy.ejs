@@ -30,7 +30,7 @@
                         </tbody>
                     </table>
                 </div>
-                <h2 class="anjeoType">Anjeo pesado</h2>
+                <h2 class="anjeoType">Crear anjeo pesado</h2>
             </section>
             <form class="form" action="/api/v1/CreateFormHeavy" method="POST">
                 <div class="fieldContainer">
@@ -90,11 +90,12 @@
                     <input class="input" name="notas" id="notas" type="text">
                 </div>
                 <section class="bottonContainer">
-                    <button type="" class="botton">Regresar</button>
+                    <button class="botton" data-path="/api/v1/type" onclick="redirect(this)">Regresar</button>
                     <button type="submit" class="botton">Siguiente</button>
                 </section>
             </form>
         </section>
     </div>
+    <script type="application/javascript" src="/js/redirectView.js"></script>
 </body>
 </html>

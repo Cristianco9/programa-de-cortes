@@ -5,7 +5,7 @@ import ordersRouter from "./ordersRouter.js";
 import ordersIDRouter from "./ordersIDRouter.js";
 import ordersActionsRouter from "./ordersActionsRouter.js";
 import typeRouter from "./typeRouter.js";
-import typeCreatedRouter from "./typeCreatedRouter.js";
+import typeToDuplicateRouter from "./typeToDuplicateRouter.js";
 import formLightRouter from "./formLightRouter.js";
 import formHeavyRouter from "./formHeavyRouter.js";
 import createAnjeoLightRouter from "./createAnjeoLightRouter.js";
@@ -32,7 +32,7 @@ const routerApi = (app) => {
   router.use('/orderID', ordersIDRouter);
   router.use('/orderActions', ordersActionsRouter);
   router.use('/type', typeRouter);
-  router.use('/typeCreated', typeCreatedRouter);
+  router.use('/typeToDuplicate', typeToDuplicateRouter);
   router.use('/formLight', formLightRouter);
   router.use('/formHeavy', formHeavyRouter);
   router.use('/createFormLight', createAnjeoLightRouter);

@@ -21,12 +21,13 @@
                     <input class="orderNumber" name="orderNumber" id="orderNumber" type="number" placeholder="Número">
                     <div class="error-message" id="errorMessage">Datos incorrectos, por favor verifiquelos e intentelo de nuevos</div>
                     <button type="submit" class="botton">Siguiente</button>
-                    <button type="" class="botton">Regresar</button>
+                    <button class="botton" data-path="/api/v1/tools" onclick="redirect(this)">Regresar</button>
                 </form>
-                    <button type="" class="exitBotton">Salir</button>
+                    <button class="exitBotton" data-path="/api/v1/" onclick="redirect(this)">Salir</button>
             </section>
         </section>
     </div>
     <script type="application/javascript" src="/js/validateOrderNumber.js"></script>
+    <script type="application/javascript" src="/js/redirectView.js"></script>
 </body>
 </html>
