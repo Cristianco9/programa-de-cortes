@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Crear usuario</title>
-    <meta name="description" content="Crear un nuevo usuario">
+    <title>Editar usuario</title>
+    <meta name="description" content="Editar un usuario">
     <link rel="stylesheet" href="/styles/userForm.css" type="text/css">
     <meta name="robots" content="index,follow">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -16,11 +16,11 @@
     <div class="mainContainer">
         <section class="appBox">
             <section class="elementsBox">
-                <h2 class="tittle">Crear un nuevo usuario</h2>
-                <form action="/api/v1/settings/users/create" method="POST" class="form" onsubmit="return validateForm()">
-                    <input class="input" name="rol"  id="rol" type="text" placeholder="Rol" required>
-                    <input class="input" name="email"  id="email" type="email" placeholder="Correo electrónico" required>
-                    <input class="input" name="name"  id="name" type="text" placeholder="Nombre" required>
+                <h2 class="tittle">Editar un usuario</h2>
+                <form action="/api/v1/settings/users/update/<%= userToEdit.id %>" method="POST" class="form" onsubmit="return validateForm()">
+                    <input class="input" name="rol"  id="rol" type="text" placeholder="Rol" value="<%= userToEdit.rol %>" required>
+                    <input class="input" name="email"  id="email" type="email" placeholder="Correo electrónico" value="<%= userToEdit.email %>" required>
+                    <input class="input" name="name"  id="name" type="text" placeholder="Nombre" value="<%= userToEdit.name %>" required>
                     <input class="input" name="password" id="password" type="password" placeholder="Contraseña" required>
                     <input class="input" name="repeatPassword" id="repeatPassword" type="password" placeholder="Repita la contraseña" required>
                     <div class="error-message" id="errorMessage">Datos incorrectos, por favor verifiquelos e inténtelo de nuevo</div>
@@ -29,7 +29,7 @@
                     <div class="wrongPassword" id="wrongPassword">Las contraseñas no coinciden, por favor verifiquelas e inténtelo de nuevo</div>
                     <div class="weakPassword" id="weakPassword">La contraseña es muy vulnerable, por favor verifiquela e inténtelo de nuevo</div>
                     <button type="submit" class="loginBotton">Guardar</button>
-                    <button class="botton" data-path="/api/v1/settings/users" onclick="redirect(this)">Regresar</button>
+                    <button class="botton" data-path="/api/v1/settings/users/listUsers" onclick="redirect(this)">Regresar</button>
                 </form>
             </section>
         </section>

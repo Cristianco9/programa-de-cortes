@@ -161,6 +161,16 @@ html {
       margin-top: 1rem;
     }
 
+    .wrongName {
+      display: none;
+      width: 18rem;
+      font-family: 'Readex Pro', sans-serif;
+      font-size: 1rem;
+      text-align: center;
+      color: var(--red-color);
+      margin-top: 1rem;
+    }
+
     .wrongEmail {
       display: none;
       width: 18rem;
@@ -265,6 +275,16 @@ html {
 }
 
 .error-message {
+  display: none;
+  width: 18rem;
+  font-family: 'Readex Pro', sans-serif;
+  font-size: 1rem;
+  text-align: center;
+  color: var(--red-color);
+  margin-top: 1rem;
+}
+
+.wrongName {
   display: none;
   width: 18rem;
   font-family: 'Readex Pro', sans-serif;
@@ -387,6 +407,16 @@ margin-top: 1rem;
   margin-top: 1rem;
 }
 
+.wrongName {
+  display: none;
+  width: 18rem;
+  font-family: 'Readex Pro', sans-serif;
+  font-size: 1rem;
+  text-align: center;
+  color: var(--red-color);
+  margin-top: 1rem;
+}
+
 .wrongEmail {
   display: none;
   width: 18rem;
@@ -491,6 +521,16 @@ margin-top: 1rem;
 }
 
 .error-message {
+  display: none;
+  width: 18rem;
+  font-family: 'Readex Pro', sans-serif;
+  font-size: 1rem;
+  text-align: center;
+  color: var(--red-color);
+  margin-top: 1rem;
+}
+
+.wrongName {
   display: none;
   width: 18rem;
   font-family: 'Readex Pro', sans-serif;

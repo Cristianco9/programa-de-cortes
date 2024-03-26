@@ -9,6 +9,8 @@ import { newUser } from "../controllers/userFormController.js";
 import { createUser } from "../controllers/createUserController.js";
 import { listUsers } from "../controllers/listUsersController.js";
 import { deleteUser } from "../controllers/deleteUserController.js";
+import { editUser } from "../controllers/editUserController.js";
+import { updateUser } from "../controllers/updateUserController.js";
 
 const router = Router();
 
@@ -49,7 +51,21 @@ router.get(
 );
 
 router.get(
-  '/users/listUsers/deleteUser/:id',
+  '/users/editUser/:id',
+  verifyToken,
+  checkRole(['administrador']),
+  editUser
+);
+
+router.post(
+  '/users/update/:id',
+  verifyToken,
+  checkRole(['administrador']),
+  updateUser
+);
+
+router.get(
+  '/users/deleteUser/:id',
   verifyToken,
   checkRole(['administrador']),
   deleteUser

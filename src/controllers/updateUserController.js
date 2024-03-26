@@ -29,10 +29,7 @@ export const updateUser = async (req, res, next) => {
         }
       });
 
-      res.status(200).json({
-        newUser: newUser,
-        'newPassword': hash
-      });
+      return res.render('userUpdatedSuccessfully')
     } catch (err) {
         const boomError = Boom.serverUnavailable(
           'No es posible actualizar el usuario', err);

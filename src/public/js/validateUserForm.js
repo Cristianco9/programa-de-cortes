@@ -10,8 +10,18 @@ function validateForm() {
       return false;
   }
 
+  let userNameRegex = /^[a-zA-Z0-9]{3,15}$/;
+  if (!userNameRegex.test(userName)) {
+    document.getElementById('wrongName').style.display = 'block';
+    document.getElementById('wrongEmail').style.display = 'none';
+    document.getElementById('wrongPassword').style.display = 'none';
+    document.getElementById('weakPassword').style.display = 'none';
+    return false;
+  }
+
   let emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]{3,}\.[a-zA-Z]{2,}$/;
   if (!emailRegex.test(email)) {
+      document.getElementById('wrongName').style.display = 'none';
       document.getElementById('wrongEmail').style.display = 'block';
       document.getElementById('wrongPassword').style.display = 'none';
       document.getElementById('weakPassword').style.display = 'none';
@@ -19,6 +29,7 @@ function validateForm() {
   }
 
   if (password !== repeatPassword) {
+      document.getElementById('wrongName').style.display = 'none';
       document.getElementById('wrongEmail').style.display = 'none';
       document.getElementById('wrongPassword').style.display = 'block';
       document.getElementById('weakPassword').style.display = 'none';
@@ -27,6 +38,7 @@ function validateForm() {
 
   let passwordRegex = /^(?=.*[a-z])(?=.*\d)[a-zA-Z\d]{5,30}$/;
   if (!passwordRegex.test(password)) {
+      document.getElementById('wrongName').style.display = 'none';
       document.getElementById('wrongEmail').style.display = 'none';
       document.getElementById('wrongPassword').style.display = 'none';
       document.getElementById('weakPassword').style.display = 'block';

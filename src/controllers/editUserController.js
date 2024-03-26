@@ -18,7 +18,10 @@ export const editUser = async (req, res, next) => {
       next(boomError);
     }
 
-    res.status(200).json(userToEdit);
+    return res.render(
+      'editUserForm',
+      { userToEdit: userToEdit }
+    )
 
   } catch (err) {
       const boomError = Boom.notImplemented(
