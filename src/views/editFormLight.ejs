@@ -32,7 +32,7 @@
                 </div>
                 <h2 class="anjeoType">Editar anjeo liviano</h2>
             </section>
-            <form class="form" action="/api/v1/updateFormLight/<%= anjeoToEdit.anjeoLightID %>" method="POST">
+            <form class="form" action="/api/v1/orderActions/updateFormLight/<%= anjeoToEdit.anjeoLightID %>" method="POST">
                 <div class="fieldContainer">
                     <h3 class="fieldName">Seleccionar color</h3>
                     <input class="input" name="color" id="color" type="text" value="<%= anjeoToEdit.color %>">
@@ -80,7 +80,7 @@
                 <div class="fieldContainerHidden">
                 </div>
                 <section class="bottonContainer">
-                    <button data-path="./listLight" ondblclick="redirect(this)" class="botton">Regresar</button>
+                    <button data-path="/api/v1/orderActions/listLight" onclick="redirect(this)" class="botton">Regresar</button>
                     <button type="submit" class="botton">Guardar</button>
                 </section>
             </form>

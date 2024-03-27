@@ -32,18 +32,34 @@
                 </div>
                 <h2 class="anjeoType">Crear anjeo liviano</h2>
             </section>
-            <form class="form" action="/api/v1/CreateFormLight" method="POST">
+            <form class="form" action="/api/v1/orderActions/type/formLight/CreateFormLight" method="POST">
                 <div class="fieldContainer">
                     <h3 class="fieldName">Seleccionar color</h3>
-                    <input class="input" name="color" id="color" type="text" required>
+                    <select class="input" name="color" id="color" required>
+                      <option value="" disabled selected>Color</option>
+                      <option value="Analog">Analog</option>
+                      <option value="Blanco">Blanco</option>
+                      <option value="Champaña">Champaña</option>
+                      <option value="Natural">Natural</option>
+                      <option value="Negro">Negro</option>
+                  </select>
                 </div>
                 <div class="fieldContainer">
                     <h3 class="fieldName">Seleccionar perfil</h3>
-                    <input class="input" name="perfil" id="perfil" type="text" required>
+                    <select class="input" name="perfil" id="perfil" required>
+                      <option value="" disabled selected>Perfil</option>
+                      <option value="Doble">Doble</option>
+                      <option value="Sencillo">Sencillo</option>
+                  </select>
                 </div>
                 <div class="fieldContainer">
                     <h3 class="fieldName">Seleccionar tipo de apertura</h3>
-                    <input class="input" name="apertura" id="apertura" type="text" required>
+                    <select class="input" name="apertura" id="apertura" required>
+                      <option value="" disabled selected>Apertura</option>
+                      <option value="Fijo">Fijo</option>
+                      <option value="Lateral">Lateral</option>
+                      <option value="Uno hala otro">Uno hala otro</option>
+                  </select>
                 </div>
                 <div class="fieldContainer">
                     <h3 class="fieldName">Lugar</h3>
@@ -63,7 +79,11 @@
                 </div>
                 <div class="fieldContainer">
                     <h3 class="fieldName">Instalación</h3>
-                    <input class="input" name="instalacion" id="instalacion" type="text" required>
+                    <select class="input" name="instalacion" id="instalacion" required>
+                      <option value="" disabled selected>Instalación</option>
+                      <option value="Interna">Interna</option>
+                      <option value="Externa">Externa</option>
+                  </select>
                 </div>
                 <div class="fieldContainer">
                     <h3 class="fieldName">Altura divisor</h3>
@@ -71,7 +91,12 @@
                 </div>
                 <div class="fieldContainer">
                     <h3 class="fieldName">Ángulo</h3>
-                    <input class="input" name="angulo" id="angulo" type="text" required>
+                    <select class="input" name="angulo" id="angulo" required>
+                      <option value="" disabled selected>Ángulo</option>
+                      <option value="Inferior">Inferior</option>
+                      <option value="Lateral">Lateral</option>
+                      <option value="Sin angulo">Sin angulo</option>
+                  </select>
                 </div>
                 <div class="fieldContainer">
                     <h3 class="fieldName">Notas</h3>
@@ -80,7 +105,7 @@
                 <div class="fieldContainerHidden">
                 </div>
                 <section class="bottonContainer">
-                    <button class="botton" data-path="/api/v1/type" onclick="redirect(this)">Regresar</button>
+                    <button class="botton" data-path="/api/v1/orderActions/type" onclick="redirect(this)">Regresar</button>
                     <button type="submit" class="botton">Siguiente</button>
                 </section>
             </form>

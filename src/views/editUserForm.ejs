@@ -18,7 +18,12 @@
             <section class="elementsBox">
                 <h2 class="tittle">Editar un usuario</h2>
                 <form action="/api/v1/settings/users/update/<%= userToEdit.id %>" method="POST" class="form" onsubmit="return validateForm()">
-                    <input class="input" name="rol"  id="rol" type="text" placeholder="Rol" value="<%= userToEdit.rol %>" required>
+                    <select class="input" name="rol" id="rol" required>
+                        <option value="<%= userToEdit.email %>" disabled selected><%= userToEdit.rol %></option>
+                        <option value="administrador">Administrador</option>
+                        <option value="asesor">Asesor</option>
+                        <option value="operador">Operador</option>
+                    </select>
                     <input class="input" name="email"  id="email" type="email" placeholder="Correo electrónico" value="<%= userToEdit.email %>" required>
                     <input class="input" name="name"  id="name" type="text" placeholder="Nombre" value="<%= userToEdit.name %>" required>
                     <input class="input" name="password" id="password" type="password" placeholder="Contraseña" required>

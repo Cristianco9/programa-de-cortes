@@ -63,8 +63,8 @@
                                     <td class="actionButtons">
                                         <form class="formActions" action="/api/v1/deleteAnjeoHeavy" method="POST">
                                             <input type="hidden" name="thisAnjeoHeavyID" value="<%= anjeosHeavyCreated[i].anjeoHeavyID %>">
-                                            <a href="/api/v1/editAnjeoHeavy/<%= anjeosHeavyCreated[i].anjeoHeavyID %>" class="buttonEdit">Editar</a>
-                                            <a href="/api/v1/deleteAnjeoHeavy/<%= anjeosHeavyCreated[i].anjeoHeavyID %>" class="buttonDelete">Eliminar</a>
+                                            <a href="/api/v1/orderActions/editAnjeoHeavy/<%= anjeosHeavyCreated[i].anjeoHeavyID %>" class="buttonEdit">Editar</a>
+                                            <a href="/api/v1/orderActions/deleteAnjeoHeavy/<%= anjeosHeavyCreated[i].anjeoHeavyID %>" class="buttonDelete">Eliminar</a>
                                         </form>
                                     </td>
                                 </tr>

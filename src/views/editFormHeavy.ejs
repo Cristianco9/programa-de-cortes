@@ -32,7 +32,7 @@
                 </div>
                 <h2 class="anjeoType">Editar anjeo pesado</h2>
             </section>
-            <form class="form" action="/api/v1/updateFormHeavy/<%= anjeoToEdit.anjeoHeavyID %>" method="POST">
+            <form class="form" action="/api/v1/orderActions/updateFormHeavy/<%= anjeoToEdit.anjeoHeavyID %>" method="POST">
                 <div class="fieldContainer">
                     <h3 class="fieldName">Seleccionar color</h3>
                     <input class="input" name="color" id="color" type="text"  value="<%= anjeoToEdit.color %>">
@@ -90,7 +90,7 @@
                     <input class="input" name="notas" id="notas" type="text" value="<%= anjeoToEdit.notes %>">
                 </div>
                 <section class="bottonContainer">
-                    <button data-path="/listHeavy" ondblclick="redirect(this)" class="botton">Regresar</button>
+                    <button data-path="/api/v1/orderActions/listLight" onclick="redirect(this)" class="botton">Regresar</button>
                     <button type="submit" class="botton">Guardar</button>
                 </section>
             </form>

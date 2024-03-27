@@ -32,7 +32,7 @@
                 </div>
                 <h2 class="anjeoType">Crear anjeo pesado</h2>
             </section>
-            <form class="form" action="/api/v1/CreateFormHeavy" method="POST">
+            <form class="form" action="/api/v1/orderActions/type/formHeavy/CreateFormHeavy" method="POST">
                 <div class="fieldContainer">
                     <h3 class="fieldName">Seleccionar color</h3>
                     <input class="input" name="color" id="color" type="text" required>
@@ -90,7 +90,7 @@
                     <input class="input" name="notas" id="notas" type="text">
                 </div>
                 <section class="bottonContainer">
-                    <button class="botton" data-path="/api/v1/type" onclick="redirect(this)">Regresar</button>
+                    <button class="botton" data-path="/api/v1/orderActions/type" onclick="redirect(this)">Regresar</button>
                     <button type="submit" class="botton">Siguiente</button>
                 </section>
             </form>
