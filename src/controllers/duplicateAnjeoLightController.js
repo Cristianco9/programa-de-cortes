@@ -29,10 +29,7 @@ export const duplicateAnjeoLight = async (req, res, next) => {
       });
 
       if (!anjeoToDuplicate) {
-        const boomError = Boom.notFound(
-          `No es posible encontrar el anjeo liviano a duplicar
-          en la base de datos`);
-        next(boomError);
+        return res.render('DuplicatedLightInvalid')
       }
 
       return res.render('duplicateFormLight',

@@ -29,10 +29,7 @@ export const duplicateAnjeoHeavy = async (req, res, next) => {
       });
 
       if (!anjeoToDuplicate) {
-        const boomError = Boom.notFound(
-          `No es posible encontrar el anjeo pesado a duplicar
-          en la base de datos`);
-        next(boomError);
+        return res.render('DuplicatedHeavyInvalid')
       }
 
       return res.render('duplicateFormHeavy',
