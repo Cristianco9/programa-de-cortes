@@ -75,7 +75,7 @@ html {
     border-radius: 1rem;
     box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.6);
     margin: auto auto 2rem auto;
-}    
+}
 
 @media (min-width: 375px) {
 
@@ -98,7 +98,7 @@ html {
         align-items: center;
         gap: 5rem;
     }
-    
+
     .header {
         display: flex;
         flex-direction: column;
@@ -178,7 +178,7 @@ html {
         background-color: var(--button-color);
         border-radius: 1rem;
         box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.6);
-    }    
+    }
 }
 
 @media (min-width: 600px) {
@@ -201,7 +201,7 @@ html {
         justify-content: space-around;
         align-items: center;
     }
-    
+
     .header {
         display: flex;
         flex-direction: row;
@@ -278,12 +278,13 @@ html {
         background-color: var(--button-color);
         border-radius: 1rem;
         box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.6);
-    }    
+    }
 }
 
 @media (min-width: 900px) {
     .mainContainer {
         width: 100vw;
+        min-height: 100rem;
         height: 100vh;
         display: flex;
         justify-content: center;
@@ -300,7 +301,7 @@ html {
         justify-content: space-around;
         align-items: center;
     }
-    
+
     .header {
         display: flex;
         flex-direction: row;
@@ -359,6 +360,7 @@ html {
     .fieldName {
         font-family: 'Readex Pro', sans-serif;
         font-size: 1.5rem;
+        width: 12.5rem;
     }
 
 
@@ -379,7 +381,7 @@ html {
         background-color: var(--button-color);
         border-radius: 1rem;
         box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.6);
-    }    
+    }
 }
 
 @media (min-width: 1024px) {
@@ -401,7 +403,7 @@ html {
         justify-content: space-around;
         align-items: center;
     }
-    
+
     .header {
         display: flex;
         flex-direction: row;
@@ -478,5 +480,5 @@ html {
         background-color: var(--button-color);
         border-radius: 1rem;
         box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.6);
-    }    
+    }
 }

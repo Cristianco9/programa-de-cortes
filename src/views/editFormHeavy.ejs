@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Editar anjeo pesado</title>
     <meta name="description" content="Editar anjeo pesado">
-    <link rel="stylesheet" href="/styles/editFormheavy.css">
+    <link rel="stylesheet" href="/styles/editFormHeavy.css">
     <meta name="robots" content="index,follow">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -35,15 +35,33 @@
             <form class="form" action="/api/v1/orderActions/updateFormHeavy/<%= anjeoToEdit.anjeoHeavyID %>" method="POST">
                 <div class="fieldContainer">
                     <h3 class="fieldName">Seleccionar color</h3>
-                    <input class="input" name="color" id="color" type="text"  value="<%= anjeoToEdit.color %>">
+                    <select class="input" name="color" id="color" required>
+                      <option value="<%= anjeoToEdit.color %>" selected><%= anjeoToEdit.color %></option>
+                      <option value="Analog">Anolog</option>
+                      <option value="Blanco">Blanco</option>
+                      <option value="Champaña">Champaña</option>
+                      <option value="Natural">Natural</option>
+                      <option value="Negro">Negro</option>
+                    </select>
                 </div>
                 <div class="fieldContainer">
                     <h3 class="fieldName">Seleccionar perfil</h3>
-                    <input class="input" name="perfil" id="perfil" type="text" value="<%= anjeoToEdit.profileType %>">
+                    <select class="input" name="perfil" id="perfil" required>
+                      <option value="<%= anjeoToEdit.profileType %>" selected><%= anjeoToEdit.profileType %></option>
+                      <option value="Cuatro naves">Cuatro naves</option>
+                      <option value="Doble">Doble</option>
+                      <option value="Sencillo">Sencillo</option>
+                      <option value="Tres naves">Tres naves</option>
+                    </select>
                 </div>
                 <div class="fieldContainer">
                     <h3 class="fieldName">Seleccionar tipo de apertura</h3>
-                    <input class="input" name="apertura" id="apertura" type="text" value="<%= anjeoToEdit.opening %>">
+                    <select class="input" name="apertura" id="apertura" required>
+                      <option value="<%= anjeoToEdit.opening %>" selected><%= anjeoToEdit.opening %></option>
+                      <option value="Fijo">Fijo</option>
+                      <option value="Lateral">Lateral</option>
+                      <option value="Uno hala otro">Uno hala otro</option>
+                    </select>
                 </div>
                 <div class="fieldContainer">
                     <h3 class="fieldName">Lugar</h3>
@@ -71,7 +89,11 @@
                 </div>
                 <div class="fieldContainer">
                     <h3 class="fieldName">Instalación</h3>
-                    <input class="input" name="instalacion" id="instalacion" type="text" value="<%= anjeoToEdit.installation %>">
+                    <select class="input" name="instalacion" id="instalacion" required>
+                      <option value="<%= anjeoToEdit.installation %>" selected><%= anjeoToEdit.installation %></option>
+                      <option value="Externa">Externa</option>
+                      <option value="Interna">Interna</option>
+                    </select>
                 </div>
                 <div class="fieldContainer">
                     <h3 class="fieldName">Altura divisor</h3>
@@ -79,11 +101,20 @@
                 </div>
                 <div class="fieldContainer">
                     <h3 class="fieldName">Tipo de manija</h3>
-                    <input class="input" name="manija" id="manija" type="text" value="<%= anjeoToEdit.typeHandle %>">
+                    <select class="input" name="manija" id="manija" required>
+                      <option value="<%= anjeoToEdit.typeHandle %>" selected><%= anjeoToEdit.typeHandle %></option>
+                      <option value="Cubeta anjeo">Cubeta anjeo</option>
+                      <option value="Ducha">Ducha</option>
+                    </select>
                 </div>
                 <div class="fieldContainer">
                     <h3 class="fieldName">Lado de apertura</h3>
-                    <input class="input" name="lado" id="lado" type="text" value="<%= anjeoToEdit.openDirection %>">
+                    <select class="input" name="lado" id="lado" required>
+                      <option value="<%= anjeoToEdit.openDirection %>" selected><%= anjeoToEdit.openDirection %></option>
+                      <option value="Derecha">Derecha</option>
+                      <option value="Fija">Fija</option>
+                      <option value="Izquierda">Izquierda</option>
+                    </select>
                 </div>
                 <div class="fieldContainer">
                     <h3 class="fieldName">Notas</h3>
