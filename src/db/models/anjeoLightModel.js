@@ -41,7 +41,7 @@ export const AnjeoLight = sequelize.define(ANJEO_LIGHT_TABLE,
       field: 'profile_type'
     },
     opening: {
-      type: DataTypes.STRING(16),
+      type: DataTypes.STRING(13),
       allowNull: false
     },
     place: {
