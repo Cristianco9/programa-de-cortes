@@ -14,7 +14,7 @@ export const anjeosHeavySchema = Joi.object({
   instalacion: Joi.string().min(7).max(7).required(),
   alturaDivisor: Joi.number().min(10).max(1_000).precision(1).required(),
   manija: Joi.string().min(5).max(12).required(),
-  lado: Joi.string().min(7).max(9).required(),
+  lado: Joi.string().min(4).max(9).required(),
   notas: Joi.string().min(0).max(200)
 
 });

@@ -36,12 +36,12 @@ export const AnjeoHeavy = sequelize.define(ANJEO_HEAVY_TABLE,
         allowNull: false
       },
       profileType: {
-        type: DataTypes.STRING(8),
+        type: DataTypes.STRING(12),
         allowNull: false,
         field: 'profile_type',
       },
       opening: {
-        type: DataTypes.STRING(16),
+        type: DataTypes.STRING(13),
         allowNull: false
       },
       place: {
