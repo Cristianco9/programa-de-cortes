@@ -165,6 +165,26 @@ html {
         font-size: 1.5rem;
     }
 
+    .optionsContainer {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .errorContainer {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 0.5rem;
+    }
+
+    .wrongData {
+      width: 18rem;
+      font-family: 'Readex Pro', sans-serif;
+      font-size: 1rem;
+      text-align: center;
+      color: var(--red-color);
+    }
 
     .bottonContainer {
         display: flex;
@@ -270,6 +290,26 @@ html {
         font-size: 1.5rem;
     }
 
+    .optionsContainer {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .errorContainer {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 1rem;
+    }
+
+    .wrongData {
+      width: 35rem;
+      font-family: 'Readex Pro', sans-serif;
+      font-size: 1rem;
+      text-align: center;
+      color: var(--red-color);
+    }
 
     .bottonContainer {
         display: flex;
@@ -377,6 +417,27 @@ html {
         width: 13.2rem;
     }
 
+    .optionsContainer {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .errorContainer {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 1rem;
+    }
+
+    .wrongData {
+      width: 35rem;
+      font-family: 'Readex Pro', sans-serif;
+      font-size: 1rem;
+      text-align: center;
+      color: var(--red-color);
+    }
+
     .bottonContainer {
         display: flex;
         flex-direction: row;
@@ -482,12 +543,33 @@ html {
         font-size: 1.5rem;
     }
 
+    .optionsContainer {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .errorContainer {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 1rem;
+    }
+
+    .wrongData {
+      width: 35rem;
+      font-family: 'Readex Pro', sans-serif;
+      font-size: 1rem;
+      text-align: center;
+      color: var(--red-color);
+    }
+
     .bottonContainer {
         display: flex;
         flex-direction: row;
         justify-content: space-between;
         gap: 13rem;
-        margin-top: rem;
+        margin-top: 3rem;
     }
 
     .botton {

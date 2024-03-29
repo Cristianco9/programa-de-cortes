@@ -165,12 +165,33 @@ html {
         font-size: 1.5rem;
     }
 
+    .optionsContainer {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2rem;
+    }
+
+    .errorContainer {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 1rem;
+    }
+
+    .wrongData {
+      width: 18rem;
+      font-family: 'Readex Pro', sans-serif;
+      font-size: 1rem;
+      text-align: center;
+      color: var(--red-color);
+    }
 
     .bottonContainer {
         display: flex;
         flex-direction: column;
         justify-content: space-between;
-        margin: 3rem 0 2rem 0;
+        margin: 1rem 0 2rem 0;
     }
 
     .botton {
@@ -272,13 +293,33 @@ html {
         font-size: 1.5rem;
     }
 
+    .optionsContainer {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .errorContainer {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 1.6rem;
+    }
+
+    .wrongData {
+      width: 35rem;
+      font-family: 'Readex Pro', sans-serif;
+      font-size: 1rem;
+      text-align: center;
+      color: var(--red-color);
+    }
 
     .bottonContainer {
         display: flex;
         flex-direction: row;
         justify-content: space-between;
         gap: 13rem;
-        margin-top: 3rem;
+        margin-top: 2rem;
     }
 
     .botton {
@@ -305,7 +346,7 @@ html {
 
     .appBox {
         width: 80rem;
-        height: 80rem;
+        height: 82rem;
         margin: 4rem auto 4rem auto;
         display: flex;
         flex-direction: column;
@@ -379,12 +420,33 @@ html {
         width: 12.5rem;
     }
 
+    .optionsContainer {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .errorContainer {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 1.5rem;
+    }
+
+    .wrongData {
+      width: 35rem;
+      font-family: 'Readex Pro', sans-serif;
+      font-size: 1rem;
+      text-align: center;
+      color: var(--red-color);
+    }
+
     .bottonContainer {
         display: flex;
         flex-direction: row;
         justify-content: space-between;
         gap: 13rem;
-        margin-top: 3rem;
+        margin-top: 2rem;
     }
 
     .botton {
@@ -411,7 +473,7 @@ html {
 
     .appBox {
         width: 80rem;
-        height: 80rem;
+        height: 82rem;
         margin: 2rem 0 2rem 0;
         display: flex;
         flex-direction: column;
@@ -484,11 +546,33 @@ html {
         font-size: 1.5rem;
     }
 
+    .optionsContainer {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .errorContainer {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 1.5rem;
+    }
+
+    .wrongData {
+      width: 35rem;
+      font-family: 'Readex Pro', sans-serif;
+      font-size: 1rem;
+      text-align: center;
+      color: var(--red-color);
+    }
+
     .bottonContainer {
         display: flex;
         flex-direction: row;
         justify-content: space-between;
         gap: 13rem;
+        margin-top: 2rem;
     }
 
     .botton {

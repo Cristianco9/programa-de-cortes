@@ -32,7 +32,7 @@
                 </div>
                 <h2 class="anjeoType">Crear anjeo pesado</h2>
             </section>
-            <form class="form" action="/api/v1/orderActions/type/formHeavy/CreateFormHeavy" method="POST">
+            <form class="form" action="/api/v1/orderActions/type/formHeavy/CreateFormHeavy" method="POST" onsubmit="return validateFormValues()">
                 <div class="fieldContainer">
                     <h3 class="fieldName">Seleccionar color</h3>
                     <select class="input" name="color" id="color" required>
@@ -69,23 +69,23 @@
                 </div>
                 <div class="fieldContainer">
                     <h3 class="fieldName">Ancho</h3>
-                    <input class="input" name="ancho" id="ancho" type="number" required>
+                    <input class="input" name="ancho" id="ancho" type="text" required>
                 </div>
                 <div class="fieldContainer">
                     <h3 class="fieldName">Altura</h3>
-                    <input class="input" name="altura" id="altura" type="number" required>
+                    <input class="input" name="altura" id="altura" type="text" required>
                 </div>
                 <div class="fieldContainer">
                     <h3 class="fieldName">Cabezal</h3>
-                    <input class="input" name="cabezal" id="cabezal" type="number" required>
+                    <input class="input" name="cabezal" id="cabezal" type="number" min="1" max="10" required>
                 </div>
                 <div class="fieldContainer">
                     <h3 class="fieldName">Adaptador</h3>
-                    <input class="input" name="adaptador" id="adaptador" type="number" required>
+                    <input class="input" name="adaptador" id="adaptador" type="number" min="1" max="10" required>
                 </div>
                 <div class="fieldContainer">
                     <h3 class="fieldName">Perfil superior</h3>
-                    <input class="input" name="perfilSuperior" id="perfilSuperior" type="number" required>
+                    <input class="input" name="perfilSuperior" id="perfilSuperior" type="text" required>
                 </div>
                 <div class="fieldContainer">
                     <h3 class="fieldName">Instalación</h3>
@@ -97,7 +97,7 @@
                 </div>
                 <div class="fieldContainer">
                     <h3 class="fieldName">Altura divisor</h3>
-                    <input class="input" name="alturaDivisor" id="alturaDivisor" type="number" required>
+                    <input class="input" name="alturaDivisor" id="alturaDivisor" type="text" required>
                 </div>
                 <div class="fieldContainer">
                     <h3 class="fieldName">Tipo de manija</h3>
@@ -120,14 +120,20 @@
                     <h3 class="fieldName">Notas</h3>
                     <input class="input" name="notas" id="notas" type="text">
                 </div>
-                <section class="bottonContainer">
-                    <button class="botton" data-path="/api/v1/orderActions/type" onclick="redirect(this)">Regresar</button>
-                    <button type="submit" class="botton">Siguiente</button>
+                <section class="optionsContainer">
+                    <section class="errorContainer" id="errorContainer">
+                        <div class="wrongData" id="wrongaData">Datos incorrectos, por favor verifiquelos e inténtelo de nuevo</div>
+                    </section>
+                    <section class="bottonContainer">
+                        <button class="botton" data-path="/api/v1/orderActions/type" onclick="redirect(this)">Regresar</button>
+                        <button type="submit" class="botton">Siguiente</button>
+                    </section>
                 </section>
             </form>
         </section>
     </div>
-    <script type="application/javascript" src="/js/redirectView.js"></script>
+    <script type="application/javascript" src="/js/validateFormHeavyValues.js"></script>
     <script type="application/javascript" src="/js/validateFormHeavyInputs.js"></script>
+    <script type="application/javascript" src="/js/redirectView.js"></script>
 </body>
 </html>

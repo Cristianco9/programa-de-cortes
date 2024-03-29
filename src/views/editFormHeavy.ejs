@@ -32,7 +32,7 @@
                 </div>
                 <h2 class="anjeoType">Editar anjeo pesado</h2>
             </section>
-            <form class="form" action="/api/v1/orderActions/updateFormHeavy/<%= anjeoToEdit.anjeoHeavyID %>" method="POST">
+            <form class="form" action="/api/v1/orderActions/updateFormHeavy/<%= anjeoToEdit.anjeoHeavyID %>" method="POST" onsubmit="return validateFormValues()">
                 <div class="fieldContainer">
                     <h3 class="fieldName">Seleccionar color</h3>
                     <select class="input" name="color" id="color" required>
@@ -69,23 +69,23 @@
                 </div>
                 <div class="fieldContainer">
                     <h3 class="fieldName">Ancho</h3>
-                    <input class="input" name="ancho" id="ancho" type="number" value="<%= anjeoToEdit.width %>">
+                    <input class="input" name="ancho" id="ancho" type="text" value="<%= anjeoToEdit.width %>">
                 </div>
                 <div class="fieldContainer">
                     <h3 class="fieldName">Altura</h3>
-                    <input class="input" name="altura" id="altura" type="number" value="<%= anjeoToEdit.height %>">
+                    <input class="input" name="altura" id="altura" type="text" value="<%= anjeoToEdit.height %>">
                 </div>
                 <div class="fieldContainer">
                     <h3 class="fieldName">Cabezal</h3>
-                    <input class="input" name="cabezal" id="cabezal" type="number" value="<%= anjeoToEdit.head %>">
+                    <input class="input" name="cabezal" id="cabezal" type="number" min="1" max="10" value="<%= anjeoToEdit.head %>">
                 </div>
                 <div class="fieldContainer">
                     <h3 class="fieldName">Adaptador</h3>
-                    <input class="input" name="adaptador" id="adaptador" type="number" value="<%= anjeoToEdit.adaptador %>">
+                    <input class="input" name="adaptador" id="adaptador" type="number" min="1" max="10" value="<%= anjeoToEdit.adaptador %>">
                 </div>
                 <div class="fieldContainer">
                     <h3 class="fieldName">Perfil superior</h3>
-                    <input class="input" name="perfilSuperior" id="perfilSuperior" type="number" value="<%= anjeoToEdit.topProfile %>">
+                    <input class="input" name="perfilSuperior" id="perfilSuperior" type="text" value="<%= anjeoToEdit.topProfile %>">
                 </div>
                 <div class="fieldContainer">
                     <h3 class="fieldName">Instalación</h3>
@@ -120,14 +120,20 @@
                     <h3 class="fieldName">Notas</h3>
                     <input class="input" name="notas" id="notas" type="text" value="<%= anjeoToEdit.notes %>">
                 </div>
-                <section class="bottonContainer">
-                    <button data-path="/api/v1/orderActions/listLight" onclick="redirect(this)" class="botton">Regresar</button>
-                    <button type="submit" class="botton">Guardar</button>
-                </section>
+                <section class="optionsContainer">
+                  <section class="errorContainer" id="errorContainer">
+                      <div class="wrongData" id="wrongaData">Datos incorrectos, por favor verifiquelos e inténtelo de nuevo</div>
+                  </section>
+                  <section class="bottonContainer">
+                      <button class="botton" data-path="/api/v1/orderActions/listLight" onclick="redirect(this)">Regresar</button>
+                      <button type="submit" class="botton">Guardar</button>
+                  </section>
+              </section>
             </form>
         </section>
     </div>
-    <script src="/js/redirectView.js"></script>
+    <script type="application/javascript" src="/js/validateFormHeavyValues.js"></script>
     <script type="application/javascript" src="/js/validateFormHeavyInputs.js"></script>
+    <script src="/js/redirectView.js"></script>
 </body>
 </html>

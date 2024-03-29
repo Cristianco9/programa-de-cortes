@@ -32,7 +32,7 @@
                 </div>
                 <h2 class="anjeoType">Crear anjeo liviano</h2>
             </section>
-            <form class="form" action="/api/v1/orderActions/type/formLight/CreateFormLight" method="POST">
+            <form class="form" action="/api/v1/orderActions/type/formLight/CreateFormLight" method="POST" onsubmit="return validateFormValues()">
                 <div class="fieldContainer">
                     <h3 class="fieldName">Seleccionar color</h3>
                     <select class="input" name="color" id="color" required>
@@ -67,15 +67,15 @@
                 </div>
                 <div class="fieldContainer">
                     <h3 class="fieldName">Ancho</h3>
-                    <input class="input" name="ancho" id="ancho" type="number" required>
+                    <input class="input" name="ancho" id="ancho" type="text" required>
                 </div>
                 <div class="fieldContainer">
                     <h3 class="fieldName">Altura</h3>
-                    <input class="input" name="altura" id="altura" type="number" required>
+                    <input class="input" name="altura" id="altura" type="text" required>
                 </div>
                 <div class="fieldContainer">
                     <h3 class="fieldName">Guias</h3>
-                    <input class="input" name="guias" id="guias" type="number" required>
+                    <input class="input" name="guias" id="guias" type="number" min="1" max="10" required>
                 </div>
                 <div class="fieldContainer">
                     <h3 class="fieldName">Instalación</h3>
@@ -87,7 +87,7 @@
                 </div>
                 <div class="fieldContainer">
                     <h3 class="fieldName">Altura divisor</h3>
-                    <input class="input" name="alturaDivisor" id="alturaDivisor" type="number" required>
+                    <input class="input" name="alturaDivisor" id="alturaDivisor" type="text" required>
                 </div>
                 <div class="fieldContainer">
                     <h3 class="fieldName">Ángulo</h3>
@@ -104,14 +104,20 @@
                 </div>
                 <div class="fieldContainerHidden">
                 </div>
-                <section class="bottonContainer">
-                    <button class="botton" data-path="/api/v1/orderActions/type" onclick="redirect(this)">Regresar</button>
-                    <button type="submit" class="botton">Siguiente</button>
-                </section>
+                <section class="optionsContainer">
+                  <section class="errorContainer" id="errorContainer">
+                      <div class="wrongData" id="wrongData">Datos incorrectos, por favor verifiquelos e inténtelo de nuevo</div>
+                  </section>
+                  <section class="bottonContainer">
+                      <button class="botton" data-path="/api/v1/orderActions/type" onclick="redirect(this)">Regresar</button>
+                      <button type="submit" class="botton">Siguiente</button>
+                  </section>
+              </section>
             </form>
         </section>
     </div>
-    <script type="application/javascript" src="/js/redirectView.js"></script>
+    <script type="application/javascript" src="/js/validateFormLightValues.js"></script>
     <script type="application/javascript" src="/js/validateFormLightInputs.js"></script>
+    <script type="application/javascript" src="/js/redirectView.js"></script>
 </body>
 </html>
