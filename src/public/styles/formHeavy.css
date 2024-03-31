@@ -326,7 +326,7 @@ html {
 @media (min-width: 900px) {
     .mainContainer {
         width: 100vw;
-        min-height: 100rem;
+        min-height: 90rem;
         height: 100vh;
         display: flex;
         justify-content: center;

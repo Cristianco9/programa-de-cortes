@@ -334,6 +334,7 @@ html {
 @media (min-width: 900px) {
     .mainContainer {
         width: 100vw;
+        min-height: 80rem;
         height: 100vh;
         display: flex;
         justify-content: center;
@@ -461,6 +462,7 @@ html {
 @media (min-width: 1024px) {
     .mainContainer {
         width: 100vw;
+        min-height: 80rem;
         height: 100vh;
         display: flex;
         justify-content: center;
