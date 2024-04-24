@@ -1,6 +1,7 @@
 import { Router } from "express";
 import { verifyToken } from '../middlewares/tokenHandler.js';
 import { checkRole } from '../middlewares/checkRoleHandler.js';
+import { ordersSchema } from '../schemas/ordersSchema.js';
 import { orderActions } from "../controllers/orderActionsController.js";
 import { type } from "../controllers/typeController.js";
 import { formLight } from "../controllers/formLightController.js";
@@ -24,6 +25,7 @@ import { deleteAnjeoLight } from "../controllers/deleteAnjeoLightController.js";
 import { deleteAnjeoHeavy } from "../controllers/deleteAnjeoHeavyController.js";
 import { recordLightDuplicate } from "../controllers/recordLightDuplicate.js";
 import { recordHeavyDuplicate } from "../controllers/recordHeavyDuplicate.js";
+import { cuttingOrder } from "../controllers/cuttingOrderController.js"
 
 const router = Router();
 
@@ -171,6 +173,13 @@ router.post(
   verifyToken,
   checkRole(['administrador', 'asesor']),
   recordHeavyDuplicate
+);
+
+router.get(
+  '/dscts',
+  verifyToken,
+  checkRole(['administrador', 'asesor']),
+  cuttingOrder
 );
 
 export default router;
