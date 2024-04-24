@@ -112,7 +112,7 @@ module.exports = {
         field: 'profile_type'
       },
       opening: {
-        type: DataTypes.STRING(13),
+        type: DataTypes.STRING(16),
         allowNull: false
       },
       place: {

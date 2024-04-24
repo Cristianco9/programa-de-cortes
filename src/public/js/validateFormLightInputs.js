@@ -10,7 +10,9 @@ document.addEventListener('DOMContentLoaded', () => {
       addDefaultOption(aperturaSelect);
 
       if (perfilSelected === 'Doble') {
+          addOption('Cierre al centro', 'Cierre al centro', aperturaSelect);
           addOption('Lateral', 'Lateral', aperturaSelect);
+          addOption('Tres naves', 'Tres naves', aperturaSelect);
           addOption('Uno hala otro', 'Uno hala otro', aperturaSelect);
       } else if (perfilSelected === 'Sencillo') {
           addOption('Fija', 'Fija', aperturaSelect);
