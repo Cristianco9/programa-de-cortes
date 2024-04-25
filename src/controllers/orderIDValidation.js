@@ -1,5 +1,7 @@
 import { getUserIdFromCookie } from '../utils/auth/tokenData.js';
 import { Order } from '../db/models/orderModel.js';
+import { signToken } from '../utils/auth/tokenSign.js';
+import { config } from '../config/config.js'
 import Boom from '@hapi/boom';
 
 export const orderIDValidation = async (req, res, next) => {
@@ -28,6 +30,12 @@ export const orderIDValidation = async (req, res, next) => {
     };
 
     if (orderExist) {
+
+      const orderData = {
+        id: orderNumber
+      };
+      const token = signToken(orderData, config.jwtKey);
+      res.cookie('currentOrder', token, { httpOnly: true });
       return res.render('orderActions', { orderNumber: orderNumber });
     } else {
 
@@ -37,6 +45,13 @@ export const orderIDValidation = async (req, res, next) => {
           id: orderNumber,
           dateCreation: new Date(),
         });
+
+        const orderData = {
+          id: orderNumber
+        };
+        const token = signToken(orderData, config.jwtKey);
+        res.cookie('currentOrder', token, { httpOnly: true });
+
         return res.render('type');
       } catch (err) {
         const boomError = Boom.notImplemented(

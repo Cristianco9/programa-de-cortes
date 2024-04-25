@@ -29,7 +29,7 @@ export const login = async (req, res, next) => {
           rol: userRecord.rol
         };
         const token = signToken(userData, config.jwtKey);
-        res.cookie('token', token, { httpOnly: true });
+        res.cookie('authentication', token, { httpOnly: true });
         return res.render('tools');
       } else {
           return res.render('loginWrongPass');

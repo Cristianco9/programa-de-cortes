@@ -3,27 +3,31 @@ import { signToken } from '../utils/auth/tokenSign.js';
 import jwt from 'jsonwebtoken';
 
 export const verifyToken = (req, res, next) => {
-  const token = req.cookies.token;
-  if (!token) {
-    res.clearCookie('token');
+  const authenticationToken = req.cookies.authentication
+  const currentOrderToken = req.cookies.currentOrder;
+  if (!authenticationToken) {
+    res.clearCookie('authentication');
+    res.clearCookie('currentOrder');
     return res.render('accessDenied');
   }
-  jwt.verify(token, config.jwtKey, (err, decoded) => {
+  jwt.verify(authenticationToken, config.jwtKey, (err, decoded) => {
     if (err) {
       if (err.name === 'TokenExpiredError') {
-        res.clearCookie('token');
+        res.clearCookie('authentication');
+        res.clearCookie('currentOrder');
         return res.render('tokenExpired');
       } else {
-        res.clearCookie('token');
+        res.clearCookie('authentication');
+        res.clearCookie('currentOrder');
         return res.render('tokenInvalid');
       }
     }
     const userData = {
       id: decoded.id,
-      rol: decoded.rol
+      rol: decoded.rol,
     };
     const newToken = signToken(userData, config.jwtKey);
-    res.cookie('token', newToken, { httpOnly: true });
+    res.cookie('authentication', newToken, { httpOnly: true });
     req.user = decoded;
     next();
   });
