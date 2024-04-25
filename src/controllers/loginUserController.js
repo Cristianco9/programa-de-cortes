@@ -1,7 +1,7 @@
 import { User } from '../db/models/userModel.js';
 import bcrypt from 'bcryptjs';
 import Boom from '@hapi/boom';
-import { signToken } from '../utils/auth/tokenSign.js';
+import { signUserToken } from '../utils/auth/tokenSign.js';
 import { config } from '../config/config.js'
 
 export const login = async (req, res, next) => {
@@ -28,7 +28,7 @@ export const login = async (req, res, next) => {
           id: userRecord.id,
           rol: userRecord.rol
         };
-        const token = signToken(userData, config.jwtKey);
+        const token = signUserToken(userData, config.jwtKey);
         res.cookie('authentication', token, { httpOnly: true });
         return res.render('tools');
       } else {

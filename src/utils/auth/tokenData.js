@@ -28,3 +28,17 @@ export const getUserRolFromCookie = (req) => {
     return null;
   }
 };
+
+export const getOrderIdFromCookie = (req) => {
+  const authenticationToken = req.cookies.authentication;
+
+  if (!authenticationToken) {
+    return null;
+  }
+  try {
+    const decoded = verifyToken(authenticationToken, config.jwtKey);
+    return decoded.currentOrder;
+  } catch (err) {
+    return null;
+  }
+};

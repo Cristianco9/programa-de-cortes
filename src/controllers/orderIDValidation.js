@@ -1,12 +1,13 @@
-import { getUserIdFromCookie } from '../utils/auth/tokenData.js';
+import { getUserIdFromCookie, getUserRolFromCookie } from '../utils/auth/tokenData.js';
 import { Order } from '../db/models/orderModel.js';
-import { signToken } from '../utils/auth/tokenSign.js';
+import { signUserToken } from '../utils/auth/tokenSign.js';
 import { config } from '../config/config.js'
 import Boom from '@hapi/boom';
 
 export const orderIDValidation = async (req, res, next) => {
 
   const userOwnerID = getUserIdFromCookie(req);
+  const userOwnerRol = getUserRolFromCookie(req);
 
   const orderInput = req.body.orderNumber;
   const orderNumber = Math.floor(orderInput);
@@ -31,11 +32,13 @@ export const orderIDValidation = async (req, res, next) => {
 
     if (orderExist) {
 
-      const orderData = {
-        id: orderNumber
+      const userData = {
+        id: userOwnerID,
+        rol: userOwnerRol,
+        currentOrder: orderNumber
       };
-      const token = signToken(orderData, config.jwtKey);
-      res.cookie('currentOrder', token, { httpOnly: true });
+      const token = signUserToken(userData, config.jwtKey);
+      res.cookie('authentication', token, { httpOnly: true });
       return res.render('orderActions', { orderNumber: orderNumber });
     } else {
 
@@ -46,12 +49,13 @@ export const orderIDValidation = async (req, res, next) => {
           dateCreation: new Date(),
         });
 
-        const orderData = {
-          id: orderNumber
+        const userData = {
+          id: userOwnerID,
+          rol: userOwnerRol,
+          currentOrder: orderNumber
         };
-        const token = signToken(orderData, config.jwtKey);
-        res.cookie('currentOrder', token, { httpOnly: true });
-
+        const token = signUserToken(userData, config.jwtKey);
+        res.cookie('authentication', token, { httpOnly: true });
         return res.render('type');
       } catch (err) {
         const boomError = Boom.notImplemented(
