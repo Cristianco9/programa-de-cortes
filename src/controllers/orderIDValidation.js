@@ -23,7 +23,7 @@ export const orderIDValidation = async (req, res, next) => {
     const ordersID = recordSearch.map(record => record.id);
 
     let orderExist = false;
-    for (const id of ordersID) {
+    for (let id of ordersID) {
       if (id === orderNumber) {
         orderExist = true;
         break;

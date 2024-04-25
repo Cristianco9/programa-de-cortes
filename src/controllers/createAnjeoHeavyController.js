@@ -1,40 +1,29 @@
-import { getUserIdFromCookie } from '../utils/auth/tokenData.js';
+import { getOrderIdFromCookie } from '../utils/auth/tokenData.js';
 import { AnjeoHeavy } from '../db/models/anjeoHeavyModel.js';
-import { Order } from '../db/models/orderModel.js';
 import Boom from '@hapi/boom';
 
 export const createAnjeoHeavy = async (req, res, next) => {
 
-  const userOwnerID = getUserIdFromCookie(req);
-
-  const anjeoHeavy = {
-    color: req.body.color,
-    perfil: req.body.perfil,
-    apertura: req.body.apertura,
-    lugar: req.body.lugar,
-    ancho: req.body.ancho,
-    altura: req.body.altura,
-    cabezal: req.body.cabezal,
-    adaptador: req.body.adaptador,
-    perfilSuperior: req.body.perfilSuperior,
-    instalacion: req.body.instalacion,
-    alturaDivisor: req.body.alturaDivisor,
-    manija: req.body.manija,
-    lado: req.body.lado,
-    notas: req.body.notas
-  };
-
   try {
-    const currentOrder = await Order.findOne({
-      attributes: ['id'],
-      where: {
-        userOwnerID: userOwnerID
-      },
-      order: [['dateCreation', 'DESC']],
-      limit: 1
-    });
+    const currentOrderID = getOrderIdFromCookie(req);
+    const orderNumber = currentOrderID ? currentOrderID : null;
 
-    const orderNumber = currentOrder ? currentOrder.id : null;
+    const anjeoHeavy = {
+      color: req.body.color,
+      perfil: req.body.perfil,
+      apertura: req.body.apertura,
+      lugar: req.body.lugar,
+      ancho: req.body.ancho,
+      altura: req.body.altura,
+      cabezal: req.body.cabezal,
+      adaptador: req.body.adaptador,
+      perfilSuperior: req.body.perfilSuperior,
+      instalacion: req.body.instalacion,
+      alturaDivisor: req.body.alturaDivisor,
+      manija: req.body.manija,
+      lado: req.body.lado,
+      notas: req.body.notas
+    };
 
     try {
       const insertAnjeoHeavy = await AnjeoHeavy.create({
@@ -64,7 +53,8 @@ export const createAnjeoHeavy = async (req, res, next) => {
     };
   } catch (err) {
       const boomError = Boom.serverUnavailable(
-        'No es posible verificar el número de la orden en la base de datos',
+        `No es posible verificar el número de la orden en los datos enviados
+        por el cliente`,
         err);
       next(boomError);
   }

@@ -1,24 +1,12 @@
-import { getUserIdFromCookie } from '../utils/auth/tokenData.js';
+import { getOrderIdFromCookie } from '../utils/auth/tokenData.js';
 import { AnjeoLight } from '../db/models/anjeoLightModel.js';
-import { Order } from '../db/models/orderModel.js';
 import Boom from '@hapi/boom';
 
 export const editAnjeoLight = async (req, res, next) => {
 
-  const userOwnerID = getUserIdFromCookie(req);
-
   try {
-    const currentOrder = await Order.findOne({
-      attributes: ['id'],
-      where: {
-        userOwnerID: userOwnerID
-      },
-      order: [['dateCreation', 'DESC']],
-      limit: 1
-    });
-
-    const orderNumber = currentOrder.id ? currentOrder.id : null;
-
+    const currentOrderID = getOrderIdFromCookie(req);
+    const orderNumber = currentOrderID ? currentOrderID : null;
     const { id } = req.params;
 
     try {
@@ -49,7 +37,8 @@ export const editAnjeoLight = async (req, res, next) => {
 
   } catch (err) {
       const boomError = Boom.serverUnavailable(
-        'No es posible verificar el número de la orden en la base de datos',
+        `No es posible verificar el número de la orden en los datos enviados
+        por el cliente`,
         err);
       next(boomError);
   }
