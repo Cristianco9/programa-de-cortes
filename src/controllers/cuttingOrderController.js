@@ -1,5 +1,4 @@
-import { getUserIdFromCookie } from '../utils/auth/tokenData.js';
-import { Order } from '../db/models/orderModel.js';
+import { getOrderIdFromCookie } from '../utils/auth/tokenData.js';
 import { AnjeoLight } from '../db/models/anjeoLightModel.js';
 import { AnjeoHeavy } from '../db/models/anjeoHeavyModel.js';
 import { applyDiscountsLight, applyDiscountsHeavy } from '../services/cuttingOrderServices.js'
@@ -67,9 +66,6 @@ export const cuttingOrder =  async (req, res, next) => {
         });
 
         const anjeosHeavyData = anjeosHeavyCreated.map(anjeo => anjeo.dataValues);
-
-        console.log("anjeos pesados:");
-        console.log(anjeosHeavyData);
 
         try {
           const anjeosLightModified = await applyDiscountsLight(anjeosLightData);
