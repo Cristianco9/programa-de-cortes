@@ -1,34 +1,34 @@
-export const calculateWidthFixed = (inputWidth) => {
+export const calculateLightWidthFixed = (inputWidth) => {
   let outputWidth = inputWidth - 4
   return outputWidth;
 };
 
-export const calculateHeightFixed = (inputHeight) => {
+export const calculateLightHeightFixed = (inputHeight) => {
   let outputHeight = inputHeight - 4
   return outputHeight;
 };
 
-export const calculateHeight = (inputHeight) => {
+export const calculateLightHeight = (inputHeight) => {
   let outputHeight = inputHeight - 6
   return outputHeight;
 };
 
-export const calculateWidthLateral = (inputWidth) => {
+export const calculateLightWidthLateral = (inputWidth) => {
   let outputWidth = inputWidth - 4;
   return outputWidth;
 };
 
-export const calculateWidthOneToAnother = (inputWidth) => {
+export const calculateLightWidthOneToAnother = (inputWidth) => {
   let outputWidth = (inputWidth - 6) / 2;
   return outputWidth;
 };
 
-export const calculateWidthPickUpCenter = (inputWidth) => {
+export const calculateLightWidthPickUpCenter = (inputWidth) => {
   let outputWidth = inputWidth - 4;
   return outputWidth;
 };
 
-export const calculateWidthThreeShips = (inputWidth) => {
+export const calculateLightWidthThreeShips = (inputWidth) => {
   let outputWidth = (inputWidth + 4) / 3;
   return outputWidth;
 };

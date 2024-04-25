@@ -4,7 +4,7 @@ export const anjeosHeavySchema = Joi.object({
 
   color: Joi.string().min(5).max(8).required(),
   perfil: Joi.string().min(4).max(12).required(),
-  apertura: Joi.string().min(4).max(13).required(),
+  apertura: Joi.string().min(4).max(16).required(),
   lugar: Joi.string().min(2).max(15).required(),
   ancho: Joi.number().min(10).max(1_000).precision(1).required(),
   altura: Joi.number().min(10).max(1_000).precision(1).required(),

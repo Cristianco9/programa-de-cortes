@@ -2,7 +2,7 @@ import { getUserIdFromCookie } from '../utils/auth/tokenData.js';
 import { Order } from '../db/models/orderModel.js';
 import { AnjeoLight } from '../db/models/anjeoLightModel.js';
 import { AnjeoHeavy } from '../db/models/anjeoHeavyModel.js';
-import { applyDiscountsLight } from '../services/cuttingOrderServices.js'
+import { applyDiscountsLight, applyDiscountsHeavy } from '../services/cuttingOrderServices.js'
 import  Boom from '@hapi/boom';
 
 export const cuttingOrder =  async (req, res, next) => {
@@ -84,7 +84,7 @@ export const cuttingOrder =  async (req, res, next) => {
           const anjeosLightModified = await applyDiscountsLight(anjeosLightData);
 
           try {
-            // aquí continuo!!!!
+            const anjeosHeavyModified = await applyDiscountsHeavy(anjeosHeavyData);
 
           } catch (err) {
             const boomError = Boom.notImplemented(
