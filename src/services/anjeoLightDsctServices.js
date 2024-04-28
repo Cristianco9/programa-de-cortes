@@ -20,7 +20,7 @@ export const calculateLightWidthLateral = (inputWidth) => {
 
 
 export const calculateLightWidthDivisorLateral = (inputWidth) => {
-  let outputWidth = (inputWidth = 2) /2;
+  let outputWidth = (inputWidth - 2) /2;
   return outputWidth;
 };
 

@@ -72,9 +72,9 @@ export const cuttingOrder =  async (req, res, next) => {
 
           try {
             const anjeosHeavyModified = await applyDiscountsHeavy(anjeosHeavyData);
-              console.log("anjeos pesado:");
+              console.log("anjeos liviano:");
               console.log(anjeosLightData);
-              console.log("anjeos pesado moficado:");
+              console.log("anjeos liviano moficado:");
               console.log(anjeosLightModified);
           } catch (err) {
             const boomError = Boom.notImplemented(

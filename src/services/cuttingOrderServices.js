@@ -9,7 +9,8 @@ import {
   calculateLightWidthOneToAnother,
   calculateLightWidthDivisorOneToAnother,
   calculateLightWidthDivisorPickUpCenter,
-  calculateLightWidthDivisorThreeShips
+  calculateLightWidthDivisorThreeShips,
+  calculateLightWidthDivisorLateral
 } from "./anjeoLightDsctServices.js"
 
 import {
@@ -42,9 +43,9 @@ export const applyDiscountsLight = async (anjeosLight) => {
             ...object,
             width: widthUpdated,
             height: heightUpdated,
-            widthProfiles: 2,
-            heightProfiles: 2,
-            divisorProfiles: 1
+            widthProfilesQuantity: 2,
+            heightProfilesQuantity: 2,
+            divisorProfilesQuantity: 1
           }
         } else if (object.profileType === 'Doble' && object.opening === 'Cierre al centro') {
           const widthValue = calculateLightWidthPickUpCenter(object.width);
@@ -61,28 +62,36 @@ export const applyDiscountsLight = async (anjeosLight) => {
             width: widthUpdated,
             height: heightUpdated,
             divisorHigh: divisorHighUpdated,
-            widthProfiles: 4,
-            heightProfiles: 4,
-            divisorProfiles: 2,
-            D28: d28,
-            naveDucha: 1,
-            U74: 1
+            widthProfilesQuantity: 4,
+            heightProfilesQuantity: 4,
+            divisorProfilesQuantity: 2,
+            D28Measure: d28,
+            D28Quantity: 1,
+            naveDuchaMeasure: object.guide,
+            naveDuchaQuantity: 1,
+            U74Measure: object.guide,
+            U74Quantity: 1
           }
         } else if (object.profileType === 'Doble' && object.opening === 'Lateral') {
           const widthValue = calculateLightWidthLateral(object.width);
           const widthUpdated = widthValue.toFixed(1);
           const heightValue = calculateLightHeight(object.height);
           const heightUpdated = heightValue.toFixed(1);
+          const divisorHighValue = calculateLightWidthDivisorLateral(object.width);
+          const divisorHighUpdated = divisorHighValue.toFixed(1);
 
           return {
             ...object,
             width: widthUpdated,
             height: heightUpdated,
-            widthProfiles: 4,
-            heightProfiles: 4,
-            divisorProfiles: 2,
-            naveDucha: 1,
-            U74: 1
+            divisorHigh: divisorHighUpdated,
+            widthProfilesQuantity: 4,
+            heightProfilesQuantity: 4,
+            divisorProfilesQuantity: 2,
+            naveDuchaMeasure: object.guide,
+            naveDuchaQuantity: 1,
+            U74Measure: object.guide,
+            U74Quantity: 1
           }
         } else if (object.profileType === 'Doble' && object.opening === 'Tres naves') {
           const widthValue = calculateLightWidthThreeShips(object.width);
@@ -96,12 +105,14 @@ export const applyDiscountsLight = async (anjeosLight) => {
             ...object,
             width: widthUpdated,
             height: heightUpdated,
-            divisorHighMeasue: divisorHighMeasureUpdated,
-            widthProfiles: 6,
-            heightProfiles: 6,
-            divisorProfiles: 3,
-            naveDucha: 1,
-            U74: 1
+            divisorHigh: divisorHighMeasureUpdated,
+            widthProfilesQuantity: 6,
+            heightProfilesQuantity: 6,
+            divisorProfilesQuantity: 3,
+            naveDuchaMeasure: object.guide,
+            naveDuchaQuantity: 1,
+            U74Measure: object.guide,
+            U74Quantity: 1
           }
         }  else if (object.profileType === 'Doble' && object.opening === 'Uno hala otro') {
           const widthValue = calculateLightWidthOneToAnother(object.width);
@@ -117,13 +128,13 @@ export const applyDiscountsLight = async (anjeosLight) => {
             width: widthUpdated,
             height: heightUpdated,
             divisorHigh: divisorHighUpdated,
-            widthProfiles: 4,
-            heightProfiles: 4,
-            divisorProfiles: 2,
-            medidaDucha: 'medida',
-            naveDucha: 2,
-            medidaU74: 'medida',
-            U74: 2
+            widthProfilesQuantity: 4,
+            heightProfilesQuantity: 4,
+            divisorProfilesQuantity: 2,
+            medidaDuchaMeasure: object.guide,
+            naveDuchaQuantity: 2,
+            U74Measure: object.guide,
+            U74Quantity: 2
           }
         }
       });
