@@ -3,7 +3,7 @@ function validateFormValues() {
   let place = document.getElementById('lugar').value;
   let width = document.getElementById('ancho').value;
   let height = document.getElementById('altura').value;
-  let guides = document.getElementById('guias').value;
+  let guides = document.getElementById('guia').value;
   let divisorHeight = document.getElementById('alturaDivisor').value;
   let notes = document.getElementById('notas').value;
 
@@ -98,7 +98,7 @@ const notesRegex = /^.{0,199}$/;
 const placeInput = document.getElementById('lugar');
 const widthInput = document.getElementById('ancho');
 const heightInput = document.getElementById('altura');
-const guidesInput = document.getElementById('guias');
+const guidesInput = document.getElementById('guia');
 const divisorHeightInput = document.getElementById('alturaDivisor');
 const notesInput = document.getElementById('notas');
 
