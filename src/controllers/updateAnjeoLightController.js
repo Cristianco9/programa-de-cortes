@@ -11,7 +11,9 @@ export const updateAnjeoLight = async (req, res, next) => {
     apertura: req.body.apertura,
     lugar: req.body.lugar,
     ancho: req.body.ancho,
+    ancho: req.body.anchoOpcional,
     altura: req.body.altura,
+    altura: req.body.alturaOpcional,
     guia: req.body.guia,
     instalacion: req.body.instalacion,
     alturaDivisor: req.body.alturaDivisor,
@@ -28,7 +30,9 @@ export const updateAnjeoLight = async (req, res, next) => {
       opening: newAnjeoLight.apertura,
       place: newAnjeoLight.lugar,
       width: newAnjeoLight.ancho,
+      widthOptional: newAnjeoLight.anchoOpcional,
       height: newAnjeoLight.altura,
+      heightOptional: newAnjeoLight.alturaOpcional,
       guide: newAnjeoLight.guia,
       installation: newAnjeoLight.instalacion,
       divisorHigh: newAnjeoLight.alturaDivisor,
@@ -40,7 +44,7 @@ export const updateAnjeoLight = async (req, res, next) => {
       }
     });
 
-    return res.render('anjeoLightUpdatedSucessfully');
+    return res.render('anjeoLightUpdatedSuccessfully');
 
   } catch (err) {
     const boomError = Boom.serverUnavailable(

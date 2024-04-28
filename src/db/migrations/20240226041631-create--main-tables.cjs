@@ -123,9 +123,17 @@ module.exports = {
         type: DataTypes.FLOAT,
         allowNull: false
       },
+      widthOptional: {
+        type: DataTypes.FLOAT,
+        allowNull: true
+      },
       height: {
         type: DataTypes.FLOAT,
         allowNull: false
+      },
+      heightOptional: {
+        type: DataTypes.FLOAT,
+        allowNull: true
       },
       guide: {
         type: DataTypes.FLOAT,

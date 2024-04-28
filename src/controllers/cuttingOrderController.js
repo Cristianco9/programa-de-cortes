@@ -12,23 +12,6 @@ export const cuttingOrder =  async (req, res, next) => {
 
     try {
       const anjeosLightCreated = await AnjeoLight.findAll({
-        attributes: [
-          'orderOwnerID',
-          'anjeoLightID',
-          'dateCreation',
-          'color',
-          'profileType',
-          'opening',
-          'place',
-          'width',
-          'height',
-          'guide',
-          'installation',
-          'divisorHigh',
-          'angle',
-          'notes'
-
-        ],
         where: {
           orderOwnerID: orderNumber
         },
@@ -39,26 +22,6 @@ export const cuttingOrder =  async (req, res, next) => {
 
       try {
         const anjeosHeavyCreated = await AnjeoHeavy.findAll({
-          attributes: [
-            'orderOwnerID',
-            'anjeoHeavyID',
-            'dateCreation',
-            'color',
-            'profileType',
-            'opening',
-            'place',
-            'width',
-            'height',
-            'head',
-            'adaptador',
-            'topProfile',
-            'installation',
-            'divisorHigh',
-            'typeHandle',
-            'openDirection',
-            'notes'
-
-          ],
           where: {
             orderOwnerID: orderNumber
           },
