@@ -72,7 +72,10 @@ export const cuttingOrder =  async (req, res, next) => {
 
           try {
             const anjeosHeavyModified = await applyDiscountsHeavy(anjeosHeavyData);
-
+              console.log("anjeos pesado:");
+              console.log(anjeosLightData);
+              console.log("anjeos pesado moficado:");
+              console.log(anjeosLightModified);
           } catch (err) {
             const boomError = Boom.notImplemented(
               'No es posible aplicar los descuentos a los anjeos pesados', err);

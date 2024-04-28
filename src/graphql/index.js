@@ -1,21 +1,15 @@
-import { ApolloServer } from "apollo-server-express";
+/*import { ApolloServer } from "apollo-server-express";
 import { ApolloServerPluginLandingPageGraphQLPlayground} from "apollo-server-core";
-
-const typeDefs = `
-  type Query {
-    hello: String
-  }
-`;
+import { loadFiles } from "@graphql-tools/load-files";
 
 const resolvers = {
   Query: {
-    hello: () => 'Hello world'
   }
 }
 
 export const useGraphql = async (app) => {
   const server = new ApolloServer({
-    typeDefs,
+    typeDefs: await loadFiles('./src/graphql/schema.graphql'),
     resolvers,
     playground: true,
     plugins: [
@@ -26,3 +20,4 @@ export const useGraphql = async (app) => {
   await server.start();
   server.applyMiddleware({ app })
 }
+*/

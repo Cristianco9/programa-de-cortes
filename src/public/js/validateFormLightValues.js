@@ -37,6 +37,11 @@ function validateFormValues() {
     return false;
   }
 
+  if (!validateDivisorHeight(height, divisorHeight)) {
+    document.getElementById('errorContainer').style.display = 'flex';
+    return false;
+  }
+
   return true;
 }
 
@@ -61,10 +66,32 @@ function validateForm() {
   return isPlaceValid && isWidthValid && isHeightValid && areGuidesValid && isDivisorHeightValid && areNotesValid;
 }
 
+function validateDivisorHeight(height, divisorHeight) {
+  const divisorHeightRegex = /^(?:10(?:\.0)?|[1-9]\d{1,2}(?:\.\d)?|1000(?:\.0)?)$/;
+
+  const isValidRegex = divisorHeightRegex.test(divisorHeight);
+  const isValidHeightComparison = divisorHeight <= height;
+
+  if (!isValidRegex) {
+    divisorHeightInput.style.boxShadow = '0px 5px 5px rgba(194, 18, 18, 0.6)';
+    document.getElementById('errorContainer').style.display = 'flex';
+    return false;
+  }
+
+  if (!isValidHeightComparison) {
+    divisorHeightInput.style.boxShadow = '0px 5px 5px rgba(194, 18, 18, 0.6)';
+    document.getElementById('errorContainer').style.display = 'flex';
+    return false;
+  }
+
+  divisorHeightInput.style.boxShadow = '';
+  return true;
+}
+
 const placeRegex = /^.{2,15}$/;
 const widthRegex = /^(?:10(?:\.0)?|[1-9]\d{1,2}(?:\.\d)?|1000(?:\.0)?)$/;
 const heightRegex = /^(?:10(?:\.0)?|[1-9]\d{1,2}(?:\.\d)?|1000(?:\.0)?)$/;
-const guidesRegex = /^(10|[1-9])$/;
+const guidesRegex = /^(?:10(?:\.0)?|[1-9]\d{1,2}(?:\.\d)?|1000(?:\.0)?)$/;
 const divisorHeightRegex = /^(?:10(?:\.0)?|[1-9]\d{1,2}(?:\.\d)?|1000(?:\.0)?)$/;
 const notesRegex = /^.{0,199}$/;
 

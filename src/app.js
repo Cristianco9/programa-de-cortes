@@ -5,7 +5,7 @@ import { testConnection } from './libraries/DBConnection.js';
 import cors from 'cors';
 import cookieParser from 'cookie-parser';
 import routerApi from './routes/indexRouter.js';
-import { useGraphql } from "./graphql/index.js";
+//import { useGraphql } from "./graphql/index.js";
 import { fileURLToPath } from 'url';
 import {
   logError,
@@ -39,7 +39,7 @@ testConnection();
 routerApi(app);
 
 // Select the Graphql server
-await useGraphql(app);
+//await useGraphql(app);
 
 // CORS
 const whiteList = ['http://127.0.0.1:3000'];

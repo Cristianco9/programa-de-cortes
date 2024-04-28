@@ -14,7 +14,13 @@ export const calculateLightHeight = (inputHeight) => {
 };
 
 export const calculateLightWidthLateral = (inputWidth) => {
-  let outputWidth = inputWidth - 4;
+  let outputWidth = (inputWidth - 6) /2;
+  return outputWidth;
+};
+
+
+export const calculateLightWidthDivisorLateral = (inputWidth) => {
+  let outputWidth = (inputWidth = 2) /2;
   return outputWidth;
 };
 
@@ -24,14 +30,25 @@ export const calculateLightWidthOneToAnother = (inputWidth) => {
 };
 
 export const calculateLightWidthPickUpCenter = (inputWidth) => {
-  let outputWidth = inputWidth - 4;
+  let outputWidth = (inputWidth - 8) / 2;
   return outputWidth;
 };
 
 export const calculateLightWidthThreeShips = (inputWidth) => {
+  let outputWidth = (inputWidth - 8) / 3;
+  return outputWidth;
+};
+
+export const calculateLightWidthDivisorThreeShips = (inputWidth) => {
   let outputWidth = (inputWidth + 4) / 3;
   return outputWidth;
 };
+
+export const calculateLightWidthDivisorPickUpCenter = (inputWidth) => {
+  let outputWidth = inputWidth / 2;
+  return outputWidth;
+};
+
 
 export const calculateLightD28PickUpCenter = (inputHeight) => {
   let outputHeight = (inputHeight - 2);

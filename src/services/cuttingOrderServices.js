@@ -7,7 +7,9 @@ import {
   calculateLightWidthLateral,
   calculateLightWidthThreeShips,
   calculateLightWidthOneToAnother,
-  calculateLightWidthDivisorOneToAnother
+  calculateLightWidthDivisorOneToAnother,
+  calculateLightWidthDivisorPickUpCenter,
+  calculateLightWidthDivisorThreeShips
 } from "./anjeoLightDsctServices.js"
 
 import {
@@ -42,16 +44,15 @@ export const applyDiscountsLight = async (anjeosLight) => {
             height: heightUpdated,
             widthProfiles: 2,
             heightProfiles: 2,
-            divisorProfiles: 1,
-            naveDucha: 1,
-            U74: 1,
-            A059: 1
+            divisorProfiles: 1
           }
         } else if (object.profileType === 'Doble' && object.opening === 'Cierre al centro') {
           const widthValue = calculateLightWidthPickUpCenter(object.width);
           const widthUpdated = widthValue.toFixed(1);
           const heightValue = calculateLightHeight(object.height);
           const heightUpdated = heightValue.toFixed(1);
+          const divisorHighValue = calculateLightWidthDivisorPickUpCenter(object.width);
+          const divisorHighUpdated = divisorHighValue.toFixed(1);
           const d28Value = calculateLightD28PickUpCenter(object.height);
           const d28 = d28Value.toFixed(1);
 
@@ -59,9 +60,10 @@ export const applyDiscountsLight = async (anjeosLight) => {
             ...object,
             width: widthUpdated,
             height: heightUpdated,
+            divisorHigh: divisorHighUpdated,
             widthProfiles: 4,
             heightProfiles: 4,
-            divisorProfiles: 1,
+            divisorProfiles: 2,
             D28: d28,
             naveDucha: 1,
             U74: 1
@@ -76,7 +78,7 @@ export const applyDiscountsLight = async (anjeosLight) => {
             ...object,
             width: widthUpdated,
             height: heightUpdated,
-            widthProfiles: 2,
+            widthProfiles: 4,
             heightProfiles: 4,
             divisorProfiles: 2,
             naveDucha: 1,
@@ -85,6 +87,8 @@ export const applyDiscountsLight = async (anjeosLight) => {
         } else if (object.profileType === 'Doble' && object.opening === 'Tres naves') {
           const widthValue = calculateLightWidthThreeShips(object.width);
           const widthUpdated = widthValue.toFixed(1);
+          const divisorHighMeasureValue = calculateLightWidthDivisorThreeShips(object.width);
+          const divisorHighMeasureUpdated = divisorHighMeasureValue.toFixed(1);
           const heightValue = calculateLightHeight(object.height);
           const heightUpdated = heightValue.toFixed(1);
 
@@ -92,6 +96,7 @@ export const applyDiscountsLight = async (anjeosLight) => {
             ...object,
             width: widthUpdated,
             height: heightUpdated,
+            divisorHighMeasue: divisorHighMeasureUpdated,
             widthProfiles: 6,
             heightProfiles: 6,
             divisorProfiles: 3,
@@ -115,7 +120,9 @@ export const applyDiscountsLight = async (anjeosLight) => {
             widthProfiles: 4,
             heightProfiles: 4,
             divisorProfiles: 2,
+            medidaDucha: 'medida',
             naveDucha: 2,
+            medidaU74: 'medida',
             U74: 2
           }
         }
