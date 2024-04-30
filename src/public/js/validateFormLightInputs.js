@@ -34,6 +34,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       if (profileSelected === 'Sencillo' && openingSelected === 'Fijo QP') {
           addOption('Lateral', 'Lateral', angleSelect);
+          addOption('Sin angulo', 'Sin angulo', angleSelect);
       } else {
           addOption('Inferior', 'Inferior', angleSelect);
           addOption('Inferior y lateral', 'Inferior y lateral', angleSelect);
