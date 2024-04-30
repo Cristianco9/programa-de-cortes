@@ -16,10 +16,10 @@ export const recordLightDuplicate = async (req, res, next) => {
       ancho: req.body.ancho,
       anchoOpcional: req.body.anchoOpcional,
       altura: req.body.altura,
-      alturaOpcional: req.body.alturaOpcional,
       guia: req.body.guia,
       instalacion: req.body.instalacion,
       alturaDivisor: req.body.alturaDivisor,
+      cantidadDivisor: req.body.cantidadDivisor,
       angulo: req.body.angulo,
       notas: req.body.notas
     };
@@ -36,10 +36,10 @@ export const recordLightDuplicate = async (req, res, next) => {
         width: anjeoLightToDuplicate.ancho,
         widthOptional: anjeoLightToDuplicate.anchoOpcional,
         height: anjeoLightToDuplicate.altura,
-        heightOptional: anjeoLightToDuplicate.alturaOpcional,
         guide: anjeoLightToDuplicate.guia,
         installation: anjeoLightToDuplicate.instalacion,
         divisorHigh: anjeoLightToDuplicate.alturaDivisor,
+        divisorQuantity: anjeoLightToDuplicate.cantidadDivisor,
         angle: anjeoLightToDuplicate.angulo,
         notes: anjeoLightToDuplicate.notas
       });

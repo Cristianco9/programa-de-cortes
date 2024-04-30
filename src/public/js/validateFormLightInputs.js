@@ -1,21 +1,44 @@
 document.addEventListener('DOMContentLoaded', () => {
-  const perfilSelect = document.getElementById('perfil');
-  const aperturaSelect = document.getElementById('apertura');
+  const profileSelect = document.getElementById('perfil');
+  const openingSelect = document.getElementById('apertura');
+  const angleSelect = document.getElementById('angulo');
 
-  perfilSelect.addEventListener('change', updateApertureOptions);
+
+  profileSelect.addEventListener('change', updateApertureOptions);
+  openingSelect.addEventListener('change', updateAngleOptions);
 
   function updateApertureOptions() {
-      const perfilSelected = perfilSelect.value;
-      clearOptions(aperturaSelect);
-      addDefaultOption(aperturaSelect);
+      const profileSelected = profileSelect.value;
+      clearOptions(openingSelect);
+      addDefaultOption(openingSelect);
 
-      if (perfilSelected === 'Doble') {
-          addOption('Cierre al centro', 'Cierre al centro', aperturaSelect);
-          addOption('Lateral', 'Lateral', aperturaSelect);
-          addOption('Tres naves', 'Tres naves', aperturaSelect);
-          addOption('Uno hala otro', 'Uno hala otro', aperturaSelect);
-      } else if (perfilSelected === 'Sencillo') {
-          addOption('Fija', 'Fija', aperturaSelect);
+      if (profileSelected === 'Doble') {
+          addOption('Cierre al centro', 'Cierre al centro', openingSelect);
+          addOption('Lateral', 'Lateral', openingSelect);
+          addOption('Tres naves', 'Tres naves', openingSelect);
+          addOption('Uno hala otro', 'Uno hala otro', openingSelect);
+      } else if (profileSelected === 'Sencillo') {
+          addOption('Fijo', 'Fijo', openingSelect);
+          addOption('Fijo QP', 'Fijo QP', openingSelect);
+      }
+
+      updateAngleOptions();
+  }
+
+  function updateAngleOptions() {
+      const openingSelected = openingSelect.value;
+      const profileSelected = profileSelect.value;
+
+      clearOptions(angleSelect);
+      addDefaultOption(angleSelect);
+
+      if (profileSelected === 'Sencillo' && openingSelected === 'Fijo QP') {
+          addOption('Lateral', 'Lateral', angleSelect);
+      } else {
+          addOption('Inferior', 'Inferior', angleSelect);
+          addOption('Inferior y lateral', 'Inferior y lateral', angleSelect);
+          addOption('Lateral', 'Lateral', angleSelect);
+          addOption('Sin angulo', 'Sin angulo', angleSelect);
       }
   }
 

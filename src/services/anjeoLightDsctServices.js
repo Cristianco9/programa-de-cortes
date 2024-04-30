@@ -14,14 +14,13 @@ export const calculateLightHeight = (inputHeight) => {
 };
 
 export const calculateLightWidthLateral = (inputWidth) => {
-  let outputWidth = (inputWidth - 6) /2;
+  let outputWidth = inputWidth - 4;
   return outputWidth;
 };
 
-
-export const calculateLightWidthDivisorLateral = (inputWidth) => {
-  let outputWidth = (inputWidth - 2) /2;
-  return outputWidth;
+export const calculateLightWidthOptionalLateral = (inputWidthOptional) => {
+  let outputWidthOptional = inputWidthOptional - 4;
+  return outputWidthOptional;
 };
 
 export const calculateLightWidthOneToAnother = (inputWidth) => {

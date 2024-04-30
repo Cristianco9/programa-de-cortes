@@ -125,19 +125,16 @@ module.exports = {
       },
       widthOptional: {
         type: DataTypes.FLOAT,
-        allowNull: true
+        allowNull: true,
+        field: 'width_optional'
       },
       height: {
         type: DataTypes.FLOAT,
         allowNull: false
       },
-      heightOptional: {
-        type: DataTypes.FLOAT,
-        allowNull: true
-      },
       guide: {
         type: DataTypes.FLOAT,
-        allowNull: false
+        allowNull: true
       },
       installation: {
         type: DataTypes.STRING(7),
@@ -145,11 +142,16 @@ module.exports = {
       },
       divisorHigh: {
         type: DataTypes.FLOAT,
-        allowNull: false,
+        allowNull: true,
         field: 'divisor_high'
       },
+      divisorQuantity: {
+        type: DataTypes.INTEGER,
+        allowNull: true,
+        field: 'divisor_Quantity'
+      },
       angle: {
-        type: DataTypes.STRING(10),
+        type: DataTypes.STRING(18),
         allowNull: false
       },
       notes: {

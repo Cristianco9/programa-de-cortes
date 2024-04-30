@@ -34,7 +34,7 @@
             </section>
             <form class="form" action="/api/v1/orderActions/duplicate/light/insert/<%= anjeoToDuplicate.anjeoLightID %>" method="POST" onsubmit="return validateFormValues()">
                 <div class="fieldContainer">
-                    <h3 class="fieldName">Seleccionar color</h3>
+                    <h3 class="fieldName">Color</h3>
                     <select class="input" name="color" id="color" required>
                       <option value="<%= anjeoToDuplicate.color %>" selected><%= anjeoToDuplicate.color %></option>
                       <option value="Analog">Anolog</option>
@@ -45,7 +45,7 @@
                     </select>
                 </div>
                 <div class="fieldContainer">
-                    <h3 class="fieldName">Seleccionar perfil</h3>
+                    <h3 class="fieldName">Perfil</h3>
                     <select class="input" name="perfil" id="perfil" required>
                       <option value="<%= anjeoToDuplicate.profileType %>" selected><%= anjeoToDuplicate.profileType %></option>
                       <option value="Doble">Doble</option>
@@ -53,11 +53,12 @@
                     </select>
                 </div>
                 <div class="fieldContainer">
-                    <h3 class="fieldName">Seleccionar tipo de apertura</h3>
+                    <h3 class="fieldName">Tipo de apertura</h3>
                     <select class="input" name="apertura" id="apertura" required>
                       <option value="<%= anjeoToDuplicate.opening %>" selected><%= anjeoToDuplicate.opening %></option>
                       <option value="Cierre al centro">Cierre al centro</option>
                       <option value="Fijo">Fijo</option>
+                      <option value="Fijo QP">Fijo QP</option>
                       <option value="Lateral">Lateral</option>
                       <option value="Tres naves">Tres naves</option>
                       <option value="Uno hala otro">Uno hala otro</option>
@@ -68,16 +69,20 @@
                     <input class="input" name="lugar" id="lugar" type="text" value="<%= anjeoToDuplicate.place %>" required>
                 </div>
                 <div class="fieldContainer">
-                    <h3 class="fieldName">Ancho</h3>
+                    <h3 class="fieldName" id="fieldName-1">Ancho</h3>
                     <input class="input" name="ancho" id="ancho" type="text" value="<%= anjeoToDuplicate.width %>" required>
                 </div>
+                <div class="fieldContainerOptional-1" id="fieldContainerOptional-1">
+                  <h3 class="fieldName">Ancho 2</h3>
+                  <input class="input" name="anchoOpcional" id="anchoOpcional" type="text" value="<%= anjeoToDuplicate.widthOptional %>">
+              </div>
                 <div class="fieldContainer">
                     <h3 class="fieldName">Altura</h3>
                     <input class="input" name="altura" id="altura" type="text" value="<%= anjeoToDuplicate.height %>" required>
                 </div>
-                <div class="fieldContainer">
+                <div class="fieldContainerGuide" id="fieldContainerGuide">
                     <h3 class="fieldName">guia</h3>
-                    <input class="input" name="guia" id="guia" type="text" value="<%= anjeoToDuplicate.guide %>" required>
+                    <input class="input" name="guia" id="guia" type="text" value="<%= anjeoToDuplicate.guide %>">
                 </div>
                 <div class="fieldContainer">
                     <h3 class="fieldName">Instalación</h3>
@@ -89,13 +94,18 @@
                 </div>
                 <div class="fieldContainer">
                     <h3 class="fieldName">Altura divisor</h3>
-                    <input class="input" name="alturaDivisor" id="alturaDivisor" type="text" value="<%= anjeoToDuplicate.divisorHigh %>" required>
+                    <input class="input" name="alturaDivisor" id="alturaDivisor" type="text" value="<%= anjeoToDuplicate.divisorHigh %>">
                 </div>
+                <div class="fieldContainerOptional-2" id="fieldContainerOptional-2">
+                  <h3 class="fieldName">Cantidad de divisores</h3>
+                  <input class="input" name="cantidadDivisor" id="cantidadDivisor" type="number" max="10" value="<%= anjeoToDuplicate.divisorQuantity %>">
+              </div>
                 <div class="fieldContainer">
                     <h3 class="fieldName">Ángulo</h3>
                     <select class="input" name="angulo" id="angulo" required>
                       <option value="<%= anjeoToDuplicate.angle %>" selected><%= anjeoToDuplicate.angle %></option>
                       <option value="Inferior">Inferior</option>
+                      <option value="Inferior y lateral">Inferior y lateral</option>
                       <option value="Lateral">Lateral</option>
                       <option value="Sin angulo">Sin angulo</option>
                     </select>
@@ -104,7 +114,7 @@
                     <h3 class="fieldName">Notas</h3>
                     <input class="input" name="notas" id="notas" type="text" value="<%= anjeoToDuplicate.notes %>">
                 </div>
-                <div class="fieldContainerHidden">
+                <div class="fieldContainerHidden" id="fieldContainerHidden">
                 </div>
                 <section class="optionsContainer">
                   <section class="errorContainer" id="errorContainer">
@@ -120,6 +130,7 @@
     </div>
     <script type="application/javascript" src="/js/validateFormLightValues.js"></script>
     <script type="application/javascript" src="/js/validateFormLightInputs.js"></script>
+    <script type="application/javascript" src="/js/validateFormLightInputsoptionals.js"></script>
     <script src="/js/redirectView.js"></script>
 </body>
 </html>

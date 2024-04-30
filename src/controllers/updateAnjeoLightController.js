@@ -11,12 +11,12 @@ export const updateAnjeoLight = async (req, res, next) => {
     apertura: req.body.apertura,
     lugar: req.body.lugar,
     ancho: req.body.ancho,
-    ancho: req.body.anchoOpcional,
+    anchoOpcional: req.body.anchoOpcional,
     altura: req.body.altura,
-    altura: req.body.alturaOpcional,
     guia: req.body.guia,
     instalacion: req.body.instalacion,
     alturaDivisor: req.body.alturaDivisor,
+    cantidadDivisor: req.body.cantidadDivisor,
     angulo: req.body.angulo,
     notas: req.body.notas
   };
@@ -32,10 +32,10 @@ export const updateAnjeoLight = async (req, res, next) => {
       width: newAnjeoLight.ancho,
       widthOptional: newAnjeoLight.anchoOpcional,
       height: newAnjeoLight.altura,
-      heightOptional: newAnjeoLight.alturaOpcional,
       guide: newAnjeoLight.guia,
       installation: newAnjeoLight.instalacion,
       divisorHigh: newAnjeoLight.alturaDivisor,
+      divisorQuantity: newAnjeoLight.cantidadDivisor,
       angle: newAnjeoLight.angulo,
       notes: newAnjeoLight.notas
     }, {

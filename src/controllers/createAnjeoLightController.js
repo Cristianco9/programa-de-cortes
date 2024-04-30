@@ -14,15 +14,18 @@ export const createAnejoLight = async (req, res, next) => {
       apertura: req.body.apertura,
       lugar: req.body.lugar,
       ancho: req.body.ancho,
+      anchoOpcional: req.body.anchoOpcional,
       altura: req.body.altura,
       guia: req.body.guia,
       instalacion: req.body.instalacion,
       alturaDivisor: req.body.alturaDivisor,
+      cantidadDivisor: req.body.cantidadDivisor,
       angulo: req.body.angulo,
       notas: req.body.notas
     };
 
     try {
+
       const insertAnjeoLight = await AnjeoLight.create({
         orderOwnerID: orderNumber,
         dateCreation: new Date(),
@@ -31,10 +34,12 @@ export const createAnejoLight = async (req, res, next) => {
         opening: anjeoLight.apertura,
         place: anjeoLight.lugar,
         width: anjeoLight.ancho,
+        widthOptional: anjeoLight.anchoOpcional,
         height: anjeoLight.altura,
         guide: anjeoLight.guia,
         installation: anjeoLight.instalacion,
         divisorHigh: anjeoLight.alturaDivisor,
+        divisorQuantity: anjeoLight.cantidadDivisor,
         angle: anjeoLight.angulo,
         notes: anjeoLight.notas
       });

@@ -1,44 +1,44 @@
 document.addEventListener('DOMContentLoaded', () => {
-  const perfilSelect = document.getElementById('perfil');
-  const aperturaSelect = document.getElementById('apertura');
-  const manijaSelect = document.getElementById('manija');
-  const ladoSelect = document.getElementById('lado');
+  const profileSelect = document.getElementById('perfil');
+  const openingSelect = document.getElementById('apertura');
+  const handleSelect = document.getElementById('manija');
+  const sideSelect = document.getElementById('lado');
 
-  perfilSelect.addEventListener('change', updateApertureOptions);
-  manijaSelect.addEventListener('change', updateSideOptions);
+  profileSelect.addEventListener('change', updateApertureOptions);
+  handleSelect.addEventListener('change', updateSideOptions);
 
   function updateApertureOptions() {
-      const perfilSelected = perfilSelect.value;
-      clearOptions(aperturaSelect);
-      addDefaultOption(aperturaSelect);
+      const profileSelected = profileSelect.value;
+      clearOptions(openingSelect);
+      addDefaultOption(openingSelect);
 
-      if (perfilSelected === 'Cuatro naves') {
-          addOption('Cierre al centro', 'Cierre al centro', aperturaSelect);
-          addOption('Lateral', 'Lateral', aperturaSelect);
-          addOption('Uno hala otro', 'Uno hala otro', aperturaSelect);
-      } else if (perfilSelected === 'Doble') {
-          addOption('Cierre al centro', 'Cierre al centro', aperturaSelect);
-          addOption('Lateral', 'Lateral', aperturaSelect);
-          addOption('Uno hala otro', 'Uno hala otro', aperturaSelect);
-      } else if (perfilSelected === 'Sencillo') {
-          addOption('Fijo', 'Fijo', aperturaSelect);
-      } else if (perfilSelected === 'Tres naves') {
-          addOption('Cierre al centro', 'Cierre al centro', aperturaSelect);
-          addOption('Lateral', 'Lateral', aperturaSelect);
-          addOption('Uno hala otro', 'Uno hala otro', aperturaSelect);
+      if (profileSelected === 'Cuatro naves') {
+          addOption('Cierre al centro', 'Cierre al centro', openingSelect);
+          addOption('Lateral', 'Lateral', openingSelect);
+          addOption('Uno hala otro', 'Uno hala otro', openingSelect);
+      } else if (profileSelected === 'Doble') {
+          addOption('Cierre al centro', 'Cierre al centro', openingSelect);
+          addOption('Lateral', 'Lateral', openingSelect);
+          addOption('Uno hala otro', 'Uno hala otro', openingSelect);
+      } else if (profileSelected === 'Sencillo') {
+          addOption('Fijo', 'Fijo', openingSelect);
+      } else if (profileSelected === 'Tres naves') {
+          addOption('Cierre al centro', 'Cierre al centro', openingSelect);
+          addOption('Lateral', 'Lateral', openingSelect);
+          addOption('Uno hala otro', 'Uno hala otro', openingSelect);
       }
   }
 
   function updateSideOptions() {
-      const manijaSelected = manijaSelect.value;
-      clearOptions(ladoSelect);
-      addDefaultOption(ladoSelect);
+      const handleSelected = handleSelect.value;
+      clearOptions(sideSelect);
+      addDefaultOption(sideSelect);
 
-      if (manijaSelected === 'Ducha') {
-          addOption('Fija', 'Fija', ladoSelect);
-      } else if (manijaSelected === 'Cubeta anjeo') {
-          addOption('Derecha', 'Derecha', ladoSelect);
-          addOption('Izquierda', 'Izquierda', ladoSelect);
+      if (handleSelected === 'Ducha') {
+          addOption('Fijo', 'Fijo', sideSelect);
+      } else if (handleSelected === 'Cubeta anjeo') {
+          addOption('Derecha', 'Derecha', sideSelect);
+          addOption('Izquierda', 'Izquierda', sideSelect);
       }
   }
 
