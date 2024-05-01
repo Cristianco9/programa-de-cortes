@@ -1,54 +1,86 @@
 function validateFormValues() {
 
-  let place = document.getElementById('lugar').value;
-  let widthOne = document.getElementById('ancho').value;
-  let widthTwo = document.getElementById('anchoOpcional').value;
-  let height = document.getElementById('altura').value;
-  let guides = document.getElementById('guia').value;
-  let divisorHeightOne = document.getElementById('alturaDivisor').value;
-  let notes = document.getElementById('notas').value;
+  let place = document.getElementById('lugar');
+  let widthOne = document.getElementById('ancho');
+  let widthTwo = document.getElementById('anchoOpcional');
+  let height = document.getElementById('altura');
+  let guides = document.getElementById('guia');
+  let divisorHeight = document.getElementById('alturaDivisor');
+  let divisorQuantity = document.getElementById('cantidadDivisor');
+  let notes = document.getElementById('notas');
 
-  if (!placeRegex.test(place)) {
+  if (widthTwo.value === "") {
+    widthTwo.value = "0";
+  }
+
+  if (guides.value === "") {
+    guides.value = "0";
+  }
+
+  if (divisorHeight.value === "") {
+    divisorHeight.value = "0";
+  }
+
+  if (divisorQuantity.value === "") {
+    divisorQuantity.value = "0";
+  }
+
+  if (!placeRegex.test(place.value)) {
+    place.style.boxShadow = '0px 5px 5px rgba(194, 18, 18, 0.6)';
     document.getElementById('errorContainer').style.display = 'flex';
+    document.getElementById("wrongData").textContent = "El lugar de instalación del anjeo debe estar entre 2 y 15 caracteres. Por favor, ingrese un valor válido.";
     return false;
   }
 
-  if (!widthOneRegex.test(widthOne)) {
+  if (!widthOneRegex.test(widthOne.value)) {
+    widthOne.style.boxShadow = '0px 5px 5px rgba(194, 18, 18, 0.6)';
     document.getElementById('errorContainer').style.display = 'flex';
+    document.getElementById("wrongData").textContent = "El ancho del anjeo debe estar entre 7 y 150 centímetros. Por favor, ingrese un valor válido.";
     return false;
   }
 
-  if (!widthTwoRegex.test(widthTwo)) {
+  if (!widthTwoRegex.test(widthTwo.value)) {
+    widthTwo.style.boxShadow = '0px 5px 5px rgba(194, 18, 18, 0.6)';
     document.getElementById('errorContainer').style.display = 'flex';
+    document.getElementById("wrongData").textContent = "El ancho del anjeo debe estar entre 0 y 150 centímetros. Por favor, ingrese un valor válido.";
     return false;
   }
 
-  if (!heightRegex.test(height)) {
+  if (!heightRegex.test(height.value)) {
+    height.style.boxShadow = '0px 5px 5px rgba(194, 18, 18, 0.6)';
     document.getElementById('errorContainer').style.display = 'flex';
+    document.getElementById("wrongData").textContent = "El alto del anjeo debe estar entre 7 y 300 centímetros. Por favor, ingrese un valor válido.";
     return false;
   }
 
-  if (!guidesRegex.test(guides)) {
+  if (!guidesRegex.test(guides.value)) {
+    guides.style.boxShadow = '0px 5px 5px rgba(194, 18, 18, 0.6)';
     document.getElementById('errorContainer').style.display = 'flex';
+    document.getElementById("wrongData").textContent = "La medida de la guia del anjeo debe estar entre 0 y 600 centímetros. Por favor, ingrese un valor válido.";
     return false;
   }
 
-  if (!divisorHeightRegex.test(divisorHeightOne)) {
+  if (!divisorHeightRegex.test(divisorHeight.value)) {
+    divisorHeight.style.boxShadow = '0px 5px 5px rgba(194, 18, 18, 0.6)';
     document.getElementById('errorContainer').style.display = 'flex';
+    document.getElementById("wrongData").textContent = "La altura del divisor del anjeo debe estar entre 0 y 300 centímetros. Por favor, ingrese un valor válido.";
     return false;
   }
 
-  if (!notesRegex.test(notes)) {
+  if (!validateDivisorHeight(height.value, divisorHeight.value)) {
+    divisorHeight.style.boxShadow = '0px 5px 5px rgba(194, 18, 18, 0.6)';
     document.getElementById('errorContainer').style.display = 'flex';
+    document.getElementById("wrongData").textContent = "La altura del divisor del anjeo debe ser menor o igual a la altura del anjeo. Por favor, ingrese un valor válido.";
     return false;
   }
 
-  if (!validateDivisorHeight(height, divisorHeightOne)) {
+  if (!notesRegex.test(notes.value)) {
+    notes.style.boxShadow = '0px 5px 5px rgba(194, 18, 18, 0.6)';
     document.getElementById('errorContainer').style.display = 'flex';
+    document.getElementById("wrongData").textContent = "La nota del anjeo debe estar entre 0 y 200 caracteres. Por favor, ingrese un valor válido.";
     return false;
   }
 
-  return true;
 }
 
 function validateField(input, regex) {
@@ -67,31 +99,31 @@ function validateForm() {
   const isWidthTwoValid = validateField(widthTwoInput, widthTwoRegex);
   const isHeightValid = validateField(heightInput, heightRegex);
   const areGuidesValid = validateField(guidesInput, guidesRegex);
-  const isDivisorHeightOneValid = validateField(divisorHeightOneInput, divisorHeightRegex);
+  const isDivisorHeightValid = validateField(divisorHeightInput, divisorHeightRegex);
   const isDivisorHeightTwoValid = validateField(divisorHeightTwoInput, divisorHeightTwoRegex);
   const areNotesValid = validateField(notesInput, notesRegex);
 
-  return isPlaceValid && isWidthOneValid && isWidthTwoValid && isHeightValid && areGuidesValid && isDivisorHeightOneValid && isDivisorHeightTwoValid && areNotesValid;
+  return isPlaceValid && isWidthOneValid && isWidthTwoValid && isHeightValid && areGuidesValid && isDivisorHeightValid && isDivisorHeightTwoValid && areNotesValid;
 }
 
-function validateDivisorHeight(height, divisorHeightOne) {
-  const divisorHeightRegex = /^(?:10(?:\.0)?|[1-9]\d{1,2}(?:\.\d)?|1000(?:\.0)?)$/;
-  const isValidOneRegex = divisorHeightRegex.test(divisorHeightOne);
+function validateDivisorHeight(height, divisorHeight) {
+  const divisorHeightRegex = /^((\d{1,2}|1\d{2}|2[0-9]{2})(\.\d)?)$|^300$/;
+  const isValidDivisorHeightRegex = divisorHeightRegex.test(divisorHeight);
   const isValidHeightComparison = divisorHeight <= height;
 
-  if (!isValidOneRegex) {
-    divisorHeightOneInput.style.boxShadow = '0px 5px 5px rgba(194, 18, 18, 0.6)';
+  if (!isValidDivisorHeightRegex) {
+    divisorHeightInput.style.boxShadow = '0px 5px 5px rgba(194, 18, 18, 0.6)';
     document.getElementById('errorContainer').style.display = 'flex';
     return false;
   }
 
   if (!isValidHeightComparison) {
-    divisorHeightOneInput.style.boxShadow = '0px 5px 5px rgba(194, 18, 18, 0.6)';
+    divisorHeightInput.style.boxShadow = '0px 5px 5px rgba(194, 18, 18, 0.6)';
     document.getElementById('errorContainer').style.display = 'flex';
     return false;
   }
 
-  divisorHeightOneInput.style.boxShadow = '';
+  divisorHeightInput.style.boxShadow = '';
   return true;
 }
 
@@ -108,8 +140,7 @@ const widthOneInput = document.getElementById('ancho');
 const widthTwoInput = document.getElementById('anchoOpcional');
 const heightInput = document.getElementById('altura');
 const guidesInput = document.getElementById('guia');
-const divisorHeightOneInput = document.getElementById('alturaDivisor');
-const divisorHeightTwoInput = document.getElementById('alturaDivisorOpcional');
+const divisorHeightInput = document.getElementById('alturaDivisor');
 const notesInput = document.getElementById('notas');
 
 placeInput.addEventListener('input', function() {
@@ -132,8 +163,8 @@ guidesInput.addEventListener('input', function() {
     validateField(guidesInput, guidesRegex);
 });
 
-divisorHeightOneInput.addEventListener('input', function() {
-    validateField(divisorHeightOneInput, divisorHeightRegex);
+divisorHeightInput.addEventListener('input', function() {
+    validateField(divisorHeightInput, divisorHeightRegex);
 });
 
 notesInput.addEventListener('input', function() {

@@ -156,6 +156,32 @@ html {
         gap: 1rem;
     }
 
+    .fieldContainerOptional-1 {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .fieldContainerOptional-2 {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .fieldContainerGuide {
+      width: 30rem;
+      height: 7rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
     .fieldContainerHidden {
         display: none;
     }
@@ -208,7 +234,7 @@ html {
 @media (min-width: 600px) {
     .mainContainer {
         width: 100%;
-        min-height: 120rem;
+        min-height: 125rem;
         height: 100vh;
         display: flex;
         justify-content: center;
@@ -218,7 +244,7 @@ html {
 
     .appBox {
         width: 60rem;
-        height: 110rem;
+        height: 120rem;
         margin: 4rem auto 4rem auto;
         display: flex;
         flex-direction: column;
@@ -267,6 +293,7 @@ html {
     .form {
         display: flex;
         flex-direction: column;
+        height: 115rem;
         gap: 1rem;
         margin-top: -5rem;
     }
@@ -280,10 +307,36 @@ html {
         gap: 1rem;
     }
 
+    .fieldContainerOptional-1 {
+      width: 42rem;
+      height: 7rem;
+      display: none;
+      flex-direction: row;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .fieldContainerOptional-2 {
+      width: 42rem;
+      height: 7rem;
+      display: none;
+      flex-direction: row;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .fieldContainerGuide {
+      width: 42rem;
+      height: 7rem;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
     .fieldContainerHidden {
         display: none;
     }
-
 
     .fieldName {
         font-family: 'Readex Pro', sans-serif;
@@ -405,6 +458,31 @@ html {
         flex-direction: row;
         justify-content: space-between;
     }
+
+    .fieldContainerOptional-1 {
+      width: 30rem;
+      height: 7rem;
+      display: none;
+      flex-direction: row;
+      justify-content: space-between;
+  }
+
+  .fieldContainerOptional-2 {
+    width: 30rem;
+    height: 7rem;
+    display: none;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .fieldContainerGuide {
+      width: 30rem;
+      height: 7rem;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      gap: 1rem;
+  }
 
     .fieldContainerHidden {
         width: 30rem;
@@ -533,6 +611,30 @@ html {
         flex-direction: row;
         justify-content: space-between;
     }
+
+    .fieldContainerOptional-1 {
+      width: 30rem;
+      height: 7rem;
+      display: none;
+      flex-direction: row;
+      justify-content: space-between;
+  }
+
+  .fieldContainerOptional-2 {
+    width: 30rem;
+    height: 7rem;
+    display: none;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .fieldContainerGuide {
+      width: 30rem;
+      height: 7rem;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+  }
 
     .fieldContainerHidden {
         width: 30rem;
