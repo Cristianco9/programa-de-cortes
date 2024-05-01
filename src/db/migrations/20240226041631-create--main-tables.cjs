@@ -85,7 +85,7 @@ module.exports = {
     await queryInterface.createTable('anjeos_light', {
       orderOwnerID: {
         type: DataTypes.INTEGER,
-        allowNull: true,
+        allowNull: false,
         field: 'order_owner_id',
       },
       anjeoLightID: {
@@ -125,7 +125,7 @@ module.exports = {
       },
       widthOptional: {
         type: DataTypes.FLOAT,
-        allowNull: true,
+        allowNull: false,
         field: 'width_optional'
       },
       height: {
@@ -134,7 +134,7 @@ module.exports = {
       },
       guide: {
         type: DataTypes.FLOAT,
-        allowNull: true
+        allowNull: false
       },
       installation: {
         type: DataTypes.STRING(7),
@@ -142,12 +142,12 @@ module.exports = {
       },
       divisorHigh: {
         type: DataTypes.FLOAT,
-        allowNull: true,
+        allowNull: false,
         field: 'divisor_high'
       },
       divisorQuantity: {
         type: DataTypes.INTEGER,
-        allowNull: true,
+        allowNull: false,
         field: 'divisor_Quantity'
       },
       angle: {

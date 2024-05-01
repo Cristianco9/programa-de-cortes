@@ -8,7 +8,7 @@ export const AnjeoLight = sequelize.define(ANJEO_LIGHT_TABLE,
   {
     orderOwnerID: {
       type: DataTypes.INTEGER,
-      allowNull: true,
+      allowNull: false,
       field: 'order_owner_id',
       references: {
         model: 'orders',
@@ -54,7 +54,7 @@ export const AnjeoLight = sequelize.define(ANJEO_LIGHT_TABLE,
     },
     widthOptional: {
       type: DataTypes.FLOAT,
-      allowNull: true,
+      allowNull: false,
       field: 'width_optional'
     },
     height: {
@@ -63,7 +63,7 @@ export const AnjeoLight = sequelize.define(ANJEO_LIGHT_TABLE,
     },
     guide: {
       type: DataTypes.FLOAT,
-      allowNull: true
+      allowNull: false
     },
     installation: {
       type: DataTypes.STRING(7),
@@ -71,12 +71,12 @@ export const AnjeoLight = sequelize.define(ANJEO_LIGHT_TABLE,
     },
     divisorHigh: {
       type: DataTypes.FLOAT,
-      allowNull: true,
+      allowNull: false,
       field: 'divisor_high'
     },
     divisorQuantity: {
       type: DataTypes.INTEGER,
-      allowNull: true,
+      allowNull: false,
       field: 'divisor_Quantity'
     },
     angle: {

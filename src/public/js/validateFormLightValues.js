@@ -33,7 +33,7 @@ function validateFormValues() {
     return false;
   }
 
-  if (!divisorHeightOneRegex.test(divisorHeightOne)) {
+  if (!divisorHeightRegex.test(divisorHeightOne)) {
     document.getElementById('errorContainer').style.display = 'flex';
     return false;
   }
@@ -67,7 +67,7 @@ function validateForm() {
   const isWidthTwoValid = validateField(widthTwoInput, widthTwoRegex);
   const isHeightValid = validateField(heightInput, heightRegex);
   const areGuidesValid = validateField(guidesInput, guidesRegex);
-  const isDivisorHeightOneValid = validateField(divisorHeightOneInput, divisorHeightOneRegex);
+  const isDivisorHeightOneValid = validateField(divisorHeightOneInput, divisorHeightRegex);
   const isDivisorHeightTwoValid = validateField(divisorHeightTwoInput, divisorHeightTwoRegex);
   const areNotesValid = validateField(notesInput, notesRegex);
 
@@ -75,8 +75,8 @@ function validateForm() {
 }
 
 function validateDivisorHeight(height, divisorHeightOne) {
-  const divisorHeightOneRegex = /^(?:10(?:\.0)?|[1-9]\d{1,2}(?:\.\d)?|1000(?:\.0)?)$/;
-  const isValidOneRegex = divisorHeightOneRegex.test(divisorHeightOne);
+  const divisorHeightRegex = /^(?:10(?:\.0)?|[1-9]\d{1,2}(?:\.\d)?|1000(?:\.0)?)$/;
+  const isValidOneRegex = divisorHeightRegex.test(divisorHeightOne);
   const isValidHeightComparison = divisorHeight <= height;
 
   if (!isValidOneRegex) {
@@ -96,12 +96,11 @@ function validateDivisorHeight(height, divisorHeightOne) {
 }
 
 const placeRegex = /^.{2,15}$/;
-const widthOneRegex = /^(?:10(?:\.0)?|[1-9]\d{1,2}(?:\.\d)?|1000(?:\.0)?)$/;
-const widthTwoRegex = /^(?:1000(?:\.0)?|[1-9]\d{0,2}(?:\.\d)?|0(?:\.\d)?)$/
-const heightRegex = /^(?:10(?:\.0)?|[1-9]\d{1,2}(?:\.\d)?|1000(?:\.0)?)$/;
-const guidesRegex = /^(?:10(?:\.0)?|[1-9]\d{1,2}(?:\.\d)?|1000(?:\.0)?)$/;
-const divisorHeightOneRegex = /^(?:10(?:\.0)?|[1-9]\d{1,2}(?:\.\d)?|1000(?:\.0)?)$/;
-const divisorHeightTwoRegex = /^(?:1000(?:\.0)?|[1-9]\d{0,2}(?:\.\d)?|0(?:\.\d)?)$/
+const widthOneRegex = /^((7\d?|[89]|[1-9]\d|1[0-4]\d)(\.\d)?|150)$/;
+const widthTwoRegex = /^(?:150(?:\.0)?|1[0-4][0-9](?:\.\d)?|[0-9]{1,2}(?:\.\d)?)$/;
+const heightRegex = /^((7\d?|[89]|[1-9]\d|1\d{2}|2[0-9]{2})(\.\d)?|300)$/;
+const guidesRegex = /^((\d{1,2}|[1-5]\d{2})(\.\d)?|600)$/;
+const divisorHeightRegex = /^((\d{1,2}|1\d{2}|2[0-9]{2})(\.\d)?)$|^300$/;
 const notesRegex = /^.{0,199}$/;
 
 const placeInput = document.getElementById('lugar');
@@ -134,7 +133,7 @@ guidesInput.addEventListener('input', function() {
 });
 
 divisorHeightOneInput.addEventListener('input', function() {
-    validateField(divisorHeightOneInput, divisorHeightOneRegex);
+    validateField(divisorHeightOneInput, divisorHeightRegex);
 });
 
 notesInput.addEventListener('input', function() {
