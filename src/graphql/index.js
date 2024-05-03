@@ -1,11 +1,7 @@
-/*import { ApolloServer } from "apollo-server-express";
+import { ApolloServer } from "apollo-server-express";
 import { ApolloServerPluginLandingPageGraphQLPlayground} from "apollo-server-core";
 import { loadFiles } from "@graphql-tools/load-files";
-
-const resolvers = {
-  Query: {
-  }
-}
+import { resolvers } from "./resolvers/resolvers.js";
 
 export const useGraphql = async (app) => {
   const server = new ApolloServer({
@@ -20,4 +16,3 @@ export const useGraphql = async (app) => {
   await server.start();
   server.applyMiddleware({ app })
 }
-*/

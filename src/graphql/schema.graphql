@@ -1,2 +1,15 @@
 type Query {
+  # orders
+  order(id: ID!): Order
+  allOrders: [Order!]!
+
+}
+
+type Order {
+  id: ID!
+  userOwnerID: Int!
+  dateCreation: String!
+  status: String!
+  anjeoLightID: Int!
+  anejoHeavyID: Int!
 }
