@@ -2,14 +2,16 @@ type Query {
   # orders
   order(id: ID!): Order
   allOrders: [Order!]!
-
+  newOrder(id: ID!, userOwnerID: Int!): Order
+  deleteOrder(id: ID!): Order
+  updateOrder(id: ID!, userOwnerID: Int!, status: String,): Order
 }
 
 type Order {
   id: ID!
   userOwnerID: Int!
-  dateCreation: String!
-  status: String!
-  anjeoLightID: Int!
-  anejoHeavyID: Int!
+  dateCreation: String
+  status: String
+  anjeoLightID: Int
+  anejoHeavyID: Int
 }

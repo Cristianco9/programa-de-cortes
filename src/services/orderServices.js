@@ -59,6 +59,9 @@ export const findAllOrders = () => {
  *  record or rejects with an error.
  */
 export const createOrder = (orderData) => {
+  // Set the current date
+  orderData.dateCreation = new Date();
+
   return new Promise((resolve, reject) => {
     // Create a new order in the database with the provided data
     Order.create(orderData)
@@ -99,7 +102,8 @@ export const deleteOrderById = (id) => {
           orderRecord.destroy()
             .then(() => {
               // Resolve the promise once the order is deleted
-              resolve();
+              orderRecord.status = "Eliminado"
+              resolve(orderRecord);
             })
             .catch(err => {
               // If there's an error deleting the order, reject the promise with a detailed error
@@ -126,10 +130,10 @@ export const deleteOrderById = (id) => {
  * @param {object} newData - An object containing the new data to update for the order.
  * @returns {Promise} - A promise that resolves when the order's information is successfully modified or rejects with an error.
  */
-export const modifyOrder = (id, newData) => {
+export const modifyOrder = (newData) => {
   return new Promise((resolve, reject) => {
     // Find the order by their ID
-    Order.findByPk(id)
+    Order.findByPk(newData.id)
       .then(orderRecord => {
         if (!orderRecord) {
           // If the order is not found, reject the promise with an error
@@ -139,11 +143,15 @@ export const modifyOrder = (id, newData) => {
           error.statusCode = 404;
           reject(error);
         } else {
+
+          // Set the current date
+          newData.dateCreation = new Date();
           // If the order is found, update their information with the new data
           orderRecord.update(newData)
             .then(() => {
               // Resolve the promise once the order's information is successfully modified
-              resolve();
+              orderRecord.status = 'Modificado'
+              resolve(orderRecord);
             })
             .catch(err => {
               // If there's an error updating the order's information, reject the promise with a detailed error

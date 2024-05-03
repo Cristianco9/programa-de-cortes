@@ -1,19 +1,32 @@
-export const order = (_, { id }) => {
-  return {
-    id,
-    userOwnerID: '1',
-    DateCreation: 'date',
-    status: 'status',
-    anejosLightID: '1',
-    anejosHeavyID: '1'
-  }
+import {
+  findById,
+  findAllOrders,
+  createOrder,
+  deleteOrderById,
+  modifyOrder
+} from "../../services/orderServices.js";
 
+export const order = async (_, { id }) => {
+  const orderRecord = await findById(id);
+  return orderRecord
 }
 
-export const allOrders = (_, args) => {
-  return [];
+export const allOrders = async () => {
+  const ordersRecord = await findAllOrders({});
+  return ordersRecord
 }
 
-export const addOrder = (_, args) => {
-  return [];
+export const newOrder = async (_, args) => {
+  const newRecord = await createOrder(args);
+  return newRecord
+}
+
+export const deleteOrder = async (_, { id }) => {
+  const deleteRecord = await deleteOrderById(id);
+  return deleteRecord
+}
+
+export const updateOrder = async (_, args) => {
+  const updatedRecord = await modifyOrder(args);
+  return updatedRecord
 }

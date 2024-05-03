@@ -1,9 +1,18 @@
-import { order, allOrders } from "./orderResolvers.js";
+import {
+  order,
+  allOrders,
+  newOrder,
+  deleteOrder,
+  updateOrder
+} from "./orderResolvers.js";
 
 export const resolvers = {
   Query: {
     // Orders
     order,
-    allOrders
+    allOrders,
+    newOrder,
+    deleteOrder,
+    updateOrder
   }
 }
