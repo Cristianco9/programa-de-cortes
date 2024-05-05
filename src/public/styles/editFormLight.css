@@ -172,6 +172,14 @@ html {
       gap: 1rem;
     }
 
+    .fieldContainerOptional-3 {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
     .fieldContainerGuide {
       width: 30rem;
       height: 7rem;
@@ -317,6 +325,15 @@ html {
     }
 
     .fieldContainerOptional-2 {
+      width: 42rem;
+      height: 7rem;
+      display: none;
+      flex-direction: row;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .fieldContainerOptional-3 {
       width: 42rem;
       height: 7rem;
       display: none;
@@ -475,6 +492,14 @@ html {
     justify-content: space-between;
   }
 
+  .fieldContainerOptional-3 {
+    width: 30rem;
+    height: 7rem;
+    display: none;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
   .fieldContainerGuide {
       width: 30rem;
       height: 7rem;
@@ -621,6 +646,14 @@ html {
   }
 
   .fieldContainerOptional-2 {
+    width: 30rem;
+    height: 7rem;
+    display: none;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .fieldContainerOptional-3 {
     width: 30rem;
     height: 7rem;
     display: none;

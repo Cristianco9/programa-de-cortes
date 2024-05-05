@@ -58,3 +58,8 @@ export const calculateLightWidthDivisorOneToAnother = (inputDivisorHigh) => {
   let outputDivisorHigh = (inputDivisorHigh + 2) / 2;
   return outputDivisorHigh;
 };
+
+export const calculateLightAngleVertical = (inputHeight) => {
+  let outputAngle = inputHeight - 2;
+  return outputAngle;
+}

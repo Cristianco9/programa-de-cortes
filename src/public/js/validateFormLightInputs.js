@@ -15,11 +15,12 @@ document.addEventListener('DOMContentLoaded', () => {
       if (profileSelected === 'Doble') {
           addOption('Cierre al centro', 'Cierre al centro', openingSelect);
           addOption('Lateral', 'Lateral', openingSelect);
-          addOption('Tres naves', 'Tres naves', openingSelect);
           addOption('Uno hala otro', 'Uno hala otro', openingSelect);
       } else if (profileSelected === 'Sencillo') {
           addOption('Fijo', 'Fijo', openingSelect);
           addOption('Fijo QP', 'Fijo QP', openingSelect);
+      } else if (profileSelected === 'Triple') {
+          addOption('Tres naves', 'Tres naves', openingSelect);
       }
 
       updateAngleOptions();

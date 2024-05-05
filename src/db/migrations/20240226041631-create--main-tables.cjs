@@ -148,7 +148,12 @@ module.exports = {
       divisorQuantity: {
         type: DataTypes.INTEGER,
         allowNull: false,
-        field: 'divisor_Quantity'
+        field: 'divisor_quantity'
+      },
+      divisorOrientation: {
+        type: DataTypes.STRING(10),
+        allowNull: true,
+        field: 'divisor_orientation'
       },
       angle: {
         type: DataTypes.STRING(18),

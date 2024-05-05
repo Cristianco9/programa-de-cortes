@@ -20,6 +20,7 @@ export const createAnejoLight = async (req, res, next) => {
       instalacion: req.body.instalacion,
       alturaDivisor: req.body.alturaDivisor,
       cantidadDivisor: req.body.cantidadDivisor,
+      orientacionDivisor: req.body.orientacionDivisor,
       angulo: req.body.angulo,
       notas: req.body.notas
     };
@@ -40,6 +41,7 @@ export const createAnejoLight = async (req, res, next) => {
         installation: anjeoLight.instalacion,
         divisorHigh: anjeoLight.alturaDivisor,
         divisorQuantity: anjeoLight.cantidadDivisor,
+        divisorOrientation: anjeoLight.orientacionDivisor,
         angle: anjeoLight.angulo,
         notes: anjeoLight.notas
       });

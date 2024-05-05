@@ -11,6 +11,7 @@ import {
   calculateLightWidthDivisorOneToAnother,
   calculateLightWidthDivisorPickUpCenter,
   calculateLightWidthDivisorThreeShips,
+  calculateLightAngleVertical,
 } from "./anjeoLightDsctServices.js"
 
 import {
@@ -45,7 +46,7 @@ export const applyDiscountsLight = async (anjeosLight) => {
             heightProfilesQuantity: 2,
             divisorProfilesQuantity: 1,
             divisorMeasure: object.width,
-            lowerAngleMeasure: object.guides,
+            lowerAngleMeasure: object.width,
             lowerAngleQuantity: 1
           }
         } else if (object.profileType === 'Sencillo' && object.opening === 'Fijo' && object.angle === 'Inferior y lateral') {
@@ -60,7 +61,7 @@ export const applyDiscountsLight = async (anjeosLight) => {
             heightProfilesQuantity: 2,
             divisorProfilesQuantity: 1,
             divisorMeasure: object.width,
-            lowerAngleMeasure: object.guides,
+            lowerAngleMeasure: object.width,
             lowerAngleQuantity: 1,
             sideAngleMeasure: object.height,
             sideAngleQuantity: 1
@@ -95,7 +96,7 @@ export const applyDiscountsLight = async (anjeosLight) => {
           }
         }
 
-        else if (object.profileType === 'Sencillo' && object.opening === 'Fijo QP' && object.angle === 'Lateral') {
+        else if (object.profileType === 'Sencillo' && object.opening === 'Fijo QP' && object.divisorOrientation === 'Horizontal' && object.angle === 'Lateral') {
           const widthUpdated = calculateLightWidthFixed(object.width).toFixed(1);
           const heightUpdated = calculateLightHeightFixed(object.height).toFixed(1);
 
@@ -103,12 +104,65 @@ export const applyDiscountsLight = async (anjeosLight) => {
             ...object,
             width: widthUpdated,
             height: heightUpdated,
+            angleHorizontalMeasure: object.width,
+            angleHorizontalQuantity: 1,
             widthProfilesQuantity: 2,
             heightProfilesQuantity: 2,
             divisorProfilesQuantity: 1,
             divisorMeasure: object.width,
-            sideAngleMeasure: object.guides,
+            sideAngleMeasure: object.height,
             sideAngleQuantity: 1
+          }
+        } else if (object.profileType === 'Sencillo' && object.opening === 'Fijo QP' && object.divisorOrientation === 'Horizontal' && object.angle === 'Sin angulo') {
+          const widthUpdated = calculateLightWidthFixed(object.width).toFixed(1);
+          const heightUpdated = calculateLightHeightFixed(object.height).toFixed(1);
+
+          return {
+            ...object,
+            width: widthUpdated,
+            height: heightUpdated,
+            angleHorizontalMeasure: object.width,
+            angleHorizontalQuantity: 1,
+            widthProfilesQuantity: 2,
+            heightProfilesQuantity: 2,
+            divisorProfilesQuantity: 1,
+            divisorMeasure: object.width,
+          }
+        }
+
+        else if (object.profileType === 'Sencillo' && object.opening === 'Fijo QP' && object.divisorOrientation === 'Vertical' && object.angle === 'Lateral') {
+          const widthUpdated = calculateLightWidthFixed(object.width).toFixed(1);
+          const heightUpdated = calculateLightHeightFixed(object.height).toFixed(1);
+          const angleUpdated = calculateLightAngleVertical(object.height).toFixed(1);
+
+          return {
+            ...object,
+            width: widthUpdated,
+            height: heightUpdated,
+            angleVerticalMeasure: angleUpdated,
+            angleVerticalQuantity: 1,
+            widthProfilesQuantity: 2,
+            heightProfilesQuantity: 2,
+            divisorProfilesQuantity: 1,
+            divisorMeasure: object.width,
+            sideAngleMeasure: object.height,
+            sideAngleQuantity: 1
+          }
+        } else if (object.profileType === 'Sencillo' && object.opening === 'Fijo QP' && object.divisorOrientation === 'Vertical' && object.angle === 'Sin angulo') {
+          const widthUpdated = calculateLightWidthFixed(object.width).toFixed(1);
+          const heightUpdated = calculateLightHeightFixed(object.height).toFixed(1);
+          const angleUpdated = calculateLightAngleVertical(object.height).toFixed(1);
+
+          return {
+            ...object,
+            width: widthUpdated,
+            height: heightUpdated,
+            angleVerticalMeasure: angleUpdated,
+            angleVerticalQuantity: 1,
+            widthProfilesQuantity: 2,
+            heightProfilesQuantity: 2,
+            divisorProfilesQuantity: 1,
+            divisorMeasure: object.width,
           }
         }
 
@@ -126,7 +180,7 @@ export const applyDiscountsLight = async (anjeosLight) => {
             heightProfilesQuantity: 4,
             divisorProfilesQuantity: 2,
             divisorMeasure: divisorMeasureUpdated,
-            lowerAngleMeasure: object.guides,
+            lowerAngleMeasure: object.guide,
             lowerAngleQuantity: 1,
             D28Measure: d28Value,
             D28Quantity: 1,
@@ -149,7 +203,7 @@ export const applyDiscountsLight = async (anjeosLight) => {
             heightProfilesQuantity: 4,
             divisorProfilesQuantity: 2,
             divisorMeasure: divisorMeasureUpdated,
-            lowerAngleMeasure: object.guides,
+            lowerAngleMeasure: object.guide,
             lowerAngleQuantity: 1,
             sideAngleMeasure: object.height,
             sideAngleQuantity: 1,
@@ -208,7 +262,7 @@ export const applyDiscountsLight = async (anjeosLight) => {
 
         else if (object.profileType === 'Doble' && object.opening === 'Lateral' && object.angle === 'Inferior') {
           const widthUpdated = calculateLightWidthLateral(object.width).toFixed(1);
-          const widthOptionalUpdated = calculateLightWidthOptionalLateral(object.width).toFixed(1);
+          const widthOptionalUpdated = calculateLightWidthOptionalLateral(object.widthOptional).toFixed(1);
           const heightUpdated = calculateLightHeight(object.height).toFixed(1);
 
           return {
@@ -222,8 +276,8 @@ export const applyDiscountsLight = async (anjeosLight) => {
             divisorProfilesQuantity: 1,
             divisorProfilesOptionalQuantity: 1,
             divisorMeasure: object.width,
-            divisorMeasureOptional:  object.width,
-            lowerAngleMeasure: object.guides,
+            divisorMeasureOptional:  object.widthOptional,
+            lowerAngleMeasure: object.width,
             lowerAngleQuantity: 1,
             naveDuchaMeasure: object.guide,
             naveDuchaQuantity: 1,
@@ -232,7 +286,7 @@ export const applyDiscountsLight = async (anjeosLight) => {
           }
         } else if (object.profileType === 'Doble' && object.opening === 'Lateral' && object.angle === 'Inferior y lateral') {
           const widthUpdated = calculateLightWidthLateral(object.width).toFixed(1);
-          const widthOptionalUpdated = calculateLightWidthOptionalLateral(object.width).toFixed(1);
+          const widthOptionalUpdated = calculateLightWidthOptionalLateral(object.widthOptional).toFixed(1);
           const heightUpdated = calculateLightHeight(object.height).toFixed(1);
 
           return {
@@ -246,11 +300,11 @@ export const applyDiscountsLight = async (anjeosLight) => {
             divisorProfilesQuantity: 1,
             divisorProfilesOptionalQuantity: 1,
             divisorMeasure: object.width,
-            divisorMeasureOptional:  object.width,
-            lowerAngleMeasure: object.guides,
+            divisorMeasureOptional:  object.widthOptional,
+            lowerAngleMeasure: object.width,
             lowerAngleQuantity: 1,
             sideAngleMeasure: object.height,
-            sideAngleQuantity: 1,
+            sideAngleQuantity: 2,
             naveDuchaMeasure: object.guide,
             naveDuchaQuantity: 1,
             U74Measure: object.guide,
@@ -258,7 +312,7 @@ export const applyDiscountsLight = async (anjeosLight) => {
           }
         } else if (object.profileType === 'Doble' && object.opening === 'Lateral' && object.angle === 'Lateral') {
           const widthUpdated = calculateLightWidthLateral(object.width).toFixed(1);
-          const widthOptionalUpdated = calculateLightWidthOptionalLateral(object.width).toFixed(1);
+          const widthOptionalUpdated = calculateLightWidthOptionalLateral(object.widthOptional).toFixed(1);
           const heightUpdated = calculateLightHeight(object.height).toFixed(1);
 
           return {
@@ -272,9 +326,9 @@ export const applyDiscountsLight = async (anjeosLight) => {
             divisorProfilesQuantity: 1,
             divisorProfilesOptionalQuantity: 1,
             divisorMeasure: object.width,
-            divisorMeasureOptional:  object.width,
+            divisorMeasureOptional:  object.widthOptional,
             sideAngleMeasure: object.height,
-            sideAngleQuantity: 1,
+            sideAngleQuantity: 2,
             naveDuchaMeasure: object.guide,
             naveDuchaQuantity: 1,
             U74Measure: object.guide,
@@ -282,7 +336,7 @@ export const applyDiscountsLight = async (anjeosLight) => {
           }
         } else if (object.profileType === 'Doble' && object.opening === 'Lateral' && object.angle === 'Sin angulo') {
           const widthUpdated = calculateLightWidthLateral(object.width).toFixed(1);
-          const widthOptionalUpdated = calculateLightWidthOptionalLateral(object.width).toFixed(1);
+          const widthOptionalUpdated = calculateLightWidthOptionalLateral(object.widthOptional).toFixed(1);
           const heightUpdated = calculateLightHeight(object.height).toFixed(1);
 
           return {
@@ -296,89 +350,7 @@ export const applyDiscountsLight = async (anjeosLight) => {
             divisorProfilesQuantity: 1,
             divisorProfilesOptionalQuantity: 1,
             divisorMeasure: object.width,
-            divisorMeasureOptional:  object.width,
-            naveDuchaMeasure: object.guide,
-            naveDuchaQuantity: 1,
-            U74Measure: object.guide,
-            U74Quantity: 1
-          }
-        }
-
-        else if (object.profileType === 'Doble' && object.opening === 'Tres naves' && object.angle === 'Inferior') {
-          const widthUpdated = calculateLightWidthThreeShips(object.width).toFixed(1);
-          const divisorMeasureUpdated = calculateLightWidthDivisorThreeShips(object.width).toFixed(1);
-          const heightUpdated = calculateLightHeight(object.height).toFixed(1);
-
-          return {
-            ...object,
-            width: widthUpdated,
-            height: heightUpdated,
-            widthProfilesQuantity: 6,
-            heightProfilesQuantity: 6,
-            divisorProfilesQuantity: 3,
-            divisorMeasure: divisorMeasureUpdated,
-            lowerAngleMeasure: object.guides,
-            lowerAngleQuantity: 1,
-            naveDuchaMeasure: object.guide,
-            naveDuchaQuantity: 1,
-            U74Measure: object.guide,
-            U74Quantity: 1
-          }
-        }      else if (object.profileType === 'Doble' && object.opening === 'Tres naves' && object.angle === 'Inferior y lateral') {
-          const widthUpdated = calculateLightWidthThreeShips(object.width).toFixed(1);
-          const divisorMeasureUpdated = calculateLightWidthDivisorThreeShips(object.width).toFixed(1);
-          const heightUpdated = calculateLightHeight(object.height).toFixed(1);
-
-          return {
-            ...object,
-            width: widthUpdated,
-            height: heightUpdated,
-            widthProfilesQuantity: 6,
-            heightProfilesQuantity: 6,
-            divisorProfilesQuantity: 3,
-            divisorMeasure: divisorMeasureUpdated,
-            lowerAngleMeasure: object.guides,
-            lowerAngleQuantity: 1,
-            sideAngleMeasure: object.height,
-            sideAngleQuantity: 1,
-            naveDuchaMeasure: object.guide,
-            naveDuchaQuantity: 1,
-            U74Measure: object.guide,
-            U74Quantity: 1
-          }
-        }       else if (object.profileType === 'Doble' && object.opening === 'Tres naves' && object.angle === 'Lateral') {
-          const widthUpdated = calculateLightWidthThreeShips(object.width).toFixed(1);
-          const divisorMeasureUpdated = calculateLightWidthDivisorThreeShips(object.width).toFixed(1);
-          const heightUpdated = calculateLightHeight(object.height).toFixed(1);
-
-          return {
-            ...object,
-            width: widthUpdated,
-            height: heightUpdated,
-            widthProfilesQuantity: 6,
-            heightProfilesQuantity: 6,
-            divisorProfilesQuantity: 3,
-            divisorMeasure: divisorMeasureUpdated,
-            sideAngleMeasure: object.height,
-            sideAngleQuantity: 1,
-            naveDuchaMeasure: object.guide,
-            naveDuchaQuantity: 1,
-            U74Measure: object.guide,
-            U74Quantity: 1
-          }
-        } else if (object.profileType === 'Doble' && object.opening === 'Tres naves' && object.angle === 'Sin angulo') {
-          const widthUpdated = calculateLightWidthThreeShips(object.width).toFixed(1);
-          const divisorMeasureUpdated = calculateLightWidthDivisorThreeShips(object.width).toFixed(1);
-          const heightUpdated = calculateLightHeight(object.height).toFixed(1);
-
-          return {
-            ...object,
-            width: widthUpdated,
-            height: heightUpdated,
-            widthProfilesQuantity: 6,
-            heightProfilesQuantity: 6,
-            divisorProfilesQuantity: 3,
-            divisorMeasure: divisorMeasureUpdated,
+            divisorMeasureOptional:  object.widthOptional,
             naveDuchaMeasure: object.guide,
             naveDuchaQuantity: 1,
             U74Measure: object.guide,
@@ -391,7 +363,6 @@ export const applyDiscountsLight = async (anjeosLight) => {
           const heightUpdated = calculateLightHeight(object.height).toFixed(1);
           const divisorMeasureUpdated = calculateLightWidthDivisorOneToAnother(object.divisorHigh).toFixed(1);
 
-
           return {
             ...object,
             width: widthUpdated,
@@ -400,7 +371,7 @@ export const applyDiscountsLight = async (anjeosLight) => {
             widthProfilesQuantity: 4,
             heightProfilesQuantity: 4,
             divisorProfilesQuantity: 2,
-            lowerAngleMeasure: object.guides,
+            lowerAngleMeasure: object.width,
             lowerAngleQuantity: 1,
             naveDuchaMeasure: object.guide,
             naveDuchaQuantity: 2,
@@ -412,7 +383,6 @@ export const applyDiscountsLight = async (anjeosLight) => {
           const heightUpdated = calculateLightHeight(object.height).toFixed(1);
           const divisorMeasureUpdated = calculateLightWidthDivisorOneToAnother(object.divisorHigh).toFixed(1);
 
-
           return {
             ...object,
             width: widthUpdated,
@@ -421,7 +391,7 @@ export const applyDiscountsLight = async (anjeosLight) => {
             widthProfilesQuantity: 4,
             heightProfilesQuantity: 4,
             divisorProfilesQuantity: 2,
-            lowerAngleMeasure: object.guides,
+            lowerAngleMeasure: object.width,
             lowerAngleQuantity: 1,
             sideAngleMeasure: object.height,
             sideAngleQuantity: 1,
@@ -434,7 +404,6 @@ export const applyDiscountsLight = async (anjeosLight) => {
           const widthUpdated = calculateLightWidthOneToAnother(object.width).toFixed(1);
           const heightUpdated = calculateLightHeight(object.height).toFixed(1);
           const divisorMeasureUpdated = calculateLightWidthDivisorOneToAnother(object.divisorHigh).toFixed(1);
-
 
           return {
             ...object,
@@ -469,6 +438,92 @@ export const applyDiscountsLight = async (anjeosLight) => {
             naveDuchaQuantity: 2,
             U74Measure: object.guide,
             U74Quantity: 2
+          }
+        }
+
+        else if (object.profileType === 'Triple' && object.opening === 'Tres naves' && object.angle === 'Inferior') {
+          const widthUpdated = calculateLightWidthThreeShips(object.width).toFixed(1);
+          const divisorMeasureUpdated = calculateLightWidthDivisorThreeShips(object.width).toFixed(1);
+          const heightUpdated = calculateLightHeight(object.height).toFixed(1);
+
+          return {
+            ...object,
+            width: widthUpdated,
+            height: heightUpdated,
+            widthProfilesQuantity: 6,
+            heightProfilesQuantity: 6,
+            guidesQuantity: 3,
+            divisorProfilesQuantity: 3,
+            divisorMeasure: divisorMeasureUpdated,
+            lowerAngleMeasure: object.width,
+            lowerAngleQuantity: 1,
+            naveDuchaMeasure: object.guide,
+            naveDuchaQuantity: 1,
+            U74Measure: object.guide,
+            U74Quantity: 1
+          }
+        } else if (object.profileType === 'Triple' && object.opening === 'Tres naves' && object.angle === 'Inferior y lateral') {
+          const widthUpdated = calculateLightWidthThreeShips(object.width).toFixed(1);
+          const divisorMeasureUpdated = calculateLightWidthDivisorThreeShips(object.width).toFixed(1);
+          const heightUpdated = calculateLightHeight(object.height).toFixed(1);
+
+          return {
+            ...object,
+            width: widthUpdated,
+            height: heightUpdated,
+            widthProfilesQuantity: 6,
+            heightProfilesQuantity: 6,
+            guidesQuantity: 3,
+            divisorProfilesQuantity: 3,
+            divisorMeasure: divisorMeasureUpdated,
+            lowerAngleMeasure: object.width,
+            lowerAngleQuantity: 1,
+            sideAngleMeasure: object.height,
+            sideAngleQuantity: 1,
+            naveDuchaMeasure: object.guide,
+            naveDuchaQuantity: 1,
+            U74Measure: object.guide,
+            U74Quantity: 1
+          }
+        } else if (object.profileType === 'Triple' && object.opening === 'Tres naves' && object.angle === 'Lateral') {
+          const widthUpdated = calculateLightWidthThreeShips(object.width).toFixed(1);
+          const divisorMeasureUpdated = calculateLightWidthDivisorThreeShips(object.width).toFixed(1);
+          const heightUpdated = calculateLightHeight(object.height).toFixed(1);
+
+          return {
+            ...object,
+            width: widthUpdated,
+            height: heightUpdated,
+            widthProfilesQuantity: 6,
+            heightProfilesQuantity: 6,
+            guidesQuantity: 3,
+            divisorProfilesQuantity: 3,
+            divisorMeasure: divisorMeasureUpdated,
+            sideAngleMeasure: object.height,
+            sideAngleQuantity: 1,
+            naveDuchaMeasure: object.guide,
+            naveDuchaQuantity: 1,
+            U74Measure: object.guide,
+            U74Quantity: 1
+          }
+        } else if (object.profileType === 'Triple' && object.opening === 'Tres naves' && object.angle === 'Sin angulo') {
+          const widthUpdated = calculateLightWidthThreeShips(object.width).toFixed(1);
+          const divisorMeasureUpdated = calculateLightWidthDivisorThreeShips(object.width).toFixed(1);
+          const heightUpdated = calculateLightHeight(object.height).toFixed(1);
+
+          return {
+            ...object,
+            width: widthUpdated,
+            height: heightUpdated,
+            widthProfilesQuantity: 6,
+            heightProfilesQuantity: 6,
+            guidesQuantity: 3,
+            divisorProfilesQuantity: 3,
+            divisorMeasure: divisorMeasureUpdated,
+            naveDuchaMeasure: object.guide,
+            naveDuchaQuantity: 1,
+            U74Measure: object.guide,
+            U74Quantity: 1
           }
         }
       });

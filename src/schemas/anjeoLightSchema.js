@@ -13,6 +13,7 @@ export const anjeosLightSchema = Joi.object({
   instalacion: Joi.string().min(7).max(7).required(),
   alturaDivisor: Joi.number().min(0).max(300),
   cantidadDivisor: Joi.number().min(0).max(10),
+  orientacionDivisor: Joi.string().min(0).max(10),
   angulo: Joi.string().min(7).max(18).required(),
   notas: Joi.string().min(0).max(200)
 

@@ -7,6 +7,7 @@ function validateFormValues() {
   let guides = document.getElementById('guia');
   let divisorHeight = document.getElementById('alturaDivisor');
   let divisorQuantity = document.getElementById('cantidadDivisor');
+  let divisorOrientation = document.getElementById('orientacionDivisor');
   let notes = document.getElementById('notas');
 
   if (widthTwo.value === "") {
@@ -23,6 +24,10 @@ function validateFormValues() {
 
   if (divisorQuantity.value === "") {
     divisorQuantity.value = "0";
+  }
+
+  if (divisorOrientation.value === "") {
+    divisorOrientation.value = "no definida";
   }
 
   if (!placeRegex.test(place.value)) {
@@ -67,7 +72,7 @@ function validateFormValues() {
     return false;
   }
 
-  if (!validateDivisorHeight(height.value, divisorHeight.value)) {
+  if (!(parseInt(divisorHeight.value) <= parseInt(height.value))) {
     divisorHeight.style.boxShadow = '0px 5px 5px rgba(194, 18, 18, 0.6)';
     document.getElementById('errorContainer').style.display = 'flex';
     document.getElementById("wrongData").textContent = "La altura del divisor del anjeo debe ser menor o igual a la altura del anjeo. Por favor, ingrese un valor válido.";
@@ -104,27 +109,6 @@ function validateForm() {
   const areNotesValid = validateField(notesInput, notesRegex);
 
   return isPlaceValid && isWidthOneValid && isWidthTwoValid && isHeightValid && areGuidesValid && isDivisorHeightValid && isDivisorHeightTwoValid && areNotesValid;
-}
-
-function validateDivisorHeight(height, divisorHeight) {
-  const divisorHeightRegex = /^((\d{1,2}|1\d{2}|2[0-9]{2})(\.\d)?)$|^300$/;
-  const isValidDivisorHeightRegex = divisorHeightRegex.test(divisorHeight);
-  const isValidHeightComparison = divisorHeight <= height;
-
-  if (!isValidDivisorHeightRegex) {
-    divisorHeightInput.style.boxShadow = '0px 5px 5px rgba(194, 18, 18, 0.6)';
-    document.getElementById('errorContainer').style.display = 'flex';
-    return false;
-  }
-
-  if (!isValidHeightComparison) {
-    divisorHeightInput.style.boxShadow = '0px 5px 5px rgba(194, 18, 18, 0.6)';
-    document.getElementById('errorContainer').style.display = 'flex';
-    return false;
-  }
-
-  divisorHeightInput.style.boxShadow = '';
-  return true;
 }
 
 const placeRegex = /^.{2,15}$/;

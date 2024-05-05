@@ -20,6 +20,7 @@ export const recordLightDuplicate = async (req, res, next) => {
       instalacion: req.body.instalacion,
       alturaDivisor: req.body.alturaDivisor,
       cantidadDivisor: req.body.cantidadDivisor,
+      orientacionDivisor: req.body.orientacionDivisor,
       angulo: req.body.angulo,
       notas: req.body.notas
     };
@@ -40,6 +41,7 @@ export const recordLightDuplicate = async (req, res, next) => {
         installation: anjeoLightToDuplicate.instalacion,
         divisorHigh: anjeoLightToDuplicate.alturaDivisor,
         divisorQuantity: anjeoLightToDuplicate.cantidadDivisor,
+        divisorOrientation: anjeoLightToDuplicate.orientacionDivisor,
         angle: anjeoLightToDuplicate.angulo,
         notes: anjeoLightToDuplicate.notas
       });

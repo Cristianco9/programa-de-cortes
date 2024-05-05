@@ -50,6 +50,7 @@
                       <option value="<%= anjeoToDuplicate.profileType %>" selected><%= anjeoToDuplicate.profileType %></option>
                       <option value="Doble">Doble</option>
                       <option value="Sencillo">Sencillo</option>
+                      <option value="Triple">Triple</option>
                     </select>
                 </div>
                 <div class="fieldContainer">
@@ -99,7 +100,15 @@
                 <div class="fieldContainerOptional-2" id="fieldContainerOptional-2">
                   <h3 class="fieldName">Cantidad de divisores</h3>
                   <input class="input" name="cantidadDivisor" id="cantidadDivisor" type="number" max="10" value="<%= anjeoToDuplicate.divisorQuantity %>">
-              </div>
+                </div>
+                <div class="fieldContainerOptional-3" id="fieldContainerOptional-3">
+                  <h3 class="fieldName">Orientación del divisor</h3>
+                  <select class="input" name="orientacionDivisor" id="orientacionDivisor">
+                    <option value="<%= anjeoToDuplicate.divisorOrientation %>" selected><%= anjeoToDuplicate.divisorOrientation %></option>
+                    <option value="Horizontal">Horizontal</option>
+                    <option value="Vertical">Vertical</option>
+                  </select>
+                </div>
                 <div class="fieldContainer">
                     <h3 class="fieldName">Ángulo</h3>
                     <select class="input" name="angulo" id="angulo" required>
