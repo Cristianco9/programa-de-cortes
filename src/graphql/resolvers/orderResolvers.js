@@ -6,8 +6,8 @@ import {
   modifyOrder
 } from "../../services/orderServices.js";
 
-export const order = async (_, { id }) => {
-  const orderRecord = await findById(id);
+export const order = async (_, { dto }) => {
+  const orderRecord = await findById(dto.id);
   return orderRecord
 }
 
@@ -16,17 +16,17 @@ export const allOrders = async () => {
   return ordersRecord
 }
 
-export const newOrder = async (_, args) => {
-  const newRecord = await createOrder(args);
+export const newOrder = async (_, { dto }) => {
+  const newRecord = await createOrder(dto);
   return newRecord
 }
 
-export const deleteOrder = async (_, { id }) => {
-  const deleteRecord = await deleteOrderById(id);
+export const deleteOrder = async (_, { dto }) => {
+  const deleteRecord = await deleteOrderById(dto.id);
   return deleteRecord
 }
 
-export const updateOrder = async (_, args) => {
-  const updatedRecord = await modifyOrder(args);
+export const updateOrder = async (_, { id, dto }) => {
+  const updatedRecord = await modifyOrder(id, dto);
   return updatedRecord
 }

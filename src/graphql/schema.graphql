@@ -1,10 +1,27 @@
 type Query {
   # orders
-  order(id: ID!): Order
+  order(dto: OrderDto!): Order
   allOrders: [Order!]!
-  newOrder(id: ID!, userOwnerID: Int!): Order
-  deleteOrder(id: ID!): Order
-  updateOrder(id: ID!, userOwnerID: Int!, status: String,): Order
+}
+
+type Mutation {
+  # users
+  login(dto: UserLoginDto!): AuthResponse
+
+  # orders
+  newOrder(dto: CreateOrderDto!): Order
+  deleteOrder(dto: DeleteOrderDto!): Order
+  updateOrder(id: ID!, dto: UpdateOrderDto!): Order
+}
+
+type User {
+  id: ID!
+  dateCreation: String
+  email: String!
+  rol: String!
+  name: String!
+  password: String!
+  orders: [Int]
 }
 
 type Order {
@@ -14,4 +31,34 @@ type Order {
   status: String
   anjeoLightID: Int
   anejoHeavyID: Int
+}
+
+type AuthResponse {
+  token: String
+}
+
+# user DTOs
+input UserLoginDto {
+  userName: String!
+  password: String!
+}
+
+
+# order DTOs
+input OrderDto {
+  id: ID!
+}
+
+input CreateOrderDto {
+  id: ID!
+  userOwnerID: Int!
+}
+
+input DeleteOrderDto {
+  id: ID!
+}
+
+input UpdateOrderDto {
+  userOwnerID: Int
+  status: String
 }

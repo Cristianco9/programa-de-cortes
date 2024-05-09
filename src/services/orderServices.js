@@ -130,10 +130,10 @@ export const deleteOrderById = (id) => {
  * @param {object} newData - An object containing the new data to update for the order.
  * @returns {Promise} - A promise that resolves when the order's information is successfully modified or rejects with an error.
  */
-export const modifyOrder = (newData) => {
+export const modifyOrder = (id,newData) => {
   return new Promise((resolve, reject) => {
     // Find the order by their ID
-    Order.findByPk(newData.id)
+    Order.findByPk(id)
       .then(orderRecord => {
         if (!orderRecord) {
           // If the order is not found, reject the promise with an error

@@ -1,5 +1,8 @@
 import { User } from '../db/models/userModel.js';
+import bcrypt from 'bcryptjs';
 import Boom from '@hapi/boom';
+import { signUserToken } from '../utils/auth/tokenSign.js';
+import { config } from '../config/config.js'
 
 /**
  * Finds a user by their name in the database.
@@ -188,6 +191,63 @@ export const modifyUser = (id, newData) => {
           'No es posible encontrar el usuario en la base de datos', err
         );
         reject(boomError);
+      });
+  });
+};
+
+/**
+ * Authenticate user and generate JWT token.
+ * @param {string} userName - The username of the user attempting to log in.
+ * @param {string} password - The password of the user attempting to log in.
+ * @returns {Promise<string>} A promise that resolves with the JWT token upon successful authentication.
+ * @throws {Error} If the user is not found in the database or if the password is incorrect.
+ */
+export const userLogin = (userName, password) => {
+  return new Promise((resolve, reject) => {
+    // Find the user by their username in the database
+    User.findOne({
+      where: {
+        name: userName
+      }
+    })
+      .then(userRecord => {
+        // If the user is not found, reject the promise with an error
+        if (!userRecord) {
+          const error = new Error('User not found in the database');
+          error.statusCode = 404;
+          reject(error);
+          return;
+        }
+          // Compare the provided password with the stored password hash
+          bcrypt.compare(password, userRecord.password)
+            .then(validPassword => {
+              // If the password is not valid, reject the promise with an error
+              if (!validPassword) {
+                const error = new Error('Incorrect password');
+                error.statusCode = 401;
+                reject(error);
+                return
+              }
+
+              // Generate JWT token with user data
+              const userData = {
+                id: userRecord.id,
+                rol: userRecord.rol
+              };
+              const userToken = signUserToken(userData, config.jwtKey);
+
+              // Resolves the promise with the JWT token
+              resolve(userToken);
+
+            })
+            .catch(err => {
+              // If there's an error comparing passwords, reject the promise with a detailed error
+              reject(err);
+            });
+      })
+      .catch(err => {
+        // If there's an error finding the user, reject the promise with a detailed error
+        reject(err);
       });
   });
 };
