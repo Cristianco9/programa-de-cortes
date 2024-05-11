@@ -25,7 +25,7 @@ type Mutation {
 
 type User {
   id: UserIdType!
-  dateCreation: String
+  dateCreation: DateTime
   email: UserEmailType
   rol: UserRolType
   name: UserNameType
@@ -36,14 +36,14 @@ type User {
 type Order {
   id: OrderIdType!
   userOwnerID: UserIdType!
-  dateCreation: String
+  dateCreation: DateTime
   status: OrderStatusType
   anjeoLightID: [Int]
   anejoHeavyID: [Int]
 }
 
 type AuthResponse {
-  token: String
+  token: JWT
 }
 
 # user DTOs
