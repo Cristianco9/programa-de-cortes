@@ -32,18 +32,3 @@ export const login = async (_, { dto }, context) => {
     throw error;
   }
 };
-
-
-/*import { userLogin } from "../../services/userServices.js";
-
-export const login = (_, { dto }) => {
-  return userLogin(dto.userName, dto.password)
-    .then(token => {
-      // If userLogin succeeds, return the token
-      return { token: token };
-    })
-    .catch(error => {
-      // If userLogin fails, throw an error
-      throw new Error('Authentication failed: ' + error.message);
-    });
-}; */

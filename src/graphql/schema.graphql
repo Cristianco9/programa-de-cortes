@@ -1,36 +1,45 @@
 type Query {
-  # orders
+  # Users
+  user(dto: UserDto!): User
+  allUsers: [User!]!
+
+  # Orders
   order(dto: OrderDto!): Order
   allOrders: [Order!]!
 }
 
 type Mutation {
-  # users
+  # Auth
   login(dto: UserLoginDto!): AuthResponse
 
-  # orders
+  # Users
+  newUser(dto: CreateUserDto!): User
+  deleteUser(dto: DeleteUserDto!): User
+  updateUser(id: ID!, dto: UpdateUserDto!): User
+
+  # Orders
   newOrder(dto: CreateOrderDto!): Order
   deleteOrder(dto: DeleteOrderDto!): Order
   updateOrder(id: ID!, dto: UpdateOrderDto!): Order
 }
 
 type User {
-  id: ID!
+  id: UserIdType!
   dateCreation: String
-  email: String!
-  rol: String!
-  name: String!
-  password: String!
-  orders: [Int]
+  email: UserEmailType
+  rol: UserRolType
+  name: UserNameType
+  password: UserPasswordType
+  orders: [OrderIdType]
 }
 
 type Order {
-  id: ID!
-  userOwnerID: Int!
+  id: OrderIdType!
+  userOwnerID: UserIdType!
   dateCreation: String
-  status: String
-  anjeoLightID: Int
-  anejoHeavyID: Int
+  status: OrderStatusType
+  anjeoLightID: [Int]
+  anejoHeavyID: [Int]
 }
 
 type AuthResponse {
@@ -39,26 +48,58 @@ type AuthResponse {
 
 # user DTOs
 input UserLoginDto {
-  userName: String!
-  password: String!
+  userName: UserNameType!
+  password: UserPasswordType!
 }
 
+input UserDto {
+  id: UserIdType!
+}
+
+input CreateUserDto {
+  email: UserEmailType!
+  rol: UserRolType!
+  name: UserNameType!
+  password: UserPasswordType!
+}
+
+input DeleteUserDto {
+  id: UserIdType!
+}
+
+input UpdateUserDto {
+  email: UserEmailType
+  rol: UserRolType
+  name: UserNameType
+  password: UserPasswordType
+}
 
 # order DTOs
 input OrderDto {
-  id: ID!
+  id: OrderIdType!
 }
 
 input CreateOrderDto {
-  id: ID!
-  userOwnerID: Int!
+  id: OrderIdType!
+  userOwnerID: UserIdType!
 }
 
 input DeleteOrderDto {
-  id: ID!
+  id: OrderIdType!
 }
 
 input UpdateOrderDto {
-  userOwnerID: Int
-  status: String
+  userOwnerID: UserIdType
+  status: OrderStatusType
 }
+
+# user scalar Types
+scalar UserIdType
+scalar UserEmailType
+scalar UserRolType
+scalar UserNameType
+scalar UserPasswordType
+
+# order scalar Types
+scalar OrderIdType
+scalar OrderStatusType

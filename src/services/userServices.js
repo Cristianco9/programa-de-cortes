@@ -1,4 +1,5 @@
 import { User } from '../db/models/userModel.js';
+import { hashPassword } from '../utils/auth/passHash.js';
 import bcrypt from 'bcryptjs';
 import Boom from '@hapi/boom';
 import { signUserToken } from '../utils/auth/tokenSign.js';
@@ -19,13 +20,16 @@ export const findByName = (name) => {
       }
     })
     .then(userRecord => {
+      if (userRecord.dataValues.hasOwnProperty('password')) {
+        delete userRecord.dataValues.password;
+      }
       // If the user is found, resolve the promise with the user record
       resolve(userRecord);
     })
     .catch(err => {
       // If an error occurs while searching for the user, reject the promise with a detailed error
       const boomError = Boom.serverUnavailable(
-        'Unable to find the user in the database', err
+        'No es posible encontrar el usuario en la base de datos', err
       );
       reject(boomError);
     });
@@ -47,6 +51,9 @@ export const findById = (id) => {
       }
     })
     .then(userRecord => {
+      if (userRecord.dataValues.hasOwnProperty('password')) {
+        delete userRecord.dataValues.password;
+      }
       // If the user is found, resolve the promise with the user record
       resolve(userRecord);
     })
@@ -68,10 +75,20 @@ export const findById = (id) => {
 export const findAllUsers = () => {
   return new Promise((resolve, reject) => {
     // Find all users in the database
-    User.findAll()
+    User.findAll({
+      order: [['id', 'ASC']]
+    })
       .then(users => {
+        const usersClean = users.map(users => {
+          if (users.dataValues.hasOwnProperty('password')) {
+            delete users.dataValues.password;
+            return users;
+          } else {
+            return users;
+          }
+        });
         // If users are found, resolve the promise with the array of user records
-        resolve(users);
+        resolve(usersClean);
       })
       .catch(err => {
         // If an error occurs while searching for users, reject the promise with a detailed error
@@ -90,10 +107,18 @@ export const findAllUsers = () => {
  *  record or rejects with an error.
  */
 export const createUser = (userData) => {
-  return new Promise((resolve, reject) => {
+  return new Promise( async (resolve, reject) => {
+    // Hash the new user password
+    const hash = await hashPassword(userData.password);
+    console.log("the password hashed:");
+    console.log(hash);
+    userData.password = hash;
     // Create a new user in the database with the provided data
     User.create(userData)
       .then(newUser => {
+        if (newUser.dataValues.hasOwnProperty('password')) {
+          delete newUser.dataValues.password;
+        }
         // If the user is created successfully, resolve the promise with the newly created user record
         resolve(newUser);
       })
@@ -129,8 +154,11 @@ export const deleteUserById = (id) => {
           // If the user is found, delete them from the database
           userRecord.destroy()
             .then(() => {
+              if (userRecord.dataValues.hasOwnProperty('password')) {
+                delete userRecord.dataValues.password;
+              }
               // Resolve the promise once the user is deleted
-              resolve();
+              resolve(userRecord);
             })
             .catch(err => {
               // If there's an error deleting the user, reject the promise with a detailed error
@@ -161,7 +189,7 @@ export const modifyUser = (id, newData) => {
   return new Promise((resolve, reject) => {
     // Find the user by their ID
     User.findByPk(id)
-      .then(userRecord => {
+      .then( async userRecord => {
         if (!userRecord) {
           // If the user is not found, reject the promise with an error
           const error = new Error(
@@ -170,11 +198,22 @@ export const modifyUser = (id, newData) => {
           error.statusCode = 404;
           reject(error);
         } else {
+          if (newData.hasOwnProperty('password')) {
+            // Hash the new user password
+            const hash = await hashPassword(newData.password);
+            newData.password = hash
+          }
           // If the user is found, update their information with the new data
           userRecord.update(newData)
             .then(() => {
+              // remove the field password before to return the user
+              console.log("the row data");
+              console.log(userRecord);
+              if (userRecord.dataValues.hasOwnProperty('password')) {
+                delete userRecord.dataValues.password;
+              }
               // Resolve the promise once the user's information is successfully modified
-              resolve();
+              resolve(userRecord);
             })
             .catch(err => {
               // If there's an error updating the user's information, reject the promise with a detailed error

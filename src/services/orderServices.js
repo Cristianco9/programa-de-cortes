@@ -37,7 +37,9 @@ export const findById = (id) => {
 export const findAllOrders = () => {
   return new Promise((resolve, reject) => {
     // Find all orders in the database
-    Order.findAll()
+    Order.findAll({
+      order: [['id', 'ASC']]
+    })
       .then(orders => {
         // If orders are found, resolve the promise with the array of order records
         resolve(orders);
@@ -93,7 +95,7 @@ export const deleteOrderById = (id) => {
         if (!orderRecord) {
           // If the order is not found, reject the promise with an error
           const error = new Error(
-            'No es posible encontrar el usuario en la base de datos'
+            'No es posible encontrar el pedido en la base de datos'
           );
           error.statusCode = 404;
           reject(error);

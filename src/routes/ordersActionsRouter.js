@@ -1,7 +1,6 @@
 import { Router } from "express";
 import { verifyToken } from '../middlewares/tokenHandler.js';
 import { checkRole } from '../middlewares/checkRoleHandler.js';
-import { ordersSchema } from '../schemas/ordersSchema.js';
 import { orderActions } from "../controllers/orderActionsController.js";
 import { type } from "../controllers/typeController.js";
 import { formLight } from "../controllers/formLightController.js";

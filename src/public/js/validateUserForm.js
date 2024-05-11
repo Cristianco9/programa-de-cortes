@@ -36,7 +36,7 @@ function validateForm() {
       return false;
   }
 
-  let passwordRegex = /^(?=.*[a-z])(?=.*\d)[a-zA-Z\d]{5,30}$/;
+  let passwordRegex = /^(?=.*[a-zA-Z])(?=.*\d)[a-zA-Z\d]{5,30}$/;
   if (!passwordRegex.test(password)) {
       document.getElementById('wrongName').style.display = 'none';
       document.getElementById('wrongEmail').style.display = 'none';
