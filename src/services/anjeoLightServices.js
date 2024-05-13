@@ -1,4 +1,4 @@
-import { anjeoLight } from '../db/models/anjeoLightModel.js';
+import { AnjeoLight } from '../db/models/anjeoLightModel.js';
 import Boom from '@hapi/boom';
 
 /**
@@ -10,7 +10,7 @@ import Boom from '@hapi/boom';
 export const findById = (id) => {
   return new Promise((resolve, reject) => {
     // Find the anjeo light in the database
-    anjeoLight.findOne({
+    AnjeoLight.findOne({
       where: {
         anjeoLightID: id
       }
@@ -34,10 +34,10 @@ export const findById = (id) => {
  * @returns {Promise} - A promise that resolves with an array of all anjeoLight
  *  records found or rejects with an error.
  */
-export const findAllAnjeoLights = () => {
+export const findAllAnjeoLight = () => {
   return new Promise((resolve, reject) => {
     // Find all anjeoLights in the database
-    anjeoLight.findAll()
+    AnjeoLight.findAll()
       .then(anjeoLights => {
         // If anjeoLights are found, resolve the promise with the array of anjeoLight records
         resolve(anjeoLights);
@@ -58,10 +58,10 @@ export const findAllAnjeoLights = () => {
  * @returns {Promise} - A promise that resolves with an array of all anjeoLight
  *  records found for the specified order owner ID or rejects with an error.
  */
-export const findAllAnjeoLightsByOrderOwnerID = (orderOwnerID) => {
+export const findAllAnjeoLightByOrderOwnerId = (orderOwnerID) => {
   return new Promise((resolve, reject) => {
     // Find all anjeoLights in the database where orderOwnerID matches the specified value
-    anjeoLight.findAll({
+    AnjeoLight.findAll({
       where: {
         orderOwnerID: orderOwnerID
       }
@@ -89,7 +89,7 @@ export const findAllAnjeoLightsByOrderOwnerID = (orderOwnerID) => {
 export const createAnjeoLight = (anjeoLightData) => {
   return new Promise((resolve, reject) => {
     // Create a new anjeoLight in the database with the provided data
-    anjeoLight.create(anjeoLightData)
+    AnjeoLight.create(anjeoLightData)
       .then(newAnjeoLight => {
         // If the anjeoLight is created successfully, resolve the promise with the newly created anjeoLight record
         resolve(newAnjeoLight);
@@ -113,7 +113,7 @@ export const createAnjeoLight = (anjeoLightData) => {
 export const deleteAnjeoLightById = (id) => {
   return new Promise((resolve, reject) => {
     // Find the anjeoLight by their ID
-    anjeoLight.findByPk(id)
+    AnjeoLight.findByPk(id)
       .then(anjeoLightRecord => {
         if (!anjeoLightRecord) {
           // If the anjeoLight is not found, reject the promise with an error
@@ -127,7 +127,7 @@ export const deleteAnjeoLightById = (id) => {
           anjeoLightRecord.destroy()
             .then(() => {
               // Resolve the promise once the anjeoLight is deleted
-              resolve();
+              resolve(anjeoLightRecord);
             })
             .catch(err => {
               // If there's an error deleting the anjeoLight, reject the promise with a detailed error
@@ -157,7 +157,7 @@ export const deleteAnjeoLightById = (id) => {
 export const modifyAnjeoLight = (id, newData) => {
   return new Promise((resolve, reject) => {
     // Find the anjeoLight by their ID
-    anjeoLight.findByPk(id)
+    AnjeoLight.findByPk(id)
       .then(anjeoLightRecord => {
         if (!anjeoLightRecord) {
           // If the anjeoLight is not found, reject the promise with an error
@@ -171,7 +171,7 @@ export const modifyAnjeoLight = (id, newData) => {
           anjeoLightRecord.update(newData)
             .then(() => {
               // Resolve the promise once the anjeoLight's information is successfully modified
-              resolve();
+              resolve(anjeoLightRecord);
             })
             .catch(err => {
               // If there's an error updating the anjeoLight's information, reject the promise with a detailed error

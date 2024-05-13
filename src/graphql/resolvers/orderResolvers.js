@@ -22,7 +22,7 @@ export const order = async (_, { dto }, context) => {
   } catch (err) {
     throw err;
   }
-}
+};
 
 export const allOrders = async (_, { dto }, context) => {
   try {
@@ -37,7 +37,7 @@ export const allOrders = async (_, { dto }, context) => {
   } catch (err) {
     throw err;
   }
-}
+};
 
 export const newOrder = async (_, { dto }, context) => {
   try {
@@ -62,12 +62,12 @@ export const deleteOrder = async (_, { dto }, context) => {
       throw boomError;
     }
     checkRolesGql(user, 'administrador', 'asesor');
-    const deleteRecord = await deleteOrderById(dto.id);
-    return deleteRecord
+    const deletedRecord = await deleteOrderById(dto.id);
+    return deletedRecord
   } catch (err) {
     throw err;
   }
-}
+};
 
 export const updateOrder = async (_, { id, dto }, context) => {
   try {
@@ -82,4 +82,4 @@ export const updateOrder = async (_, { id, dto }, context) => {
   } catch (err) {
     throw err;
   }
-}
+};

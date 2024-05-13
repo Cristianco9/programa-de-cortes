@@ -63,8 +63,8 @@ export const deleteUser = async (_, { dto }, context) => {
     }
     checkRolesGql(user, 'administrador');
     console.log("the order id to delete:", dto.id);
-    const deleteRecord = await deleteUserById(dto.id);
-    return deleteRecord
+    const deletedRecord = await deleteUserById(dto.id);
+    return deletedRecord
   } catch (err) {
     throw err;
   }

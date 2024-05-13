@@ -1,0 +1,16 @@
+export const LOrderOwnerIdRegEx = /^(?:[1-9]\d{0,5}|1000000)$/;
+export const LAnjeoLightIdRegEx = /^(?:[1-9]\d{0,5}|1000000)$/;
+export const LColorRegEx = /^[a-zA-Z]{5,8}$$/;
+export const LProfileTypeRegEx = /^[a-zA-Z ]{4,8}$/;
+export const LOpeningRegEx = /^[a-zA-Z ]{4,16}$/;
+export const LPlaceRegEx = /^[a-zA-Z ]{2,15}$/;
+export const LWidthRegEx = /^((7\d?|[89]|[1-9]\d|1[0-4]\d)(\.\d)?|150)$/;
+export const LWidthOptionalRegEx = /^(?:150(?:\.0)?|1[0-4][0-9](?:\.\d)?|[0-9]{1,2}(?:\.\d)?)$/;
+export const LHeightRegEx = /^((7\d?|[89]|[1-9]\d|1\d{2}|2[0-9]{2})(\.\d)?|300)$/;
+export const LGuideRegEx = /^((\d{1,2}|[1-5]\d{2})(\.\d)?|600)$/;
+export const LInstallationRegEx = /^[a-zA-Z]{7}$/;
+export const LDivisorHighRegEx = /^((\d{1,2}|1\d{2}|2[0-9]{2})(\.\d)?)$|^300$/;
+export const LDivisorQuantityRegEx = /^(?:[0-9]\d{0,1}|10)$/;
+export const LDivisorOrientationRegEx =/^.*[a-zA-Z]{0,10}$/;
+export const LAngleRegEx = /^[a-zA-Z ]{7,18}$/;
+export const LNotesRegEx = /^.{0,199}$/;

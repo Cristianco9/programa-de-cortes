@@ -6,6 +6,11 @@ type Query {
   # Orders
   order(dto: OrderDto!): Order
   allOrders: [Order!]!
+
+  # Anjeos light
+  anjeoLight(dto: AnjeoLightDto!): AnjeoLight
+  allAnjeosLight: [AnjeoLight!]!
+  allAnjeosLightByOwnerId(dto: OrderOwnerIdDto!): [AnjeoLight]!
 }
 
 type Mutation {
@@ -21,6 +26,15 @@ type Mutation {
   newOrder(dto: CreateOrderDto!): Order
   deleteOrder(dto: DeleteOrderDto!): Order
   updateOrder(id: ID!, dto: UpdateOrderDto!): Order
+
+  # Anjeo light
+  newAnjeoLight(dto: CreateAnjeoLightDto!): AnjeoLight
+  deleteAnjeoLight(dto: DeleteAnjeoLightDto!): AnjeoLight
+  updateAnjeoLight(id: ID!, dto: UpdateAnjeoLightDto!): AnjeoLight
+}
+
+type AuthResponse {
+  token: JWT
 }
 
 type User {
@@ -42,10 +56,25 @@ type Order {
   anejoHeavyID: [Int]
 }
 
-type AuthResponse {
-  token: JWT
+type AnjeoLight {
+  orderOwnerID: LOrderOwnerIdType!
+  anjeoLightID: LAnjeoIdType!
+  dateCreation: DateTime
+  color: LColorType
+  profileType: LProfileTypeType
+  opening: LOpeningType
+  place: LPlaceType
+  width: LWidthType
+  widthOptional: LWidthOptionalType
+  height: LHeightType
+  guide: LGuideType
+  installation: LInstallationType
+  divisorHigh: LDivisorHeightType
+  divisorQuantity: LDivisorQuantityType
+  divisorOrientation: LDivisorOrientationType
+  angle: LAngleType
+  notes: LNotesType
 }
-
 # user DTOs
 input UserLoginDto {
   userName: UserNameType!
@@ -93,6 +122,54 @@ input UpdateOrderDto {
   status: OrderStatusType
 }
 
+# anjeo Light DTOs
+input AnjeoLightDto {
+  anjeoLightID: LAnjeoIdType!
+}
+
+input OrderOwnerIdDto {
+  orderOwnerID: LOrderOwnerIdType!
+}
+
+input CreateAnjeoLightDto {
+  orderOwnerID: LOrderOwnerIdType!
+  color: LColorType!
+  profileType: LProfileTypeType!
+  opening: LOpeningType!
+  place: LPlaceType!
+  width: LWidthType!
+  widthOptional: LWidthOptionalType!
+  height: LHeightType!
+  guide: LGuideType!
+  installation: LInstallationType!
+  divisorHigh: LDivisorHeightType!
+  divisorQuantity: LDivisorQuantityType!
+  divisorOrientation: LDivisorOrientationType
+  angle: LAngleType!
+  notes: LNotesType
+}
+
+input DeleteAnjeoLightDto {
+  anjeoLightID: LAnjeoIdType!
+}
+
+input UpdateAnjeoLightDto {
+  color: LColorType
+  profileType: LProfileTypeType
+  opening: LOpeningType
+  place: LPlaceType
+  width: LWidthType
+  widthOptional: LWidthOptionalType
+  height: LHeightType
+  guide: LGuideType
+  installation: LInstallationType
+  divisorHigh: LDivisorHeightType
+  divisorQuantity: LDivisorQuantityType
+  divisorOrientation: LDivisorOrientationType
+  angle: LAngleType
+  notes: LNotesType
+}
+
 # user scalar Types
 scalar UserIdType
 scalar UserEmailType
@@ -103,3 +180,21 @@ scalar UserPasswordType
 # order scalar Types
 scalar OrderIdType
 scalar OrderStatusType
+
+# anjeo light Types
+scalar LOrderOwnerIdType
+scalar LAnjeoIdType
+scalar LColorType
+scalar LProfileTypeType
+scalar LOpeningType
+scalar LPlaceType
+scalar LWidthType
+scalar LWidthOptionalType
+scalar LHeightType
+scalar LGuideType
+scalar LInstallationType
+scalar LDivisorHeightType
+scalar LDivisorQuantityType
+scalar LDivisorOrientationType
+scalar LAngleType
+scalar LNotesType
