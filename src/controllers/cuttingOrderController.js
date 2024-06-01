@@ -1,7 +1,8 @@
 import { getOrderIdFromCookie } from '../utils/auth/tokenData.js';
 import { AnjeoLight } from '../db/models/anjeoLightModel.js';
 import { AnjeoHeavy } from '../db/models/anjeoHeavyModel.js';
-import { applyDiscountsLight, applyDiscountsHeavy } from '../services/cuttingOrderServices.js'
+import { applyDiscountsLight } from '../services/anjeoLightCuttingOrderServices.js';
+import { applyDiscountsHeavy } from '../services/anjeoHeavyCuttingOrderServices.js';
 import  Boom from '@hapi/boom';
 
 export const cuttingOrder =  async (req, res, next) => {
@@ -35,10 +36,10 @@ export const cuttingOrder =  async (req, res, next) => {
 
           try {
             const anjeosHeavyModified = await applyDiscountsHeavy(anjeosHeavyData);
-              console.log("anjeos liviano:");
-              console.log(anjeosLightData);
-              console.log("anjeos liviano moficado:");
-              console.log(anjeosLightModified);
+              console.log("anjeos pesado:");
+              console.log(anjeosHeavyData);
+              console.log("anjeos pesado moficado:");
+              console.log(anjeosHeavyModified);
           } catch (err) {
             const boomError = Boom.notImplemented(
               'No es posible aplicar los descuentos a los anjeos pesados', err);
