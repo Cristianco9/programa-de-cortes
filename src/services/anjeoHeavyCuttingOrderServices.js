@@ -59,7 +59,6 @@ export const applyDiscountsHeavy = async (anjeosHeavy) => {
           const widthUpdated = calculateHeavyWidthLateral(object.width).toFixed(1);
           const heightUpdated = calculateHeavyHeight(object.height).toFixed(1);
           const divisorMeasure = calculateHeavyWidthDivisorLateral(object.width).toFixed(1);
-          const d28 = calculateHeavyD28PickUpCenter(object.height).toFixed(1);
 
           return {
             ...object,
@@ -69,8 +68,7 @@ export const applyDiscountsHeavy = async (anjeosHeavy) => {
             heightProfiles: 4,
             divisorProfiles: 2,
             divisorMeasure: divisorMeasure,
-            D28: d28,
-            D28Quantity: 1
+            angleQuantity: 1
           }
         }
 
@@ -102,7 +100,9 @@ export const applyDiscountsHeavy = async (anjeosHeavy) => {
             divisorProfiles: 1,
             T77: 1,
             "3/4": height,
-            "3/4Quantity": 1
+            "3/4Quantity": 1,
+            D28: "no defined",
+            D28Quantity: 1
           }
         }
 
@@ -122,7 +122,8 @@ export const applyDiscountsHeavy = async (anjeosHeavy) => {
             HeadDucha: 1,
             CillarDucha: 1,
             "3/4": 1,
-            "3/4Quantity": 1
+            "3/4Quantity": 1,
+            angleQuantity: 1
           }
         }
       });
