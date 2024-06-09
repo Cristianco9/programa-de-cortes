@@ -14,17 +14,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
       if (profileSelected === 'Cuatro naves') {
           addOption('Cierre al centro', 'Cierre al centro', openingSelect);
-          addOption('Lateral', 'Lateral', openingSelect);
-          addOption('Uno hala otro', 'Uno hala otro', openingSelect);
       } else if (profileSelected === 'Doble') {
           addOption('Cierre al centro', 'Cierre al centro', openingSelect);
-          addOption('Lateral', 'Lateral', openingSelect);
           addOption('Uno hala otro', 'Uno hala otro', openingSelect);
       } else if (profileSelected === 'Sencillo') {
           addOption('Fijo', 'Fijo', openingSelect);
-      } else if (profileSelected === 'Tres naves') {
-          addOption('Cierre al centro', 'Cierre al centro', openingSelect);
           addOption('Lateral', 'Lateral', openingSelect);
+      } else if (profileSelected === 'Tres naves') {
           addOption('Uno hala otro', 'Uno hala otro', openingSelect);
       }
   }
