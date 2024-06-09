@@ -3,10 +3,12 @@ import {
   calculateHeavyHeight,
   calculateHeavyWidth,
   calculateHeavyWidthDivisorFourShips,
+  calculateHeavyWidthDivisorLateral,
   calculateHeavyWidthDivisorOneToAnother,
   calculateHeavyWidthDivisorPickUpCenter,
   calculateHeavyWidthDivisorThreeShips,
   calculateHeavyWidthFourShips,
+  calculateHeavyWidthLateral,
   calculateHeavyWidthOneToAnother,
   calculateHeavyWidthPickUpCenter,
   calculateHeavyWidthThreeShips
@@ -19,141 +21,114 @@ export const applyDiscountsHeavy = async (anjeosHeavy) => {
     try {
       const anjeosHeavyUpdated = anjeosHeavy.map(object => {
         if (object.profileType === 'Cuatro naves' && object.opening === 'Cierre al centro') {
-          const widthValue = calculateHeavyWidthFourShips(object.width);
-          const widthUpdated = widthValue.toFixed(1);
-          const heightValue = calculateHeavyHeight(object.height);
-          const heightUpdated = heightValue.toFixed(1);
-          const divisorHighValue = calculateHeavyWidthDivisorFourShips(object.divisorHigh);
-          const divisorHighUpdated = divisorHighValue.toFixed(1);
-          const d28Value = calculateHeavyD28PickUpCenter(object.height);
-          const d28 = d28Value.toFixed(1);
+          const widthUpdated = calculateHeavyWidthFourShips(object.width).toFixed(1);
+          const heightUpdated = calculateHeavyHeight(object.height).toFixed(1);
+          const divisorMeasure = calculateHeavyWidthDivisorFourShips(object.width).toFixed(1);
+          const d28 = calculateHeavyD28PickUpCenter(object.height).toFixed(1);
 
           return {
             ...object,
             width: widthUpdated,
             height: heightUpdated,
-            divisorHigh: divisorHighUpdated,
             widthProfiles: 8,
             heightProfiles: 8,
             divisorProfiles: 4,
+            divisorMeasure: divisorMeasure,
             CillarDucha: 1,
             D28: d28,
             D28Quantity: 1
           }
         } else if (object.profileType === 'Cuatro naves' && object.opening === 'Lateral') {
-          const widthValue = calculateHeavyWidthFourShips(object.width);
-          const widthUpdated = widthValue.toFixed(1);
-          const heightValue = calculateHeavyHeight(object.height);
-          const heightUpdated = heightValue.toFixed(1);
-          const divisorHighValue = calculateHeavyWidthDivisorFourShips(object.divisorHigh);
-          const divisorHighUpdated = divisorHighValue.toFixed(1);
-          const d28Value = calculateHeavyD28PickUpCenter(object.height);
-          const d28 = d28Value.toFixed(1);
+          const widthUpdated = calculateHeavyWidthFourShips(object.width).toFixed(1);
+          const heightUpdated = calculateHeavyHeight(object.height).toFixed(1);
+          const divisorMeasure = calculateHeavyWidthDivisorFourShips(object.width).toFixed(1);
+          const d28 = calculateHeavyD28PickUpCenter(object.height).toFixed(1);
 
           return {
             ...object,
             width: widthUpdated,
             height: heightUpdated,
-            divisorHigh: divisorHighUpdated,
             widthProfiles: 8,
             heightProfiles: 8,
             divisorProfiles: 4,
+            divisorMeasure: divisorMeasure,
             CillarDucha: 1,
             D28: d28,
             D28Quantity: 1
           }
         } else if (object.profileType === 'Cuatro naves' && object.opening === 'Uno hala otro') {
-          const widthValue = calculateHeavyWidthFourShips(object.width);
-          const widthUpdated = widthValue.toFixed(1);
-          const heightValue = calculateHeavyHeight(object.height);
-          const heightUpdated = heightValue.toFixed(1);
-          const divisorHighValue = calculateHeavyWidthDivisorFourShips(object.divisorHigh);
-          const divisorHighUpdated = divisorHighValue.toFixed(1);
-          const d28Value = calculateHeavyD28PickUpCenter(object.height);
-          const d28 = d28Value.toFixed(1);
+          const widthUpdated = calculateHeavyWidthFourShips(object.width).toFixed(1);
+          const heightUpdated = calculateHeavyHeight(object.height).toFixed(1);
+          const divisorMeasure = calculateHeavyWidthDivisorFourShips(object.width).toFixed(1);
+          const d28 = calculateHeavyD28PickUpCenter(object.height).toFixed(1);
 
           return {
             ...object,
             width: widthUpdated,
             height: heightUpdated,
-            divisorHigh: divisorHighUpdated,
             widthProfiles: 8,
             heightProfiles: 8,
             divisorProfiles: 4,
+            divisorMeasure: divisorMeasure,
             CillarDucha: 1,
             D28: d28,
             D28Quantity: 1
           }
         } else if (object.profileType === 'Doble' && object.opening === 'Cierre al centro') {
-          const widthValue = calculateHeavyWidthPickUpCenter(object.width);
-          const widthUpdated = widthValue.toFixed(1);
-          const heightValue = calculateHeavyHeight(object.height);
-          const heightUpdated = heightValue.toFixed(1);
-          const divisorHighValue = calculateHeavyWidthDivisorPickUpCenter(object.divisorHigh);
-          const divisorHighUpdated = divisorHighValue.toFixed(1);
-          const d28Value = calculateHeavyD28PickUpCenter(object.height);
-          const d28 = d28Value.toFixed(1);
+          const widthUpdated = calculateHeavyWidthPickUpCenter(object.width).toFixed(1);
+          const heightUpdated = calculateHeavyHeight(object.height).toFixed(1);
+          const divisorMeasure = calculateHeavyWidthDivisorPickUpCenter(object.width).toFixed(1);
+          const d28 = calculateHeavyD28PickUpCenter(object.height).toFixed(1);
 
           return {
             ...object,
             width: widthUpdated,
             height: heightUpdated,
-            divisorHigh: divisorHighUpdated,
             widthProfiles: 4,
             heightProfiles: 4,
             divisorProfiles: 2,
+            divisorMeasure: divisorMeasure,
             D28: d28,
             D28Quantity: 1
           }
-        }  else if (object.profileType === 'Doble' && object.opening === 'Lateral') {
-          const widthValue = calculateHeavyWidthPickUpCenter(object.width);
-          const widthUpdated = widthValue.toFixed(1);
-          const heightValue = calculateHeavyHeight(object.height);
-          const heightUpdated = heightValue.toFixed(1);
-          const divisorHighValue = calculateHeavyWidthDivisorPickUpCenter(object.divisorHigh);
-          const divisorHighUpdated = divisorHighValue.toFixed(1);
-          const d28Value = calculateHeavyD28PickUpCenter(object.height);
-          const d28 = d28Value.toFixed(1);
+        }  else if (object.profileType === 'Doble' && object.opening === 'Uno hala otro') {
+          const widthUpdated = calculateHeavyWidthLateral(object.width).toFixed(1);
+          const heightUpdated = calculateHeavyHeight(object.height).toFixed(1);
+          const divisorMeasure = calculateHeavyWidthDivisorLateral(object.width).toFixed(1);
+          const d28 = calculateHeavyD28PickUpCenter(object.height).toFixed(1);
 
           return {
             ...object,
             width: widthUpdated,
             height: heightUpdated,
-            divisorHigh: divisorHighUpdated,
             widthProfiles: 4,
             heightProfiles: 4,
             divisorProfiles: 2,
+            divisorMeasure: divisorMeasure,
             D28: d28,
             D28Quantity: 1
           }
-        } else if (object.profileType === 'Doble' && object.opening === 'Uno hala otro') {
-          const widthValue = calculateHeavyWidthOneToAnother(object.width);
-          const widthUpdated = widthValue.toFixed(1);
-          const heightValue = calculateHeavyHeight(object.height);
-          const heightUpdated = heightValue.toFixed(1);
-          const divisorHighValue = calculateHeavyWidthDivisorOneToAnother(object.divisorHigh);
-          const divisorHighUpdated = divisorHighValue.toFixed(1);
-          const d28Value = calculateHeavyD28PickUpCenter(object.height);
-          const d28 = d28Value.toFixed(1);
+        } else if (object.profileType === 'Doble' && object.opening === 'Lateral') {
+          const widthUpdated = calculateHeavyWidthOneToAnother(object.width).toFixed(1);
+          const heightUpdated = calculateHeavyHeight(object.height).toFixed(1);
+          const divisorMeasure = calculateHeavyWidthDivisorOneToAnother(object.width).toFixed(1);
 
           return {
             ...object,
             width: widthUpdated,
             height: heightUpdated,
-            divisorHigh: divisorHighUpdated,
             widthProfiles: 4,
             heightProfiles: 4,
             divisorProfiles: 2,
+            divisorMeasure: divisorMeasure,
             "3/4": 1,
             "3/4Quantity": 1,
             CillarDucha: 1,
             mambaDucha: 1
           }
         } else if (object.profileType === 'Sencillo' && object.opening === 'Fijo') {
-          const widthValue = calculateHeavyWidth(object.width);
-          const widthUpdated = widthValue.toFixed(1);
-          const heightValue = calculateHeavyHeight(object.height);
-          const heightUpdated = heightValue.toFixed(1);
+          const widthUpdated = calculateHeavyWidth(object.width).toFixed(1);
+          const heightUpdated = calculateHeavyHeight(object.height).toFixed(1);
 
           return {
             ...object,
@@ -167,63 +142,54 @@ export const applyDiscountsHeavy = async (anjeosHeavy) => {
             "3/4Quantity": 1
           }
         } else if (object.profileType === 'Tres naves' && object.opening === 'Cierre al centro') {
-          const widthValue = calculateHeavyWidthThreeShips(object.width);
-          const widthUpdated = widthValue.toFixed(1);
-          const heightValue = calculateHeavyHeight(object.height);
-          const heightUpdated = heightValue.toFixed(1);
-          const divisorHighValue = calculateHeavyWidthDivisorThreeShips(object.divisorHigh);
-          const divisorHighUpdated = divisorHighValue.toFixed(1);
+          const widthUpdated = calculateHeavyWidthThreeShips(object.width).toFixed(1);
+          const heightUpdated = calculateHeavyHeight(object.height).toFixed(1);
+          const divisorMeasure = calculateHeavyWidthDivisorThreeShips(object.width).toFixed(1);
 
           return {
             ...object,
             width: widthUpdated,
             height: heightUpdated,
-            divisorHigh: divisorHighUpdated,
             widthProfiles: 6,
             heightProfiles: 6,
             divisorProfiles: 3,
+            divisorMeasure: divisorMeasure,
             HeadDucha: 1,
             CillarDucha: 1,
             "3/4": 1,
             "3/4Quantity": 1
           }
         } else if (object.profileType === 'Tres naves' && object.opening === 'Lateral') {
-          const widthValue = calculateHeavyWidthThreeShips(object.width);
-          const widthUpdated = widthValue.toFixed(1);
-          const heightValue = calculateHeavyHeight(object.height);
-          const heightUpdated = heightValue.toFixed(1);
-          const divisorHighValue = calculateHeavyWidthDivisorThreeShips(object.divisorHigh);
-          const divisorHighUpdated = divisorHighValue.toFixed(1);
+          const widthUpdated = calculateHeavyWidthThreeShips(object.width).toFixed(1);
+          const heightUpdated = calculateHeavyHeight(object.height).toFixed(1);
+          const divisorMeasure = calculateHeavyWidthDivisorThreeShips(object.width).toFixed(1);
 
           return {
             ...object,
             width: widthUpdated,
             height: heightUpdated,
-            divisorHigh: divisorHighUpdated,
             widthProfiles: 6,
             heightProfiles: 6,
             divisorProfiles: 3,
+            divisorMeasure: divisorMeasure,
             HeadDucha: 1,
             CillarDucha: 1,
             "3/4": 1,
             "3/4Quantity": 1
           }
         } else if (object.profileType === 'Tres naves' && object.opening === 'Uno hala otro') {
-          const widthValue = calculateHeavyWidthThreeShips(object.width);
-          const widthUpdated = widthValue.toFixed(1);
-          const heightValue = calculateHeavyHeight(object.height);
-          const heightUpdated = heightValue.toFixed(1);
-          const divisorHighValue = calculateHeavyWidthDivisorThreeShips(object.divisorHigh);
-          const divisorHighUpdated = divisorHighValue.toFixed(1);
+          const widthUpdated = calculateHeavyWidthThreeShips(object.width).toFixed(1);
+          const heightUpdated = calculateHeavyHeight(object.height).toFixed(1);
+          const divisorMeasure = calculateHeavyWidthDivisorThreeShips(object.width).toFixed(1);
 
           return {
             ...object,
             width: widthUpdated,
             height: heightUpdated,
-            divisorHigh: divisorHighUpdated,
             widthProfiles: 6,
             heightProfiles: 6,
             divisorProfiles: 3,
+            divisorMeasure: divisorMeasure,
             HeadDucha: 1,
             CillarDucha: 1,
             "3/4": 1,

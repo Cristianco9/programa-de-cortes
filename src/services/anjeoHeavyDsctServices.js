@@ -28,8 +28,18 @@ export const calculateHeavyWidthPickUpCenter = (inputWidth) => {
   return outputWidth;
 };
 
+export const calculateHeavyWidthLateral = (inputWidth) => {
+  let outputWidth = (inputWidth - 11) / 2;
+  return outputWidth;
+};
+
 export const calculateHeavyWidthDivisorPickUpCenter = (inputWidth) => {
   let outputWidth = (inputWidth / 2);
+  return outputWidth;
+};
+
+export const calculateHeavyWidthDivisorLateral = (inputWidth) => {
+  let outputWidth = (inputWidth + 3.5) / 2;
   return outputWidth;
 };
 
@@ -43,7 +53,7 @@ export const calculateHeavyWidthFixed = (inputWidth) => {
   return outputWidth;
 };
 
-export const calculatHeavyHeightFixed = (inputHeight) => {
+export const calculateHeavyHeightFixed = (inputHeight) => {
   let outputHeight = inputHeight - 7.2;
   return outputHeight;
 };
