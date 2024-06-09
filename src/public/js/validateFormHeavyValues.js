@@ -76,12 +76,12 @@ function validateForm() {
 }
 
 const placeRegex = /^.{2,15}$/;
-const widthRegex = /^(?:10(?:\.0)?|[1-9]\d{1,2}(?:\.\d)?|1000(?:\.0)?)$/;
-const heightRegex = /^(?:10(?:\.0)?|[1-9]\d{1,2}(?:\.\d)?|1000(?:\.0)?)$/;
-const headRegex = /^(10|[1-9])$/;
-const adaptadorRegex = /^(10|[1-9])$/;
-const topProfileRegex = /^(?:10(?:\.0)?|[1-9]\d{1,2}(?:\.\d)?|1000(?:\.0)?)$/;
-const divisorHeightRegex = /^(?:10(?:\.0)?|[1-9]\d{1,2}(?:\.\d)?|1000(?:\.0)?)$/;
+const widthRegex = /^(20|2[1-9]|[3-9][0-9]|[1-7][0-9]{2}|800)(\.[0-9])?$/;
+const heightRegex = /^(140|1[4-9]\d|2[0-9]\d|300|31[0-9]|32[0-9]|33[0-9]|34[0-9]|349)(\.\d)?$|^350$/;
+const headRegex = /^(10|[1-9]\d{1,2}|1[01]\d{2})(\.\d)?$|^1200$/;
+const adaptadorRegex = /^(10|[1-9]\d{1,2}|1[01]\d{2})(\.\d)?$|^1200$/;
+const topProfileRegex = /^(0|[1-9]\d{0,2})(\.\d)?$|^1000$/;
+const divisorHeightRegex = /^((\d{1,2}|1\d{2}|2[0-9]{2}|3[0-4][0-9])(\.\d)?)$|^350$/;
 const notesRegex = /^.{0,199}$/;
 
 const placeInput = document.getElementById('lugar');
