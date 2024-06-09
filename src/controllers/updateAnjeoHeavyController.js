@@ -3,7 +3,7 @@ import Boom from '@hapi/boom';
 
 export const updateAnjeoHeavy = async (req, res, next) => {
 
-  const anjeoHeavydToUpdate = req.params.id;
+  const anjeoHeavyToUpdate = req.params.id;
 
   const newAnjeoHeavy = {
     color: req.body.color,
@@ -12,8 +12,8 @@ export const updateAnjeoHeavy = async (req, res, next) => {
     lugar: req.body.lugar,
     ancho: req.body.ancho,
     altura: req.body.altura,
-    cabezal: req.body.cabezal,
-    adaptador: req.body.adaptador,
+    rielInferior: req.body.rielInferior,
+    rielSuperior: req.body.rielSuperior,
     perfilSuperior: req.body.perfilSuperior,
     instalacion: req.body.instalacion,
     alturaDivisor: req.body.alturaDivisor,
@@ -32,8 +32,8 @@ export const updateAnjeoHeavy = async (req, res, next) => {
       place: newAnjeoHeavy.lugar,
       width: newAnjeoHeavy.ancho,
       height: newAnjeoHeavy.altura,
-      head: newAnjeoHeavy.cabezal,
-      adaptador: newAnjeoHeavy.adaptador,
+      rielLower: newAnjeoHeavy.rielInferior,
+      rielUpper: newAnjeoHeavy.rielSuperior,
       topProfile: newAnjeoHeavy.perfilSuperior,
       installation: newAnjeoHeavy.instalacion,
       divisorHigh: newAnjeoHeavy.alturaDivisor,
@@ -42,7 +42,7 @@ export const updateAnjeoHeavy = async (req, res, next) => {
       notes: newAnjeoHeavy.notas
     }, {
       where: {
-        anjeoHeavyID: anjeoHeavydToUpdate
+        anjeoHeavyID: anjeoHeavyToUpdate
       }
     });
     return res.render('anjeoHeavyUpdatedSuccessfully');

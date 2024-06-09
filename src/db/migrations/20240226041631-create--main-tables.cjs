@@ -209,13 +209,15 @@ module.exports = {
         type: DataTypes.FLOAT,
         allowNull: false
       },
-      head: {
+      rielLower: {
         type: DataTypes.FLOAT,
-        allowNull: false
+        allowNull: false,
+        field: 'riel_lower'
       },
-      adaptador: {
+      rielUpper: {
         type: DataTypes.FLOAT,
-        allowNull: false
+        allowNull: false,
+        field: 'riel_upper'
       },
       topProfile: {
         type: DataTypes.FLOAT,
