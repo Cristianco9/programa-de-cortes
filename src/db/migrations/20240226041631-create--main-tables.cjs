@@ -219,6 +219,16 @@ module.exports = {
         allowNull: false,
         field: 'riel_upper'
       },
+      angleTubular: {
+        type: DataTypes.STRING(9),
+        allowNull: false,
+        field: 'angle_tubular'
+      },
+      angleMeasure: {
+        type: DataTypes.STRING(11),
+        allowNull: false,
+        field: 'angle_measure'
+      },
       topProfile: {
         type: DataTypes.FLOAT,
         allowNull: false,

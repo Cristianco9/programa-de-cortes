@@ -10,6 +10,8 @@ export const anjeosHeavySchema = Joi.object({
   altura: Joi.number().min(140).max(350).precision(1).required(),
   rielInferior: Joi.number().min(10).max(1_200).precision(1).required(),
   rielSuperior: Joi.number().min(10).max(1_200).precision(1).required(),
+  anguloTubular: Joi.string().min(9).max(9).required(),
+  anguloMedida: Joi.string().min(9).max(11).required(),
   perfilSuperior: Joi.number().min(0).max(1_000).precision(1),
   instalacion: Joi.string().min(7).max(7).required(),
   alturaDivisor: Joi.number().min(0).max(350).precision(1),
