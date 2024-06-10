@@ -34,7 +34,7 @@
             </section>
             <form class="form" action="/api/v1/orderActions/type/formHeavy/CreateFormHeavy" method="POST" onsubmit="return validateFormValues()">
                 <div class="fieldContainer">
-                    <h3 class="fieldName">Seleccionar color</h3>
+                    <h3 class="fieldName">Color</h3>
                     <select class="input" name="color" id="color" required>
                       <option value="" disabled selected>Color</option>
                       <option value="Analog">Anolog</option>
@@ -45,7 +45,7 @@
                     </select>
                 </div>
                 <div class="fieldContainer">
-                    <h3 class="fieldName">Seleccionar perfil</h3>
+                    <h3 class="fieldName">Perfil</h3>
                     <select class="input" name="perfil" id="perfil" required>
                       <option value="" disabled selected>Perfil</option>
                       <option value="Cuatro naves">Cuatro naves</option>
@@ -55,7 +55,7 @@
                     </select>
                 </div>
                 <div class="fieldContainer">
-                    <h3 class="fieldName">Seleccionar tipo de apertura</h3>
+                    <h3 class="fieldName">Tipo de apertura</h3>
                     <select class="input" name="apertura" id="apertura" required>
                       <option value="" disabled selected>Apertura</option>
                       <option value="Cierre al centro">Cierre al centro</option>
@@ -83,6 +83,23 @@
                 <div class="fieldContainer">
                     <h3 class="fieldName">Riel superior</h3>
                     <input class="input" name="rielSuperior" id="rielSuperior" type="text" required>
+                </div>
+                <div class="fieldContainer">
+                  <h3 class="fieldName">Ángulo tubular</h3>
+                  <select class="input" name="tubular" id="tubular" required>
+                    <option value="" disabled selected>Tubular</option>
+                    <option value="1 pulgada">1 pulgada</option>
+                    <option value="2 pulgada">2 pulgada</option>
+                    <option value="3 pulgada">3 pulgada</option>
+                  </select>
+                </div>
+                <div class="fieldContainer">
+                  <h3 class="fieldName">Ángulo medida</h3>
+                  <select class="input" name="anguloMedida" id="anguloMedida" required>
+                    <option value="" disabled selected>Ángulo</option>
+                    <option value="1 pulgada">1 pulgada</option>
+                    <option value="3/4 pulgada">3/4 pulgada</option>
+                  </select>
                 </div>
                 <div class="fieldContainer">
                     <h3 class="fieldName">Perfil superior</h3>
@@ -120,6 +137,8 @@
                 <div class="fieldContainer">
                     <h3 class="fieldName">Notas</h3>
                     <input class="input" name="notas" id="notas" type="text">
+                </div>
+                <div class="fieldContainerHidden" id="fieldContainerHidden">
                 </div>
                 <section class="optionsContainer">
                     <section class="errorContainer" id="errorContainer">
