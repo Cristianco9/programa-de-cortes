@@ -72,7 +72,7 @@ function validateFormValues() {
     return false;
   }
 
-  if (!(parseInt(divisorHeight.value) <= parseInt(height.value))) {
+  if (!(parseFloat(divisorHeight.value) <= parseFloat(height.value))) {
     divisorHeight.style.boxShadow = '0px 5px 5px rgba(194, 18, 18, 0.6)';
     document.getElementById('errorContainer').style.display = 'flex';
     document.getElementById("wrongData").textContent = "La altura del divisor del anjeo debe ser menor o igual a la altura del anjeo. Por favor, ingrese un valor válido.";
